@@ -1,7 +1,7 @@
 @import "../variable/var.scss";
 
 .main-bg {
-  background: url("/public/main-index/bg-main.webp") center top no-repeat;
+  background: url("/main-index/bg-main.webp") center top no-repeat;
   background-size: 320%, 60%;
   background-color: $background;
 
@@ -332,7 +332,7 @@
 
 @media only screen and (min-width: 1024px) {
   .main-bg {
-    background: url("/public/main-index/bg-main.webp") left top no-repeat, url("/public/main-index/bg-main2.png") right 2100px no-repeat;
+    background: url("/main-index/bg-main.webp") left top no-repeat, url("/main-index/bg-main2.png") right 2100px no-repeat;
     background-size: 100%, 60%;
     background-color: $background;
 
@@ -621,7 +621,7 @@
 
 @media only screen and (min-width: 1280px) {
   .main-bg {
-    background: url("/public/main-index/bg-main.webp") left top no-repeat, url("/public/main-index/bg-main2.png") right 1350px no-repeat, url("/public/main-index/bg-main3.png") left 3600px no-repeat;
+    background: url("/main-index/bg-main.webp") left top no-repeat, url("/main-index/bg-main2.png") right 1350px no-repeat, url("/main-index/bg-main3.png") left 3600px no-repeat;
     background-size: 100%, 70%, 70%;
     background-color: $background;
 
@@ -730,7 +730,7 @@
 
 @media only screen and (min-width: 1536px) {
   .main-bg {
-    background: url("/public/main-index/bg-main.webp") left top no-repeat, url("/public/main-index/bg-main2.png") right 1400px no-repeat, url("/public/main-index/bg-main3.png") left 3600px no-repeat;
+    background: url("/main-index/bg-main.webp") left top no-repeat, url("/main-index/bg-main2.png") right 1400px no-repeat, url("/main-index/bg-main3.png") left 3600px no-repeat;
     background-size: 100%, 70%, 70%;
     background-color: $background;
 
@@ -795,7 +795,7 @@
 
 @media only screen and (min-width: 1920px) {
   .main-bg {
-    background: url("/public/main-index/bg-main.webp") left -200px no-repeat, url("/public/main-index/bg-main2.png") right 1350px no-repeat, url("/public/main-index/bg-main3.png") left 3600px no-repeat;
+    background: url("/main-index/bg-main.webp") left -200px no-repeat, url("/main-index/bg-main2.png") right 1350px no-repeat, url("/main-index/bg-main3.png") left 3600px no-repeat;
     background-size: 100%, 70%, 70%;
     background-color: $background;
 
