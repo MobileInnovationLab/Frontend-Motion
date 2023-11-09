@@ -1,16 +1,40 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import "@/core/styles/tailwind.scss";
 import Navbar from "@/core/components/navbar";
 import Footer from "@/core/components/footer";
 import RecruitmentNavbar from "./components/navbar/RecruitmentNavbar";
 
 const page = () => {
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const requirementRef = useRef(null);
+  const benefitRef = useRef(null);
+
+  function handleNavigation(id) {
+    switch (id) {
+      case "home":
+        homeRef.current?.scrollIntoView({ behavior: "smooth", top: -100 });
+        break;
+      case "about":
+        aboutRef.current?.scrollIntoView({ behavior: "smooth", top: -100 });
+        break;
+      case "requirement":
+        requirementRef.current?.scrollIntoView({ behavior: "smooth", top: -100 });
+        break;
+      case "benefit":
+        benefitRef.current?.scrollIntoView({ behavior: "smooth", top: -100 });
+        break;
+      default:
+        break;
+    }
+  }
+
   return (
     <div className="bg-[#FCF6F6]">
-      <RecruitmentNavbar />
-      <section className="w-full bg-[url('/recruitment/recruitment-landing-bg.png')] bg-cover bg-no-repeat bg-[center_bottom_0rem]">
+      <RecruitmentNavbar onNavigation={handleNavigation} />
+      <section ref={homeRef} className="w-full bg-[url('/recruitment/recruitment-landing-bg.png')] bg-cover bg-no-repeat bg-[center_bottom_0rem]">
         <div className="container w-full mx-auto flex justify-between flex-col lg:flex-row items-center pb-40 pt-32">
           <h2 className="font-bold font-[rubik] text-[30px] lg:text-[60px] text-white text-center lg:text-left mb-10 lg:mb-0">
             <span className="bg-black rounded-lg px-[35px] py-[7px]">Internship</span> in Mobile Innovation Laboratory
@@ -23,7 +47,7 @@ const page = () => {
 
       <div className="my-12"></div>
 
-      <section>
+      <section ref={aboutRef}>
         <h3 className="text-center font-[rubik] text-red-500 text-[14px] lg:text-[18px]">ABOUT</h3>
         <h1 className="text-center font-[rubik] font-bold text-[28px] lg:text-[48px]">Internship Activities</h1>
         <div className="flex flex-col lg:flex-row align-items-center mt-14 container justify-content-center m-auto">
@@ -91,7 +115,7 @@ const page = () => {
 
       <div className="my-20 lg:my-[-22rem]"></div>
 
-      <section className="container mx-auto">
+      <section ref={requirementRef} className="container mx-auto">
         <h3 className="text-center font-[rubik] text-red-500 text-[14px] lg:text-[18px]">REQUIREMENTS</h3>
         <h1 className="text-center font-[rubik] font-bold text-[28px] lg:text-[48px]">What are the Requirements?</h1>
 
@@ -165,7 +189,7 @@ const page = () => {
 
       <div className="my-40"></div>
 
-      <section className="container mx-auto">
+      <section ref={benefitRef} className="container mx-auto">
         <h3 className="text-center font-[rubik] text-red-500 text-[14px] lg:text-[18px]">BENEFITS</h3>
         <h1 className="text-center font-[rubik] font-bold text-[28px] lg:text-[48px]">What benefits do you get?</h1>
         <div className="flex gap-x-10 flex-col lg:flex-row">
