@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import TopButton from "@/core/components/topButton";
 
 const RecruitmentNavbar = () => {
   const [isNavbarScroll, setIsNavbarScroll] = useState(false);
@@ -15,7 +16,6 @@ const RecruitmentNavbar = () => {
 
   function handleScroll() {
     if (window.scrollY >= 90) {
-      console.log(window.scrollY);
       setIsNavbarScroll(true);
     } else {
       setIsNavbarScroll(false);
@@ -23,57 +23,233 @@ const RecruitmentNavbar = () => {
   }
 
   function handleNavbarOpened() {
-    console.log("OK");
+    console.log("trieger", isNavbarOpened);
+    setIsNavbarOpened(!isNavbarOpened);
+  }
+
+  function getNavClassName() {
+    let className =
+      "transition duration-400 text-center fixed m-auto left-0 right-0 py-5 z-10";
+
+    if (isNavbarScroll) {
+      className += " bg-white shadow-sm";
+    } else {
+      className += " bg-transparent";
+    }
+
+    if (isNavbarOpened) {
+      className += " opacity-0";
+    } else {
+      className += " opacity-1";
+    }
+
+    return className;
+  }
+
+  function getNavLogoSource() {
+    if (isNavbarScroll) {
+      return "/navbar/logo-red-transparent.png";
+    }
+
+    return "/navbar/logo-white-transparent.png";
+  }
+
+  function getNavUlClassName() {
+    let className =
+      "lg:flex hidden gap-x-10 ps-20 font-[inter] text-[16px] transition duration-400";
+
+    if (isNavbarScroll) {
+      className += " text-[#332C2B]";
+    } else {
+      className += " text-[#FFEAEA]";
+    }
+
+    return className;
   }
 
   return (
-    <nav className={`${isNavbarScroll ? "bg-white shadow-sm" : "bg-transparent"} transition duration-400 text-center fixed m-auto left-0 right-0 py-8 z-10`}>
-      <div className="container justify-between mx-auto flex">
-        <div className="flex items-center">
-          <a href="#" className="flex items-center">
-            <div className="w-[34px] h-[34px]">
-              <img src={`${isNavbarScroll ? "/navbar/logo-red-transparent.png" : "/navbar/logo-white-transparent.png"}`} className="transition duration-400 w-full h-full object-contain" alt="" />
-            </div>
-          </a>
-          <div className="hidden w-full md:block md:w-auto px-28" id="navbar-default">
-            <ul className={`flex gap-x-10 font-[inter] text-[16px] ${isNavbarScroll ? "text-[#332C2B]" : "text-[#FFEAEA]"} transition duration-400`}>
+    <div>
+      <nav className={getNavClassName()}>
+        <div className="container justify-between mx-auto flex border-b-4 border-black">
+          <div className="flex w-full items-center">
+            <a href="#" className="flex items-center">
+              <div className="w-[34px] h-[34px]">
+                <img
+                  src={getNavLogoSource()}
+                  className="transition duration-400 w-full h-full object-contain"
+                  alt=""
+                />
+              </div>
+            </a>
+            <ul className={getNavUlClassName()}>
               <li>
-                <a href="#" className="hover:text-[#332C2B] transition ease-out duration-300">
+                <a
+                  href="#"
+                  className="hover:text-[#332C2B] transition ease-out duration-300"
+                >
                   Home
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#332C2B] transition ease-out duration-300">
+                <a
+                  href="#"
+                  className="hover:text-[#332C2B] transition ease-out duration-300"
+                >
                   About
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#332C2B] transition ease-out duration-300">
+                <a
+                  href="#"
+                  className="hover:text-[#332C2B] transition ease-out duration-300"
+                >
                   Requirements
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#332C2B] transition ease-out duration-300">
+                <a
+                  href="#"
+                  className="hover:text-[#332C2B] transition ease-out duration-300"
+                >
                   Benefits
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#332C2B] transition ease-out duration-300">
+                <a
+                  href="#"
+                  className="hover:text-[#332C2B] transition ease-out duration-300"
+                >
                   Contact Us
                 </a>
               </li>
             </ul>
           </div>
+          <button
+            data-collapse-toggle="navbar-default"
+            type="button"
+            onClick={handleNavbarOpened}
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg block lg:hidden "
+            aria-controls="navbar-default"
+            aria-expanded="false"
+          >
+            <span className="sr-only">Open main menu</span>
+            <svg
+              className={`w-5 h-5 ${
+                !isNavbarScroll ? "text-white" : "text-[#F82F1E]"
+              }`}
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 17 14"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M1 1h15M1 7h15M1 13h15"
+              />
+            </svg>
+          </button>
         </div>
+      </nav>
+      <div
+        className={`bg-black fixed top-0 left-0 right-0 bottom-0 bg-opacity-80 transition duration-300 ${
+          isNavbarOpened ? "opacity-1" : "opacity-0"
+        }`}
+      >
+        <nav className="transition duration-400 text-center fixed m-auto left-0 right-0 z-10 bg-white">
+          <div className="container justify-between mx-auto flex py-5">
+            <div className="flex w-full items-center">
+              <a href="#" className="flex items-center">
+                <div className="w-[34px] h-[34px]">
+                  <img
+                    src="/navbar/logo-red-transparent.png"
+                    className="transition duration-400 w-full h-full object-contain"
+                    alt=""
+                  />
+                </div>
+              </a>
+            </div>
+            <button
+              type="button"
+              onClick={handleNavbarOpened}
+              className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg"
+              aria-controls="navbar-default"
+              aria-expanded="false"
+            >
+              <span className="sr-only">Open main menu</span>
+              <svg
+                width="28"
+                height="29"
+                viewBox="0 0 28 29"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="text-[#F82F1E]"
+              >
+                <g clip-path="url(#clip0_2133_4484)">
+                  <path
+                    d="M5.12615 5.30921C4.51353 5.9437 4.51353 6.97242 5.12615 7.60691L11.7816 14.5L5.12615 21.3931C4.51353 22.0276 4.51353 23.0563 5.12615 23.6908C5.73876 24.3253 6.732 24.3253 7.34461 23.6908L14 16.7977L20.6554 23.6908C21.268 24.3253 22.2613 24.3253 22.8739 23.6908C23.4865 23.0563 23.4865 22.0276 22.8739 21.3931L16.2185 14.5L22.8739 7.60691C23.4865 6.97242 23.4865 5.94371 22.8739 5.30921C22.2613 4.67472 21.268 4.67472 20.6554 5.30921L14 12.2023L7.34461 5.30921C6.732 4.67472 5.73876 4.67472 5.12615 5.30921Z"
+                    fill="#656A78"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_2133_4484">
+                    <rect width="28" height="29" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </button>
+          </div>
 
-        <button data-collapse-toggle="navbar-default" type="button" onClick={handleNavbarOpened} className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-          <span className="sr-only">Open main menu</span>
-          <svg className="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
-          </svg>
-        </button>
+          <div className="border-black border-b border-black border-opacity-20 border-solid"></div>
+
+          <ul className="text-left container mx-auto">
+            <li className="my-6">
+              <a
+                href="#"
+                className="hover:text-[#332C2B] text-[inter] text-[16px] text-[#6A6A6A] opacity-70 transition ease-out duration-300"
+              >
+                Home
+              </a>
+            </li>
+            <li className="my-6">
+              <a
+                href="#"
+                className="hover:text-[#332C2B] text-[inter] text-[16px] text-[#6A6A6A] opacity-70 transition ease-out duration-300"
+              >
+                About
+              </a>
+            </li>
+            <li className="my-6">
+              <a
+                href="#"
+                className="hover:text-[#332C2B] text-[inter] text-[16px] text-[#6A6A6A] opacity-70 transition ease-out duration-300"
+              >
+                Requirements
+              </a>
+            </li>
+            <li className="my-6">
+              <a
+                href="#"
+                className="hover:text-[#332C2B] text-[inter] text-[16px] text-[#6A6A6A] opacity-70 transition ease-out duration-300"
+              >
+                Benefits
+              </a>
+            </li>
+            <li className="my-6">
+              <a
+                href="#"
+                className="hover:text-[#332C2B] text-[inter] text-[16px] text-[#6A6A6A] opacity-70 transition ease-out duration-300"
+              >
+                Contact Us
+              </a>
+            </li>
+            <li className="my-10"></li>
+          </ul>
+        </nav>
       </div>
-    </nav>
+    </div>
   );
 };
 
