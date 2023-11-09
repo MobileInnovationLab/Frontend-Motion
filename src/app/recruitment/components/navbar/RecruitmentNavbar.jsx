@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import TopButton from "@/core/components/topButton";
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const navbarLinks = [
   {
@@ -23,6 +25,8 @@ const navbarLinks = [
 ];
 
 const RecruitmentNavbar = ({ onNavigation }) => {
+  const router = useRouter();
+  const usePathName = usePathname();
   const [isNavbarScroll, setIsNavbarScroll] = useState(false);
   const [isNavbarOpened, setIsNavbarOpened] = useState(false);
 
@@ -83,20 +87,28 @@ const RecruitmentNavbar = ({ onNavigation }) => {
     return className;
   }
 
+  function handleNavigation(id) {
+    if (usePathName == "/recruitment/register") {
+      router.push(`/recruitment#${id}`);
+    } else {
+      onNavigation(id);
+    }
+  }
+
   return (
     <div>
       <nav className={getNavClassName()}>
         <div className="container justify-between mx-auto flex border-b-4 border-black">
           <div className="flex items-center">
-            <a href="#" className="flex items-center">
+            <Link href="/" passHref className="flex items-center">
               <div className="w-[34px] h-[34px]">
                 <img src={getNavLogoSource()} className="transition duration-400 w-full h-full object-contain" alt="" />
               </div>
-            </a>
+            </Link>
             <ul className={getNavUlClassName()}>
               {navbarLinks.map((row) => (
                 <li>
-                  <a href="#" onClick={() => onNavigation(row.id)} className="hover:text-[#332C2B] transition ease-out duration-300">
+                  <a href="#" onClick={() => handleNavigation(row.id)} className="hover:text-[#332C2B] transition ease-out duration-300">
                     {row.label}
                   </a>
                 </li>
@@ -109,7 +121,9 @@ const RecruitmentNavbar = ({ onNavigation }) => {
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
             </svg>
           </button>
-          <button className="bg-[#332C2B] text-white text-[inter] text-[16px] rounded-full px-8 py-3 hover:scale-110 transition duration-400 hidden lg:block">Join Us!</button>
+          <Link href="/recruitment/register" passHref className="bg-[#332C2B] text-white text-[inter] text-[16px] rounded-full px-8 py-3 hover:scale-110 transition duration-400 hidden lg:block">
+            Join Us!
+          </Link>
         </div>
       </nav>
       <div className={`z-10 bg-black fixed top-0 left-0 right-0 bg-opacity-80 transition duration-300 ${isNavbarOpened ? "opacity-1 bottom-0" : "opacity-0"}`}>

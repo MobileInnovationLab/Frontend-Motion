@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useRef } from "react";
-import "@/core/styles/tailwind.scss";
-import Navbar from "@/core/components/navbar";
 import Footer from "@/core/components/footer";
 import RecruitmentNavbar from "./components/navbar/RecruitmentNavbar";
 
