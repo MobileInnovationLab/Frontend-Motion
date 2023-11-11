@@ -1,8 +1,7 @@
-import Image from "next/image"
-import Link from "next/link"
-import Skeleton from 'react-loading-skeleton';
+import Image from "next/image";
+import Link from "next/link";
 
-import styles from '../styles/components/memberContainer.module.scss'
+import styles from "../styles/components/memberContainer.module.scss";
 
 export default function memberContainer({
   name,
@@ -23,8 +22,8 @@ export default function memberContainer({
           className={styles["next-image"]}
         />
       </div>
-      <h3>{name || <Skeleton width={150} />}</h3>
-      <p>{division || <Skeleton width={100} />}</p>
+      {/* <h3>{name || <Skeleton width={150} />}</h3>
+      <p>{division || <Skeleton width={100} />}</p> */}
       <div className={styles.social}>
         <a href={linkedin || ""} rel="noreferrer" target="_blank">
           <div className={styles.item}>
