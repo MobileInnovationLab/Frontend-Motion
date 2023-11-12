@@ -3,6 +3,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/public/*": ["./public/*"],
+      "@/app/*": ["./src/app/*"],
+      "@/features/*": ["./src/features/*"],
       "@/core/*": ["./src/core/*"]
     }
   }
