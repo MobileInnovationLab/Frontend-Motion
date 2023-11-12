@@ -158,7 +158,7 @@ const RecruitmentNavbar = ({ onNavigation }) => {
           <ul className="text-left container mx-auto">
             {navbarLinks.map((row) => (
               <li className="my-6" key={row.id}>
-                <a href="#" className="hover:text-[#332C2B] text-[inter] text-[16px] text-[#6A6A6A] transition ease-out duration-300">
+                <a href="#" onClick={() => handleNavigation(row.id)} className="hover:text-[#332C2B] text-[inter] text-[16px] text-[#6A6A6A] transition ease-out duration-300">
                   {row.label}
                 </a>
               </li>
