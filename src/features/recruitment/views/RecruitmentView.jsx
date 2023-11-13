@@ -2,6 +2,7 @@
 
 import React, { useRef } from "react";
 import RecruitmentNavbar from "../components/navbar/RecruitmentNavbar";
+import RecruitmentAnnouncementCard from "./RecruitmentAnnouncementView";
 
 const RecruitmentView = () => {
   const homeRef = useRef(null);
@@ -41,6 +42,10 @@ const RecruitmentView = () => {
           </div>
         </div>
       </section>
+
+      <div className="my-12"></div>
+
+      <RecruitmentAnnouncementCard />
 
       <div className="my-12"></div>
 
@@ -105,12 +110,12 @@ const RecruitmentView = () => {
 
       <section className="">
         <h1 className="text-center lg:text-left font-[rubik] font-bold text-[28px] lg:text-[48px] container mx-auto">Route Map Motionlab</h1>
-        <div>
-          <img src="/recruitment/route-map.png" className="w-full object-cover lg:relative lg:top-[-20rem]" />
+        <div className="mt-10 lg:mt-0">
+          <img src="/recruitment/route-map.png" className="w-full object-cover" />
         </div>
       </section>
 
-      <div className="my-20 lg:my-[-22rem]"></div>
+      <div className="my-20"></div>
 
       <section ref={requirementRef} className="container mx-auto">
         <h3 className="text-center font-[rubik] text-red-500 text-[14px] lg:text-[18px]">REQUIREMENTS</h3>

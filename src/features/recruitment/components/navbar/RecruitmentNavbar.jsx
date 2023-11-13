@@ -26,7 +26,7 @@ const navbarLinks = [
   },
 ];
 
-const RecruitmentNavbar = ({ onNavigation }) => {
+const RecruitmentNavbar = ({ onNavigation, isFixed = true }) => {
   const router = useRouter();
   const usePathName = usePathname();
   const [isNavbarScroll, setIsNavbarScroll] = useState(false);
@@ -52,9 +52,9 @@ const RecruitmentNavbar = ({ onNavigation }) => {
   }
 
   function getNavClassName() {
-    let className = "transition duration-300 text-center fixed m-auto left-0 right-0 py-5 z-10";
+    let className = `transition duration-300 ${isFixed ? "fixed" : ""} text-center m-auto left-0 right-0 py-5 z-10`;
 
-    if (isNavbarScroll) {
+    if (isNavbarScroll || !isFixed) {
       className += " bg-white shadow-sm";
     } else {
       className += " bg-transparent";
@@ -70,7 +70,7 @@ const RecruitmentNavbar = ({ onNavigation }) => {
   }
 
   function getNavLogoSource() {
-    if (isNavbarScroll) {
+    if (isNavbarScroll || !isFixed) {
       return "/navbar/logo-red-transparent.png";
     }
 
@@ -80,17 +80,17 @@ const RecruitmentNavbar = ({ onNavigation }) => {
   function getNavUlClassName() {
     let className = "lg:flex hidden gap-x-10 ps-20 font-[inter] text-[16px] transition duration-400";
 
-    if (isNavbarScroll) {
+    if (isNavbarScroll || !isFixed) {
       className += " text-[#332C2B]";
     } else {
-      className += " text-[#FFEAEA]";
+      className += ` text-[#FFEAEA]`;
     }
 
     return className;
   }
 
   function handleNavigation(id) {
-    if (usePathName == "/recruitment/register") {
+    if (usePathName != "/recruitment") {
       router.push(`/recruitment#${id}`);
     } else {
       onNavigation(id);
@@ -102,7 +102,7 @@ const RecruitmentNavbar = ({ onNavigation }) => {
       <nav className={getNavClassName()}>
         <div className="container justify-between mx-auto flex border-b-4 border-black">
           <div className="flex items-center">
-            <Link href="/" passHref className="flex items-center">
+            <Link href="/recruitment" passHref className="flex items-center">
               <div className="w-[34px] h-[34px]">
                 <img src={getNavLogoSource()} className="transition duration-400 w-full h-full object-contain" alt="" />
               </div>
@@ -119,7 +119,7 @@ const RecruitmentNavbar = ({ onNavigation }) => {
           </div>
           <button data-collapse-toggle="navbar-default" type="button" onClick={handleNavbarOpened} className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg block lg:hidden " aria-controls="navbar-default" aria-expanded="false">
             <span className="sr-only">Open main menu</span>
-            <svg className={`w-5 h-5 ${!isNavbarScroll ? "text-white" : "text-[#F82F1E]"}`} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <svg className={`w-5 h-5 ${!(isNavbarScroll || !isFixed) ? "text-white" : "text-[#F82F1E]"}`} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
             </svg>
           </button>
@@ -158,14 +158,26 @@ const RecruitmentNavbar = ({ onNavigation }) => {
           <ul className="text-left container mx-auto">
             {navbarLinks.map((row) => (
               <li className="my-6" key={row.id}>
-                <a href="#" onClick={() => handleNavigation(row.id)} className="hover:text-[#332C2B] text-[inter] text-[16px] text-[#6A6A6A] transition ease-out duration-300">
+                <a
+                  href="#"
+                  onClick={() => {
+                    setIsNavbarOpened(false);
+                    handleNavigation(row.id);
+                  }}
+                  className="hover:text-[#332C2B] text-[inter] text-[16px] text-[#6A6A6A] transition ease-out duration-300">
                   {row.label}
                 </a>
               </li>
             ))}
             <li className="my-[3.5rem]"></li>
             <li className="w-full">
-              <button className="bg-[#332C2B] w-full text-white text-[inter] text-[16px] rounded-full py-4 hover:bg-opacity-90 transition duration-400">Join Us!</button>
+              <button
+                onClick={() => {
+                  router.push("/recruitment/register");
+                }}
+                className="bg-[#332C2B] w-full text-white text-[inter] text-[16px] rounded-full py-4 hover:bg-opacity-90 transition duration-400">
+                Join Us!
+              </button>
             </li>
             <li className="my-10"></li>
           </ul>
