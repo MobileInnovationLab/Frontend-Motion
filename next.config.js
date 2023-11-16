@@ -9,6 +9,22 @@ const nextConfig = {
       },
     ],
   },
+  rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: "/:path*",
+          has: [
+            {
+              type: "host",
+              value: "internship.acme.com",
+            },
+          ],
+          destination: "/recruitment/:path*",
+        },
+      ],
+    };
+  },
 };
 
 module.exports = nextConfig;
