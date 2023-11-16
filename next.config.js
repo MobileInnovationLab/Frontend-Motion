@@ -9,21 +9,13 @@ const nextConfig = {
       },
     ],
   },
-  rewrites() {
-    return {
-      beforeFiles: [
-        {
-          source: "/:path*",
-          has: [
-            {
-              type: "host",
-              value: "internship.acme.com",
-            },
-          ],
-          destination: "/recruitment/:path*",
-        },
-      ],
-    };
+  async rewrites() {
+    return [
+      {
+        source: "/recruitment",
+        destination: "https://internship.motionlaboratory.com",
+      },
+    ];
   },
 };
 
