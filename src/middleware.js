@@ -6,8 +6,7 @@ export function middleware(request) {
   const host = request.headers.get("host");
   // const topLevelDomain = host.split(".")[host.split(".").length - 2] ?? host;
 
-  console.log("top", host);
-  if (host == `recruitment.${host}`) {
+  if (host.includes("recruitment")) {
     return NextResponse.rewrite(new URL(`/recruitment${url.pathname}`, request.url));
   }
 
