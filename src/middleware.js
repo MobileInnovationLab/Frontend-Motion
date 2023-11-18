@@ -4,14 +4,15 @@ export function middleware(request) {
   const url = request.nextUrl.clone();
   const protocol = request.nextUrl.protocol;
   const host = request.headers.get("host");
-  const topLevelDomain = host.split(".")[host.split(".").length - 2] ?? host;
+  // const topLevelDomain = host.split(".")[host.split(".").length - 2] ?? host;
 
-  if (host == `recruitment.${topLevelDomain}`) {
+  console.log("top", host);
+  if (host == `recruitment.${host}`) {
     return NextResponse.rewrite(new URL(`/recruitment${url.pathname}`, request.url));
   }
 
   if (/^\/recruitment\/.*/.test(url.pathname)) {
-    return NextResponse.redirect(new URL(`${protocol}//recruitment.${topLevelDomain}`, request.url));
+    return NextResponse.redirect(new URL(`${protocol}//recruitment.${host}`, request.url));
   }
 }
 
