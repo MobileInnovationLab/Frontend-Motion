@@ -89,7 +89,7 @@ const Navbar = (props) => {
             </ul>
           </div>
 
-          <Link href="/recruitment" legacyBehavior>
+          <Link href="/internship" legacyBehavior>
             <motion.a className={styles["nav-side"]} whileHover={{ scale: 1.05 }}>
               Recruitment
             </motion.a>

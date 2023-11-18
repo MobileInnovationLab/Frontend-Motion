@@ -1,4 +1,4 @@
-import RecruitmentView from "@/features/recruitment/views/RecruitmentView";
+import RecruitmentView from "@/features/internship/views/RecruitmentView";
 
 const page = () => {
   return <RecruitmentView />;
