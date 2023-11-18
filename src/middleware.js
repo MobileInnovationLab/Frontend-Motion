@@ -4,8 +4,7 @@ export function middleware(request) {
   const url = request.nextUrl.clone();
   const protocol = request.nextUrl.protocol;
   const host = request.headers.get("host");
-  const topLevelDomainMatch = host.match(/(?:[^.]+\.)?([^.]+)$/);
-  const topLevelDomain = topLevelDomainMatch ? topLevelDomainMatch[1] : null;
+  const topLevelDomain = host.split(".")[host.split(".").length - 2] ?? host;
 
   if (host == `recruitment.${topLevelDomain}`) {
     return NextResponse.rewrite(new URL(`/recruitment${url.pathname}`, request.url));
