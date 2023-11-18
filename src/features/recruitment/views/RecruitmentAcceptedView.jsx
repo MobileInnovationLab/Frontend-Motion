@@ -13,7 +13,7 @@ const RecruitmentAcceptedView = () => {
       <Confetti width={width} height={height} />
 
       <section className="flex flex-col items-center justify-center container mx-auto px-10 lg:px-[20rem] text-center my-20">
-        <img src="/recruitment/recruitment-accepted.png" alt="" />
+        <img src="/images/recruitment/recruitment-accepted.png" alt="" />
         <h2 className="font-semibold text-[18px] lg:text-[32px] text-[rubik]">Congratulations !</h2>
         <p className="text-[inter] text-[14px] lg:text-[18px] text-[#6A6A6A] mt-3">You have choosen as new member of Mobile Innovation Laboratory Hazelnut 8.0. Please check your email for more information</p>
         <div className="my-3 lg:my-6"></div>

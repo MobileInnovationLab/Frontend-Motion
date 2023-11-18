@@ -7,7 +7,7 @@ export default function Footer() {
     <>
       <footer className={styles["footer-container"]}>
         <section className={styles["footer-first"]}>
-          <Image src={"/footer/logo-footer.png"} width={56} height={58} alt="Logo Footer" />
+          <Image src={"/images/footer/logo-footer.png"} width={56} height={58} alt="Logo Footer" />
           <p className={styles["bottom-text"]}>Mobile Laboratory</p>
         </section>
         <section className={styles["footer-column"]}>
@@ -55,25 +55,25 @@ export default function Footer() {
 
           <a rel="noreferrer" href="https://liff.line.me/1645278921-kWRPP32q?accountId=biy7493e#mst_challenge=B1ZDBAp9rbyTWPF3iAJ2k1b65qumuPvzH1IvhbvmgZM" target="_blank" className={`${styles["footer-item"]} ${styles["link"]}`}>
             <div className={styles["footer-item-img"]}>
-              <Image src="/footer/footer-line.png" alt="Line Link" layout="fill" objectFit="cover" className="footer-item-img" />
+              <Image src="/images/footer/footer-line.png" alt="Line Link" layout="fill" objectFit="cover" className="footer-item-img" />
             </div>
             Line
           </a>
           <a rel="noreferrer" href="https://www.linkedin.com/company/motion-laboratory/mycompany/" target="_blank" className={`${styles["footer-item"]} ${styles["link"]}`}>
             <div className={styles["footer-item-img"]}>
-              <Image src="/footer/footer-linkedin.png" alt="Linkedin Link" layout="fill" objectFit="cover" className="footer-item-img" />
+              <Image src="/images/footer/footer-linkedin.png" alt="Linkedin Link" layout="fill" objectFit="cover" className="footer-item-img" />
             </div>
             Linkedin
           </a>
           <a rel="noreferrer" href="https://www.instagram.com/motionlab_/" target="_blank" className={`${styles["footer-item"]} ${styles["link"]}`}>
             <div className={styles["footer-item-img"]}>
-              <Image src="/footer/footer-instagram.png" alt="Instagram Link" layout="fill" objectFit="cover" />
+              <Image src="/images/footer/footer-instagram.png" alt="Instagram Link" layout="fill" objectFit="cover" />
             </div>
             Instagram
           </a>
           <a rel="noreferrer" href="https://www.facebook.com/motionlab.telu" target="_blank" className={`${styles["footer-item"]} ${styles["link"]}`}>
             <div className={styles["footer-item-img"]}>
-              <Image src="/footer/footer-facebook.png" alt="Facebook Link" layout="fill" objectFit="cover" className="footer-item-img" />
+              <Image src="/images/footer/footer-facebook.png" alt="Facebook Link" layout="fill" objectFit="cover" className="footer-item-img" />
             </div>
             Facebook
           </a>

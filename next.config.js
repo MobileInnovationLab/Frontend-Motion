@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  trailingSlash: true,
   output: "standalone",
   images: {
     remotePatterns: [
@@ -8,14 +9,6 @@ const nextConfig = {
         hostname: "**",
       },
     ],
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/recruitment",
-        destination: "https://internship.motionlaboratory.com",
-      },
-    ];
   },
 };
 

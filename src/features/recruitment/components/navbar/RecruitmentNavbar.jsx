@@ -71,10 +71,10 @@ const RecruitmentNavbar = ({ onNavigation, isFixed = true }) => {
 
   function getNavLogoSource() {
     if (isNavbarScroll || !isFixed) {
-      return "/navbar/logo-red-transparent.png";
+      return "/images/navbar/logo-red-transparent.png";
     }
 
-    return "/navbar/logo-white-transparent.png";
+    return "/images/navbar/logo-white-transparent.png";
   }
 
   function getNavUlClassName() {
@@ -90,8 +90,8 @@ const RecruitmentNavbar = ({ onNavigation, isFixed = true }) => {
   }
 
   function handleNavigation(id) {
-    if (usePathName != "/recruitment") {
-      router.push(`/recruitment#${id}`);
+    if (usePathName != "/") {
+      router.push(`/#${id}`);
     } else {
       onNavigation(id);
     }
@@ -102,7 +102,7 @@ const RecruitmentNavbar = ({ onNavigation, isFixed = true }) => {
       <nav className={getNavClassName()}>
         <div className="container justify-between mx-auto flex border-b-4 border-black">
           <div className="flex items-center">
-            <Link href="/recruitment" passHref className="flex items-center">
+            <Link href="" passHref className="flex items-center">
               <div className="w-[34px] h-[34px]">
                 <img src={getNavLogoSource()} className="transition duration-400 w-full h-full object-contain" alt="" />
               </div>
@@ -123,7 +123,7 @@ const RecruitmentNavbar = ({ onNavigation, isFixed = true }) => {
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
             </svg>
           </button>
-          <Link href="/recruitment/register" passHref className="bg-[#332C2B] text-white text-[inter] text-[16px] rounded-full px-8 py-3 hover:scale-110 transition duration-400 hidden lg:block">
+          <Link href="/register" passHref className="bg-[#332C2B] text-white text-[inter] text-[16px] rounded-full px-8 py-3 hover:scale-110 transition duration-400 hidden lg:block">
             Join Us!
           </Link>
         </div>
@@ -134,7 +134,7 @@ const RecruitmentNavbar = ({ onNavigation, isFixed = true }) => {
             <div className="flex w-full items-center">
               <a href="#" className="flex items-center">
                 <div className="w-[34px] h-[34px]">
-                  <img src="/navbar/logo-red-transparent.png" className="transition duration-400 w-full h-full object-contain" alt="" />
+                  <img src="/images/navbar/logo-red-transparent.png" className="transition duration-400 w-full h-full object-contain" alt="" />
                 </div>
               </a>
             </div>
