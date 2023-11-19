@@ -1,7 +1,7 @@
-import RecruitmentRegisterView from "@/features/internship/views/RecruitmentRegisterView";
+import InternshipRegisterView from "@/features/internship/views/InternshipRegisterView";
 
 const page = () => {
-  return <RecruitmentRegisterView />;
+  return <InternshipRegisterView />;
 };
 
 export default page;

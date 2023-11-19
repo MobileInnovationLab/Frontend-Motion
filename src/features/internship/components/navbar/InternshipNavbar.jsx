@@ -1,9 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import TopButton from "@/core/components/topButton";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 
@@ -26,7 +24,7 @@ const navbarLinks = [
   },
 ];
 
-const RecruitmentNavbar = ({ onNavigation, isFixed = true }) => {
+const InternshipNavbar = ({ onNavigation, isFixed = true }) => {
   const router = useRouter();
   const usePathName = usePathname();
   const [isNavbarScroll, setIsNavbarScroll] = useState(false);
@@ -187,4 +185,4 @@ const RecruitmentNavbar = ({ onNavigation, isFixed = true }) => {
   );
 };
 
-export default RecruitmentNavbar;
+export default InternshipNavbar;

@@ -1,15 +1,15 @@
 "use client";
 
 import Confetti from "react-confetti";
-import RecruitmentNavbar from "../components/navbar/RecruitmentNavbar";
 import useWindowDimensions from "@/core/hooks/useWindowDimensions";
+import InternshipNavbar from "../components/navbar/InternshipNavbar";
 
-const RecruitmentAcceptedView = () => {
+const InternshipAcceptedView = () => {
   const { height, width } = useWindowDimensions();
 
   return (
     <>
-      <RecruitmentNavbar isFixed={false} />
+      <InternshipNavbar isFixed={false} />
       <Confetti width={width} height={height} />
 
       <section className="flex flex-col items-center justify-center container mx-auto px-10 lg:px-[20rem] text-center my-20">
@@ -25,4 +25,4 @@ const RecruitmentAcceptedView = () => {
   );
 };
 
-export default RecruitmentAcceptedView;
+export default InternshipAcceptedView;

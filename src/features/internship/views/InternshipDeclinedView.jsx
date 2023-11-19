@@ -1,11 +1,11 @@
 "use client";
 
-import RecruitmentNavbar from "../components/navbar/RecruitmentNavbar";
+import InternshipNavbar from "../components/navbar/InternshipNavbar";
 
-const RecruitmentDeclinedView = () => {
+const InternshipDeclinedView = () => {
   return (
     <>
-      <RecruitmentNavbar isFixed={false} />
+      <InternshipNavbar isFixed={false} />
 
       <section className="flex flex-col items-center justify-center container mx-auto px-10 lg:px-[20rem] text-center my-20">
         <img src="/images/recruitment/recruitment-declined.png" alt="" />
@@ -16,4 +16,4 @@ const RecruitmentDeclinedView = () => {
   );
 };
 
-export default RecruitmentDeclinedView;
+export default InternshipDeclinedView;

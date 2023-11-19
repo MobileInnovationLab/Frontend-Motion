@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Head from "next/head";
 
 import Navbar from "@/core/components/navbar";
 import BigTitle from "@/core/components/bigTitle";
@@ -194,8 +193,7 @@ export default function Page() {
     fifteen: {
       name: "M. Pascal D.",
       division: "Laboratory Assistant",
-      linkedin:
-        "https://www.linkedin.com/in/muhammad-pascal-dewantara-15901815b/",
+      linkedin: "https://www.linkedin.com/in/muhammad-pascal-dewantara-15901815b/",
       facebook: "",
       insta: "https://www.instagram.com/mpascaldewantara/",
       image: "/about/member/Pascal.webp",
@@ -228,13 +226,7 @@ export default function Page() {
 
   const logoIni = () => {
     return (
-      <svg
-        width="12"
-        height="12"
-        viewBox="0 0 12 12"
-        fill="#858585"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="#858585" xmlns="http://www.w3.org/2000/svg">
         <circle cx="6" cy="6" r="6" />
       </svg>
     );
@@ -268,24 +260,11 @@ export default function Page() {
 
       <section className={styles.first}>
         <div className={styles["first-title"]}>
-          <h1 className={styles.title}>
-            We are Creative People with High Spirits
-          </h1>
-          <p className={styles.subtitle}>
-            The Motion (Mobile Innovation) Laboratory is one of the research
-            laboratories under the Faculty of Informatics, Telkom University.
-            Motion Lab focuses on the creation and development of mobile
-            software. Now Motion Lab comes with 3 division options, Digital
-            Business, UI/UX Design, and Mobile Programming.
-          </p>
+          <h1 className={styles.title}>We are Creative People with High Spirits</h1>
+          <p className={styles.subtitle}>The Motion (Mobile Innovation) Laboratory is one of the research laboratories under the Faculty of Informatics, Telkom University. Motion Lab focuses on the creation and development of mobile software. Now Motion Lab comes with 3 division options, Digital Business, UI/UX Design, and Mobile Programming.</p>
         </div>
         <section className={styles["first-image"]}>
-          <Image
-            src="/about/first-meet.webp"
-            alt="About Image"
-            layout="fill"
-            objectFit="cover"
-          />
+          <Image src="/about/first-meet.webp" alt="About Image" layout="fill" objectFit="cover" />
         </section>
         <div className={styles["first-flex"]}>
           <div className={styles.item}>
@@ -328,124 +307,26 @@ export default function Page() {
         <div className={`${styles.slider} ${"slider-mobile"}`}>
           <Slider {...responsiveLecturerSlider}>
             <div className={styles.containerRes}>
-              <MemberContainer
-                name={dosen.first.name}
-                division={dosen.first.division}
-                linkedin={dosen.first.linkedin}
-                facebook={dosen.first.facebook}
-                insta={dosen.first.insta}
-                image={dosen.first.image}
-              />
-              <MemberContainer
-                name={dosen.second.name}
-                division={dosen.second.division}
-                linkedin={dosen.second.linkedin}
-                facebook={dosen.second.facebook}
-                insta={dosen.second.insta}
-                image={dosen.second.image}
-              />
-              <MemberContainer
-                name={dosen.third.name}
-                division={dosen.third.division}
-                linkedin={dosen.third.linkedin}
-                facebook={dosen.third.facebook}
-                insta={dosen.third.insta}
-                image={dosen.third.image}
-              />
-              <MemberContainer
-                name={dosen.fourth.name}
-                division={dosen.fourth.division}
-                linkedin={dosen.fourth.linkedin}
-                facebook={dosen.fourth.facebook}
-                insta={dosen.fourth.insta}
-                image={dosen.fourth.image}
-              />
+              <MemberContainer name={dosen.first.name} division={dosen.first.division} linkedin={dosen.first.linkedin} facebook={dosen.first.facebook} insta={dosen.first.insta} image={dosen.first.image} />
+              <MemberContainer name={dosen.second.name} division={dosen.second.division} linkedin={dosen.second.linkedin} facebook={dosen.second.facebook} insta={dosen.second.insta} image={dosen.second.image} />
+              <MemberContainer name={dosen.third.name} division={dosen.third.division} linkedin={dosen.third.linkedin} facebook={dosen.third.facebook} insta={dosen.third.insta} image={dosen.third.image} />
+              <MemberContainer name={dosen.fourth.name} division={dosen.fourth.division} linkedin={dosen.fourth.linkedin} facebook={dosen.fourth.facebook} insta={dosen.fourth.insta} image={dosen.fourth.image} />
             </div>
             <div className={styles.containerRes}>
-              <MemberContainer
-                name={dosen.fifth.name}
-                division={dosen.fifth.division}
-                linkedin={dosen.fifth.linkedin}
-                facebook={dosen.fifth.facebook}
-                insta={dosen.fifth.insta}
-                image={dosen.fifth.image}
-              />
-              <MemberContainer
-                name={dosen.sixth.name}
-                division={dosen.sixth.division}
-                linkedin={dosen.sixth.linkedin}
-                facebook={dosen.sixth.facebook}
-                insta={dosen.sixth.insta}
-                image={dosen.sixth.image}
-              />
-              <MemberContainer
-                name={dosen.seventh.name}
-                division={dosen.seventh.division}
-                linkedin={dosen.seventh.linkedin}
-                facebook={dosen.seventh.facebook}
-                insta={dosen.seventh.insta}
-                image={dosen.seventh.image}
-              />
+              <MemberContainer name={dosen.fifth.name} division={dosen.fifth.division} linkedin={dosen.fifth.linkedin} facebook={dosen.fifth.facebook} insta={dosen.fifth.insta} image={dosen.fifth.image} />
+              <MemberContainer name={dosen.sixth.name} division={dosen.sixth.division} linkedin={dosen.sixth.linkedin} facebook={dosen.sixth.facebook} insta={dosen.sixth.insta} image={dosen.sixth.image} />
+              <MemberContainer name={dosen.seventh.name} division={dosen.seventh.division} linkedin={dosen.seventh.linkedin} facebook={dosen.seventh.facebook} insta={dosen.seventh.insta} image={dosen.seventh.image} />
             </div>
           </Slider>
         </div>
         <div className={styles.grid}>
-          <MemberContainer
-            name={dosen.first.name}
-            division={dosen.first.division}
-            linkedin={dosen.first.linkedin}
-            facebook={dosen.first.facebook}
-            insta={dosen.first.insta}
-            image={dosen.first.image}
-          />
-          <MemberContainer
-            name={dosen.second.name}
-            division={dosen.second.division}
-            linkedin={dosen.second.linkedin}
-            facebook={dosen.second.facebook}
-            insta={dosen.second.insta}
-            image={dosen.second.image}
-          />
-          <MemberContainer
-            name={dosen.third.name}
-            division={dosen.third.division}
-            linkedin={dosen.third.linkedin}
-            facebook={dosen.third.facebook}
-            insta={dosen.third.insta}
-            image={dosen.third.image}
-          />
-          <MemberContainer
-            name={dosen.fourth.name}
-            division={dosen.fourth.division}
-            linkedin={dosen.fourth.linkedin}
-            facebook={dosen.fourth.facebook}
-            insta={dosen.fourth.insta}
-            image={dosen.fourth.image}
-          />
-          <MemberContainer
-            name={dosen.fifth.name}
-            division={dosen.fifth.division}
-            linkedin={dosen.fifth.linkedin}
-            facebook={dosen.fifth.facebook}
-            insta={dosen.fifth.insta}
-            image={dosen.fifth.image}
-          />
-          <MemberContainer
-            name={dosen.sixth.name}
-            division={dosen.sixth.division}
-            linkedin={dosen.sixth.linkedin}
-            facebook={dosen.sixth.facebook}
-            insta={dosen.sixth.insta}
-            image={dosen.sixth.image}
-          />
-          <MemberContainer
-            name={dosen.seventh.name}
-            division={dosen.seventh.division}
-            linkedin={dosen.seventh.linkedin}
-            facebook={dosen.seventh.facebook}
-            insta={dosen.seventh.insta}
-            image={dosen.seventh.image}
-          />
+          <MemberContainer name={dosen.first.name} division={dosen.first.division} linkedin={dosen.first.linkedin} facebook={dosen.first.facebook} insta={dosen.first.insta} image={dosen.first.image} />
+          <MemberContainer name={dosen.second.name} division={dosen.second.division} linkedin={dosen.second.linkedin} facebook={dosen.second.facebook} insta={dosen.second.insta} image={dosen.second.image} />
+          <MemberContainer name={dosen.third.name} division={dosen.third.division} linkedin={dosen.third.linkedin} facebook={dosen.third.facebook} insta={dosen.third.insta} image={dosen.third.image} />
+          <MemberContainer name={dosen.fourth.name} division={dosen.fourth.division} linkedin={dosen.fourth.linkedin} facebook={dosen.fourth.facebook} insta={dosen.fourth.insta} image={dosen.fourth.image} />
+          <MemberContainer name={dosen.fifth.name} division={dosen.fifth.division} linkedin={dosen.fifth.linkedin} facebook={dosen.fifth.facebook} insta={dosen.fifth.insta} image={dosen.fifth.image} />
+          <MemberContainer name={dosen.sixth.name} division={dosen.sixth.division} linkedin={dosen.sixth.linkedin} facebook={dosen.sixth.facebook} insta={dosen.sixth.insta} image={dosen.sixth.image} />
+          <MemberContainer name={dosen.seventh.name} division={dosen.seventh.division} linkedin={dosen.seventh.linkedin} facebook={dosen.seventh.facebook} insta={dosen.seventh.insta} image={dosen.seventh.image} />
         </div>
 
         <div className={styles.title}>
@@ -464,220 +345,38 @@ export default function Page() {
         <div className={`${styles.slider} ${"slider-mobile"}`}>
           <Slider {...responsiveLecturerSlider}>
             <div className={styles.containerRes}>
-              <MemberContainer
-                name={labAssist.first.name}
-                division={labAssist.first.division}
-                linkedin={labAssist.first.linkedin}
-                facebook={labAssist.first.facebook}
-                insta={labAssist.first.insta}
-                image={labAssist.first.image}
-              />
-              <MemberContainer
-                name={labAssist.second.name}
-                division={labAssist.second.division}
-                linkedin={labAssist.second.linkedin}
-                facebook={labAssist.second.facebook}
-                insta={labAssist.second.insta}
-                image={labAssist.second.image}
-              />
-              <MemberContainer
-                name={labAssist.third.name}
-                division={labAssist.third.division}
-                linkedin={labAssist.third.linkedin}
-                facebook={labAssist.third.facebook}
-                insta={labAssist.third.insta}
-                image={labAssist.third.image}
-              />
-              <MemberContainer
-                name={labAssist.fourth.name}
-                division={labAssist.fourth.division}
-                linkedin={labAssist.fourth.linkedin}
-                facebook={labAssist.fourth.facebook}
-                insta={labAssist.fourth.insta}
-                image={labAssist.fourth.image}
-              />
+              <MemberContainer name={labAssist.first.name} division={labAssist.first.division} linkedin={labAssist.first.linkedin} facebook={labAssist.first.facebook} insta={labAssist.first.insta} image={labAssist.first.image} />
+              <MemberContainer name={labAssist.second.name} division={labAssist.second.division} linkedin={labAssist.second.linkedin} facebook={labAssist.second.facebook} insta={labAssist.second.insta} image={labAssist.second.image} />
+              <MemberContainer name={labAssist.third.name} division={labAssist.third.division} linkedin={labAssist.third.linkedin} facebook={labAssist.third.facebook} insta={labAssist.third.insta} image={labAssist.third.image} />
+              <MemberContainer name={labAssist.fourth.name} division={labAssist.fourth.division} linkedin={labAssist.fourth.linkedin} facebook={labAssist.fourth.facebook} insta={labAssist.fourth.insta} image={labAssist.fourth.image} />
             </div>
             <div className={styles.containerRes}>
-              <MemberContainer
-                name={labAssist.fifth.name}
-                division={labAssist.fifth.division}
-                linkedin={labAssist.fifth.linkedin}
-                facebook={labAssist.fifth.facebook}
-                insta={labAssist.fifth.insta}
-                image={labAssist.fifth.image}
-              />
-              <MemberContainer
-                name={labAssist.sixth.name}
-                division={labAssist.sixth.division}
-                linkedin={labAssist.sixth.linkedin}
-                facebook={labAssist.sixth.facebook}
-                insta={labAssist.sixth.insta}
-                image={labAssist.sixth.image}
-              />
-              <MemberContainer
-                name={labAssist.seventh.name}
-                division={labAssist.seventh.division}
-                linkedin={labAssist.seventh.linkedin}
-                facebook={labAssist.seventh.facebook}
-                insta={labAssist.seventh.insta}
-                image={labAssist.seventh.image}
-              />
-              <MemberContainer
-                name={labAssist.eight.name}
-                division={labAssist.eight.division}
-                linkedin={labAssist.eight.linkedin}
-                facebook={labAssist.eight.facebook}
-                insta={labAssist.eight.insta}
-                image={labAssist.eight.image}
-              />
+              <MemberContainer name={labAssist.fifth.name} division={labAssist.fifth.division} linkedin={labAssist.fifth.linkedin} facebook={labAssist.fifth.facebook} insta={labAssist.fifth.insta} image={labAssist.fifth.image} />
+              <MemberContainer name={labAssist.sixth.name} division={labAssist.sixth.division} linkedin={labAssist.sixth.linkedin} facebook={labAssist.sixth.facebook} insta={labAssist.sixth.insta} image={labAssist.sixth.image} />
+              <MemberContainer name={labAssist.seventh.name} division={labAssist.seventh.division} linkedin={labAssist.seventh.linkedin} facebook={labAssist.seventh.facebook} insta={labAssist.seventh.insta} image={labAssist.seventh.image} />
+              <MemberContainer name={labAssist.eight.name} division={labAssist.eight.division} linkedin={labAssist.eight.linkedin} facebook={labAssist.eight.facebook} insta={labAssist.eight.insta} image={labAssist.eight.image} />
             </div>
           </Slider>
         </div>
         <div className={styles.grid}>
-          <MemberContainer
-            name={labAssist.first.name}
-            division={labAssist.first.division}
-            linkedin={labAssist.first.linkedin}
-            facebook={labAssist.first.facebook}
-            insta={labAssist.first.insta}
-            image={labAssist.first.image}
-          />
-          <MemberContainer
-            name={labAssist.second.name}
-            division={labAssist.second.division}
-            linkedin={labAssist.second.linkedin}
-            facebook={labAssist.second.facebook}
-            insta={labAssist.second.insta}
-            image={labAssist.second.image}
-          />
-          <MemberContainer
-            name={labAssist.third.name}
-            division={labAssist.third.division}
-            linkedin={labAssist.third.linkedin}
-            facebook={labAssist.third.facebook}
-            insta={labAssist.third.insta}
-            image={labAssist.third.image}
-          />
-          <MemberContainer
-            name={labAssist.fourth.name}
-            division={labAssist.fourth.division}
-            linkedin={labAssist.fourth.linkedin}
-            facebook={labAssist.fourth.facebook}
-            insta={labAssist.fourth.insta}
-            image={labAssist.fourth.image}
-          />
-          <MemberContainer
-            name={labAssist.fifth.name}
-            division={labAssist.fifth.division}
-            linkedin={labAssist.fifth.linkedin}
-            facebook={labAssist.fifth.facebook}
-            insta={labAssist.fifth.insta}
-            image={labAssist.fifth.image}
-          />
-          <MemberContainer
-            name={labAssist.sixth.name}
-            division={labAssist.sixth.division}
-            linkedin={labAssist.sixth.linkedin}
-            facebook={labAssist.sixth.facebook}
-            insta={labAssist.sixth.insta}
-            image={labAssist.sixth.image}
-          />
-          <MemberContainer
-            name={labAssist.seventh.name}
-            division={labAssist.seventh.division}
-            linkedin={labAssist.seventh.linkedin}
-            facebook={labAssist.seventh.facebook}
-            insta={labAssist.seventh.insta}
-            image={labAssist.seventh.image}
-          />
-          <MemberContainer
-            name={labAssist.eight.name}
-            division={labAssist.eight.division}
-            linkedin={labAssist.eight.linkedin}
-            facebook={labAssist.eight.facebook}
-            insta={labAssist.eight.insta}
-            image={labAssist.eight.image}
-          />
-          <MemberContainer
-            name={labAssist.nine.name}
-            division={labAssist.nine.division}
-            linkedin={labAssist.nine.linkedin}
-            facebook={labAssist.nine.facebook}
-            insta={labAssist.nine.insta}
-            image={labAssist.nine.image}
-          />
-          <MemberContainer
-            name={labAssist.ten.name}
-            division={labAssist.ten.division}
-            linkedin={labAssist.ten.linkedin}
-            facebook={labAssist.ten.facebook}
-            insta={labAssist.ten.insta}
-            image={labAssist.ten.image}
-          />
-          <MemberContainer
-            name={labAssist.eleven.name}
-            division={labAssist.eleven.division}
-            linkedin={labAssist.eleven.linkedin}
-            facebook={labAssist.eleven.facebook}
-            insta={labAssist.eleven.insta}
-            image={labAssist.eleven.image}
-          />
-          <MemberContainer
-            name={labAssist.twelve.name}
-            division={labAssist.twelve.division}
-            linkedin={labAssist.twelve.linkedin}
-            facebook={labAssist.twelve.facebook}
-            insta={labAssist.twelve.insta}
-            image={labAssist.twelve.image}
-          />
-          <MemberContainer
-            name={labAssist.thirteen.name}
-            division={labAssist.thirteen.division}
-            linkedin={labAssist.thirteen.linkedin}
-            facebook={labAssist.thirteen.facebook}
-            insta={labAssist.thirteen.insta}
-            image={labAssist.thirteen.image}
-          />
-          <MemberContainer
-            name={labAssist.fourteen.name}
-            division={labAssist.fourteen.division}
-            linkedin={labAssist.fourteen.linkedin}
-            facebook={labAssist.fourteen.facebook}
-            insta={labAssist.fourteen.insta}
-            image={labAssist.fourteen.image}
-          />
-          <MemberContainer
-            name={labAssist.fifteen.name}
-            division={labAssist.fifteen.division}
-            linkedin={labAssist.fifteen.linkedin}
-            facebook={labAssist.fifteen.facebook}
-            insta={labAssist.fifteen.insta}
-            image={labAssist.fifteen.image}
-          />
-          <MemberContainer
-            name={labAssist.sixteen.name}
-            division={labAssist.sixteen.division}
-            linkedin={labAssist.sixteen.linkedin}
-            facebook={labAssist.sixteen.facebook}
-            insta={labAssist.sixteen.insta}
-            image={labAssist.sixteen.image}
-          />
-          <MemberContainer
-            name={labAssist.seventeen.name}
-            division={labAssist.seventeen.division}
-            linkedin={labAssist.seventeen.linkedin}
-            facebook={labAssist.seventeen.facebook}
-            insta={labAssist.seventeen.insta}
-            image={labAssist.seventeen.image}
-          />
-          <MemberContainer
-            name={labAssist.eighteen.name}
-            division={labAssist.eighteen.division}
-            linkedin={labAssist.eighteen.linkedin}
-            facebook={labAssist.eighteen.facebook}
-            insta={labAssist.eighteen.insta}
-            image={labAssist.eighteen.image}
-          />
+          <MemberContainer name={labAssist.first.name} division={labAssist.first.division} linkedin={labAssist.first.linkedin} facebook={labAssist.first.facebook} insta={labAssist.first.insta} image={labAssist.first.image} />
+          <MemberContainer name={labAssist.second.name} division={labAssist.second.division} linkedin={labAssist.second.linkedin} facebook={labAssist.second.facebook} insta={labAssist.second.insta} image={labAssist.second.image} />
+          <MemberContainer name={labAssist.third.name} division={labAssist.third.division} linkedin={labAssist.third.linkedin} facebook={labAssist.third.facebook} insta={labAssist.third.insta} image={labAssist.third.image} />
+          <MemberContainer name={labAssist.fourth.name} division={labAssist.fourth.division} linkedin={labAssist.fourth.linkedin} facebook={labAssist.fourth.facebook} insta={labAssist.fourth.insta} image={labAssist.fourth.image} />
+          <MemberContainer name={labAssist.fifth.name} division={labAssist.fifth.division} linkedin={labAssist.fifth.linkedin} facebook={labAssist.fifth.facebook} insta={labAssist.fifth.insta} image={labAssist.fifth.image} />
+          <MemberContainer name={labAssist.sixth.name} division={labAssist.sixth.division} linkedin={labAssist.sixth.linkedin} facebook={labAssist.sixth.facebook} insta={labAssist.sixth.insta} image={labAssist.sixth.image} />
+          <MemberContainer name={labAssist.seventh.name} division={labAssist.seventh.division} linkedin={labAssist.seventh.linkedin} facebook={labAssist.seventh.facebook} insta={labAssist.seventh.insta} image={labAssist.seventh.image} />
+          <MemberContainer name={labAssist.eight.name} division={labAssist.eight.division} linkedin={labAssist.eight.linkedin} facebook={labAssist.eight.facebook} insta={labAssist.eight.insta} image={labAssist.eight.image} />
+          <MemberContainer name={labAssist.nine.name} division={labAssist.nine.division} linkedin={labAssist.nine.linkedin} facebook={labAssist.nine.facebook} insta={labAssist.nine.insta} image={labAssist.nine.image} />
+          <MemberContainer name={labAssist.ten.name} division={labAssist.ten.division} linkedin={labAssist.ten.linkedin} facebook={labAssist.ten.facebook} insta={labAssist.ten.insta} image={labAssist.ten.image} />
+          <MemberContainer name={labAssist.eleven.name} division={labAssist.eleven.division} linkedin={labAssist.eleven.linkedin} facebook={labAssist.eleven.facebook} insta={labAssist.eleven.insta} image={labAssist.eleven.image} />
+          <MemberContainer name={labAssist.twelve.name} division={labAssist.twelve.division} linkedin={labAssist.twelve.linkedin} facebook={labAssist.twelve.facebook} insta={labAssist.twelve.insta} image={labAssist.twelve.image} />
+          <MemberContainer name={labAssist.thirteen.name} division={labAssist.thirteen.division} linkedin={labAssist.thirteen.linkedin} facebook={labAssist.thirteen.facebook} insta={labAssist.thirteen.insta} image={labAssist.thirteen.image} />
+          <MemberContainer name={labAssist.fourteen.name} division={labAssist.fourteen.division} linkedin={labAssist.fourteen.linkedin} facebook={labAssist.fourteen.facebook} insta={labAssist.fourteen.insta} image={labAssist.fourteen.image} />
+          <MemberContainer name={labAssist.fifteen.name} division={labAssist.fifteen.division} linkedin={labAssist.fifteen.linkedin} facebook={labAssist.fifteen.facebook} insta={labAssist.fifteen.insta} image={labAssist.fifteen.image} />
+          <MemberContainer name={labAssist.sixteen.name} division={labAssist.sixteen.division} linkedin={labAssist.sixteen.linkedin} facebook={labAssist.sixteen.facebook} insta={labAssist.sixteen.insta} image={labAssist.sixteen.image} />
+          <MemberContainer name={labAssist.seventeen.name} division={labAssist.seventeen.division} linkedin={labAssist.seventeen.linkedin} facebook={labAssist.seventeen.facebook} insta={labAssist.seventeen.insta} image={labAssist.seventeen.image} />
+          <MemberContainer name={labAssist.eighteen.name} division={labAssist.eighteen.division} linkedin={labAssist.eighteen.linkedin} facebook={labAssist.eighteen.facebook} insta={labAssist.eighteen.insta} image={labAssist.eighteen.image} />
         </div>
 
         {/* generation filter */}
@@ -716,11 +415,7 @@ export default function Page() {
 				</div> */}
         <div className={styles.grid}>
           {members?.map((member) => (
-            <MemberContainer
-              key={member.id}
-              name={member.name}
-              division={member.division}
-            />
+            <MemberContainer key={member.id} name={member.name} division={member.division} />
           ))}
         </div>
       </section>

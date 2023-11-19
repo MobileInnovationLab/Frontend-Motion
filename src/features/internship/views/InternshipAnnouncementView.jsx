@@ -2,7 +2,7 @@ import { ScaleLoader } from "react-spinners";
 import RecruitmentTextInputField from "@/core/components/input/RecruitmentTextInputField";
 import useRecruitmentAnnouncementViewModel from "../viewModels/useRecruitmentAnnouncementView";
 
-const RecruitmentAnnouncementView = () => {
+const InternshipAnnouncementView = () => {
   const { formik } = useRecruitmentAnnouncementViewModel();
 
   return (
@@ -25,4 +25,4 @@ const RecruitmentAnnouncementView = () => {
   );
 };
 
-export default RecruitmentAnnouncementView;
+export default InternshipAnnouncementView;

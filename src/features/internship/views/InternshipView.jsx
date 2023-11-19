@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useRef } from "react";
-import RecruitmentNavbar from "../components/navbar/RecruitmentNavbar";
-import RecruitmentAnnouncementCard from "./RecruitmentAnnouncementView";
+import RecruitmentAnnouncementCard from "./InternshipAnnouncementView";
+import InternshipNavbar from "../components/navbar/InternshipNavbar";
 
-const RecruitmentView = () => {
+const InternshipView = () => {
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const requirementRef = useRef(null);
@@ -34,7 +34,7 @@ const RecruitmentView = () => {
 
   return (
     <div className="bg-[#FCF6F6]">
-      <RecruitmentNavbar onNavigation={handleNavigation} />
+      <InternshipNavbar onNavigation={handleNavigation} />
       <section ref={homeRef} className="w-full bg-[url('/images/recruitment/recruitment-landing-bg.png')] bg-cover bg-no-repeat bg-[center_bottom_0rem]">
         <div className="container w-full mx-auto flex justify-between flex-col lg:flex-row items-center pb-40 pt-32">
           <h2 className="font-bold font-[rubik] text-[30px] lg:text-[60px] text-white text-center lg:text-left mb-10 lg:mb-0">
@@ -48,7 +48,7 @@ const RecruitmentView = () => {
 
       <div className="my-12"></div>
 
-      <RecruitmentAnnouncementCard />
+      {process.env.NEXT_PUBLIC_RECRUITMENT_ANNOUNCEMENT && <RecruitmentAnnouncementCard />}
 
       <div className="my-12"></div>
 
@@ -274,4 +274,4 @@ const RecruitmentView = () => {
   );
 };
 
-export default RecruitmentView;
+export default InternshipView;
