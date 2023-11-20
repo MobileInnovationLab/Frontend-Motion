@@ -1,8 +1,6 @@
 "use client";
 
 import { BeatLoader } from "react-spinners";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import useRecruitmentRegisterViewModel, { divisionOptions, generationOptions, majorOptions } from "../viewModels/useRecruitmentRegisterViewModel";
 import RecruitmentTextInputField from "@/core/components/input/RecruitmentTextInputField";
 import RecruitmentSelectInputField from "@/core/components/input/RecruitmentSelectInputField";
@@ -10,13 +8,12 @@ import InternshipNavbar from "../components/navbar/InternshipNavbar";
 
 const InternshipRegisterView = () => {
   const { formik } = useRecruitmentRegisterViewModel();
-  const router = useRouter();
 
   return (
     <>
       <InternshipNavbar isFixed={false} />
 
-      {process.env.NEXT_PUBLIC_RECRUITMENT_CLOSED ? (
+      {process.env.NEXT_PUBLIC_RECRUITMENT_CLOSED == "true" ? (
         <section className="flex flex-col items-center justify-center container mx-auto px-10 lg:px-[20rem] text-center my-20">
           <img src="/images/internship/registration-closed.png" alt="" />
           <h2 className="font-semibold text-[18px] lg:text-[32px] text-[rubik]">Officialy Closed</h2>
@@ -36,7 +33,7 @@ const InternshipRegisterView = () => {
           <section className="container mx-auto my-10">
             <div className="bg-white rounded px-10 py-14 lg:mx-[10rem]">
               <form onSubmit={formik.handleSubmit}>
-                <RecruitmentTextInputField className="mb-8" label="Full Name" name="name" onChange={formik.handleChange} error={formik.errors.name} placeholder="Input your full name" required />
+                <RecruitmentTextInputField containerClass="mb-8" label="Full Name" name="name" onChange={formik.handleChange} error={formik.errors.name} placeholder="Input your full name" required />
 
                 <RecruitmentTextInputField label="Email SSO" name="email" placeholder="example@student.telkomuniversity.ac.id" onChange={formik.handleChange} error={formik.errors.email} required />
 
@@ -74,13 +71,20 @@ const InternshipRegisterView = () => {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10 my-8">
-                  <RecruitmentTextInputField className="mb-8 lg:mb-0" label="Portfolio" name="portfolio" placeholder="Link Portfolio" onChange={formik.handleChange} error={formik.errors.portfolio} required suffix={<img src="/svg/link.svg" alt="link" />} />
+                  <RecruitmentTextInputField className="mb-8 lg:mb-0" label="Portfolio" name="portfolio" placeholder="Link Portfolio" onChange={formik.handleChange} error={formik.errors.portfolio} suffix={<img src="/svg/link.svg" alt="link" />} />
+                  <RecruitmentTextInputField className="mb-8 lg:mb-0" label="KSM" name="ksm" placeholder="Link KSM" onChange={formik.handleChange} error={formik.errors.ksm} required suffix={<img src="/svg/link.svg" alt="link" />} />
+                </div>
+
+                <hr />
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10 my-8">
                   <RecruitmentTextInputField label="Motivation Letter" name="motivation_letter" placeholder="Link Motivation Letter" onChange={formik.handleChange} error={formik.errors.motivation_letter} required suffix={<img src="/svg/link.svg" alt="link" />} />
+                  <RecruitmentTextInputField label="Screenshot Post Instagram" name="share_poster" placeholder="Link Screenshot Post Instagram" onChange={formik.handleChange} error={formik.errors.share_poster} required suffix={<img src="/svg/link.svg" alt="link" />} />
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10 my-8">
-                  <RecruitmentTextInputField className="mb-8 lg:mb-0" label="KSM" name="ksm" placeholder="Link KSM" onChange={formik.handleChange} error={formik.errors.ksm} required suffix={<img src="/svg/link.svg" alt="link" />} />
-                  <RecruitmentTextInputField label="Screenshot Post Instagram" name="share_poster" placeholder="Link Screenshot Post Instagram" onChange={formik.handleChange} error={formik.errors.share_poster} required suffix={<img src="/svg/link.svg" alt="link" />} />
+                  <RecruitmentTextInputField className="mb-8 lg:mb-0" label="Screenshot Subscribe Youtube" name="yt_evidence" placeholder="Link Screenshot Subscribe Youtube" onChange={formik.handleChange} error={formik.errors.ksm} required suffix={<img src="/svg/link.svg" alt="link" />} />
+                  <RecruitmentTextInputField label="Screenshot Follow LinkedIn" name="linkedin_evidence" placeholder="Link Screenshot Follow LinkedIn " onChange={formik.handleChange} error={formik.errors.share_poster} required suffix={<img src="/svg/link.svg" alt="link" />} />
                 </div>
 
                 <button type="submit" className="mt-10 w-full bg-[#C2271A] text-white text-[inter] text-[16px] rounded-full px-8 py-4 hover:opacity-90 transition duration-800">

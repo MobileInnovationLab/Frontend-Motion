@@ -194,6 +194,8 @@ export default function useRecruitmentRegisterViewModel() {
       division: "",
       share_poster: "",
       whatsapp: "",
+      yt_evidence: "",
+      linkedin_evidence: "",
     },
     validationSchema: Yup.object().shape({
       name: Yup.string().required("The name field is required"),
@@ -205,9 +207,7 @@ export default function useRecruitmentRegisterViewModel() {
       cv: Yup.string()
         .required("The cv link field is required")
         .matches(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/, "Please provide a valid URL."),
-      portfolio: Yup.string()
-        .required("The portfolio link field is required")
-        .matches(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/, "Please provide a valid URL."),
+      portfolio: Yup.string().matches(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/, "Please provide a valid URL."),
       motivation_letter: Yup.string()
         .required("The motivation letter link field is required")
         .matches(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/, "Please provide a valid URL."),
@@ -224,6 +224,12 @@ export default function useRecruitmentRegisterViewModel() {
       share_poster: Yup.string()
         .required("The screenshot post instagram letter field is required")
         .matches(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/, "Please provide a valid URL."),
+      yt_evidence: Yup.string()
+        .required("The screenshot post instagram letter field is required")
+        .matches(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/, "Please provide a valid URL."),
+      linkedin_evidence: Yup.string()
+        .required("The screenshot post instagram letter field is required")
+        .matches(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/, "Please provide a valid URL."),
     }),
     onSubmit: (values, { setSubmitting }) => {
       setSubmitting(true);
@@ -231,10 +237,12 @@ export default function useRecruitmentRegisterViewModel() {
       api
         .post("/recruitation", values)
         .then((response) => {
-          router.push("/recruitment/success");
+          router.push("/success");
         })
         .catch((err) => {
-          console.log("ERR", err.response.data);
+          if (err.response.status === 400) {
+            router.push(`/register/failed?message=${err.response.data.message}`);
+          }
         })
         .finally(() => setSubmitting(false));
     },

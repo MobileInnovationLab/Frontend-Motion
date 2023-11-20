@@ -48,7 +48,7 @@ const InternshipView = () => {
 
       <div className="my-12"></div>
 
-      {process.env.NEXT_PUBLIC_RECRUITMENT_ANNOUNCEMENT && <RecruitmentAnnouncementCard />}
+      {process.env.NEXT_PUBLIC_RECRUITMENT_ANNOUNCEMENT == "true" && <RecruitmentAnnouncementCard />}
 
       <div className="my-12"></div>
 
@@ -128,7 +128,7 @@ const InternshipView = () => {
           <div>
             <div className="flex border-[2px] border-[#332C2B] border-solid rounded-full bg-white">
               <div className="bg-[#332C2B] text-white rounded-full p-5 px-7 lg:p-6 lg:px-8  font-semibold text-center align-center text-[inter] text-[32px]">01</div>
-              <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto ms-5">Active Telkom University undergraduate student batch 2021-2023 from all major</p>
+              <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">Active Telkom University undergraduate student batch 2021-2023 from all major</p>
             </div>
             <div className="h-[50px] px-10 my-2">
               <img src="/images/recruitment/requirement-line.png" alt="line" className="h-full object-contain" />
@@ -137,7 +137,7 @@ const InternshipView = () => {
           <div>
             <div className="flex border-[2px] border-[#332C2B] border-solid rounded-full bg-white">
               <div className=" bg-[#332C2B] text-white rounded-full p-5 px-7 lg:p-6 lg:px-8  font-semibold text-center align-center text-[inter] text-[32px]">01</div>
-              <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto ms-5">Active Telkom University undergraduate student batch 2021-2023 from all major</p>
+              <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">Active Telkom University undergraduate student batch 2021-2023 from all major</p>
             </div>
             <div className="h-[50px] px-10 my-2">
               <img src="/images/recruitment/requirement-line.png" alt="line" className="h-full object-contain" />
@@ -146,7 +146,7 @@ const InternshipView = () => {
           <div>
             <div className="flex border-[2px] border-[#332C2B] border-solid rounded-full bg-white">
               <div className="bg-[#332C2B] text-white rounded-full p-5 px-7 lg:p-6 lg:px-8  font-semibold text-center align-center text-[inter] text-[32px]">01</div>
-              <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto ms-5">Active Telkom University undergraduate student batch 2021-2023 from all major</p>
+              <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">Active Telkom University undergraduate student batch 2021-2023 from all major</p>
             </div>
             <div className="h-[50px] px-10 my-2">
               <img src="/images/recruitment/requirement-line.png" alt="line" className="h-full object-contain" />
@@ -155,7 +155,7 @@ const InternshipView = () => {
           <div>
             <div className="flex border-[2px] border-[#332C2B] border-solid rounded-full bg-white">
               <div className=" bg-[#332C2B] text-white rounded-full p-5 px-7 lg:p-6 lg:px-8  font-semibold text-center align-center text-[inter] text-[32px]">01</div>
-              <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto ms-5">Active Telkom University undergraduate student batch 2021-2023 from all major</p>
+              <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">Active Telkom University undergraduate student batch 2021-2023 from all major</p>
             </div>
             <div className="h-[50px] px-10 my-2">
               <img src="/images/recruitment/requirement-line.png" alt="line" className="h-full object-contain" />
@@ -164,7 +164,7 @@ const InternshipView = () => {
           <div>
             <div className="flex border-[2px] border-[#332C2B] border-solid rounded-full bg-white">
               <div className="bg-[#332C2B] text-white rounded-full p-5 px-7 lg:p-6 lg:px-8  font-semibold text-center align-center text-[inter] text-[32px]">01</div>
-              <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto ms-5">Active Telkom University undergraduate student batch 2021-2023 from all major</p>
+              <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">Active Telkom University undergraduate student batch 2021-2023 from all major</p>
             </div>
             <div className="h-[50px] px-10 my-2">
               <img src="/images/recruitment/requirement-line.png" alt="line" className="h-full object-contain" />
@@ -173,7 +173,7 @@ const InternshipView = () => {
           <div>
             <div className="flex border-[2px] border-[#332C2B] border-solid rounded-full bg-white">
               <div className=" bg-[#332C2B] text-white rounded-full p-5 px-7 lg:p-6 lg:px-8  font-semibold text-center align-center text-[inter] text-[32px]">01</div>
-              <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto ms-5">Active Telkom University undergraduate student batch 2021-2023 from all major</p>
+              <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">Active Telkom University undergraduate student batch 2021-2023 from all major</p>
             </div>
             <div className="h-[50px] px-10 my-2 lg:hidden block">
               <img src="/images/recruitment/requirement-line.png" alt="line" className="h-full object-contain" />
@@ -182,7 +182,7 @@ const InternshipView = () => {
           <div>
             <div className="flex border-[2px] border-[#332C2B] border-solid rounded-full bg-white">
               <div className="bg-[#332C2B] text-white rounded-full p-5 px-7 lg:p-6 lg:px-8  font-semibold text-center align-center text-[inter] text-[32px]">01</div>
-              <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto ms-5">Active Telkom University undergraduate student batch 2021-2023 from all major</p>
+              <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">Active Telkom University undergraduate student batch 2021-2023 from all major</p>
             </div>
           </div>
           <div className="mt-10 lg:mt-0">

@@ -4,9 +4,11 @@ import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import * as Yup from "yup";
 import api from "@/core/api/api";
+import { useState } from "react";
 
 export default function useRecruitmentAnnouncementViewModel() {
   const router = useRouter();
+  const [isNotFound, setIsNotFound] = useState(false);
   const formik = useFormik({
     validateOnChange: false,
     initialValues: {
@@ -20,13 +22,15 @@ export default function useRecruitmentAnnouncementViewModel() {
         .get(`/recruitation/check/${values.nim}`)
         .then((response) => {
           if (response.data.is_accepted == 1) {
-            router.push("/recruitment/accepted");
+            router.push("/accepted");
           } else {
-            router.push("/recruitment/declined");
+            router.push("/declined");
           }
         })
         .catch((err) => {
-          console.log("ERR", err.response);
+          if (err.response.status === 404) {
+            setIsNotFound(true);
+          }
         })
         .finally(() => setSubmitting(false));
     },
@@ -34,5 +38,6 @@ export default function useRecruitmentAnnouncementViewModel() {
 
   return {
     formik,
+    isNotFound,
   };
 }
