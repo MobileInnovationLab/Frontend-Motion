@@ -15,16 +15,12 @@ const navbarLinks = [
     label: "About",
   },
   {
-    id: "requirement",
-    label: "Requirements",
-  },
-  {
-    id: "benefit",
-    label: "Benefits",
+    id: "blog",
+    label: "Blog",
   },
 ];
 
-const InternshipNavbar = ({ onNavigation, isFixed = true }) => {
+const HomeNavbar = ({ onNavigation, isFixed = true }) => {
   const router = useRouter();
   const usePathName = usePathname();
   const [isNavbarScroll, setIsNavbarScroll] = useState(false);
@@ -154,11 +150,11 @@ const InternshipNavbar = ({ onNavigation, isFixed = true }) => {
             </svg>
           </button>
           <Link
-            href="/register"
+            href="/internship"
             passHref
             className="bg-[#332C2B] text-white text-[inter] text-[16px] rounded-full px-8 py-3 hover:scale-110 transition duration-400 hidden lg:block"
           >
-            Join Us!
+            Internship
           </Link>
         </div>
       </nav>
@@ -236,11 +232,11 @@ const InternshipNavbar = ({ onNavigation, isFixed = true }) => {
             <li className="w-full">
               <button
                 onClick={() => {
-                  router.push("/register");
+                  router.push("/internship");
                 }}
                 className="bg-[#332C2B] w-full text-white text-[inter] text-[16px] rounded-full py-4 hover:bg-opacity-90 transition duration-400"
               >
-                Join Us!
+                Internship
               </button>
             </li>
             <li className="my-10"></li>
@@ -251,4 +247,4 @@ const InternshipNavbar = ({ onNavigation, isFixed = true }) => {
   );
 };
 
-export default InternshipNavbar;
+export default HomeNavbar;

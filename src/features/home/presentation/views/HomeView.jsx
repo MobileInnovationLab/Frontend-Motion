@@ -1,11 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import Carousel from "react-multi-carousel";
 
 import GeneralSeo from "@/core/components/seo/generalSeo";
 
-import Navbar from "@/core/components/navbar";
 import styles from "@/core/styles/pages/index.module.scss";
 
 import DivisionBox from "@/core/components/divisionBox";
@@ -19,6 +19,8 @@ import IndexIllustration from "@/core/components/illustration/indexIllustration"
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import InternshipNavbar from "@/features/internship/components/navbar/InternshipNavbar";
+import HomeNavbar from "../components/navbar/HomeNavbar";
 
 const responsive = {
   desktop: {
@@ -73,8 +75,8 @@ export default function HomeView() {
   }
 
   return (
-    <div className={styles["main-bg"]}>
-      <GeneralSeo />
+    <div className="bg-[#FCF6F6]">
+      {/* <GeneralSeo />
 
       {ytModal ? (
         <motion.div
@@ -99,30 +101,23 @@ export default function HomeView() {
         </motion.div>
       ) : (
         ""
-      )}
+      )} */}
 
-      <Navbar />
-
-      <div className={styles["main-body"]}>
-        <main className={styles["box-first-section"]}>
-          <motion.article
-            className={styles["first-section-article"]}
-            initial={{ y: "10px", opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ type: "spring", duration: 2, bounce: 0 }}
-          >
-            <h1 className={styles["first-section-title"]}>
+      <HomeNavbar />
+      <section className="w-full bg-[url('/images/main-index/bg-main.webp')] bg-cover bg-no-repeat bg-[center_bottom_0rem]">
+        <div className="container gap-x-10 w-full mx-auto flex justify-between flex-col lg:flex-row items-center pb-40 pt-32">
+          <div className="flex flex-col items-start justify-start">
+            <h2 className="font-bold font-[rubik] text-[30px] lg:text-[60px] text-white text-center lg:text-left lg:mb-0">
               Mobile Innovation Laboratory
-            </h1>
-            <p className={styles["first-section-p"]}>
+            </h2>
+            <p className="mb-8 mt-5 text-[20px] text-inter text-[#FFEAEA]">
               The Mobile Innovation Laboratory, or commonly called Motion Lab,
               is one of the latest laboratories at the Faculty of Informatics,
               Telkom University under the auspices of K-Side.
             </p>
-            <motion.a
-              className={styles["first-section-button"]}
-              onClick={openYtModals}
-              whileHover={{ scale: 1.05 }}
+            <button
+              type="submit"
+              className="bg-[#332C2B] flex gap-x-3 mt-2 text-white font-bold text-center text-[inter] text-[16px] rounded-full px-8 py-5 hover:opacity-90 transition duration-800"
             >
               <svg
                 width="24"
@@ -138,329 +133,105 @@ export default function HomeView() {
                 />
               </svg>
               Watch Video
-            </motion.a>
-          </motion.article>
-
-          <motion.div
-            className={styles["first-section-img"]}
-            initial={{ y: "10px", opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ type: "spring", duration: 2, bounce: 0 }}
-          >
+            </button>
+          </div>
+          <div className="w-full h-full pt-5 lg:pt-0">
             <IndexIllustration />
-          </motion.div>
-        </main>
+          </div>
+        </div>
+      </section>
 
-        <section className={styles["box-second-section"]}>
-          <h3 className={styles["second-small-title"]}>OUR DIVISION</h3>
-          <h1 className={styles["second-big-title"]}>What We Do</h1>
-          <DivisionBox />
-        </section>
+      <section className="container mx-auto">
+        <h3 className="text-center font-[rubik] text-red-500 text-[14px] lg:text-[18px]">
+          ABOUT US
+        </h3>
+        <h1 className="text-center font-[rubik] font-bold text-[28px] lg:text-[48px]">
+          What Is Motionlab?
+        </h1>
+        <div className="flex justify-between items-center mt-10">
+          <h2 className="text-[48px] w-full text-[rubik] text-[#332C2B] font-bold">
+            We are Creative People with High Spirits
+          </h2>
+          <p className="text-[18px] w-full text-inter text-[#6A6A6A]">
+            The Motion (Mobile Innovation) Laboratory is one of the research
+            laboratories under the Faculty of Informatics, Telkom University.
+            Motion Lab focuses on the creation and development of mobile
+            software. Now Motion Lab comes with 3 division options, Digital
+            Business, UI/UX Design, and Mobile Programming.
+          </p>
+          <div className="w-50">
+            <Image
+              src="/images/about/first-meet.webp"
+              alt="About Image"
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
+        </div>
+      </section>
 
-        <section className={styles["box-third-section"]}>
-          <div className={styles["third-section-left"]}>
-            <h3 className={styles["third-small-title"]}>PRODUCTS</h3>
-            <h1 className={styles["third-big-title"]}>
-              Awesome Product From Us
-            </h1>
-            <p className={styles["third-p-left"]}>
-              See some of our recently completed products
-            </p>
-            <div className={styles["third-box-button"]}>
-              <button className={styles["third-round-button"]}>
-                <svg
-                  className={styles["third-svg"]}
-                  width="16"
-                  height="18"
-                  viewBox="0 0 16 18"
-                  fill="#6A6A6A"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1.05382 10.6965C1.13858 10.7835 1.4586 11.1555 1.7567 11.4615C3.50438 13.386 8.06357 16.536 10.4498 17.4975C10.8122 17.652 11.7284 17.979 12.218 18C12.687 18 13.1342 17.892 13.5609 17.673C14.0928 17.367 14.5195 16.8855 14.7533 16.317C14.9038 15.9225 15.1376 14.742 15.1376 14.721C15.3714 13.4295 15.5 11.331 15.5 9.012C15.5 6.8025 15.3714 4.7895 15.18 3.4785C15.1581 3.4575 14.9243 1.9905 14.6685 1.488C14.1995 0.57 13.2832 0 12.3027 0H12.218C11.5794 0.0225 10.2365 0.5925 10.2365 0.6135C7.97881 1.5765 3.52484 4.572 1.73478 6.5625C1.73478 6.5625 1.23064 7.074 1.01145 7.3935C0.669508 7.8525 0.5 8.421 0.5 8.9895C0.5 9.624 0.691427 10.215 1.05382 10.6965Z" />
-                </svg>
-              </button>
-              <button className={styles["third-round-button"]}>
-                <svg
-                  className={styles["third-svg"]}
-                  width="16"
-                  height="18"
-                  viewBox="0 0 16 18"
-                  fill="#6A6A6A"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M14.9462 10.6965C14.8614 10.7835 14.5414 11.1555 14.2433 11.4615C12.4956 13.386 7.93643 16.536 5.55017 17.4975C5.18777 17.652 4.27155 17.979 3.78203 18C3.31296 18 2.86581 17.892 2.43911 17.673C1.90721 17.367 1.48052 16.8855 1.24671 16.317C1.0962 15.9225 0.862397 14.742 0.862397 14.721C0.628592 13.4295 0.5 11.331 0.5 9.012C0.5 6.8025 0.628592 4.7895 0.820019 3.4785C0.841939 3.4575 1.07574 1.9905 1.33147 1.488C1.80054 0.57 2.71676 0 3.69727 0H3.78203C4.4206 0.0225 5.76352 0.5925 5.76352 0.6135C8.02119 1.5765 12.4752 4.572 14.2652 6.5625C14.2652 6.5625 14.7694 7.074 14.9886 7.3935C15.3305 7.8525 15.5 8.421 15.5 8.9895C15.5 9.624 15.3086 10.215 14.9462 10.6965" />
-                </svg>
-              </button>
+      <div className="my-40"></div>
+
+      <section className="container mx-auto">
+        <h3 className="text-center font-[rubik] text-red-500 text-[14px] lg:text-[18px]">
+          OUR DIVISION
+        </h3>
+        <h1 className="text-center font-[rubik] font-bold text-[28px] lg:text-[48px]">
+          What We Do
+        </h1>
+        <div className="flex gap-x-10 flex-col lg:flex-row">
+          <div className="w-full">
+            <div className="w-full text-center relative bottom-[-4rem]">
+              <div className="bg-gradient-to-br from-[#F82F1E] to-[#C1271A] rounded-full inline-block p-8">
+                <img src="/svg/chart.svg" alt="chart" />
+              </div>
+            </div>
+            <div className="bg-white rounded py-10 px-8 w-full">
+              <h2 className="font-[rubik] font-semibold text-[24px] text-center mb-5 mt-14">
+                Lorem Ipsum
+              </h2>
+              <p className="font-[inter] text-[18px] text-center">
+                Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua
+              </p>
             </div>
           </div>
-          <div className={styles["third-section-right"]}>
-            <Carousel
-              infinite={true}
-              responsive={responsive}
-              arrows={false}
-              autoPlay={true}
-            >
-              <div className={styles["third-slider"]}>
-                <ProductContainer
-                  id={"product.id"}
-                  image={{
-                    src: `https://images.unsplash.com/photo-1683009426952-13567b4fa28b?auto=format&fit=crop&q=80&w=3719&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`,
-                    alt: "product.title",
-                  }}
-                  title={"product.name"}
-                  text={"product.description"}
-                  writer={"product.creator"}
-                />
+          <div className="w-full">
+            <div className="w-full text-center relative bottom-[-4rem]">
+              <div className="bg-gradient-to-br from-[#F82F1E] to-[#C1271A] rounded-full inline-block p-8">
+                <img src="/svg/pen-tool.svg" alt="Pen Tool" />
               </div>
-              <div className={styles["third-slider"]}>
-                <ProductContainer
-                  id={"product.id"}
-                  image={{
-                    src: `https://images.unsplash.com/photo-1683009426952-13567b4fa28b?auto=format&fit=crop&q=80&w=3719&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`,
-                    alt: "product.title",
-                  }}
-                  title={"product.name"}
-                  text={"product.description"}
-                  writer={"product.creator"}
-                />
-              </div>
-              <div className={styles["third-slider"]}>
-                <ProductContainer
-                  id={"product.id"}
-                  image={{
-                    src: `https://images.unsplash.com/photo-1683009426952-13567b4fa28b?auto=format&fit=crop&q=80&w=3719&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`,
-                    alt: "product.title",
-                  }}
-                  title={"product.name"}
-                  text={"product.description"}
-                  writer={"product.creator"}
-                />
-              </div>
-            </Carousel>
-
-            <div className={styles["third-box-button-responsive"]}>
-              <button className={styles["third-round-button-responsive"]}>
-                <svg
-                  className={styles["third-svg"]}
-                  width="11"
-                  viewBox="0 0 16 18"
-                  fill="#6A6A6A"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1.05382 10.6965C1.13858 10.7835 1.4586 11.1555 1.7567 11.4615C3.50438 13.386 8.06357 16.536 10.4498 17.4975C10.8122 17.652 11.7284 17.979 12.218 18C12.687 18 13.1342 17.892 13.5609 17.673C14.0928 17.367 14.5195 16.8855 14.7533 16.317C14.9038 15.9225 15.1376 14.742 15.1376 14.721C15.3714 13.4295 15.5 11.331 15.5 9.012C15.5 6.8025 15.3714 4.7895 15.18 3.4785C15.1581 3.4575 14.9243 1.9905 14.6685 1.488C14.1995 0.57 13.2832 0 12.3027 0H12.218C11.5794 0.0225 10.2365 0.5925 10.2365 0.6135C7.97881 1.5765 3.52484 4.572 1.73478 6.5625C1.73478 6.5625 1.23064 7.074 1.01145 7.3935C0.669508 7.8525 0.5 8.421 0.5 8.9895C0.5 9.624 0.691427 10.215 1.05382 10.6965Z" />
-                </svg>
-              </button>
-              <button className={styles["third-round-button-responsive"]}>
-                <svg
-                  className={styles["third-svg"]}
-                  width="11"
-                  viewBox="0 0 16 18"
-                  fill="#6A6A6A"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M14.9462 10.6965C14.8614 10.7835 14.5414 11.1555 14.2433 11.4615C12.4956 13.386 7.93643 16.536 5.55017 17.4975C5.18777 17.652 4.27155 17.979 3.78203 18C3.31296 18 2.86581 17.892 2.43911 17.673C1.90721 17.367 1.48052 16.8855 1.24671 16.317C1.0962 15.9225 0.862397 14.742 0.862397 14.721C0.628592 13.4295 0.5 11.331 0.5 9.012C0.5 6.8025 0.628592 4.7895 0.820019 3.4785C0.841939 3.4575 1.07574 1.9905 1.33147 1.488C1.80054 0.57 2.71676 0 3.69727 0H3.78203C4.4206 0.0225 5.76352 0.5925 5.76352 0.6135C8.02119 1.5765 12.4752 4.572 14.2652 6.5625C14.2652 6.5625 14.7694 7.074 14.9886 7.3935C15.3305 7.8525 15.5 8.421 15.5 8.9895C15.5 9.624 15.3086 10.215 14.9462 10.6965" />
-                </svg>
-              </button>
+            </div>
+            <div className="bg-white rounded py-10 px-8 w-full">
+              <h2 className="font-[rubik] font-semibold text-[24px] text-center mb-5 mt-14">
+                Lorem Ipsum
+              </h2>
+              <p className="font-[inter] text-[18px] text-center">
+                Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua
+              </p>
             </div>
           </div>
-        </section>
-
-        <section className={styles["box-fourth-section"]}>
-          <h3 className={styles["fourth-small-title"]}>ACHIEVEMENT</h3>
-          <h1 className={styles["fourth-big-title"]}>
-            Amazing People, Amazing Awards
-          </h1>
-
-          <div className={styles["fourth-gallery"]}>
-            <div className={styles["fifth-slider-item"]}>
-              <IndexAchievementContainer
-                id={"ach.id"}
-                title={"ach.name"}
-                team={"ach.team_name"}
-                image={`https://images.unsplash.com/photo-1683009426952-13567b4fa28b?auto=format&fit=crop&q=80&w=3719&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`}
-              />
+          <div className="w-full">
+            <div className="w-full text-center relative bottom-[-4rem]">
+              <div className="bg-gradient-to-br from-[#F82F1E] to-[#C1271A] rounded-full inline-block p-8">
+                <img src="/svg/code.svg" alt="Code" />
+              </div>
             </div>
-            <div className={styles["fifth-slider-item"]}>
-              <IndexAchievementContainer
-                id={"ach.id"}
-                title={"ach.name"}
-                team={"ach.team_name"}
-                image={`https://images.unsplash.com/photo-1683009426952-13567b4fa28b?auto=format&fit=crop&q=80&w=3719&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`}
-              />
-            </div>
-            <div className={styles["fifth-slider-item"]}>
-              <IndexAchievementContainer
-                id={"ach.id"}
-                title={"ach.name"}
-                team={"ach.team_name"}
-                image={`https://images.unsplash.com/photo-1683009426952-13567b4fa28b?auto=format&fit=crop&q=80&w=3719&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`}
-              />
-            </div>
-            <div className={styles["fifth-slider-item"]}>
-              <IndexAchievementContainer
-                id={"ach.id"}
-                title={"ach.name"}
-                team={"ach.team_name"}
-                image={`https://images.unsplash.com/photo-1683009426952-13567b4fa28b?auto=format&fit=crop&q=80&w=3719&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`}
-              />
-            </div>
-            <div className={styles["fifth-slider-item"]}>
-              <IndexAchievementContainer
-                id={"ach.id"}
-                title={"ach.name"}
-                team={"ach.team_name"}
-                image={`https://images.unsplash.com/photo-1683009426952-13567b4fa28b?auto=format&fit=crop&q=80&w=3719&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`}
-              />
-            </div>
-            <div className={styles["fifth-slider-item"]}>
-              <IndexAchievementContainer
-                id={"ach.id"}
-                title={"ach.name"}
-                team={"ach.team_name"}
-                image={`https://images.unsplash.com/photo-1683009426952-13567b4fa28b?auto=format&fit=crop&q=80&w=3719&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`}
-              />
+            <div className="bg-white rounded py-10 px-8 w-full">
+              <h2 className="font-[rubik] font-semibold text-[24px] text-center mb-5 mt-14">
+                Lorem Ipsum
+              </h2>
+              <p className="font-[inter] text-[18px] text-center">
+                Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua
+              </p>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div
-            className={`${
-              styles["fourth-gallery-responsive"]
-            } ${"slider-mobile"}`}
-          >
-            <div className={styles["fifth-slider-item"]}>
-              <IndexAchievementContainer
-                id={"ach.id"}
-                title={"ach.name"}
-                team={"ach.team_name"}
-                image={`https://images.unsplash.com/photo-1683009426952-13567b4fa28b?auto=format&fit=crop&q=80&w=3719&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`}
-              />
-            </div>
-          </div>
-
-          <Link href="/achievement">
-            <button className={styles["fourth-button-see"]}>See All</button>
-          </Link>
-        </section>
-
-        <section className={styles["box-fifth-section"]}>
-          <div className={styles["fifth-top"]}>
-            <div className={styles["fifth-top-left"]}>
-              <h3 className={styles["fifth-small-title"]}>BLOG</h3>
-              <h1 className={styles["fifth-big-title"]}>
-                Interesting Stories From Us
-              </h1>
-            </div>
-            <div className={styles["fifth-top-right"]}>
-              <button className={styles["fifth-round-button"]}>
-                <svg
-                  className={styles["fifth-svg"]}
-                  width="16"
-                  height="18"
-                  viewBox="0 0 16 18"
-                  fill="#6A6A6A"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1.05382 10.6965C1.13858 10.7835 1.4586 11.1555 1.7567 11.4615C3.50438 13.386 8.06357 16.536 10.4498 17.4975C10.8122 17.652 11.7284 17.979 12.218 18C12.687 18 13.1342 17.892 13.5609 17.673C14.0928 17.367 14.5195 16.8855 14.7533 16.317C14.9038 15.9225 15.1376 14.742 15.1376 14.721C15.3714 13.4295 15.5 11.331 15.5 9.012C15.5 6.8025 15.3714 4.7895 15.18 3.4785C15.1581 3.4575 14.9243 1.9905 14.6685 1.488C14.1995 0.57 13.2832 0 12.3027 0H12.218C11.5794 0.0225 10.2365 0.5925 10.2365 0.6135C7.97881 1.5765 3.52484 4.572 1.73478 6.5625C1.73478 6.5625 1.23064 7.074 1.01145 7.3935C0.669508 7.8525 0.5 8.421 0.5 8.9895C0.5 9.624 0.691427 10.215 1.05382 10.6965Z" />
-                </svg>
-              </button>
-              <button className={styles["fifth-round-button"]}>
-                <svg
-                  className={styles["fifth-svg"]}
-                  width="16"
-                  height="18"
-                  viewBox="0 0 16 18"
-                  fill="#6A6A6A"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M14.9462 10.6965C14.8614 10.7835 14.5414 11.1555 14.2433 11.4615C12.4956 13.386 7.93643 16.536 5.55017 17.4975C5.18777 17.652 4.27155 17.979 3.78203 18C3.31296 18 2.86581 17.892 2.43911 17.673C1.90721 17.367 1.48052 16.8855 1.24671 16.317C1.0962 15.9225 0.862397 14.742 0.862397 14.721C0.628592 13.4295 0.5 11.331 0.5 9.012C0.5 6.8025 0.628592 4.7895 0.820019 3.4785C0.841939 3.4575 1.07574 1.9905 1.33147 1.488C1.80054 0.57 2.71676 0 3.69727 0H3.78203C4.4206 0.0225 5.76352 0.5925 5.76352 0.6135C8.02119 1.5765 12.4752 4.572 14.2652 6.5625C14.2652 6.5625 14.7694 7.074 14.9886 7.3935C15.3305 7.8525 15.5 8.421 15.5 8.9895C15.5 9.624 15.3086 10.215 14.9462 10.6965" />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div className={styles["fifth-bottom"]}>
-            <Carousel
-              infinite={true}
-              responsive={blogSliderResponsive}
-              arrows={false}
-              autoPlay={true}
-            >
-              <div className={styles["fifth-slider-item"]}>
-                <BlogContainer
-                  id={"blog.id"}
-                  image={{
-                    src: `https://images.unsplash.com/photo-1683009426952-13567b4fa28b?auto=format&fit=crop&q=80&w=3719&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`,
-                  }}
-                  title={"blog.title"}
-                  text={"blog.description"}
-                  writer={"blog.author"}
-                />
-              </div>
-              <div className={styles["fifth-slider-item"]}>
-                <BlogContainer
-                  id={"blog.id"}
-                  image={{
-                    src: `https://images.unsplash.com/photo-1683009426952-13567b4fa28b?auto=format&fit=crop&q=80&w=3719&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`,
-                  }}
-                  title={"blog.title"}
-                  text={"blog.description"}
-                  writer={"blog.author"}
-                />
-              </div>
-              <div className={styles["fifth-slider-item"]}>
-                <BlogContainer
-                  id={"blog.id"}
-                  image={{
-                    src: `https://images.unsplash.com/photo-1683009426952-13567b4fa28b?auto=format&fit=crop&q=80&w=3719&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`,
-                  }}
-                  title={"blog.title"}
-                  text={"blog.description"}
-                  writer={"blog.author"}
-                />
-              </div>
-              <div className={styles["fifth-slider-item"]}>
-                <BlogContainer
-                  id={"blog.id"}
-                  image={{
-                    src: `https://images.unsplash.com/photo-1683009426952-13567b4fa28b?auto=format&fit=crop&q=80&w=3719&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`,
-                  }}
-                  title={"blog.title"}
-                  text={"blog.description"}
-                  writer={"blog.author"}
-                />
-              </div>
-            </Carousel>
-
-            <div className={styles["fifth-box-button-responsive"]}>
-              <button className={styles["fifth-round-button-responsive"]}>
-                <svg
-                  className={styles["fifth-svg"]}
-                  width="11"
-                  viewBox="0 0 16 18"
-                  fill="#6A6A6A"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1.05382 10.6965C1.13858 10.7835 1.4586 11.1555 1.7567 11.4615C3.50438 13.386 8.06357 16.536 10.4498 17.4975C10.8122 17.652 11.7284 17.979 12.218 18C12.687 18 13.1342 17.892 13.5609 17.673C14.0928 17.367 14.5195 16.8855 14.7533 16.317C14.9038 15.9225 15.1376 14.742 15.1376 14.721C15.3714 13.4295 15.5 11.331 15.5 9.012C15.5 6.8025 15.3714 4.7895 15.18 3.4785C15.1581 3.4575 14.9243 1.9905 14.6685 1.488C14.1995 0.57 13.2832 0 12.3027 0H12.218C11.5794 0.0225 10.2365 0.5925 10.2365 0.6135C7.97881 1.5765 3.52484 4.572 1.73478 6.5625C1.73478 6.5625 1.23064 7.074 1.01145 7.3935C0.669508 7.8525 0.5 8.421 0.5 8.9895C0.5 9.624 0.691427 10.215 1.05382 10.6965Z" />
-                </svg>
-              </button>
-              <button className={styles["fifth-round-button-responsive"]}>
-                <svg
-                  className={styles["fifth-svg"]}
-                  width="11"
-                  viewBox="0 0 16 18"
-                  fill="#6A6A6A"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M14.9462 10.6965C14.8614 10.7835 14.5414 11.1555 14.2433 11.4615C12.4956 13.386 7.93643 16.536 5.55017 17.4975C5.18777 17.652 4.27155 17.979 3.78203 18C3.31296 18 2.86581 17.892 2.43911 17.673C1.90721 17.367 1.48052 16.8855 1.24671 16.317C1.0962 15.9225 0.862397 14.742 0.862397 14.721C0.628592 13.4295 0.5 11.331 0.5 9.012C0.5 6.8025 0.628592 4.7895 0.820019 3.4785C0.841939 3.4575 1.07574 1.9905 1.33147 1.488C1.80054 0.57 2.71676 0 3.69727 0H3.78203C4.4206 0.0225 5.76352 0.5925 5.76352 0.6135C8.02119 1.5765 12.4752 4.572 14.2652 6.5625C14.2652 6.5625 14.7694 7.074 14.9886 7.3935C15.3305 7.8525 15.5 8.421 15.5 8.9895C15.5 9.624 15.3086 10.215 14.9462 10.6965" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </section>
-
-        <TopButton />
-
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 }

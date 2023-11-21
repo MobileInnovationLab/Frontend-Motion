@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 const IndexIllustration = () => {
   return (
     <motion.svg
-      className={styles.illu}
       viewBox="0 0 335 317"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

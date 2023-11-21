@@ -202,34 +202,65 @@ export default function useRecruitmentRegisterViewModel() {
       email: Yup.string()
         .email("Please input a valid email")
         .required("The email field is required")
-        .matches(/^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@student.telkomuniversity.ac.id$/, "Telkom University Student's Email Required (ex. example@student.telkomuniversity.ac.id)."),
-      nim: Yup.number().typeError("NIM must be a number").required("The nim field is required"),
+        .matches(
+          /^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@student.telkomuniversity.ac.id$/,
+          "Telkom University Student's Email Required (ex. example@student.telkomuniversity.ac.id)."
+        ),
+      nim: Yup.number()
+        .typeError("NIM must be a number")
+        .required("The nim field is required"),
       cv: Yup.string()
         .required("The cv link field is required")
-        .matches(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/, "Please provide a valid URL."),
-      portfolio: Yup.string().matches(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/, "Please provide a valid URL."),
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
+      portfolio: Yup.string().matches(
+        /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+        "Please provide a valid URL."
+      ),
       motivation_letter: Yup.string()
         .required("The motivation letter link field is required")
-        .matches(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/, "Please provide a valid URL."),
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
       share_poster: Yup.string()
         .required("The share poster link field is required")
-        .matches(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/, "Please provide a valid URL."),
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
       ksm: Yup.string()
         .required("The ksm link field is required")
-        .matches(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/, "Please provide a valid URL."),
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
       major: Yup.string().required("The major link field is required"),
-      generation: Yup.string().required("The generation letter field is required"),
+      generation: Yup.string().required(
+        "The generation letter field is required"
+      ),
       division: Yup.string().required("The division letter field is required"),
       whatsapp: Yup.string().required("The whatsapp letter field is required"),
       share_poster: Yup.string()
         .required("The screenshot post instagram letter field is required")
-        .matches(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/, "Please provide a valid URL."),
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
       yt_evidence: Yup.string()
-        .required("The screenshot post instagram letter field is required")
-        .matches(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/, "Please provide a valid URL."),
+        .required("The screenshot youtube subscribed field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
       linkedin_evidence: Yup.string()
-        .required("The screenshot post instagram letter field is required")
-        .matches(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/, "Please provide a valid URL."),
+        .required("The screenshot linkedin followed field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
     }),
     onSubmit: (values, { setSubmitting }) => {
       setSubmitting(true);
@@ -241,7 +272,9 @@ export default function useRecruitmentRegisterViewModel() {
         })
         .catch((err) => {
           if (err.response.status === 400) {
-            router.push(`/register/failed?message=${err.response.data.message}`);
+            router.push(
+              `/register/failed?message=${err.response.data.message}`
+            );
           }
         })
         .finally(() => setSubmitting(false));
