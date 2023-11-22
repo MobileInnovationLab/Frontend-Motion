@@ -22,6 +22,10 @@ const navbarLinks = [
     id: "benefit",
     label: "Benefits",
   },
+  {
+    id: "curriculum",
+    label: "Curriculum",
+  },
 ];
 
 const InternshipNavbar = ({ onNavigation, isFixed = true }) => {

@@ -15,8 +15,16 @@ const navbarLinks = [
     label: "About",
   },
   {
+    id: "Member",
+    label: "People",
+  },
+  {
     id: "blog",
     label: "Blog",
+  },
+  {
+    id: "contact",
+    label: "Contact",
   },
 ];
 
