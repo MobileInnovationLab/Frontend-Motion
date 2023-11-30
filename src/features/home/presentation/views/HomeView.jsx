@@ -25,19 +25,16 @@ import HomeNavbar from "../components/navbar/HomeNavbar";
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 2,
-    slidesToSlide: 3, // optional, default to 1.
+    items: 3,
   },
   tablet: {
     breakpoint: { max: 464, min: 0 },
 
     items: 2,
-    slidesToSlide: 2, // optional, default to 1.
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 1,
-    slidesToSlide: 1, // optional, default to 1.
   },
 };
 
@@ -61,18 +58,11 @@ const blogSliderResponsive = {
 };
 
 export default function HomeView() {
-  const [ytModal, setYtModal] = useState(false);
-  const [products, setProducts] = useState([]);
-  const [achievements, setAchievements] = useState([]);
-  const [blogs, setBlogs] = useState([]);
+  const [slider, setSlider] = useState(null);
 
-  function closeYtModals() {
-    setYtModal(true);
-  }
-
-  function openYtModals() {
-    setYtModal(true);
-  }
+  useEffect(() => {
+    console.log(slider);
+  }, [slider]);
 
   return (
     <div className="bg-[#FCF6F6]">
@@ -395,6 +385,224 @@ export default function HomeView() {
           </div>
         </div>
       </div>
+
+      <div className="my-40"></div>
+
+      <section className="container mx-auto">
+        <div className="flex">
+          <div className="w-full">
+            <h3 className=" font-[rubik] text-red-500 text-[14px] lg:text-[18px]">
+              BLOG
+            </h3>
+            <h2 className="text-[48px] w-full text-[rubik] text-[#332C2B] font-bold">
+              Interesting Stories From Us
+            </h2>
+          </div>
+          <div className="flex items-end justify-end ms-auto mt-5 lg:mt-0 w-full">
+            <button
+              className="
+                border rounded-full p-5 border-[#858585] group 
+                hover:bg-[#F82F1E] hover:border-white
+                transition delay-50
+              "
+              onClick={() => {
+                slider.previous(3);
+              }}
+            >
+              <svg
+                className="
+                  group-hover:fill-white
+                  transition delay-50
+                "
+                width="16"
+                height="18"
+                viewBox="0 0 16 18"
+                fill="#6A6A6A"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M1.05382 10.6965C1.13858 10.7835 1.4586 11.1555 1.7567 11.4615C3.50438 13.386 8.06357 16.536 10.4498 17.4975C10.8122 17.652 11.7284 17.979 12.218 18C12.687 18 13.1342 17.892 13.5609 17.673C14.0928 17.367 14.5195 16.8855 14.7533 16.317C14.9038 15.9225 15.1376 14.742 15.1376 14.721C15.3714 13.4295 15.5 11.331 15.5 9.012C15.5 6.8025 15.3714 4.7895 15.18 3.4785C15.1581 3.4575 14.9243 1.9905 14.6685 1.488C14.1995 0.57 13.2832 0 12.3027 0H12.218C11.5794 0.0225 10.2365 0.5925 10.2365 0.6135C7.97881 1.5765 3.52484 4.572 1.73478 6.5625C1.73478 6.5625 1.23064 7.074 1.01145 7.3935C0.669508 7.8525 0.5 8.421 0.5 8.9895C0.5 9.624 0.691427 10.215 1.05382 10.6965Z" />
+              </svg>
+            </button>
+            <div className="px-2"></div>
+            <button
+              className="
+                border rounded-full p-5 border-[#858585] group 
+                hover:bg-[#F82F1E] hover:border-white
+                transition delay-50
+              "
+              onClick={() => {
+                slider.next(3);
+              }}
+            >
+              <svg
+                className="
+                  group-hover:fill-white
+                  transition delay-50
+                "
+                width="16"
+                height="18"
+                viewBox="0 0 16 18"
+                fill="#6A6A6A"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M14.9462 10.6965C14.8614 10.7835 14.5414 11.1555 14.2433 11.4615C12.4956 13.386 7.93643 16.536 5.55017 17.4975C5.18777 17.652 4.27155 17.979 3.78203 18C3.31296 18 2.86581 17.892 2.43911 17.673C1.90721 17.367 1.48052 16.8855 1.24671 16.317C1.0962 15.9225 0.862397 14.742 0.862397 14.721C0.628592 13.4295 0.5 11.331 0.5 9.012C0.5 6.8025 0.628592 4.7895 0.820019 3.4785C0.841939 3.4575 1.07574 1.9905 1.33147 1.488C1.80054 0.57 2.71676 0 3.69727 0H3.78203C4.4206 0.0225 5.76352 0.5925 5.76352 0.6135C8.02119 1.5765 12.4752 4.572 14.2652 6.5625C14.2652 6.5625 14.7694 7.074 14.9886 7.3935C15.3305 7.8525 15.5 8.421 15.5 8.9895C15.5 9.624 15.3086 10.215 14.9462 10.6965" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div className="my-14"></div>
+
+        <Carousel
+          ref={(c) => setSlider(c)}
+          responsive={responsive}
+          itemClass="pe-5"
+          slidesToSlide="10"
+          autoPlay={true}
+          arrows={false}
+          swipeable={false}
+          draggable={false}
+        >
+          <div className="bg-white p-4 w-full">
+            <img
+              src="https://images.unsplash.com/photo-1700751639138-e6628c42b558?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+            <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+              Flutter Developer Guide
+            </h2>
+            <p className="text-[#6A6A6A] text-inter text-[16px]">
+              Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
+              eiusmod
+            </p>
+            <hr className="mb-3 mt-5" />
+            <p className="text-[inter] text-[16px] text-[#6A6A6A]">
+              by Zara Adisty
+            </p>
+          </div>
+          <div className="bg-white p-4 w-full">
+            <img
+              src="https://images.unsplash.com/photo-1700751639138-e6628c42b558?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+            <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+              Flutter Developer Guide
+            </h2>
+            <p className="text-[#6A6A6A] text-inter text-[16px]">
+              Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
+              eiusmod
+            </p>
+            <hr className="mb-3 mt-5" />
+            <p className="text-[inter] text-[16px] text-[#6A6A6A]">
+              by Zara Adisty
+            </p>
+          </div>
+          <div className="bg-white p-4 w-full">
+            <img
+              src="https://images.unsplash.com/photo-1700751639138-e6628c42b558?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+            <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+              Flutter Developer Guide
+            </h2>
+            <p className="text-[#6A6A6A] text-inter text-[16px]">
+              Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
+              eiusmod
+            </p>
+            <hr className="mb-3 mt-5" />
+            <p className="text-[inter] text-[16px] text-[#6A6A6A]">
+              by Zara Adisty
+            </p>
+          </div>
+          <div className="bg-white p-4 w-full">
+            <img
+              src="https://images.unsplash.com/photo-1700751639138-e6628c42b558?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+            <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+              Flutter Developer Guide
+            </h2>
+            <p className="text-[#6A6A6A] text-inter text-[16px]">
+              Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
+              eiusmod
+            </p>
+            <hr className="mb-3 mt-5" />
+            <p className="text-[inter] text-[16px] text-[#6A6A6A]">
+              by Zara Adisty
+            </p>
+          </div>
+          <div className="bg-white p-4 w-full">
+            <img
+              src="https://images.unsplash.com/photo-1700751639138-e6628c42b558?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+            <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+              Flutter Developer Guide
+            </h2>
+            <p className="text-[#6A6A6A] text-inter text-[16px]">
+              Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
+              eiusmod
+            </p>
+            <hr className="mb-3 mt-5" />
+            <p className="text-[inter] text-[16px] text-[#6A6A6A]">
+              by Zara Adisty
+            </p>
+          </div>
+          <div className="bg-white p-4 w-full">
+            <img
+              src="https://images.unsplash.com/photo-1700751639138-e6628c42b558?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+            <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+              Flutter Developer Guide
+            </h2>
+            <p className="text-[#6A6A6A] text-inter text-[16px]">
+              Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
+              eiusmod
+            </p>
+            <hr className="mb-3 mt-5" />
+            <p className="text-[inter] text-[16px] text-[#6A6A6A]">
+              by Zara Adisty
+            </p>
+          </div>
+          <div className="bg-white p-4 w-full">
+            <img
+              src="https://images.unsplash.com/photo-1700751639138-e6628c42b558?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+            <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+              Flutter Developer Guide
+            </h2>
+            <p className="text-[#6A6A6A] text-inter text-[16px]">
+              Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
+              eiusmod
+            </p>
+            <hr className="mb-3 mt-5" />
+            <p className="text-[inter] text-[16px] text-[#6A6A6A]">
+              by Zara Adisty
+            </p>
+          </div>
+          <div className="bg-white p-4 w-full">
+            <img
+              src="https://images.unsplash.com/photo-1700751639138-e6628c42b558?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+            <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+              Flutter Developer Guide
+            </h2>
+            <p className="text-[#6A6A6A] text-inter text-[16px]">
+              Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
+              eiusmod
+            </p>
+            <hr className="mb-3 mt-5" />
+            <p className="text-[inter] text-[16px] text-[#6A6A6A]">
+              by Zara Adisty
+            </p>
+          </div>
+        </Carousel>
+        {/* <div className="flex gap-x-5">
+        </div> */}
+      </section>
 
       <div className="my-40"></div>
 

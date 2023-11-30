@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
+import Link from "next/link";
 import RecruitmentAnnouncementCard from "./InternshipAnnouncementView";
 import InternshipNavbar from "../components/navbar/InternshipNavbar";
 
@@ -9,6 +10,7 @@ const InternshipView = () => {
   const aboutRef = useRef(null);
   const requirementRef = useRef(null);
   const benefitRef = useRef(null);
+  const curriculumRef = useRef(null);
 
   function handleNavigation(id) {
     switch (id) {
@@ -26,6 +28,12 @@ const InternshipView = () => {
         break;
       case "benefit":
         benefitRef.current?.scrollIntoView({ behavior: "smooth", top: -100 });
+        break;
+      case "curriculum":
+        curriculumRef.current?.scrollIntoView({
+          behavior: "smooth",
+          top: -100,
+        });
         break;
       default:
         break;
@@ -405,6 +413,73 @@ const InternshipView = () => {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <div className="my-40"></div>
+
+      <section ref={curriculumRef} className="container mx-auto">
+        <h3 className="text-center font-[rubik] text-red-500 text-[14px] lg:text-[18px]">
+          CURRICULUM
+        </h3>
+        <h1 className="text-center font-[rubik] font-bold text-[28px] lg:text-[48px]">
+          What do you want to learn?
+        </h1>
+
+        <div className="flex flex-col lg:flex-row gap-y-10 gap-x-8 mt-14">
+          <Link
+            className="bg-white p-4 pb-10 w-full hover:cursor-pointer hover:scale-105 transition duration-200"
+            href="/curriculum/digital-business"
+          >
+            <img
+              className="w-full"
+              src="/images/internship/curriculum-db.png"
+              alt="Curriculum Digital Business"
+            />
+            <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+              Digital Business
+            </h2>
+            <p className="text-[#6A6A6A] text-inter text-[16px]">
+              Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
+              eiusmod
+            </p>
+          </Link>
+          <Link
+            className="bg-white p-4 pb-10 w-full hover:cursor-pointer hover:scale-105 transition duration-200"
+            href="/curriculum/ui-ux-designer"
+          >
+            <img
+              className="w-full"
+              src="/images/internship/curriculum-ui.png"
+              alt="Curriculum UI / UX Designer"
+            />
+
+            <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+              UI / UX Designer
+            </h2>
+            <p className="text-[#6A6A6A] text-inter text-[16px]">
+              Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
+              eiusmod
+            </p>
+          </Link>
+          <Link
+            className="bg-white p-4 pb-10 w-full hover:cursor-pointer hover:scale-105 transition duration-200"
+            href="/curriculum/mobile-programming"
+          >
+            <img
+              className="w-full"
+              src="/images/internship/curriculum-mp.png"
+              alt="Curriculum Mobile Programming"
+            />
+
+            <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+              Mobile Programming
+            </h2>
+            <p className="text-[#6A6A6A] text-inter text-[16px]">
+              Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
+              eiusmod
+            </p>
+          </Link>
         </div>
       </section>
 
