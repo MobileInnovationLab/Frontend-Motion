@@ -127,7 +127,7 @@ const InternshipView = () => {
                 <p className="text-[18px] font-[inter] font-light text-[#ACACAC]">
                   During the internship at Motion Lab, prospective members will
                   deepen their knowledge related to the chosen division. The
-                  main activities in Motion Internship include:
+                  main activities in Motion Internship includes:
                 </p>
                 <ul className="text-[18px] font-[inter] font-light text-[#ACACAC]">
                   <li>1. Choosing a division</li>
