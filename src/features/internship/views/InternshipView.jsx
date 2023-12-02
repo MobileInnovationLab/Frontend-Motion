@@ -12,7 +12,7 @@ const InternshipView = () => {
   const requirementRef = useRef(null);
   const benefitRef = useRef(null);
   const curriculumRef = useRef(null);
-  const [isSlided, setIsSlided] = useState(false);
+  const [isSlided, setIsSlided] = useState(true);
 
   function handleNavigation(id) {
     switch (id) {
