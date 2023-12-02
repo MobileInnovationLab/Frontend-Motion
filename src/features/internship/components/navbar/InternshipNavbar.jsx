@@ -134,7 +134,7 @@ const InternshipNavbar = ({ onNavigation, isFixed = true }) => {
             data-collapse-toggle="navbar-default"
             type="button"
             onClick={handleNavbarOpened}
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg block lg:hidden "
+            className="items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg block lg:hidden "
             aria-controls="navbar-default"
             aria-expanded="false"
           >
@@ -178,7 +178,7 @@ const InternshipNavbar = ({ onNavigation, isFixed = true }) => {
         >
           <div className="container justify-between mx-auto flex py-5">
             <div className="flex w-full items-center">
-              <a href="#" className="flex items-center">
+              <a href="/" className="flex items-center">
                 <div className="w-[34px] h-[34px]">
                   <img
                     src="/images/navbar/logo-red-transparent.png"

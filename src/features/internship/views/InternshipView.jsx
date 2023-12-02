@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import RecruitmentAnnouncementCard from "./InternshipAnnouncementView";
 import InternshipNavbar from "../components/navbar/InternshipNavbar";
@@ -49,19 +50,29 @@ const InternshipView = () => {
         className="w-full bg-[url('/images/recruitment/recruitment-landing-bg.png')] bg-cover bg-no-repeat bg-[center_bottom_0rem]"
       >
         <div className="container w-full mx-auto flex justify-between flex-col lg:flex-row items-center pb-40 pt-32">
-          <h2 className="font-bold font-[rubik] text-[30px] lg:text-[60px] text-white text-center lg:text-left mb-10 lg:mb-0">
+          <motion.div
+            className="font-bold font-[rubik] text-[30px] lg:text-[60px] text-white text-center lg:text-left mb-10 lg:mb-0"
+            initial={{ y: "10px", opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ type: "spring", duration: 2, bounce: 0 }}
+          >
             <span className="bg-black rounded-lg px-[35px] py-[7px]">
               Internship
             </span>{" "}
             in Mobile Innovation Laboratory
-          </h2>
-          <div className="w-2/3 h-auto lg:h-[30rem] pt-5 lg:pt-0">
+          </motion.div>
+          <motion.div
+            className="w-2/3 h-auto lg:h-[30rem] pt-5 lg:pt-0"
+            initial={{ y: "10px", opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ type: "spring", duration: 2, bounce: 0 }}
+          >
             <img
               src="/images/recruitment/recruitment-landing.png"
               className="w-full h-full object-contain"
               alt="Recruitment Landing"
             />
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -73,7 +84,12 @@ const InternshipView = () => {
 
       <div className="my-12"></div>
 
-      <section ref={aboutRef}>
+      <motion.div
+        ref={aboutRef}
+        initial={{ y: "10px", opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", duration: 2, bounce: 0 }}
+      >
         <h3 className="text-center font-[rubik] text-red-500 text-[14px] lg:text-[18px]">
           ABOUT
         </h3>
@@ -174,11 +190,15 @@ const InternshipView = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.div>
 
       <div className="my-40"></div>
 
-      <section className="">
+      <motion.div
+        initial={{ y: "10px", opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", duration: 2, bounce: 0 }}
+      >
         <h1 className="text-center lg:text-left font-[rubik] font-bold text-[28px] lg:text-[48px] container mx-auto">
           Route Map Motionlab
         </h1>
@@ -189,7 +209,7 @@ const InternshipView = () => {
             alt="Route Map"
           />
         </div>
-      </section>
+      </motion.div>
 
       <div className="my-20"></div>
 
