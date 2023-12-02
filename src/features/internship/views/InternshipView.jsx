@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Link from "next/link";
 import RecruitmentAnnouncementCard from "./InternshipAnnouncementView";
 import InternshipNavbar from "../components/navbar/InternshipNavbar";
@@ -11,6 +11,7 @@ const InternshipView = () => {
   const requirementRef = useRef(null);
   const benefitRef = useRef(null);
   const curriculumRef = useRef(null);
+  const [isSlided, setIsSlided] = useState(false);
 
   function handleNavigation(id) {
     switch (id) {
@@ -82,26 +83,49 @@ const InternshipView = () => {
         <div className="flex flex-col lg:flex-row align-items-center mt-14 container justify-content-center m-auto">
           <div className="w-full h-[507px] bg-black rounded-lg me-10">
             <img
-              src="/images/recruitment/internship-activities.png"
+              src="/images/internship/aslab-member.jpg"
               className="object-cover w-full h-full rounded-lg"
               alt="Internship Activities"
             />
           </div>
           <div className="flex flex-col justify-between bg-white text-left px-10 py-10 rounded-lg lg:w-3/4">
-            <div>
-              <h2 className="text-[24px] font-[inter] font-bold mb-8">
-                What is Internship?
-              </h2>
-              <p className="text-[18px] font-[inter] font-light text-[#ACACAC]">
-                Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum.{" "}
-              </p>
-            </div>
+            {isSlided ? (
+              <div>
+                <h2 className="text-[24px] font-[inter] font-bold mb-8">
+                  What is Internship?
+                </h2>
+                <p className="text-[18px] font-[inter] font-light text-[#ACACAC]">
+                  Motion Internship is organized by Motion Lab aims to recruit
+                  new members for Motion Lab. Offering Telkom University
+                  students from diverse majors the chance to gain experience.
+                  Motion Lab has divisions like Digital Business, UI/UX
+                  Designer, and Mobile Programming, and the internship lasts for
+                  8 sessions or around 2 months.
+                </p>
+              </div>
+            ) : (
+              <div>
+                <h2 className="text-[24px] font-[inter] font-bold mb-8">
+                  What activities are planned?
+                </h2>
+                <p className="text-[18px] font-[inter] font-light text-[#ACACAC]">
+                  During the internship at Motion Lab, prospective members will
+                  deepen their knowledge related to the chosen division. The
+                  main activities in Motion Internship include:
+                </p>
+                <ul className="text-[18px] font-[inter] font-light text-[#ACACAC]">
+                  <li>1. Choosing a division</li>
+                  <li>2. Participating in study groups</li>
+                  <li>3. Completing significant tasks</li>
+                  <li>4. Joining Motion Hack</li>
+                </ul>
+              </div>
+            )}
             <div className="flex ms-auto mt-5 lg:mt-0">
               <button
+                onClick={() => {
+                  setIsSlided(!isSlided);
+                }}
                 className="
                 border rounded-full p-5 border-[#858585] group 
                 hover:bg-[#F82F1E] hover:border-white
@@ -124,6 +148,9 @@ const InternshipView = () => {
               </button>
               <div className="px-2"></div>
               <button
+                onClick={() => {
+                  setIsSlided(!isSlided);
+                }}
                 className="
                 border rounded-full p-5 border-[#858585] group 
                 hover:bg-[#F82F1E] hover:border-white
@@ -196,11 +223,14 @@ const InternshipView = () => {
           <div>
             <div className="flex border-[2px] border-[#332C2B] border-solid rounded-full bg-white">
               <div className=" bg-[#332C2B] text-white rounded-full p-5 px-7 lg:p-6 lg:px-8  font-semibold text-center align-center text-[inter] text-[32px]">
-                01
+                05
               </div>
               <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">
-                Active Telkom University undergraduate student batch 2021-2023
-                from all major
+                Portofolio <br />
+                <span className="text-red-500">
+                  Only required for UI/UX Design and Mobile Programming
+                  applicant
+                </span>
               </p>
             </div>
             <div className="h-[50px] px-10 my-2">
@@ -214,11 +244,11 @@ const InternshipView = () => {
           <div>
             <div className="flex border-[2px] border-[#332C2B] border-solid rounded-full bg-white">
               <div className="bg-[#332C2B] text-white rounded-full p-5 px-7 lg:p-6 lg:px-8  font-semibold text-center align-center text-[inter] text-[32px]">
-                01
+                02
               </div>
               <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">
-                Active Telkom University undergraduate student batch 2021-2023
-                from all major
+                Wiling to commit for the whole program and membership duration
+                of 1 year
               </p>
             </div>
             <div className="h-[50px] px-10 my-2">
@@ -232,11 +262,10 @@ const InternshipView = () => {
           <div>
             <div className="flex border-[2px] border-[#332C2B] border-solid rounded-full bg-white">
               <div className=" bg-[#332C2B] text-white rounded-full p-5 px-7 lg:p-6 lg:px-8  font-semibold text-center align-center text-[inter] text-[32px]">
-                01
+                06
               </div>
               <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">
-                Active Telkom University undergraduate student batch 2021-2023
-                from all major
+                Motivation Video
               </p>
             </div>
             <div className="h-[50px] px-10 my-2">
@@ -250,11 +279,10 @@ const InternshipView = () => {
           <div>
             <div className="flex border-[2px] border-[#332C2B] border-solid rounded-full bg-white">
               <div className="bg-[#332C2B] text-white rounded-full p-5 px-7 lg:p-6 lg:px-8  font-semibold text-center align-center text-[inter] text-[32px]">
-                01
+                03
               </div>
               <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">
-                Active Telkom University undergraduate student batch 2021-2023
-                from all major
+                Curriculum vitae with relevant experience
               </p>
             </div>
             <div className="h-[50px] px-10 my-2">
@@ -268,11 +296,10 @@ const InternshipView = () => {
           <div>
             <div className="flex border-[2px] border-[#332C2B] border-solid rounded-full bg-white">
               <div className=" bg-[#332C2B] text-white rounded-full p-5 px-7 lg:p-6 lg:px-8  font-semibold text-center align-center text-[inter] text-[32px]">
-                01
+                07
               </div>
               <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">
-                Active Telkom University undergraduate student batch 2021-2023
-                from all major
+                Repost our open recruitment post on Instagram Story
               </p>
             </div>
             <div className="h-[50px] px-10 my-2 lg:hidden block">
@@ -286,21 +313,12 @@ const InternshipView = () => {
           <div>
             <div className="flex border-[2px] border-[#332C2B] border-solid rounded-full bg-white">
               <div className="bg-[#332C2B] text-white rounded-full p-5 px-7 lg:p-6 lg:px-8  font-semibold text-center align-center text-[inter] text-[32px]">
-                01
+                04
               </div>
               <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">
-                Active Telkom University undergraduate student batch 2021-2023
-                from all major
+                KSM for current semester
               </p>
             </div>
-          </div>
-          <div className="mt-10 lg:mt-0">
-            <p className="text-[#F82F1E] font-semibold italic px-5">
-              *Only required for UI/UX Design and Mobile Programming applicant
-            </p>
-            <p className="text-[#F82F1E] font-semibold italic px-5">
-              **Explanation about Motivation Video on the next slide
-            </p>
           </div>
         </div>
       </section>
@@ -318,16 +336,16 @@ const InternshipView = () => {
           <div className="w-full">
             <div className="w-full text-center relative bottom-[-4rem]">
               <div className="bg-gradient-to-br from-[#F82F1E] to-[#C1271A] rounded-full inline-block p-8">
-                <img src="/svg/chart.svg" alt="chart" />
+                <img src="/svg/knowledge.svg" alt="knowledge" />
               </div>
             </div>
             <div className="bg-white rounded py-10 px-8 w-full">
               <h2 className="font-[rubik] font-semibold text-[24px] text-center mb-5 mt-14">
-                Lorem Ipsum
+                Knowledge
               </h2>
               <p className="font-[inter] text-[18px] text-center">
-                Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua
+                New members will gain deeper knowledge about Digital Business,
+                UI/UX Design, and Mobile Programming.
               </p>
             </div>
           </div>
@@ -339,27 +357,27 @@ const InternshipView = () => {
             </div>
             <div className="bg-white rounded py-10 px-8 w-full">
               <h2 className="font-[rubik] font-semibold text-[24px] text-center mb-5 mt-14">
-                Lorem Ipsum
+                Practice
               </h2>
               <p className="font-[inter] text-[18px] text-center">
-                Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua
+                New members will learn both theory and practical aspects, guided
+                by proficient Motion lab assistants in their respective fields.
               </p>
             </div>
           </div>
           <div className="w-full">
             <div className="w-full text-center relative bottom-[-4rem]">
               <div className="bg-gradient-to-br from-[#F82F1E] to-[#C1271A] rounded-full inline-block p-8">
-                <img src="/svg/code.svg" alt="Code" />
+                <img src="/svg/experience.svg" alt="experience" />
               </div>
             </div>
             <div className="bg-white rounded py-10 px-8 w-full">
               <h2 className="font-[rubik] font-semibold text-[24px] text-center mb-5 mt-14">
-                Lorem Ipsum
+                Experience
               </h2>
               <p className="font-[inter] text-[18px] text-center">
-                Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua
+                New members will gain experience in designing mobile
+                applications individually as well as in groups.
               </p>
             </div>
           </div>
@@ -368,48 +386,50 @@ const InternshipView = () => {
           <div className="w-full">
             <div className="w-full text-center relative bottom-[-4rem]">
               <div className="bg-gradient-to-br from-[#F82F1E] to-[#C1271A] rounded-full inline-block p-8">
-                <img src="/svg/chart.svg" alt="chart" />
+                <img src="/svg/people.svg" alt="people" />
               </div>
             </div>
             <div className="bg-white rounded py-10 px-8 w-full">
               <h2 className="font-[rubik] font-semibold text-[24px] text-center mb-5 mt-14">
-                Lorem Ipsum
+                Networking
               </h2>
               <p className="font-[inter] text-[18px] text-center">
-                Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua
+                Building new connections with other member from other faculties
+                or majors who are motivated in the field of Mobile App.
               </p>
             </div>
           </div>
           <div className="w-full">
             <div className="w-full text-center relative bottom-[-4rem]">
               <div className="bg-gradient-to-br from-[#F82F1E] to-[#C1271A] rounded-full inline-block p-8">
-                <img src="/svg/pen-tool.svg" alt="Pen Tool" />
+                <img src="/svg/certificate.svg" alt="Certificate" />
               </div>
             </div>
             <div className="bg-white rounded py-10 px-8 w-full">
               <h2 className="font-[rubik] font-semibold text-[24px] text-center mb-5 mt-14">
-                Lorem Ipsum
+                Certificate & TAK
               </h2>
               <p className="font-[inter] text-[18px] text-center">
-                Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua
+                Internship participants who successfully complete the Motion
+                internship will receive an e-certificate that they can claim for
+                TAK.
               </p>
             </div>
           </div>
           <div className="w-full">
             <div className="w-full text-center relative bottom-[-4rem]">
               <div className="bg-gradient-to-br from-[#F82F1E] to-[#C1271A] rounded-full inline-block p-8">
-                <img src="/svg/code.svg" alt="Code" />
+                <img src="/svg/motionlab.svg" alt="Motionlab" />
               </div>
             </div>
             <div className="bg-white rounded py-10 px-8 w-full">
               <h2 className="font-[rubik] font-semibold text-[24px] text-center mb-5 mt-14">
-                Lorem Ipsum
+                Member Motion Lab
               </h2>
               <p className="font-[inter] text-[18px] text-center">
-                Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua
+                Internship participants who successfully complete the Motion
+                Internship have the opportunity to join Motion Lab and
+                potentially serve as lab assistants.
               </p>
             </div>
           </div>
@@ -440,8 +460,8 @@ const InternshipView = () => {
               Digital Business
             </h2>
             <p className="text-[#6A6A6A] text-inter text-[16px]">
-              Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
-              eiusmod
+              Learn to use digital technologies, tools, and processes tp create,
+              deliver, and optimize business outcome.
             </p>
           </Link>
           <Link
@@ -458,8 +478,8 @@ const InternshipView = () => {
               UI / UX Designer
             </h2>
             <p className="text-[#6A6A6A] text-inter text-[16px]">
-              Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
-              eiusmod
+              Learn to define user experience in digital product interaction and
+              apply solutions to mobile app design.
             </p>
           </Link>
           <Link
@@ -476,8 +496,8 @@ const InternshipView = () => {
               Mobile Programming
             </h2>
             <p className="text-[#6A6A6A] text-inter text-[16px]">
-              Lorem ipsum dolor sit amet, elite consectetur adipiscing, sed do
-              eiusmod
+              Learn to code and implement designs into Android, iOS, or
+              cross-platform mobile apps for user-ready use.
             </p>
           </Link>
         </div>

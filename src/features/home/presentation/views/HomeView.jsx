@@ -148,11 +148,11 @@ export default function HomeView() {
           alt="About Image"
         />
         <div className="flex mt-14">
-          <div className="flex justify-between items-center">
-            <h2 className="text-[48px] w-full text-[rubik] text-[#332C2B] font-bold">
+          <div className="flex flex-col lg:flex-row gap-y-5 justify-between items-center">
+            <h2 className="text-[28px] lg:text-[48px] w-full text-[rubik] text-[#332C2B] font-bold">
               We are Creative People with High Spirits
             </h2>
-            <p className="text-[18px] w-full text-inter text-[#6A6A6A]">
+            <p className="text-[16px] lg:text-[18px] w-full text-inter text-[#6A6A6A]">
               The Motion (Mobile Innovation) Laboratory is one of the research
               laboratories under the Faculty of Informatics, Telkom University.
               Motion Lab focuses on the creation and development of mobile
@@ -161,37 +161,43 @@ export default function HomeView() {
             </p>
           </div>
         </div>
-        <div className="flex justify-around mt-14">
+        <div className="flex justify-around mt-14 flex-col lg:flex-row gap-y-10">
           <div className="text-center">
-            <h2 className="text-[rubik] font-bold text-[46px] text-[#F82F1E]">
+            <h2 className="text-[rubik] font-bold text-[30px] lg:text-[46px] text-[#F82F1E]">
               6
             </h2>
-            <p className="text-[inter] text-[20px] text-[#6A6A6A]">
+            <p className="text-[inter] text-[16px] lg:text-[20px] text-[#6A6A6A]">
               Years of operation
             </p>
           </div>
           <div className="text-center">
-            <h2 className="text-[rubik] font-bold text-[46px] text-[#F82F1E]">
+            <h2 className="text-[rubik] font-bold text-[30px] lg:text-[46px] text-[#F82F1E]">
               100+
             </h2>
-            <p className="text-[inter] text-[20px] text-[#6A6A6A]">Members</p>
+            <p className="text-[inter] text-[16px] lg:text-[20px] text-[#6A6A6A]">
+              Members
+            </p>
           </div>
           <div className="text-center">
-            <h2 className="text-[rubik] font-bold text-[46px] text-[#F82F1E]">
+            <h2 className="text-[rubik] font-bold text-[30px] lg:text-[46px] text-[#F82F1E]">
               50+
             </h2>
-            <p className="text-[inter] text-[20px] text-[#6A6A6A]">Produts</p>
+            <p className="text-[inter] text-[16px] lg:text-[20px] text-[#6A6A6A]">
+              Produts
+            </p>
           </div>
           <div className="text-center">
-            <h2 className="text-[rubik] font-bold text-[46px] text-[#F82F1E]">
+            <h2 className="text-[rubik] font-bold text-[30px] lg:text-[46px] text-[#F82F1E]">
               48+
             </h2>
-            <p className="text-[inter] text-[20px] text-[#6A6A6A]">Awards</p>
+            <p className="text-[inter] text-[16px] lg:text-[20px] text-[#6A6A6A]">
+              Awards
+            </p>
           </div>
         </div>
       </section>
 
-      <div className="my-40"></div>
+      <div className="my-20 lg:my-40"></div>
 
       <section className="container mx-auto">
         <h3 className="text-center font-[rubik] text-red-500 text-[14px] lg:text-[18px]">
@@ -256,7 +262,7 @@ export default function HomeView() {
 
       <div className="bg-white py-20">
         <div className="container mx-auto">
-          <h2 className="text-rubik font-bold text-[48px] text-[#332C2B]">
+          <h2 className="text-rubik font-bold text-[28px] lg:text-[48px] text-[#332C2B]">
             Laboratory Assistance
           </h2>
           <div className="flex gap-x-10 flex-col lg:flex-row">
@@ -611,7 +617,7 @@ export default function HomeView() {
           Contact Us
         </h3>
 
-        <div className="flex gap-x-14 mt-20">
+        <div className="flex gap-x-14 mt-20 flex-col lg:flex-row gap-y-10">
           <Image
             className="px-10 rounded"
             src="/images/contactUs/photoFirst.png"
@@ -622,10 +628,10 @@ export default function HomeView() {
             objectFit="cover"
           />
           <div className="flex flex-col gap-y-5 ">
-            <h2 className="text-[rubik] text-[48px] text-[#332C2B] font-bold">
+            <h2 className="text-[rubik] text-[28px] lg:text-[48px] text-[#332C2B] font-bold">
               Have Any Question?
             </h2>
-            <p className="text-[inter] text-[18px] text-[#6A6A6A]">
+            <p className="text-[inter] text-[16px] lg:text-[18px] text-[#6A6A6A]">
               We&#39;d love to hear from you. Wheter you&#39;re curious more
               about Mobile Innovation Laboratory, we&#39;re ready to answer any
               and all your questions, just contact us on DM Instagram{" "}
@@ -655,14 +661,15 @@ export default function HomeView() {
                     fill="white"
                   />
                 </svg>
-                <p className="text-[inter] text-[18px] text-[#6A6A6A]">
+                <p className="text-[inter] text-[16px] lg:text-[18px] text-[#6A6A6A]">
                   motion.laboratory@gmail.com
                 </p>
               </div>
               <div className="flex gap-x-3 items-center">
                 <svg
-                  width="40"
-                  height="40"
+                  className="w-10"
+                  width="30"
+                  height="30"
                   viewBox="0 0 30 30"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -675,7 +682,7 @@ export default function HomeView() {
                     fill="white"
                   />
                 </svg>
-                <p className="text-[inter] text-[18px] text-[#6A6A6A]">
+                <p className="text-[inter] text-[16px] lg:text-[18px] text-[#6A6A6A]">
                   Telkom University, Faculty of Informatics, Telkom University
                   Landmark Tower, 6th Floor LAB 0624
                 </p>

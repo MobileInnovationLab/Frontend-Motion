@@ -47,9 +47,11 @@ const InternshipRegisterView = () => {
 
           <section className="container mx-auto my-10">
             <div className="bg-white rounded px-10 py-14 lg:mx-[10rem]">
-              <form onSubmit={formik.handleSubmit}>
+              <form
+                onSubmit={formik.handleSubmit}
+                className="flex flex-col gap-y-7"
+              >
                 <RecruitmentTextInputField
-                  containerClass="mb-8"
                   label="Full Name"
                   name="name"
                   onChange={formik.handleChange}
@@ -67,7 +69,7 @@ const InternshipRegisterView = () => {
                   required
                 />
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10 my-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
                   <RecruitmentTextInputField
                     className="mb-8 lg:mb-0"
                     label="NIM"
@@ -87,7 +89,7 @@ const InternshipRegisterView = () => {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10 my-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
                   <RecruitmentSelectInputField
                     className="appearance-none mb-8 lg:mb-0"
                     label="Major"
@@ -122,7 +124,7 @@ const InternshipRegisterView = () => {
                   </RecruitmentSelectInputField>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10 my-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
                   <RecruitmentSelectInputField
                     className="appearance-none mb-8 lg:mb-0"
                     label="Division"
@@ -140,7 +142,7 @@ const InternshipRegisterView = () => {
                     ))}
                   </RecruitmentSelectInputField>
                   <RecruitmentTextInputField
-                    label="Student Curriculum Vitae (CV)*"
+                    label="Student Curriculum Vitae (CV)"
                     name="cv"
                     placeholder="Link CV"
                     onChange={formik.handleChange}
@@ -150,7 +152,7 @@ const InternshipRegisterView = () => {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10 my-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
                   <RecruitmentTextInputField
                     className="mb-8 lg:mb-0"
                     label="Portfolio"
@@ -174,18 +176,21 @@ const InternshipRegisterView = () => {
 
                 <hr />
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10 my-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
                   <RecruitmentTextInputField
-                    label="Motivation Letter"
+                    label="Motivational Video"
                     name="motivation_letter"
-                    placeholder="Link Motivation Letter"
+                    containerClass="mt-5"
+                    placeholder="Link Motivational Video"
                     onChange={formik.handleChange}
                     error={formik.errors.motivation_letter}
                     required
                     suffix={<img src="/svg/link.svg" alt="link" />}
                   />
                   <RecruitmentTextInputField
+                    containerClass="mt-5 lg:mt-0"
                     label="Screenshot Post Instagram"
+                    link="https://www.instagram.com/motionlab_"
                     name="share_poster"
                     placeholder="Link Screenshot Post Instagram"
                     onChange={formik.handleChange}
@@ -195,11 +200,12 @@ const InternshipRegisterView = () => {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10 my-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
                   <RecruitmentTextInputField
                     className="mb-8 lg:mb-0"
                     label="Screenshot Subscribe Youtube"
                     name="yt_evidence"
+                    link="https://www.youtube.com/@MotionLabTelkomUniversity"
                     placeholder="Link Screenshot Subscribe Youtube"
                     onChange={formik.handleChange}
                     error={formik.errors.yt_evidence}
@@ -208,6 +214,7 @@ const InternshipRegisterView = () => {
                   />
                   <RecruitmentTextInputField
                     label="Screenshot Follow LinkedIn"
+                    link="https://www.linkedin.com/company/motion-laboratory"
                     name="linkedin_evidence"
                     placeholder="Link Screenshot Follow LinkedIn "
                     onChange={formik.handleChange}

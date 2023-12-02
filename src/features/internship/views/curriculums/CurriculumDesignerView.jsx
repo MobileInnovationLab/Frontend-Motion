@@ -10,7 +10,7 @@ const CurriculumDesignerView = () => {
         </h1>
       </section>
 
-      <section className="container mx-auto px-[18rem]">
+      <section className="container mx-auto lg:px-[18rem]">
         <div className="my-24"></div>
 
         <div className="flex flex-col gap-y-8">
