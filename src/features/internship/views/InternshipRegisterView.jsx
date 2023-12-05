@@ -180,7 +180,6 @@ const InternshipRegisterView = () => {
                   <RecruitmentTextInputField
                     label="Motivational Video"
                     name="motivation_letter"
-                    containerClass="mt-5"
                     placeholder="Link Motivational Video"
                     onChange={formik.handleChange}
                     error={formik.errors.motivation_letter}
@@ -189,8 +188,7 @@ const InternshipRegisterView = () => {
                   />
                   <RecruitmentTextInputField
                     containerClass="mt-5 lg:mt-0"
-                    label="Screenshot Post Instagram"
-                    link="https://www.instagram.com/motionlab_"
+                    label="Upload OpRec Instagram posts to your IG story"
                     name="share_poster"
                     placeholder="Link Screenshot Post Instagram"
                     onChange={formik.handleChange}
@@ -202,6 +200,16 @@ const InternshipRegisterView = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
                   <RecruitmentTextInputField
+                    label="Screenshot Follow Instagram"
+                    link="https://www.instagram.com/motionlab_"
+                    name="instagram_evidence"
+                    placeholder="Link Screenshot Follow Instagram"
+                    onChange={formik.handleChange}
+                    error={formik.errors.instagram_evidence}
+                    required
+                    suffix={<img src="/svg/link.svg" alt="link" />}
+                  />
+                  <RecruitmentTextInputField
                     className="mb-8 lg:mb-0"
                     label="Screenshot Subscribe Youtube"
                     name="yt_evidence"
@@ -212,13 +220,27 @@ const InternshipRegisterView = () => {
                     required
                     suffix={<img src="/svg/link.svg" alt="link" />}
                   />
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
                   <RecruitmentTextInputField
-                    label="Screenshot Follow LinkedIn"
-                    link="https://www.linkedin.com/company/motion-laboratory"
+                    className="mb-8 lg:mb-0"
+                    label="Screenshot Follow Linkedin"
                     name="linkedin_evidence"
-                    placeholder="Link Screenshot Follow LinkedIn "
+                    link="https://www.linkedin.com/company/motion-laboratory"
+                    placeholder="Link Screenshot Follow Linkedin"
                     onChange={formik.handleChange}
                     error={formik.errors.linkedin_evidence}
+                    required
+                    suffix={<img src="/svg/link.svg" alt="link" />}
+                  />
+                  <RecruitmentTextInputField
+                    label="Screenshot Follow Line"
+                    link="https://www.linkedin.com/company/motion-laboratory"
+                    name="line_evidence"
+                    placeholder="Link Screenshot follow line"
+                    onChange={formik.handleChange}
+                    error={formik.errors.line_evidence}
                     required
                     suffix={<img src="/svg/link.svg" alt="link" />}
                   />

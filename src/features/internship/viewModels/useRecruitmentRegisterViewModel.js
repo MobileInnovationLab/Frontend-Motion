@@ -196,6 +196,8 @@ export default function useRecruitmentRegisterViewModel() {
       whatsapp: "",
       yt_evidence: "",
       linkedin_evidence: "",
+      line_evidence: "",
+      instagram_evidence: "",
     },
     validationSchema: Yup.object().shape({
       name: Yup.string().required("The name field is required"),
@@ -251,6 +253,18 @@ export default function useRecruitmentRegisterViewModel() {
         ),
       yt_evidence: Yup.string()
         .required("The screenshot youtube subscribed field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
+      line_evidence: Yup.string()
+        .required("The screenshot follow line field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
+      instagram_evidence: Yup.string()
+        .required("The screenshot follow instagram field is required")
         .matches(
           /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
           "Please provide a valid URL."
