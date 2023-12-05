@@ -236,7 +236,7 @@ const InternshipRegisterView = () => {
                   />
                   <RecruitmentTextInputField
                     label="Screenshot Follow Line"
-                    link="https://www.linkedin.com/company/motion-laboratory"
+                    link="https://lin.ee/sJGLG47"
                     name="line_evidence"
                     placeholder="Link Screenshot follow line"
                     onChange={formik.handleChange}
