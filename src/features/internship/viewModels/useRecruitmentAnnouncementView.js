@@ -31,8 +31,8 @@ export default function useRecruitmentAnnouncementViewModel() {
           if (err.response.status === 404) {
             setIsNotFound(true);
           }
-        })
-        .finally(() => setSubmitting(false));
+          setSubmitting(false);
+        });
     },
   });
 

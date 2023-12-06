@@ -290,8 +290,8 @@ export default function useRecruitmentRegisterViewModel() {
               `/register/failed?message=${err.response.data.message}`
             );
           }
-        })
-        .finally(() => setSubmitting(false));
+          setSubmitting(false);
+        });
     },
   });
 
