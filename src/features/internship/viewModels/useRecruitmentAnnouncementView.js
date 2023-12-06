@@ -28,7 +28,7 @@ export default function useRecruitmentAnnouncementViewModel() {
           }
         })
         .catch((err) => {
-          if (err.response.status === 404) {
+          if (err.response?.status === 404) {
             setIsNotFound(true);
           }
           setSubmitting(false);

@@ -247,7 +247,7 @@ const InternshipRegisterView = () => {
                 </div>
 
                 <button
-                  disabled={formik.isSubmitting}
+                  // disabled={formik.isSubmitting}
                   type="submit"
                   className="mt-10 w-full bg-[#C2271A] text-white text-[inter] text-[16px] rounded-full px-8 py-4 hover:opacity-90 transition duration-800"
                 >

@@ -285,11 +285,12 @@ export default function useRecruitmentRegisterViewModel() {
           router.push("/success");
         })
         .catch((err) => {
-          if (err.response.status === 400) {
+          if (err.response?.status === 400) {
             router.push(
               `/register/failed?message=${err.response.data.message}`
             );
           }
+
           setSubmitting(false);
         });
     },
