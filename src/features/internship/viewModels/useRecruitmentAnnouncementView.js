@@ -21,13 +21,23 @@ export default function useRecruitmentAnnouncementViewModel() {
       api
         .get(`/recruitation/check/${values.nim}`)
         .then((response) => {
+          const data = {
+            name: response.data.recruitation.name,
+            nim: response.data.recruitation.nim,
+            division: response.data.recruitation.division,
+          };
+          let queryString = Object.keys(data)
+            .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+            .join("&");
+
           if (response.data.is_accepted == 1) {
-            router.push("/accepted");
+            router.push(`/accepted?${queryString}`);
           } else {
-            router.push("/declined");
+            router.push(`/declined?${queryString}`);
           }
         })
         .catch((err) => {
+          console.log(err);
           if (err.response?.status === 404) {
             setIsNotFound(true);
           }
