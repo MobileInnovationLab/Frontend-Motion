@@ -17,7 +17,7 @@ const InternshipRegisterView = () => {
     <>
       <InternshipNavbar isFixed={false} />
 
-      {process.env.NEXT_PUBLIC_RECRUITMENT_CLOSED == "true" ? (
+      {process.env.NEXT_PUBLIC_RECRUITMENT_CLOSED == "false" ? (
         <section className="flex flex-col items-center justify-center container mx-auto px-10 lg:px-[20rem] text-center my-20">
           <img src="/images/internship/registration-closed.png" alt="" />
           <h2 className="font-semibold text-[18px] lg:text-[32px] text-[rubik]">
@@ -176,6 +176,17 @@ const InternshipRegisterView = () => {
 
                 <hr />
 
+                  <RecruitmentTextInputField
+                    label="Upload Twibbon"
+                    link="https://lin.ee/sJGLG47"
+                    name="line_evidence"
+                    placeholder="Link Instagram Post"
+                    onChange={formik.handleChange}
+                    error={formik.errors.line_evidence}
+                    required
+                    suffix={<img src="/svg/link.svg" alt="link" />}
+                  />
+
                 <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
                   <RecruitmentTextInputField
                     label="Motivational Video"
@@ -245,6 +256,7 @@ const InternshipRegisterView = () => {
                     suffix={<img src="/svg/link.svg" alt="link" />}
                   />
                 </div>
+                
 
                 <button
                   // disabled={formik.isSubmitting}
