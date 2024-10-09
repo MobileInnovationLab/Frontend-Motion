@@ -5,13 +5,70 @@ import useRecruitmentRegisterViewModel, {
   divisionOptions,
   generationOptions,
   majorOptions,
+  linkSoal,
 } from "../viewModels/useRecruitmentRegisterViewModel";
 import RecruitmentTextInputField from "@/core/components/input/RecruitmentTextInputField";
 import RecruitmentSelectInputField from "@/core/components/input/RecruitmentSelectInputField";
 import InternshipNavbar from "../components/navbar/InternshipNavbar";
+import { useState } from 'react';
+
 
 const InternshipRegisterView = () => {
   const { formik } = useRecruitmentRegisterViewModel();
+
+  const [selectedDivision, setSelectedDivision] = useState('');
+
+  const handleDivisionChange = (e) => {
+    setSelectedDivision(e.target.value);
+    formik.handleChange(e);
+  };
+
+  const getOrGenerateLink = () => {
+    const storedLink = localStorage.getItem('randomizedLink');
+  
+    if (storedLink) {
+      return storedLink;
+    } else {
+      const newRandomizedLink = linkSoal[Math.floor(Math.random() * linkSoal.length)];
+      localStorage.setItem('randomizedLink', newRandomizedLink);
+      return newRandomizedLink;
+    }
+  };
+
+  const getPortfolioLabel = () => {
+    if(selectedDivision == "Digital Business"){
+      const link = getOrGenerateLink();
+      return { 
+        portfolioLabel: 
+        (
+          <>
+            BMC{' '} <span className="text-[#F82F1E]">*</span> (Required for DB){' '}
+            <span class="rounded-full bg-red-500 ms-1 px-2 py-1 text-xs font-bold mr-3">
+              <a href={link} target="_blank" rel="noopener noreferrer" className="text-white">Solusi BMC</a>
+            </span>
+          </>
+        ),
+        portfolioPlaceholder: 'Link Folder BMC'
+      };
+    } else if(selectedDivision == "Mobile Programming"){
+      return { 
+        portfolioLabel: 
+        (
+          <>
+            Portofolio{' '} <span className="text-[#F82F1E]">*</span> (Include github link in the portfolio){' '}
+          </>
+        ),
+        portfolioPlaceholder: 'Link Portfolio'
+      };
+    } else {
+      return {
+        portfolioLabel: <>Portofolio <span className="text-[#F82F1E]">*</span></>,
+        portfolioPlaceholder: 'Link Portfolio'
+      };
+    }
+  };
+
+  const { portfolioLabel, portfolioPlaceholder } = getPortfolioLabel();
 
   return (
     <>
@@ -130,7 +187,7 @@ const InternshipRegisterView = () => {
                     label="Division"
                     name="division"
                     placeholder="Choose division"
-                    onChange={formik.handleChange}
+                    onChange={handleDivisionChange}
                     error={formik.errors.division}
                     suffix={<img src="/svg/arrow-down.svg" alt="arrow down" />}
                     required
@@ -155,9 +212,9 @@ const InternshipRegisterView = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
                   <RecruitmentTextInputField
                     className="mb-8 lg:mb-0"
-                    label="Portfolio"
+                    label= {portfolioLabel}
                     name="portfolio"
-                    placeholder="Link Portfolio"
+                    placeholder={portfolioPlaceholder}
                     onChange={formik.handleChange}
                     error={formik.errors.portfolio}
                     suffix={<img src="/svg/link.svg" alt="link" />}

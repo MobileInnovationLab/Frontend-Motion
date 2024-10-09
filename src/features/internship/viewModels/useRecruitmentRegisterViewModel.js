@@ -177,6 +177,15 @@ export const divisionOptions = [
   { value: "Mobile Programming", label: "Mobile Programming" },
 ];
 
+export const linkSoal = [
+  // BMC A - E
+  'https://docs.google.com/document/d/1KnKYQrLAR8wS1wAUk0LhM4jg2m270QKHTeC2Fb5rQq4/edit?tab=t.0',
+  'https://docs.google.com/document/d/1_4FQHokncRDECn3vr7Lrc41uq96Bf3KpE6sTygU5eCk/edit?tab=t.0',
+  'https://docs.google.com/document/d/1vBorrPJwFQ-Z8zNg-pqJR0q2VFs67ArW-MZTlq4oJPI/edit?tab=t.0',
+  'https://docs.google.com/document/d/1UlF8VrWtdP47YIscbKOiOqYKqes0ZBtyEoQn-OTXBX4/edit?tab=t.0',
+  'https://docs.google.com/document/d/1CBd67CNXef670CjRmI_brbpPeB906jg2xloP1WxEIL8/edit?tab=t.0',
+]
+
 export default function useRecruitmentRegisterViewModel() {
   const router = useRouter();
   const formik = useFormik({
@@ -217,7 +226,9 @@ export default function useRecruitmentRegisterViewModel() {
           /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
           "Please provide a valid URL."
         ),
-      portfolio: Yup.string().matches(
+      portfolio: Yup.string()
+      .required("The portfolio/folder link field is required")
+      .matches(
         /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
         "Please provide a valid URL."
       ),
