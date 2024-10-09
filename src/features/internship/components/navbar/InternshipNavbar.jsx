@@ -122,7 +122,7 @@ const InternshipNavbar = ({ onNavigation, isFixed = true }) => {
                   <a
                     href="#"
                     onClick={() => handleNavigation(row.id)}
-                    className="hover:text-[#332C2B] transition ease-out duration-300"
+                    className="relative w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
                   >
                     {row.label}
                   </a>
@@ -157,13 +157,13 @@ const InternshipNavbar = ({ onNavigation, isFixed = true }) => {
               />
             </svg>
           </button>
-          <Link
+          {/* <Link
             href="/register"
             passHref
             className="bg-[#332C2B] text-white text-[inter] text-[16px] rounded-full px-8 py-3 hover:scale-110 transition duration-400 hidden lg:block"
           >
             Join Us!
-          </Link>
+          </Link> */}
         </div>
       </nav>
       <div

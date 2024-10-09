@@ -47,32 +47,36 @@ const InternshipView = () => {
       <InternshipNavbar onNavigation={handleNavigation} />
       <section
         ref={homeRef}
-        className="w-full bg-[url('/images/recruitment/recruitment-landing-bg.png')] bg-cover bg-no-repeat bg-[center_bottom_0rem]"
+        className="relative w-full bg-[url('/images/recruitment/aslab-member.jpg')] bg-cover bg-no-repeat bg-[top_bottom_0rem]"
       >
-        <div className="container w-full mx-auto flex justify-between flex-col lg:flex-row items-center pb-40 pt-32">
+        <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
+
+        <div className="container w-full mx-auto flex flex-col items-start p-48 relative z-0">
           <motion.div
-            className="font-bold font-[rubik] text-[30px] lg:text-[60px] text-white text-center lg:text-left mb-10 lg:mb-0"
+            className="font-bold font-[inter] text-[30px] lg:text-[60px] text-white text-center lg:text-left mb-10 lg:mb-0"
             initial={{ y: "10px", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ type: "spring", duration: 2, bounce: 0 }}
           >
-            <span className="bg-black rounded-lg px-[35px] py-[7px]">
-              Internship
-            </span>{" "}
-            in Mobile Innovation Laboratory
+            Internship <br /> in Mobile Innovation Laboratory
           </motion.div>
           <motion.div
-            className="w-2/3 h-auto lg:h-[30rem] pt-5 lg:pt-0"
+            className="font-normal font-[inter] text-[30px] lg:text-[25px] text-white text-center lg:text-left mb-10 lg:mb-8"
             initial={{ y: "10px", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ type: "spring", duration: 2, bounce: 0 }}
           >
-            <img
-              src="/images/recruitment/recruitment-landing.png"
-              className="w-full h-full object-contain"
-              alt="Recruitment Landing"
-            />
+            Boost your skills with Mobile Innovation Laboratory, where{" "}
+            {"you'll"} work on real-world projects in UI/UX, Mobile Programming,
+            and Digital Business
           </motion.div>
+          <Link
+            href="/register"
+            passHref
+            className="bg-[#F82F1E] font-bold text-white text-[inter] text-[16px] rounded-full px-8 py-3 hover:scale-110 transition duration-400 hidden lg:inline-block"
+          >
+            Join Us!
+          </Link>
         </div>
       </section>
 
