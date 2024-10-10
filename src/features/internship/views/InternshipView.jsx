@@ -100,6 +100,9 @@ const InternshipView = () => {
         <h1 className="text-center font-[rubik] font-bold text-[28px] lg:text-[48px]">
           Internship Activities
         </h1>
+        <p className="text-center font-light text-[#6A6A6A]">
+          Motion Internship by Motion Lab provides Telkom University students with experience in Digital Business, UI/UX Design, and Mobile <span><br/></span> Programming over 8 sessions.
+        </p>
         <div className="flex flex-col lg:flex-row align-items-center mt-14 container justify-content-center m-auto">
           <div className="w-full h-[507px] bg-black rounded-lg me-10">
             <img
@@ -108,89 +111,23 @@ const InternshipView = () => {
               alt="Internship Activities"
             />
           </div>
-          <div className="flex flex-col justify-between bg-white text-left px-10 py-10 rounded-lg lg:w-3/4">
-            {isSlided ? (
-              <div>
-                <h2 className="text-[24px] font-[inter] font-bold mb-8">
-                  What is Internship?
-                </h2>
-                <p className="text-[18px] font-[inter] font-light text-[#ACACAC]">
-                  Motion Internship is organized by Motion Lab aims to recruit
-                  new members for Motion Lab. Offering Telkom University
-                  students from diverse majors the chance to gain experience.
-                  Motion Lab has divisions like Digital Business, UI/UX
-                  Designer, and Mobile Programming, and the internship lasts for
-                  8 sessions or around 2 months.
-                </p>
-              </div>
-            ) : (
-              <div>
-                <h2 className="text-[24px] font-[inter] font-bold mb-8">
-                  What activities are planned?
-                </h2>
-                <p className="text-[18px] font-[inter] font-light text-[#ACACAC]">
-                  During the internship at Motion Lab, prospective members will
-                  deepen their knowledge related to the chosen division. The
-                  main activities in Motion Internship includes:
-                </p>
-                <ul className="text-[18px] font-[inter] font-light text-[#ACACAC]">
-                  <li>1. Choosing a division</li>
-                  <li>2. Participating in study groups</li>
-                  <li>3. Completing significant tasks</li>
-                  <li>4. Joining Motion Hack</li>
-                </ul>
-              </div>
-            )}
-            <div className="flex ms-auto mt-5 lg:mt-0">
-              <button
-                onClick={() => {
-                  setIsSlided(!isSlided);
-                }}
-                className="
-                border rounded-full p-5 border-[#858585] group 
-                hover:bg-[#F82F1E] hover:border-white
-                transition delay-50
-              "
-              >
-                <svg
-                  className="
-                  group-hover:fill-white
-                  transition delay-50
-                "
-                  width="16"
-                  height="18"
-                  viewBox="0 0 16 18"
-                  fill="#6A6A6A"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1.05382 10.6965C1.13858 10.7835 1.4586 11.1555 1.7567 11.4615C3.50438 13.386 8.06357 16.536 10.4498 17.4975C10.8122 17.652 11.7284 17.979 12.218 18C12.687 18 13.1342 17.892 13.5609 17.673C14.0928 17.367 14.5195 16.8855 14.7533 16.317C14.9038 15.9225 15.1376 14.742 15.1376 14.721C15.3714 13.4295 15.5 11.331 15.5 9.012C15.5 6.8025 15.3714 4.7895 15.18 3.4785C15.1581 3.4575 14.9243 1.9905 14.6685 1.488C14.1995 0.57 13.2832 0 12.3027 0H12.218C11.5794 0.0225 10.2365 0.5925 10.2365 0.6135C7.97881 1.5765 3.52484 4.572 1.73478 6.5625C1.73478 6.5625 1.23064 7.074 1.01145 7.3935C0.669508 7.8525 0.5 8.421 0.5 8.9895C0.5 9.624 0.691427 10.215 1.05382 10.6965Z" />
-                </svg>
-              </button>
-              <div className="px-2"></div>
-              <button
-                onClick={() => {
-                  setIsSlided(!isSlided);
-                }}
-                className="
-                border rounded-full p-5 border-[#858585] group 
-                hover:bg-[#F82F1E] hover:border-white
-                transition delay-50
-              "
-              >
-                <svg
-                  className="
-                  group-hover:fill-white
-                  transition delay-50
-                "
-                  width="16"
-                  height="18"
-                  viewBox="0 0 16 18"
-                  fill="#6A6A6A"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M14.9462 10.6965C14.8614 10.7835 14.5414 11.1555 14.2433 11.4615C12.4956 13.386 7.93643 16.536 5.55017 17.4975C5.18777 17.652 4.27155 17.979 3.78203 18C3.31296 18 2.86581 17.892 2.43911 17.673C1.90721 17.367 1.48052 16.8855 1.24671 16.317C1.0962 15.9225 0.862397 14.742 0.862397 14.721C0.628592 13.4295 0.5 11.331 0.5 9.012C0.5 6.8025 0.628592 4.7895 0.820019 3.4785C0.841939 3.4575 1.07574 1.9905 1.33147 1.488C1.80054 0.57 2.71676 0 3.69727 0H3.78203C4.4206 0.0225 5.76352 0.5925 5.76352 0.6135C8.02119 1.5765 12.4752 4.572 14.2652 6.5625C14.2652 6.5625 14.7694 7.074 14.9886 7.3935C15.3305 7.8525 15.5 8.421 15.5 8.9895C15.5 9.624 15.3086 10.215 14.9462 10.6965" />
-                </svg>
-              </button>
+          <div className="flex flex-col justify-between bg-white text-left px-6 py-8 rounded-lg lg:w-3/4">
+            <div>
+              <h2 className="text-[24px] font-bold font-[inter] mb-6">
+              What activities are planned?
+              </h2>
+              <p className="text-[18px] font-light text-[#6A6A6A] mb-2">
+              During the internship at Motion Lab, prospective 
+              members will deepen their knowledge related to the 
+              chosen division. The main activities in Motion Internship 
+              include:
+              </p>
+              <ul className="text-[18px] font-light text-[#6A6A6A]">
+                <li>1. Choosing a division</li>
+                <li>2. Participating in study groups</li>
+                <li>3. Completing significant tasks</li>
+                <li>4. Joining Motion Hack</li>
+              </ul>
             </div>
           </div>
         </div>
