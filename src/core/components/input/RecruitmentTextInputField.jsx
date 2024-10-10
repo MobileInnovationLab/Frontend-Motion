@@ -22,7 +22,7 @@ const RecruitmentTextInputField = ({
         {link && (
           <>
             <br />
-            <a className="text-[#ACACAC]" href={link}>
+            <a className="text-[#ACACAC]" target="blank" href={link}>
               {link}{" "}
             </a>
           </>

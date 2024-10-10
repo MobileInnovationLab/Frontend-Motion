@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@material-tailwind/react": "^2.1.10",
     "axios": "^0.21.4",
     "formik": "^2.4.5",
     "framer-motion": "^10.16.4",
