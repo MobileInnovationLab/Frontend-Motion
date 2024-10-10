@@ -10,6 +10,7 @@ on:
 
 jobs:
   deploy_preview:
+    if: contains(github.event.ref, 'development')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -23,6 +24,7 @@ jobs:
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
 
   deploy_production:
+    if: contains(github.event.ref, 'production')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
