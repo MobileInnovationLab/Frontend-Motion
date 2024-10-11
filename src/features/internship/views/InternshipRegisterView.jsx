@@ -116,6 +116,7 @@ const InternshipRegisterView = () => {
                 
                 <button
                   className=" lg:w-1/3 w-auto bg-[#C2271A] text-white text-[inter] text-[16px] rounded-full px-8 py-4 hover:opacity-90 transition duration-800 items-center"
+                  type="button"
                   onClick={openModal}
                 >
                   Panduan Pengerjaan
