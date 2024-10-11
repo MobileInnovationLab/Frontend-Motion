@@ -218,7 +218,7 @@ const CurriculumMobileProgrammingView = () => {
           <div
             className="flex hover:cursor-pointer"
             onClick={() => {
-              setPlatforms((prev) => ({ ...prev, android: !prev.android }));
+              setPlatforms((prev) => ({ ...prev, flutter: !prev.flutter }));
             }}
           >
             <h1 className="text-[32px] text-[inter] font-bold text-[#332C2B] me-2">
