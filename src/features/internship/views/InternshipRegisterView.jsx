@@ -11,6 +11,7 @@ import RecruitmentTextInputField from "@/core/components/input/RecruitmentTextIn
 import RecruitmentSelectInputField from "@/core/components/input/RecruitmentSelectInputField";
 import InternshipNavbar from "../components/navbar/InternshipNavbar";
 import { useState } from 'react';
+import Modal from './InternshipRegisterGuideModal';
 
 
 const InternshipRegisterView = () => {
@@ -70,6 +71,10 @@ const InternshipRegisterView = () => {
 
   const { portfolioLabel, portfolioPlaceholder } = getPortfolioLabel();
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <>
       <InternshipNavbar isFixed={false} />
@@ -108,6 +113,15 @@ const InternshipRegisterView = () => {
                 onSubmit={formik.handleSubmit}
                 className="flex flex-col gap-y-7"
               >
+                
+                <button
+                  className=" lg:w-1/3 w-auto bg-[#C2271A] text-white text-[inter] text-[16px] rounded-full px-8 py-4 hover:opacity-90 transition duration-800 items-center"
+                  onClick={openModal}
+                >
+                  Panduan Pengerjaan
+                </button>
+                <Modal isOpen={isModalOpen} onClose={closeModal} />
+
                 <RecruitmentTextInputField
                   label="Full Name"
                   name="name"
