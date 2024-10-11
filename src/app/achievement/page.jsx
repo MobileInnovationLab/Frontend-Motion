@@ -21,7 +21,7 @@ function Achievement() {
 
   return (
     <div className={styles["main-body"]}>
-      <GeneralSeo title="Achievement" />
+      <GeneralSeo title="Achievement"/>
       <Navbar />
 
       <BigTitle>Achievement</BigTitle>

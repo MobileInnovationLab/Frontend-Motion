@@ -74,7 +74,7 @@ const InternshipRegisterView = () => {
     <>
       <InternshipNavbar isFixed={false} />
 
-      {process.env.NEXT_PUBLIC_RECRUITMENT_CLOSED == "true" ? (
+      {process.env.NEXT_PUBLIC_RECRUITMENT_CLOSED == "false" ? (
         <section className="flex flex-col items-center justify-center container mx-auto px-10 lg:px-[20rem] text-center my-20">
           <img src="/images/internship/registration-closed.png" alt="" />
           <h2 className="font-semibold text-[18px] lg:text-[32px] text-[rubik]">
@@ -90,7 +90,7 @@ const InternshipRegisterView = () => {
         <>
           <section className="bg-[url('/images/recruitment/sub-header.png')] bg-cover bg-no-repeat bg-[center_bottom_0rem] w-full">
             <h1 className="text-[28px] lg:text-[48px] font-bold font-[rubik] text-center text-white flex justify-center py-40">
-              Recruitment Member 8.0
+              Recruitment Member 9.0
             </h1>
           </section>
 
@@ -233,6 +233,17 @@ const InternshipRegisterView = () => {
 
                 <hr />
 
+                  <RecruitmentTextInputField
+                    label="Upload Twibbon"
+                    link="https://drive.google.com/drive/folders/17HuK56sKRj2ltc09YpQLfnJhuWn3LXTn?usp=sharing"
+                    name="line_evidence"
+                    placeholder="Link Instagram Post"
+                    onChange={formik.handleChange}
+                    error={formik.errors.twibbon_evidence}
+                    required
+                    suffix={<img src="/svg/link.svg" alt="link" />}
+                  />
+
                 <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
                   <RecruitmentTextInputField
                     label="Motivational Video"
@@ -302,6 +313,7 @@ const InternshipRegisterView = () => {
                     suffix={<img src="/svg/link.svg" alt="link" />}
                   />
                 </div>
+                
 
                 <button
                   // disabled={formik.isSubmitting}

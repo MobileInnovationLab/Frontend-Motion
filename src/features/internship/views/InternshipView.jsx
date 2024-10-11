@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { Carousel } from "@material-tailwind/react";
 import Link from "next/link";
 import RecruitmentAnnouncementCard from "./InternshipAnnouncementView";
 import InternshipNavbar from "../components/navbar/InternshipNavbar";
@@ -47,31 +48,41 @@ const InternshipView = () => {
       <InternshipNavbar onNavigation={handleNavigation} />
       <section
         ref={homeRef}
-        className="w-full bg-[url('/images/recruitment/recruitment-landing-bg.png')] bg-cover bg-no-repeat bg-[center_bottom_0rem]"
+        className="relative w-full bg-[url('/images/recruitment/aslab-member.jpg')] bg-cover bg-no-repeat bg-[top_bottom_0rem]"
       >
-        <div className="container w-full mx-auto flex justify-between flex-col lg:flex-row items-center pb-40 pt-32">
+        <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
+
+        <div className="container w-full mx-auto flex flex-col items-start py-20 md:p-48 relative z-0">
           <motion.div
-            className="font-bold font-[rubik] text-[30px] lg:text-[60px] text-white text-center lg:text-left mb-10 lg:mb-0"
+            className="font-bold font-[inter] text-[30px] lg:text-[60px] text-white text-left mb-2 lg:mb-0"
             initial={{ y: "10px", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ type: "spring", duration: 2, bounce: 0 }}
           >
-            <span className="bg-black rounded-lg px-[35px] py-[7px]">
-              Internship
-            </span>{" "}
-            in Mobile Innovation Laboratory
+            Internship <br /> in Mobile Innovation Laboratory
           </motion.div>
           <motion.div
-            className="w-2/3 h-auto lg:h-[30rem] pt-5 lg:pt-0"
+            className="font-normal font-[inter] text-[12px] lg:text-[25px] text-white text-left mb-5 lg:mb-8"
             initial={{ y: "10px", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ type: "spring", duration: 2, bounce: 0 }}
           >
-            <img
-              src="/images/recruitment/recruitment-landing.png"
-              className="w-full h-full object-contain"
-              alt="Recruitment Landing"
-            />
+            Boost your skills with Mobile Innovation Laboratory, where{" "}
+            {"you'll"} work on real-world projects in UI/UX, Mobile Programming,
+            and Digital Business
+          </motion.div>
+          <motion.div
+            initial={{ y: "10px", opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ type: "spring", duration: 2, bounce: 0 }}
+          >
+            <Link
+              href="/register"
+              passHref
+              className="bg-[#F82F1E] font-bold text-white text-[inter] text-[12px] lg:text-[16px] rounded-full px-8 py-3 hover:scale-110 transition duration-400 inline-block"
+            >
+              Join Us!
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -96,97 +107,69 @@ const InternshipView = () => {
         <h1 className="text-center font-[rubik] font-bold text-[28px] lg:text-[48px]">
           Internship Activities
         </h1>
+        <h6 className="text-center font-[rubik] text-[#6A6A6A] lg:text-[18px] leading-10 px-10 lg:px-40">
+          Motion Internship by Motion Lab provides Telkom University students
+          with experience in Digital Business, UI/UX Design, and Mobile
+          Programming over 8 sessions.
+        </h6>
         <div className="flex flex-col lg:flex-row align-items-center mt-14 container justify-content-center m-auto">
-          <div className="w-full h-[507px] bg-black rounded-lg me-10">
-            <img
-              src="/images/internship/aslab-member.jpg"
-              className="object-cover w-full h-full rounded-lg"
-              alt="Internship Activities"
-            />
+          <div className="w-full overflow-hidden h-[507px] bg-black rounded-lg me-10">
+            <Carousel
+              className="rounded-xl"
+              autoplay="true"
+              loop="true"
+              navigation={({ setActiveIndex, activeIndex, length }) => (
+                <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
+                  {new Array(length).fill("").map((_, i) => (
+                    <span
+                      key={i}
+                      className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
+                        activeIndex === i ? "w-8 bg-red-500" : "w-4 bg-red-300"
+                      }`}
+                      onClick={() => setActiveIndex(i)}
+                    />
+                  ))}
+                </div>
+              )}
+            >
+              <img
+                src="/images/internship/aslab-member.jpg"
+                className="object-cover w-full h-full rounded-lg"
+                alt="Internship Activities"
+              />
+              <img
+                src="/images/internship/aslab-member.jpg"
+                className="object-cover w-full h-full rounded-lg"
+                alt="Internship Activities"
+              />
+              <img
+                src="/images/internship/aslab-member.jpg"
+                className="object-cover w-full h-full rounded-lg"
+                alt="Internship Activities"
+              />
+              <img
+                src="/images/internship/aslab-member.jpg"
+                className="object-cover w-full h-full rounded-lg"
+                alt="Internship Activities"
+              />
+            </Carousel>
           </div>
           <div className="flex flex-col justify-between bg-white text-left px-10 py-10 rounded-lg lg:w-3/4">
-            {isSlided ? (
-              <div>
-                <h2 className="text-[24px] font-[inter] font-bold mb-8">
-                  What is Internship?
-                </h2>
-                <p className="text-[18px] font-[inter] font-light text-[#ACACAC]">
-                  Motion Internship is organized by Motion Lab aims to recruit
-                  new members for Motion Lab. Offering Telkom University
-                  students from diverse majors the chance to gain experience.
-                  Motion Lab has divisions like Digital Business, UI/UX
-                  Designer, and Mobile Programming, and the internship lasts for
-                  8 sessions or around 2 months.
-                </p>
-              </div>
-            ) : (
-              <div>
-                <h2 className="text-[24px] font-[inter] font-bold mb-8">
-                  What activities are planned?
-                </h2>
-                <p className="text-[18px] font-[inter] font-light text-[#ACACAC]">
-                  During the internship at Motion Lab, prospective members will
-                  deepen their knowledge related to the chosen division. The
-                  main activities in Motion Internship includes:
-                </p>
-                <ul className="text-[18px] font-[inter] font-light text-[#ACACAC]">
-                  <li>1. Choosing a division</li>
-                  <li>2. Participating in study groups</li>
-                  <li>3. Completing significant tasks</li>
-                  <li>4. Joining Motion Hack</li>
-                </ul>
-              </div>
-            )}
-            <div className="flex ms-auto mt-5 lg:mt-0">
-              <button
-                onClick={() => {
-                  setIsSlided(!isSlided);
-                }}
-                className="
-                border rounded-full p-5 border-[#858585] group 
-                hover:bg-[#F82F1E] hover:border-white
-                transition delay-50
-              "
-              >
-                <svg
-                  className="
-                  group-hover:fill-white
-                  transition delay-50
-                "
-                  width="16"
-                  height="18"
-                  viewBox="0 0 16 18"
-                  fill="#6A6A6A"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1.05382 10.6965C1.13858 10.7835 1.4586 11.1555 1.7567 11.4615C3.50438 13.386 8.06357 16.536 10.4498 17.4975C10.8122 17.652 11.7284 17.979 12.218 18C12.687 18 13.1342 17.892 13.5609 17.673C14.0928 17.367 14.5195 16.8855 14.7533 16.317C14.9038 15.9225 15.1376 14.742 15.1376 14.721C15.3714 13.4295 15.5 11.331 15.5 9.012C15.5 6.8025 15.3714 4.7895 15.18 3.4785C15.1581 3.4575 14.9243 1.9905 14.6685 1.488C14.1995 0.57 13.2832 0 12.3027 0H12.218C11.5794 0.0225 10.2365 0.5925 10.2365 0.6135C7.97881 1.5765 3.52484 4.572 1.73478 6.5625C1.73478 6.5625 1.23064 7.074 1.01145 7.3935C0.669508 7.8525 0.5 8.421 0.5 8.9895C0.5 9.624 0.691427 10.215 1.05382 10.6965Z" />
-                </svg>
-              </button>
-              <div className="px-2"></div>
-              <button
-                onClick={() => {
-                  setIsSlided(!isSlided);
-                }}
-                className="
-                border rounded-full p-5 border-[#858585] group 
-                hover:bg-[#F82F1E] hover:border-white
-                transition delay-50
-              "
-              >
-                <svg
-                  className="
-                  group-hover:fill-white
-                  transition delay-50
-                "
-                  width="16"
-                  height="18"
-                  viewBox="0 0 16 18"
-                  fill="#6A6A6A"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M14.9462 10.6965C14.8614 10.7835 14.5414 11.1555 14.2433 11.4615C12.4956 13.386 7.93643 16.536 5.55017 17.4975C5.18777 17.652 4.27155 17.979 3.78203 18C3.31296 18 2.86581 17.892 2.43911 17.673C1.90721 17.367 1.48052 16.8855 1.24671 16.317C1.0962 15.9225 0.862397 14.742 0.862397 14.721C0.628592 13.4295 0.5 11.331 0.5 9.012C0.5 6.8025 0.628592 4.7895 0.820019 3.4785C0.841939 3.4575 1.07574 1.9905 1.33147 1.488C1.80054 0.57 2.71676 0 3.69727 0H3.78203C4.4206 0.0225 5.76352 0.5925 5.76352 0.6135C8.02119 1.5765 12.4752 4.572 14.2652 6.5625C14.2652 6.5625 14.7694 7.074 14.9886 7.3935C15.3305 7.8525 15.5 8.421 15.5 8.9895C15.5 9.624 15.3086 10.215 14.9462 10.6965" />
-                </svg>
-              </button>
+            <div>
+              <h2 className="text-[24px] font-[inter] font-bold mb-8">
+                What activities are planned?
+              </h2>
+              <p className="text-[18px] font-[inter] font-light text-[#ACACAC] leading-10">
+                During the internship at Motion Lab, prospective members will
+                deepen their knowledge related to the chosen division. The main
+                activities in Motion Internship include:
+              </p>
+              <ul className="text-[18px] font-[inter] font-light text-[#ACACAC] leading-10">
+                <li>1. Choosing a division</li>
+                <li>2. Participating in study groups</li>
+                <li>3. Completing significant tasks</li>
+                <li>4. Joining Motion Hack</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -228,7 +211,7 @@ const InternshipView = () => {
                 01
               </div>
               <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">
-                Active Telkom University undergraduate student batch 2021-2023
+                Active Telkom University undergraduate student batch 2022-2024
                 from all major
               </p>
             </div>
@@ -246,11 +229,8 @@ const InternshipView = () => {
                 05
               </div>
               <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">
-                Portofolio <br />
-                <span className="text-red-500">
-                  Only required for UI/UX Design and Mobile Programming
-                  applicant
-                </span>
+                Portofolio
+                <span className="text-[inter] text-[18px] text-red-500">*</span>
               </p>
             </div>
             <div className="h-[50px] px-10 my-2">
@@ -268,7 +248,7 @@ const InternshipView = () => {
               </div>
               <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">
                 Wiling to commit for the whole program and membership duration
-                of 1 year
+                of 1,5 year
               </p>
             </div>
             <div className="h-[50px] px-10 my-2">
@@ -286,6 +266,9 @@ const InternshipView = () => {
               </div>
               <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">
                 Motivation Video
+                <span className="text-[inter] text-[18px] text-red-500">
+                  **
+                </span>
               </p>
             </div>
             <div className="h-[50px] px-10 my-2">
@@ -319,7 +302,8 @@ const InternshipView = () => {
                 07
               </div>
               <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">
-                Repost our open recruitment post on Instagram Story
+                Repost our open recruitment post on Instagram Story + Upload
+                Twibbon
               </p>
             </div>
             <div className="h-[50px] px-10 my-2 lg:hidden block">
@@ -339,6 +323,14 @@ const InternshipView = () => {
                 KSM for current semester
               </p>
             </div>
+          </div>
+          <div className="flex flex-col items-center lg:items-start gap-y-2 mt-8 lg:mt-0">
+            <span className="text-[10px] md:text-[16px] font-semibold italic text-red-500">
+              *Only required for UI/UX Design and Mobile Programming applicant
+            </span>
+            <span className="text-[10px] md:text-[16px] font-semibold italic text-red-500">
+              **Explanation about Motivation Video on the next slide
+            </span>
           </div>
         </div>
       </section>
@@ -468,57 +460,108 @@ const InternshipView = () => {
 
         <div className="flex flex-col lg:flex-row gap-y-10 gap-x-8 mt-14">
           <Link
-            className="bg-white p-4 pb-10 w-full hover:cursor-pointer hover:scale-105 transition duration-200"
+            className="bg-white pb-10 w-full hover:cursor-pointer transition duration-200"
             href="/curriculum/digital-business"
           >
-            <img
-              className="w-full"
-              src="/images/internship/curriculum-db.png"
-              alt="Curriculum Digital Business"
-            />
-            <h2 className="text-[rubik] font-semibold text-[22px] my-3">
-              Digital Business
-            </h2>
-            <p className="text-[#6A6A6A] text-inter text-[16px]">
-              Learn to use digital technologies, tools, and processes tp create,
-              deliver, and optimize business outcome.
-            </p>
+            <div className="relative group">
+              <img
+                className="w-full transition duration-200 ease-in-out"
+                src="/images/internship/curriculum-db-new.png"
+                alt="Curriculum Digital Business"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-red-600 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out flex justify-end items-end">
+                <span className="flex p-2 gap-x-1 text-white font-semibold text-[14px]">
+                  Lihat lebih banyak
+                  <img src="/svg/detail-arrow-right.svg" alt="arrow-detail" />
+                </span>
+              </div>
+            </div>
+            <div className="p-4">
+              <div className="flex items-center gap-x-2">
+                <img
+                  className="w-10 h-10"
+                  src="/images/internship/logo-db.png"
+                  alt="logo-db"
+                />
+                <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+                  Digital Business
+                </h2>
+              </div>
+              <p className="text-[#6A6A6A] text-inter text-[16px]">
+                Learn to use digital technologies, tools, and processes to
+                create, deliver, and optimize business outcome.
+              </p>
+            </div>
           </Link>
-          <Link
-            className="bg-white p-4 pb-10 w-full hover:cursor-pointer hover:scale-105 transition duration-200"
-            href="/curriculum/ui-ux-designer"
-          >
-            <img
-              className="w-full"
-              src="/images/internship/curriculum-ui.png"
-              alt="Curriculum UI / UX Designer"
-            />
 
-            <h2 className="text-[rubik] font-semibold text-[22px] my-3">
-              UI / UX Designer
-            </h2>
-            <p className="text-[#6A6A6A] text-inter text-[16px]">
-              Learn to define user experience in digital product interaction and
-              apply solutions to mobile app design.
-            </p>
-          </Link>
           <Link
-            className="bg-white p-4 pb-10 w-full hover:cursor-pointer hover:scale-105 transition duration-200"
+            className="bg-white pb-10 w-full hover:cursor-pointer transition duration-200"
             href="/curriculum/mobile-programming"
           >
-            <img
-              className="w-full"
-              src="/images/internship/curriculum-mp.png"
-              alt="Curriculum Mobile Programming"
-            />
+            <div className="relative group">
+              <img
+                className="w-full transition duration-200 ease-in-out"
+                src="/images/internship/curriculum-mp-new.png"
+                alt="Curriculum Mobile Programming"
+              />
+              <div className="absolute p-2 inset-0 bg-gradient-to-t from-red-600 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out flex justify-end items-end">
+                <span className="flex gap-x-1 text-white font-semibold text-[14px]">
+                  Lihat lebih banyak
+                  <img src="/svg/detail-arrow-right.svg" alt="arrow-detail" />
+                </span>
+              </div>
+            </div>
+            <div className="p-4">
+              <div className="flex items-center gap-x-2">
+                <img
+                  className="w-10 h-10"
+                  src="/images/internship/logo-mp.png"
+                  alt="logo-mp"
+                />
+                <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+                  Mobile Programming
+                </h2>
+              </div>
+              <p className="text-[#6A6A6A] text-inter text-[16px]">
+                Learn to code and implement designs into Android, iOS, or
+                cross-platform mobile apps for user-ready use.
+              </p>
+            </div>
+          </Link>
 
-            <h2 className="text-[rubik] font-semibold text-[22px] my-3">
-              Mobile Programming
-            </h2>
-            <p className="text-[#6A6A6A] text-inter text-[16px]">
-              Learn to code and implement designs into Android, iOS, or
-              cross-platform mobile apps for user-ready use.
-            </p>
+          <Link
+            className="bg-white pb-10 w-full hover:cursor-pointer transition duration-200"
+            href="/curriculum/ui-ux-designer"
+          >
+            <div className="relative group">
+              <img
+                className="w-full transition duration-200 ease-in-out"
+                src="/images/internship/curriculum-uiux-new.png"
+                alt="Curriculum Mobile Programming"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-red-600 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out flex justify-end items-end">
+                <span className="flex p-2 gap-x-1 text-white font-semibold text-[14px]">
+                  Lihat lebih banyak
+                  <img src="/svg/detail-arrow-right.svg" alt="arrow-detail" />
+                </span>
+              </div>
+            </div>
+            <div className="p-4">
+              <div className="flex items-center gap-x-2">
+                <img
+                  className="w-10 h-10"
+                  src="/images/internship/logo-ui.png"
+                  alt="logo-ui"
+                />
+                <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+                  UI / UX Designer
+                </h2>
+              </div>
+              <p className="text-[#6A6A6A] text-inter text-[16px]">
+                Learn to define user experience in digital product interaction
+                and apply solutions to mobile app design.
+              </p>
+            </div>
           </Link>
         </div>
       </section>

@@ -205,6 +205,7 @@ export default function useRecruitmentRegisterViewModel() {
       whatsapp: "",
       yt_evidence: "",
       linkedin_evidence: "",
+      twibbon_evidence: "",
       line_evidence: "",
       instagram_evidence: "",
     },
@@ -282,6 +283,12 @@ export default function useRecruitmentRegisterViewModel() {
         ),
       linkedin_evidence: Yup.string()
         .required("The screenshot linkedin followed field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
+      twibbon_evidence: Yup.string()
+        .required("The screenshot upload twibbon field is required")
         .matches(
           /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
           "Please provide a valid URL."
