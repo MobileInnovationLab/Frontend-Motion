@@ -460,57 +460,108 @@ const InternshipView = () => {
 
         <div className="flex flex-col lg:flex-row gap-y-10 gap-x-8 mt-14">
           <Link
-            className="bg-white p-4 pb-10 w-full hover:cursor-pointer hover:scale-105 transition duration-200"
+            className="bg-white pb-10 w-full hover:cursor-pointer transition duration-200"
             href="/curriculum/digital-business"
           >
-            <img
-              className="w-full"
-              src="/images/internship/curriculum-db.png"
-              alt="Curriculum Digital Business"
-            />
-            <h2 className="text-[rubik] font-semibold text-[22px] my-3">
-              Digital Business
-            </h2>
-            <p className="text-[#6A6A6A] text-inter text-[16px]">
-              Learn to use digital technologies, tools, and processes tp create,
-              deliver, and optimize business outcome.
-            </p>
+            <div className="relative group">
+              <img
+                className="w-full transition duration-200 ease-in-out"
+                src="/images/internship/curriculum-db-new.png"
+                alt="Curriculum Digital Business"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-red-600 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out flex justify-end items-end">
+                <span className="flex p-2 gap-x-1 text-white font-semibold text-[14px]">
+                  Lihat lebih banyak
+                  <img src="/svg/detail-arrow-right.svg" alt="arrow-detail" />
+                </span>
+              </div>
+            </div>
+            <div className="p-4">
+              <div className="flex items-center gap-x-2">
+                <img
+                  className="w-10 h-10"
+                  src="/images/internship/logo-db.png"
+                  alt="logo-db"
+                />
+                <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+                  Digital Business
+                </h2>
+              </div>
+              <p className="text-[#6A6A6A] text-inter text-[16px]">
+                Learn to use digital technologies, tools, and processes to
+                create, deliver, and optimize business outcome.
+              </p>
+            </div>
           </Link>
-          <Link
-            className="bg-white p-4 pb-10 w-full hover:cursor-pointer hover:scale-105 transition duration-200"
-            href="/curriculum/ui-ux-designer"
-          >
-            <img
-              className="w-full"
-              src="/images/internship/curriculum-ui.png"
-              alt="Curriculum UI / UX Designer"
-            />
 
-            <h2 className="text-[rubik] font-semibold text-[22px] my-3">
-              UI / UX Designer
-            </h2>
-            <p className="text-[#6A6A6A] text-inter text-[16px]">
-              Learn to define user experience in digital product interaction and
-              apply solutions to mobile app design.
-            </p>
-          </Link>
           <Link
-            className="bg-white p-4 pb-10 w-full hover:cursor-pointer hover:scale-105 transition duration-200"
+            className="bg-white pb-10 w-full hover:cursor-pointer transition duration-200"
             href="/curriculum/mobile-programming"
           >
-            <img
-              className="w-full"
-              src="/images/internship/curriculum-mp.png"
-              alt="Curriculum Mobile Programming"
-            />
+            <div className="relative group">
+              <img
+                className="w-full transition duration-200 ease-in-out"
+                src="/images/internship/curriculum-mp-new.png"
+                alt="Curriculum Mobile Programming"
+              />
+              <div className="absolute p-2 inset-0 bg-gradient-to-t from-red-600 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out flex justify-end items-end">
+                <span className="flex gap-x-1 text-white font-semibold text-[14px]">
+                  Lihat lebih banyak
+                  <img src="/svg/detail-arrow-right.svg" alt="arrow-detail" />
+                </span>
+              </div>
+            </div>
+            <div className="p-4">
+              <div className="flex items-center gap-x-2">
+                <img
+                  className="w-10 h-10"
+                  src="/images/internship/logo-mp.png"
+                  alt="logo-mp"
+                />
+                <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+                  Mobile Programming
+                </h2>
+              </div>
+              <p className="text-[#6A6A6A] text-inter text-[16px]">
+                Learn to code and implement designs into Android, iOS, or
+                cross-platform mobile apps for user-ready use.
+              </p>
+            </div>
+          </Link>
 
-            <h2 className="text-[rubik] font-semibold text-[22px] my-3">
-              Mobile Programming
-            </h2>
-            <p className="text-[#6A6A6A] text-inter text-[16px]">
-              Learn to code and implement designs into Android, iOS, or
-              cross-platform mobile apps for user-ready use.
-            </p>
+          <Link
+            className="bg-white pb-10 w-full hover:cursor-pointer transition duration-200"
+            href="/curriculum/ui-ux-designer"
+          >
+            <div className="relative group">
+              <img
+                className="w-full transition duration-200 ease-in-out"
+                src="/images/internship/curriculum-uiux-new.png"
+                alt="Curriculum Mobile Programming"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-red-600 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out flex justify-end items-end">
+                <span className="flex p-2 gap-x-1 text-white font-semibold text-[14px]">
+                  Lihat lebih banyak
+                  <img src="/svg/detail-arrow-right.svg" alt="arrow-detail" />
+                </span>
+              </div>
+            </div>
+            <div className="p-4">
+              <div className="flex items-center gap-x-2">
+                <img
+                  className="w-10 h-10"
+                  src="/images/internship/logo-ui.png"
+                  alt="logo-ui"
+                />
+                <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+                  UI / UX Designer
+                </h2>
+              </div>
+              <p className="text-[#6A6A6A] text-inter text-[16px]">
+                Learn to define user experience in digital product interaction
+                and apply solutions to mobile app design.
+              </p>
+            </div>
           </Link>
         </div>
       </section>
