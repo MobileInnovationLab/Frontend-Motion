@@ -13,7 +13,10 @@ const InternshipView = () => {
   const requirementRef = useRef(null);
   const benefitRef = useRef(null);
   const curriculumRef = useRef(null);
-  const [isSlided, setIsSlided] = useState(true);
+  const defaultRouteImage = "/images/recruitment/route-map-default.png";
+  const [activeImage, setActiveImage] = useState(defaultRouteImage);
+  const [activeSection, setActiveSection] = useState(null);
+  // const [isSlided, setIsSlided] = useState(true);
 
   function handleNavigation(id) {
     switch (id) {
@@ -42,6 +45,16 @@ const InternshipView = () => {
         break;
     }
   }
+
+  const handleClick = (imageSrc, section) => {
+    if (activeImage === imageSrc) {
+      setActiveImage(defaultRouteImage);
+      setActiveSection(null);
+    } else {
+      setActiveImage(imageSrc);
+      setActiveSection(section);
+    }
+  };
 
   return (
     <div className="bg-[#FCF6F6]">
@@ -89,7 +102,7 @@ const InternshipView = () => {
 
       <div className="my-12"></div>
 
-      {process.env.NEXT_PUBLIC_RECRUITMENT_ANNOUNCEMENT == "true" && (
+      {process.env.NEXT_PUBLIC_RECRUITMENT_ANNOUNCEMENT == "false" && (
         <RecruitmentAnnouncementCard />
       )}
 
@@ -133,28 +146,28 @@ const InternshipView = () => {
               )}
             >
               <img
-                src="/images/internship/aslab-member.jpg"
+                src="/images/internship/activity-internship-1.png"
                 className="object-cover w-full h-full rounded-lg"
                 alt="Internship Activities"
               />
               <img
-                src="/images/internship/aslab-member.jpg"
+                src="/images/internship/activity-internship-2.png"
                 className="object-cover w-full h-full rounded-lg"
                 alt="Internship Activities"
               />
               <img
-                src="/images/internship/aslab-member.jpg"
+                src="/images/internship/activity-internship-3.png"
                 className="object-cover w-full h-full rounded-lg"
                 alt="Internship Activities"
               />
               <img
-                src="/images/internship/aslab-member.jpg"
+                src="/images/internship/activity-internship-4.png"
                 className="object-cover w-full h-full rounded-lg"
                 alt="Internship Activities"
               />
             </Carousel>
           </div>
-          <div className="flex flex-col justify-between bg-white text-left px-10 py-10 rounded-lg lg:w-3/4">
+          <div className="flex flex-col justify-between bg-white text-left p-10 rounded-lg lg:w-3/4">
             <div>
               <h2 className="text-[24px] font-[inter] font-bold mb-8">
                 What activities are planned?
@@ -185,12 +198,104 @@ const InternshipView = () => {
         <h1 className="text-center lg:text-left font-[rubik] font-bold text-[28px] lg:text-[48px] container mx-auto">
           Route Map Motionlab
         </h1>
-        <div className="mt-10 lg:mt-0">
-          <img
-            src="/images/recruitment/route-map.png"
-            className="w-full object-cover"
-            alt="Route Map"
-          />
+        <div className="mt-10 lg:mt-5 ">
+          <div className="container mx-auto flex flex-row gap-x-10 ">
+            <div className="w-1/3 flex flex-col gap-y-10">
+              <section
+                className={`flex items-center bg-white border rounded-2xl p-10 gap-x-5 cursor-pointer ${
+                  activeSection === "section1"
+                    ? "border-2 border-[#C1271A]"
+                    : "border-gray-400 hover:border-red-300 active:border-[#C1271A]"
+                }`}
+                onClick={() =>
+                  handleClick(
+                    "/images/recruitment/route-map.png",
+                    "section1"
+                  )
+                }
+              >
+                <img src="/svg/route-map-oprec.svg" alt="Logo Oprec" />
+                <div>
+                  <h2 className="text-[#C1271A] font-semibold text-sm">
+                    Step 1
+                  </h2>
+                  <h1 className="font-semibold text-base">Open Recruitment</h1>
+                </div>
+              </section>
+              <section
+                className={`flex items-center bg-white border rounded-2xl p-10 gap-x-5 cursor-pointer ${
+                  activeSection === "section2"
+                    ? "border-2 border-[#C1271A]"
+                    : "border-gray-400 hover:border-red-300 active:border-[#C1271A]"
+                }`}
+                onClick={() =>
+                  handleClick(
+                    "/images/internship/activity-internship-2.png",
+                    "section2"
+                  )
+                }
+              >
+                <img src="/svg/route-map-intern.svg" alt="Logo Intern" />
+                <div>
+                  <h2 className="text-[#C1271A] font-semibold text-sm">
+                    Step 2
+                  </h2>
+                  <h1 className="font-semibold text-base">Internship</h1>
+                </div>
+              </section>
+              <section
+                className={`flex items-center bg-white border rounded-2xl p-10 gap-x-5 cursor-pointer ${
+                  activeSection === "section3"
+                    ? "border-2 border-[#C1271A]"
+                    : "border-gray-400 hover:border-red-300 active:border-[#C1271A]"
+                }`}
+                onClick={() =>
+                  handleClick(
+                    "/images/internship/activity-internship-1.png",
+                    "section3"
+                  )
+                }
+              >
+                <img src="/svg/route-map-member.svg" alt="Logo Member" />
+                <div>
+                  <h2 className="text-[#C1271A] font-semibold text-sm">
+                    Step 3
+                  </h2>
+                  <h1 className="font-semibold text-base">Motion Lab Member</h1>
+                </div>
+              </section>
+              <section
+                className={`flex items-center bg-white border rounded-2xl p-10 gap-x-5 cursor-pointer ${
+                  activeSection === "section4"
+                    ? "border-2 border-[#C1271A]"
+                    : "border-gray-400 hover:border-red-300 active:border-[#C1271A]"
+                }`}
+                onClick={() =>
+                  handleClick(
+                    "/images/internship/activity-internship-mp.png",
+                    "section4"
+                  )
+                }
+              >
+                <img src="/svg/route-map-research.svg" alt="Logo Research" />
+                <div>
+                  <h2 className="text-[#C1271A] font-semibold text-sm">
+                    Step 4
+                  </h2>
+                  <h1 className="font-semibold text-base">Research Group</h1>
+                </div>
+              </section>
+            </div>
+
+            {/* Right Section */}
+            <div className="w-full bg-white rounded-xl">
+              <img
+                src={activeImage}
+                alt="Selected Step"
+                className="w-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </motion.div>
 
@@ -423,8 +528,8 @@ const InternshipView = () => {
               </h2>
               <p className="font-[inter] text-[18px] text-center">
                 Internship participants who successfully complete the Motion
-                internship will receive an e-certificate that they can claim for
-                TAK.
+                Internship have the opportunity to become members of Motion Lab
+                and potentially serve as lab assistants.
               </p>
             </div>
           </div>
@@ -460,10 +565,10 @@ const InternshipView = () => {
 
         <div className="flex flex-col lg:flex-row gap-y-10 gap-x-8 mt-14">
           <Link
-            className="bg-white pb-10 w-full hover:cursor-pointer transition duration-200"
+            className="bg-white pb-10 w-full transition duration-200"
             href="/curriculum/digital-business"
           >
-            <div className="relative group">
+            <div className="relative group hover:cursor-pointer">
               <img
                 className="w-full transition duration-200 ease-in-out"
                 src="/images/internship/curriculum-db-new.png"
@@ -476,7 +581,7 @@ const InternshipView = () => {
                 </span>
               </div>
             </div>
-            <div className="p-4">
+            <div className="p-4 cursor-default">
               <div className="flex items-center gap-x-2">
                 <img
                   className="w-10 h-10"
@@ -511,7 +616,7 @@ const InternshipView = () => {
                 </span>
               </div>
             </div>
-            <div className="p-4">
+            <div className="p-4 cursor-default">
               <div className="flex items-center gap-x-2">
                 <img
                   className="w-10 h-10"
@@ -546,7 +651,7 @@ const InternshipView = () => {
                 </span>
               </div>
             </div>
-            <div className="p-4">
+            <div className="p-4 cursor-default">
               <div className="flex items-center gap-x-2">
                 <img
                   className="w-10 h-10"

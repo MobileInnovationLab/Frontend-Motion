@@ -6,10 +6,10 @@ import * as Yup from "yup";
 import api from "@/core/api/api";
 
 export const generationOptions = [
+  { label: 2024, value: 2024 },
   { label: 2023, value: 2023 },
   { label: 2022, value: 2022 },
   { label: 2021, value: 2021 },
-  { label: 2020, value: 2020 },
 ];
 
 export const majorOptions = [

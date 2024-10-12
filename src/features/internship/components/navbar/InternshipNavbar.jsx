@@ -157,13 +157,15 @@ const InternshipNavbar = ({ onNavigation, isFixed = true }) => {
               />
             </svg>
           </button>
-          {/* <Link
+          <Link
             href="/register"
             passHref
-            className="bg-[#332C2B] text-white text-[inter] text-[16px] rounded-full px-8 py-3 hover:scale-110 transition duration-400 hidden lg:block"
+            className={`bg-[#332C2B] text-white text-[inter] text-[16px] rounded-full px-8 py-3 hover:scale-110 transition duration-400 hidden ${
+              isNavbarScroll ? "lg:block" : "lg:hidden"
+            }`}
           >
             Join Us!
-          </Link> */}
+          </Link>
         </div>
       </nav>
       <div

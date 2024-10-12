@@ -38,7 +38,7 @@ const InternshipAcceptedView = () => {
         </p>
         <div className="my-3 lg:my-6"></div>
         <Link
-          href="https://chat.whatsapp.com/KynmA476mBy08dhy6SjThU"
+          href="https://chat.whatsapp.com/EoJhIF5vGPH34qbjvOxlx1"
           className="bg-[#F82F1E] text-white text-[inter] text-[14px] lg:text-[16px] rounded-full px-10 py-[1rem] hover:opacity-90 transition duration-800"
         >
           Join Group
