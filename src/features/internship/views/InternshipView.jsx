@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Carousel } from "@material-tailwind/react";
 import Link from "next/link";
 import RecruitmentAnnouncementCard from "./InternshipAnnouncementView";
@@ -61,7 +61,7 @@ const InternshipView = () => {
       <InternshipNavbar onNavigation={handleNavigation} />
       <section
         ref={homeRef}
-        className="relative w-full bg-[url('/images/recruitment/aslab-member.jpg')] bg-cover bg-no-repeat bg-[top_bottom_0rem]"
+        className="relative w-full bg-[url('/images/recruitment/aslab-member.jpg')] bg-cover bg-no-repeat bg-center"
       >
         <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
 
@@ -126,7 +126,7 @@ const InternshipView = () => {
           Programming over 8 sessions.
         </h6>
         <div className="flex flex-col lg:flex-row align-items-center mt-14 container justify-content-center m-auto">
-          <div className="w-full overflow-hidden h-[507px] bg-black rounded-lg me-10">
+          <div className="w-full overflow-hidden lg:h-[507px] bg-black rounded-lg me-10">
             <Carousel
               className="rounded-xl"
               autoplay="true"
@@ -147,22 +147,22 @@ const InternshipView = () => {
             >
               <img
                 src="/images/internship/activity-internship-1.png"
-                className="object-cover w-full h-full rounded-lg"
+                className="object-cover w-full lg:h-full  rounded-lg scale-110"
                 alt="Internship Activities"
               />
               <img
                 src="/images/internship/activity-internship-2.png"
-                className="object-cover w-full h-full rounded-lg"
+                className="object-cover w-full lg:h-full rounded-lg scale-110"
                 alt="Internship Activities"
               />
               <img
                 src="/images/internship/activity-internship-3.png"
-                className="object-cover w-full h-full rounded-lg"
+                className="object-cover w-full lg:h-full rounded-lg scale-110"
                 alt="Internship Activities"
               />
               <img
                 src="/images/internship/activity-internship-4.png"
-                className="object-cover w-full h-full rounded-lg"
+                className="object-cover w-full lg:h-full rounded-lg scale-110"
                 alt="Internship Activities"
               />
             </Carousel>
@@ -199,8 +199,8 @@ const InternshipView = () => {
           Route Map Motionlab
         </h1>
         <div className="mt-10 lg:mt-5 ">
-          <div className="container mx-auto flex flex-row gap-x-10 ">
-            <div className="w-1/3 flex flex-col gap-y-10">
+          <div className="container mx-auto flex lg:flex-row flex-col gap-x-10 ">
+            <div className="w-1/3 hidden lg:flex flex-col gap-y-8">
               <section
                 className={`flex items-center bg-white border rounded-2xl p-10 gap-x-5 cursor-pointer ${
                   activeSection === "section1"
@@ -209,7 +209,7 @@ const InternshipView = () => {
                 }`}
                 onClick={() =>
                   handleClick(
-                    "/images/recruitment/route-map.png",
+                    "/images/recruitment/route-map-stepone.png",
                     "section1"
                   )
                 }
@@ -230,7 +230,7 @@ const InternshipView = () => {
                 }`}
                 onClick={() =>
                   handleClick(
-                    "/images/internship/activity-internship-2.png",
+                    "/images/recruitment/route-map-steptwo.png",
                     "section2"
                   )
                 }
@@ -251,7 +251,7 @@ const InternshipView = () => {
                 }`}
                 onClick={() =>
                   handleClick(
-                    "/images/internship/activity-internship-1.png",
+                    "/images/recruitment/route-map-stepthree.png",
                     "section3"
                   )
                 }
@@ -272,7 +272,7 @@ const InternshipView = () => {
                 }`}
                 onClick={() =>
                   handleClick(
-                    "/images/internship/activity-internship-mp.png",
+                    "/images/recruitment/route-map-stepfour.png",
                     "section4"
                   )
                 }
@@ -288,12 +288,113 @@ const InternshipView = () => {
             </div>
 
             {/* Right Section */}
-            <div className="w-full bg-white rounded-xl">
-              <img
-                src={activeImage}
-                alt="Selected Step"
-                className="w-full object-cover"
-              />
+            <div className="w-full bg-white rounded-3xl">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={activeImage} // Ensure each image has a unique key to trigger animation
+                  src={activeImage}
+                  alt="Selected Step"
+                  className="w-full rounded-3xl object-cover"
+                  initial={{ opacity: 0, x: 10, y: -10 }}
+                  animate={{ opacity: 1, x: 0, y: 0 }} 
+                  exit={{ opacity: 0, x: 5, y: 10 }}
+                  transition={{ duration: 0.5 }} 
+                />
+              </AnimatePresence>
+            </div>
+            <div className="lg:hidden grid grid-rows-2 gap-y-5 mt-5">
+              <div className="w-full flex justify-between gap-x-5">
+                <section
+                  className={`container mx-auto py-5 gap-x-2 flex items-center bg-white border rounded-2xl cursor-pointer ${
+                    activeSection === "section1"
+                      ? "border-2 border-[#C1271A]"
+                      : "border-gray-400 hover:border-red-300 active:border-[#C1271A]"
+                  }`}
+                  onClick={() =>
+                    handleClick(
+                      "/images/recruitment/route-map-stepone.png",
+                      "section1"
+                    )
+                  }
+                >
+                  <img className="w-6 h-6" src="/svg/route-map-oprec.svg" alt="Logo Oprec" />
+                  <div>
+                    <h2 className="text-[#C1271A] font-semibold text-xs">
+                      Step 1
+                    </h2>
+                    <h1 className="font-semibold text-sm">
+                      Open Recruitment
+                    </h1>
+                  </div>
+                </section>
+                <section
+                  className={`container mx-auto py-5 gap-x-2 flex items-center bg-white border rounded-2xl cursor-pointer ${
+                    activeSection === "section2"
+                      ? "border-2 border-[#C1271A]"
+                      : "border-gray-400 hover:border-red-300 active:border-[#C1271A]"
+                  }`}
+                  onClick={() =>
+                    handleClick(
+                      "/images/recruitment/route-map-steptwo.png",
+                      "section2"
+                    )
+                  }
+                >
+                  <img className="w-6 h-6" src="/svg/route-map-intern.svg" alt="Logo Intern" />
+                  <div>
+                    <h2 className="text-[#C1271A] font-semibold text-xs">
+                      Step 2
+                    </h2>
+                    <h1 className="font-semibold text-sm">Internship</h1>
+                  </div>
+                </section>
+              </div>
+              <div className=" flex justify-between gap-x-5">
+                <section
+                  className={`container mx-auto py-5 gap-x-2 flex items-center bg-white border rounded-2xl cursor-pointer ${
+                    activeSection === "section3"
+                      ? "border-2 border-[#C1271A]"
+                      : "border-gray-400 hover:border-red-300 active:border-[#C1271A]"
+                  }`}
+                  onClick={() =>
+                    handleClick(
+                      "/images/recruitment/route-map-stepthree.png",
+                      "section3"
+                    )
+                  }
+                >
+                  <img className="w-6 h-6" src="/svg/route-map-member.svg" alt="Logo Member" />
+                  <div>
+                    <h2 className="text-[#C1271A] font-semibold text-xs">
+                      Step 3
+                    </h2>
+                    <h1 className="font-semibold text-sm">
+                      Motion Lab Member
+                    </h1>
+                  </div>
+                </section>
+                <section
+                  className={`container mx-auto py-5 gap-x-2 flex items-center bg-white border rounded-2xl cursor-pointer ${
+                    activeSection === "section4"
+                      ? "border-2 border-[#C1271A]"
+                      : "border-gray-400 hover:border-red-300 active:border-[#C1271A]"
+                  }`}
+                  onClick={() =>
+                    handleClick(
+                      "/images/recruitment/route-map-stepfour.png",
+                      "section4"
+                    )
+                  }
+                >
+                  <img className="w-6 h-6" src="/svg/route-map-research.svg" alt="Logo Research" />
+                  <div>
+                    <h2 className="text-[#C1271A] font-semibold text-xs">
+                      Step 4
+                    </h2>
+                    <h1 className="font-semibold text-sm">Research Group</h1>
+                  </div>
+                </section>
+              </div>
             </div>
           </div>
         </div>

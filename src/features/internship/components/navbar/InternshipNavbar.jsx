@@ -239,7 +239,7 @@ const InternshipNavbar = ({ onNavigation, isFixed = true }) => {
               </li>
             ))}
             <li className="my-[3.5rem]"></li>
-            {/* <li className="w-full">
+            <li className="w-full">
               <button
                 onClick={() => {
                   router.push("/register");
@@ -248,7 +248,7 @@ const InternshipNavbar = ({ onNavigation, isFixed = true }) => {
               >
                 Join Us!
               </button>
-            </li> */}
+            </li>
             <li className="my-10"></li>
           </ul>
         </nav>
