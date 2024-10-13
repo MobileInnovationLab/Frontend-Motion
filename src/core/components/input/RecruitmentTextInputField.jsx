@@ -22,7 +22,7 @@ const RecruitmentTextInputField = ({
         {link && (
           <>
             <br />
-            <a className="text-[#ACACAC]" target="blank" href={link}>
+            <a className="text-[#F82F1E] underline" target="blank" href={link}>
               {link}{" "}
             </a>
           </>
@@ -33,7 +33,7 @@ const RecruitmentTextInputField = ({
           <input
             {...props}
             className={getCustomClassNameUtils(
-              "w-full bg-[#F6FAFD] border rounded-full border border-solid border-[#B9C0CD] focus:border-[#F82F1E] focus:outline-none py-3 px-6",
+              "w-full bg-[#F6FAFD] border rounded-full border-solid border-[#B9C0CD] focus:border-[#F82F1E] focus:outline-none py-3 px-6",
               className
             )}
             type="text"

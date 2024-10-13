@@ -61,7 +61,7 @@ const InternshipView = () => {
       <InternshipNavbar onNavigation={handleNavigation} />
       <section
         ref={homeRef}
-        className="relative w-full bg-[url('/images/recruitment/aslab-member.jpg')] bg-cover bg-no-repeat bg-center"
+        className="relative w-full bg-[url('/images/recruitment/aslab-member.jpg')] bg-cover bg-no-repeat bg-[top_bottom_0rem]"
       >
         <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
 
@@ -529,14 +529,6 @@ const InternshipView = () => {
                 KSM for current semester
               </p>
             </div>
-          </div>
-          <div className="flex flex-col items-center lg:items-start gap-y-2 mt-8 lg:mt-0">
-            <span className="text-[10px] md:text-[16px] font-semibold italic text-red-500">
-              *Only required for UI/UX Design and Mobile Programming applicant
-            </span>
-            <span className="text-[10px] md:text-[16px] font-semibold italic text-red-500">
-              **Explanation about Motivation Video on the next slide
-            </span>
           </div>
         </div>
       </section>
