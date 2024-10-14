@@ -45,7 +45,7 @@ const InternshipRegisterView = () => {
           <>
             BMC{' '} <span className="text-[#F82F1E]">*</span> (Required for DB){' '}
             <span class="rounded-full bg-red-500 ms-1 px-2 py-1 text-xs font-bold mr-3">
-              <a href={link} target="_blank" rel="noopener noreferrer" className="text-white">Solusi BMC</a>
+              <a href={link} target="_blank" rel="noopener noreferrer" className="text-white">Soal DB</a>
             </span>
           </>
         ),
@@ -250,7 +250,7 @@ const InternshipRegisterView = () => {
 
                   <RecruitmentTextInputField
                     label="Upload Twibbon"
-                    link="https://drive.google.com/drive/folders/17HuK56sKRj2ltc09YpQLfnJhuWn3LXTn?usp=sharing"
+                    link="https://bit.ly/TwibbonMotion2024"
                     name="twibbon_evidence"
                     placeholder="Link Instagram Post"
                     onChange={formik.handleChange}

@@ -436,7 +436,6 @@ const InternshipView = () => {
               </div>
               <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">
                 Portofolio
-                <span className="text-[inter] text-[18px] text-red-500">*</span>
               </p>
             </div>
             <div className="h-[50px] px-10 my-2">
@@ -472,9 +471,6 @@ const InternshipView = () => {
               </div>
               <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">
                 Motivation Video
-                <span className="text-[inter] text-[18px] text-red-500">
-                  **
-                </span>
               </p>
             </div>
             <div className="h-[50px] px-10 my-2">
