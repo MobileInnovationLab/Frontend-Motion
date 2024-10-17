@@ -470,7 +470,7 @@ const InternshipView = () => {
                 06
               </div>
               <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">
-                Motivation Video
+                Motivation Videoi
               </p>
             </div>
             <div className="h-[50px] px-10 my-2">

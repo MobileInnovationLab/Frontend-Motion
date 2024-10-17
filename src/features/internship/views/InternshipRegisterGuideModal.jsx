@@ -53,9 +53,9 @@ const Modal = ({ isOpen, onClose }) => {
           <p><strong>Divisi Digital Business:</strong></p>
           <ul className="list-disc ml-5">
             <li>Pilih dan isi bagian Digital Business pada halaman pendaftaran.</li>
-            <li>Unduh soal yang tersedia melalui link yang diberikan di bagian “Solusi BMC”.</li>
+            <li>Unduh soal yang tersedia melalui link yang diberikan di bagian “Soal DB”.</li>
             <li>
-              Unggah hasil pekerjaan Anda melalui link Google Drive dengan format file: <strong>Nama Lengkap_NIM_SolusiBMC.pdf</strong>.
+              Unggah hasil pekerjaan Anda melalui link Google Drive dengan format file: <strong>Nama Lengkap_NIM_Solusi.pdf</strong>.
             </li>
             <li>
               Link soal hanya dapat diakses satu kali, dan Anda diperbolehkan mengunduh soal serta mengunggah link folder Drive kosong. Namun, pastikan pekerjaan Anda diunggah sebelum batas waktu yang ditentukan.
