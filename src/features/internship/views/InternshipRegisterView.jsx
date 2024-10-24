@@ -79,7 +79,7 @@ const InternshipRegisterView = () => {
     <>
       <InternshipNavbar isFixed={false} />
 
-      {process.env.NEXT_PUBLIC_RECRUITMENT_CLOSED == "true" ? (
+      {process.env.NEXT_PUBLIC_RECRUITMENT_CLOSED == "false" ? (
         <section className="flex flex-col items-center justify-center container mx-auto px-10 lg:px-[20rem] text-center my-20">
           <img src="/images/internship/registration-closed.png" alt="" />
           <h2 className="font-semibold text-[18px] lg:text-[32px] text-[rubik]">
