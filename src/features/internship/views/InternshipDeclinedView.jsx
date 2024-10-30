@@ -20,7 +20,7 @@ const InternshipDeclinedView = () => {
           <b className="text-[#F82F1E] uppercase">
             {searchParams.get("name")} ({searchParams.get("nim")})
           </b>{" "}
-          ! Unfortunately You can not be accepted as member of Mobile Innovation Laboratory. Keep spirit and don&apos;t give up!
+          ! Unfortunately, you have not been selected as an intern for the Mobile Innovation Laboratory Ikura 9.0. Keep your spirits high and never give up! We look forward to seeing your continued growth and resilience.
         </p>
       </section>
     </>

@@ -31,9 +31,9 @@ const InternshipAcceptedView = () => {
           <b className="text-[#F82F1E] uppercase">
             {searchParams.get("name")} ({searchParams.get("nim")})
           </b>{" "}
-          ! You have choosen as new member of Mobile Innovation Laboratory
-          Hazelnut 8.0 for{" "}
-          <span className="text-[#F82F1E]">{searchParams.get("division")}</span>
+          ! You have successfully passed the document screening process. The
+          next step is the interview. Prepare well, and best of luck!{" "}
+          {/* <span className="text-[#F82F1E]">{searchParams.get("division")}</span> */}
           . Please join the WhatsApp group below.
         </p>
         <div className="my-3 lg:my-6"></div>
