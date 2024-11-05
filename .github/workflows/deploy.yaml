@@ -11,7 +11,7 @@ on:
 jobs:
   deploy_preview:
     if: contains(github.event.ref, 'development')
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
       - name: Install Vercel CLI
@@ -25,7 +25,7 @@ jobs:
 
   deploy_production:
     if: contains(github.event.ref, 'production')
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: Install Vercel CLI
