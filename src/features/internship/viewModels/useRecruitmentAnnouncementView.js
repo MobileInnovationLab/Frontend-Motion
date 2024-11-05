@@ -26,7 +26,8 @@ export default function useRecruitmentAnnouncementViewModel() {
             nim: response.data.recruitation.nim,
             division: response.data.recruitation.division,
           };
-
+          console.log(response);
+          
           let queryString = Object.keys(data)
             .map(
               (key) =>
@@ -34,7 +35,7 @@ export default function useRecruitmentAnnouncementViewModel() {
             )
             .join("&");
 
-          if (response.data.is_accepted == 1) {
+          if (response.data.is_accepted == 2) {
             router.push(`/accepted?${queryString}`);
           } else {
             router.push(`/declined?${queryString}`);
