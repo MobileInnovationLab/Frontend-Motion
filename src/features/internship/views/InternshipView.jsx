@@ -195,14 +195,14 @@ const InternshipView = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", duration: 2, bounce: 0 }}
       >
-        <h1 className="text-center lg:text-left font-[rubik] font-bold text-[28px] lg:text-[48px] container mx-auto">
+        <h1 className="text-center xl:text-left font-[rubik] font-bold text-[28px] lg:text-[48px] container mx-auto">
           Route Map Motionlab
         </h1>
         <div className="mt-10 lg:mt-5 ">
-          <div className="container mx-auto flex lg:flex-row flex-col gap-x-10 ">
-            <div className="w-1/3 hidden lg:flex flex-col gap-y-8">
+          <div className="container mx-auto flex xl:flex-row flex-col gap-x-10 ">
+            <div className="w-1/3 hidden xl:flex flex-col gap-y-10">
               <section
-                className={`flex items-center bg-white border rounded-2xl p-10 gap-x-5 cursor-pointer ${
+                className={`flex items-center bg-white border rounded-2xl xl:p-6 2xl:p-9 gap-x-5 cursor-pointer ${
                   activeSection === "section1"
                     ? "border-2 border-[#C1271A]"
                     : "border-gray-400 hover:border-red-300 active:border-[#C1271A]"
@@ -223,7 +223,7 @@ const InternshipView = () => {
                 </div>
               </section>
               <section
-                className={`flex items-center bg-white border rounded-2xl p-10 gap-x-5 cursor-pointer ${
+                className={`flex items-center bg-white border rounded-2xl xl:p-6 2xl:p-9 gap-x-5 cursor-pointer ${
                   activeSection === "section2"
                     ? "border-2 border-[#C1271A]"
                     : "border-gray-400 hover:border-red-300 active:border-[#C1271A]"
@@ -244,7 +244,7 @@ const InternshipView = () => {
                 </div>
               </section>
               <section
-                className={`flex items-center bg-white border rounded-2xl p-10 gap-x-5 cursor-pointer ${
+                className={`flex items-center bg-white border rounded-2xl xl:p-6 2xl:p-9 gap-x-5 cursor-pointer ${
                   activeSection === "section3"
                     ? "border-2 border-[#C1271A]"
                     : "border-gray-400 hover:border-red-300 active:border-[#C1271A]"
@@ -265,7 +265,7 @@ const InternshipView = () => {
                 </div>
               </section>
               <section
-                className={`flex items-center bg-white border rounded-2xl p-10 gap-x-5 cursor-pointer ${
+                className={`flex items-center bg-white border rounded-2xl xl:p-6 2xl:p-9 gap-x-5 cursor-pointer ${
                   activeSection === "section4"
                     ? "border-2 border-[#C1271A]"
                     : "border-gray-400 hover:border-red-300 active:border-[#C1271A]"
@@ -302,7 +302,7 @@ const InternshipView = () => {
                 />
               </AnimatePresence>
             </div>
-            <div className="lg:hidden grid grid-rows-2 gap-y-5 mt-5">
+            <div className="xl:hidden grid grid-rows-2 gap-y-5 mt-5">
               <div className="w-full flex justify-between gap-x-5">
                 <section
                   className={`container mx-auto py-5 gap-x-2 flex items-center bg-white border rounded-2xl cursor-pointer ${
