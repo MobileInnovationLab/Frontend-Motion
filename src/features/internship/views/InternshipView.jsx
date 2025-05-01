@@ -6,6 +6,7 @@ import { Carousel } from "@material-tailwind/react";
 import Link from "next/link";
 import RecruitmentAnnouncementCard from "./InternshipAnnouncementView";
 import InternshipNavbar from "../components/navbar/InternshipNavbar";
+import TopButton from "@/core/components/topButton";
 
 const InternshipView = () => {
   const homeRef = useRef(null);
@@ -296,9 +297,9 @@ const InternshipView = () => {
                   alt="Selected Step"
                   className="w-full rounded-3xl object-cover"
                   initial={{ opacity: 0, x: 10, y: -10 }}
-                  animate={{ opacity: 1, x: 0, y: 0 }} 
+                  animate={{ opacity: 1, x: 0, y: 0 }}
                   exit={{ opacity: 0, x: 5, y: 10 }}
-                  transition={{ duration: 0.5 }} 
+                  transition={{ duration: 0.5 }}
                 />
               </AnimatePresence>
             </div>
@@ -317,14 +318,16 @@ const InternshipView = () => {
                     )
                   }
                 >
-                  <img className="w-6 h-6" src="/svg/route-map-oprec.svg" alt="Logo Oprec" />
+                  <img
+                    className="w-6 h-6"
+                    src="/svg/route-map-oprec.svg"
+                    alt="Logo Oprec"
+                  />
                   <div>
                     <h2 className="text-[#C1271A] font-semibold text-xs">
                       Step 1
                     </h2>
-                    <h1 className="font-semibold text-sm">
-                      Open Recruitment
-                    </h1>
+                    <h1 className="font-semibold text-sm">Open Recruitment</h1>
                   </div>
                 </section>
                 <section
@@ -340,7 +343,11 @@ const InternshipView = () => {
                     )
                   }
                 >
-                  <img className="w-6 h-6" src="/svg/route-map-intern.svg" alt="Logo Intern" />
+                  <img
+                    className="w-6 h-6"
+                    src="/svg/route-map-intern.svg"
+                    alt="Logo Intern"
+                  />
                   <div>
                     <h2 className="text-[#C1271A] font-semibold text-xs">
                       Step 2
@@ -363,14 +370,16 @@ const InternshipView = () => {
                     )
                   }
                 >
-                  <img className="w-6 h-6" src="/svg/route-map-member.svg" alt="Logo Member" />
+                  <img
+                    className="w-6 h-6"
+                    src="/svg/route-map-member.svg"
+                    alt="Logo Member"
+                  />
                   <div>
                     <h2 className="text-[#C1271A] font-semibold text-xs">
                       Step 3
                     </h2>
-                    <h1 className="font-semibold text-sm">
-                      Motion Lab Member
-                    </h1>
+                    <h1 className="font-semibold text-sm">Motion Lab Member</h1>
                   </div>
                 </section>
                 <section
@@ -386,7 +395,11 @@ const InternshipView = () => {
                     )
                   }
                 >
-                  <img className="w-6 h-6" src="/svg/route-map-research.svg" alt="Logo Research" />
+                  <img
+                    className="w-6 h-6"
+                    src="/svg/route-map-research.svg"
+                    alt="Logo Research"
+                  />
                   <div>
                     <h2 className="text-[#C1271A] font-semibold text-xs">
                       Step 4
@@ -759,8 +772,8 @@ const InternshipView = () => {
           </Link>
         </div>
       </section>
-
       <div className="my-40"></div>
+      <TopButton />
     </div>
   );
 };
