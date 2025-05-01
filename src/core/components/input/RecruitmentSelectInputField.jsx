@@ -8,7 +8,7 @@ const RecruitmentSelectInputField = ({ label, name, className, baseClassName, pl
       </label>
       <div className="flex relative">
         <div className="w-full">
-          <select {...props} className={getCustomClassNameUtils(`w-full bg-[#F6FAFD] border rounded-full border border-solid border-[#B9C0CD] focus:border-[#F82F1E] focus:outline-none py-3 px-6`, className)} name={name} id={name}>
+          <select {...props} className={getCustomClassNameUtils(`w-full bg-[#F6FAFD] border rounded-full border-solid border-[#B9C0CD] focus:border-[#F82F1E] focus:outline-none py-3 px-6`, className)} name={name} id={name}>
             <option value="">{placeholder}</option>
             {props.children}
           </select>

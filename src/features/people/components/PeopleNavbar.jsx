@@ -32,7 +32,7 @@ const navbarLinks = [
   },
 ];
 
-const HomeNavbar = ({ onNavigation, isFixed = true }) => {
+const PeopleNavbar = ({ onNavigation, isFixed = true }) => {
   const router = useRouter();
   const usePathName = usePathname();
   const [isNavbarScroll, setIsNavbarScroll] = useState(false);
@@ -65,7 +65,7 @@ const HomeNavbar = ({ onNavigation, isFixed = true }) => {
     if (isNavbarScroll || !isFixed) {
       className += " bg-white shadow-sm";
     } else {
-      className += " bg-transparent";
+      className += " bg-[#C1271A]";
     }
 
     if (isNavbarOpened) {
@@ -264,4 +264,4 @@ const HomeNavbar = ({ onNavigation, isFixed = true }) => {
   );
 };
 
-export default HomeNavbar;
+export default PeopleNavbar;
