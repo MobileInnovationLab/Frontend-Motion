@@ -1,4 +1,6 @@
-const CardProduct = ({ nama, team, member }) => {
+import Link from "next/link";
+
+const CardProduct = ({ id, nama, team, member }) => {
   return (
     <div className="rounded-[30px] shadow-xl bg-white">
       <img
@@ -14,9 +16,11 @@ const CardProduct = ({ nama, team, member }) => {
             {member}
           </h3>
         </div>
-        <button className="w-full font-[inter] font-bold text-[#C1271A] text-xl py-2 border border-[#C1271A] rounded-full hover:bg-[#C1271A] hover:text-white">
-          Click for details
-        </button>
+        <Link href={`/product/${id}`}>
+          <button className="w-full font-[inter] font-bold text-[#C1271A] text-xl py-2 border border-[#C1271A] rounded-full hover:bg-[#C1271A] hover:text-white">
+            Click for details
+          </button>
+        </Link>
       </div>
     </div>
   );

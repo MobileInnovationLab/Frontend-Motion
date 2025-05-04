@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Marquee from "react-fast-marquee";
 
 // Components
@@ -12,6 +12,7 @@ import HomeNavbar from "../components/navbar/HomeNavbar";
 import InternshipFooter from "@/features/internship/components/footer/InternshipFooter";
 import NewsEvent from "../components/NewsEvent";
 import CardProduct from "../components/CardProduct";
+import Link from "next/link";
 
 // Constants
 const RESPONSIVE_SETTINGS = {
@@ -59,9 +60,18 @@ const PRODUCTS = [
 
 export default function HomeView() {
   const [slider, setSlider] = useState(null);
+  const [projects, setProjects] = useState([]);
+  // const [firstRow, setFirstRow] = useState([]);
+  // const [secondRow, setSecondRow] = useState([]);
   const scrollRef = useRef(null);
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const divisionRef = useRef(null);
+  const projectRef = useRef(null);
+  const peopleRef = useRef(null);
+  const newsRef = useRef(null);
+  const contactRef = useRef(null);
 
-  // Generate lab assistants data
   const laboratoryAssistants = Array.from({ length: 30 }, (_, index) => ({
     name: `Member ${index + 1}`,
     role: "Laboratory Assistant",
@@ -70,10 +80,39 @@ export default function HomeView() {
     instagram: "#",
   }));
 
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await api.get("/project-showcases");
+        setProjects(response.data); // Asumsi respons API berupa array [{id, nama, team, member}, ...]
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+    const fetchAssistants = async () => {
+      try {
+        const response = await api.get("/Aslab");
+        const assistants = response.data; // Asumsi array [{id, name, role, image, linkedin, instagram}, ...]
+
+        // Bagi data menjadi dua baris
+        setFirstRow(assistants.slice(0, 15));
+        setSecondRow(assistants.slice(15, 30));
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchAssistants();
+    fetchProjects();
+  }, []);
+
   const firstRow = laboratoryAssistants.slice(0, 15);
   const secondRow = laboratoryAssistants.slice(15, 30);
 
-  // Component for rendering a row of member cards
   const RenderRow = ({ rowData }) => (
     <div className="flex flex-row gap-8">
       {rowData.map((member, index) => (
@@ -129,7 +168,6 @@ export default function HomeView() {
     </div>
   );
 
-  // Division card component
   const DivisionCard = ({ icon, title, description }) => (
     <div className="w-full">
       <div className="w-full text-center relative bottom-[-4rem]">
@@ -141,12 +179,13 @@ export default function HomeView() {
         <h2 className="font-[rubik] font-semibold text-xl md:text-2xl text-center mb-5 mt-14">
           {title}
         </h2>
-        <p className="font-[inter] text-sm/6 md:text-lg/8 text-justify text-[#6A6A6A]">{description}</p>
+        <p className="font-[inter] text-sm/6 md:text-lg/8 text-justify text-[#6A6A6A]">
+          {description}
+        </p>
       </div>
     </div>
   );
 
-  // Section title component
   const SectionTitle = ({ subtitle, title, description }) => (
     <>
       <h3 className="text-center font-[rubik] text-red-500 text-[14px] lg:text-[18px]">
@@ -180,14 +219,56 @@ export default function HomeView() {
     </button>
   );
 
+  function handleNavigation(id) {
+    switch (id) {
+      case "home":
+        homeRef.current?.scrollIntoView({ behavior: "smooth", top: -100 });
+        break;
+      case "about":
+        aboutRef.current?.scrollIntoView({ behavior: "smooth", top: -100 });
+        break;
+      case "division":
+        divisionRef.current?.scrollIntoView({
+          behavior: "smooth",
+          top: -100,
+        });
+        break;
+      case "project":
+        projectRef.current?.scrollIntoView({ behavior: "smooth", top: -100 });
+        break;
+      case "people":
+        peopleRef.current?.scrollIntoView({
+          behavior: "smooth",
+          top: -100,
+        });
+        break;
+      case "news":
+        newsRef.current?.scrollIntoView({
+          behavior: "smooth",
+          top: -100,
+        });
+        break;
+      case "contact":
+        contactRef.current?.scrollIntoView({
+          behavior: "smooth",
+          top: -100,
+        });
+        break;
+      default:
+        break;
+    }
+  }
+
   return (
     <div className="bg-[#FCF6F6]">
       <GeneralSeo />
 
-      <HomeNavbar />
+      <HomeNavbar onNavigation={handleNavigation} />
 
-      {/* Hero Section */}
-      <section className="w-full bg-[url('/images/main-index/bg-main.webp')] bg-cover bg-no-repeat bg-[center_bottom_0rem]">
+      <section
+        ref={homeRef}
+        className="w-full bg-[url('/images/main-index/bg-main.webp')] bg-cover bg-no-repeat bg-[center_bottom_0rem]"
+      >
         <div className="container gap-x-10 w-full mx-auto flex justify-between flex-col lg:flex-row items-center lg:pb-40 pt-32">
           <div className="flex flex-col items-center md:items-start md:justify-start">
             <h2 className="font-bold font-[rubik] text-[30px] lg:text-[60px] text-white text-center lg:text-left lg:mb-0">
@@ -206,8 +287,7 @@ export default function HomeView() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="container mx-auto lg:py-16">
+      <section ref={aboutRef} className="container mx-auto lg:py-16">
         <SectionTitle subtitle="ABOUT US" title="What Is Motionlab?" />
 
         <Image
@@ -231,7 +311,6 @@ export default function HomeView() {
           </p>
         </div>
 
-        {/* Stats */}
         <div className="flex justify-around mt-8 lg:mt-14 flex-row gap-y-10">
           {STATS.map((stat, index) => (
             <div
@@ -256,8 +335,7 @@ export default function HomeView() {
 
       <div className="my-16 lg:my-40"></div>
 
-      {/* Division Section */}
-      <section className="container mx-auto py-16">
+      <section ref={divisionRef} className="container mx-auto py-16">
         <SectionTitle subtitle="OUR DIVISION" title="What We Do" />
 
         <div className="flex gap-x-10 flex-col lg:flex-row">
@@ -290,8 +368,7 @@ export default function HomeView() {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section className="container mx-auto py-16">
+      <section ref={projectRef} className="container mx-auto py-16">
         <SectionTitle
           subtitle="OUR PROJECTS"
           title="Our MotionHack Project Through Generation"
@@ -308,15 +385,25 @@ export default function HomeView() {
               member={product.member}
             />
           ))}
+          {/* {projects.map((project) => (
+          <CardProduct
+            key={project.id} 
+            id={project.id}
+            nama={project.nama}
+            team={project.team}
+            member={project.member}
+          />
+        ))} */}
         </div>
 
-        <div className="py-8">
-          <SecondaryButton>See More</SecondaryButton>
-        </div>
+        <Link href={"/product"}>
+          <div className="py-8">
+            <SecondaryButton>See More</SecondaryButton>
+          </div>
+        </Link>
       </section>
 
-      {/* Team Section */}
-      <section className="bg-white py-20">
+      <section ref={peopleRef} className="py-20">
         <div className="">
           <SectionTitle
             subtitle="OUR PEOPLE"
@@ -334,10 +421,7 @@ export default function HomeView() {
         </div>
       </section>
 
-      <div className="my-40"></div>
-
-      {/* News Section */}
-      <section className="container mx-auto py-16">
+      <section ref={newsRef} className="container mx-auto py-16">
         <div className="flex">
           <div className="w-full text-center">
             <SectionTitle
@@ -359,13 +443,17 @@ export default function HomeView() {
           <NewsEvent />
         </div>
 
-        <div className="py-8">
-          <SecondaryButton>See More</SecondaryButton>
-        </div>
+        <Link href={"/news"}>
+          <div className="py-8">
+            <SecondaryButton>See More</SecondaryButton>
+          </div>
+        </Link>
       </section>
 
       <TopButton />
-      <InternshipFooter />
+      <section ref={contactRef}>
+        <InternshipFooter />
+      </section>
     </div>
   );
 }

@@ -15,8 +15,8 @@ const navbarLinks = [
     label: "About",
   },
   {
-    id: "product",
-    label: "Product",
+    id: "project",
+    label: "Projects",
   },
   {
     id: "people",
@@ -27,7 +27,7 @@ const navbarLinks = [
     label: "News",
   },
   {
-    id: "contactUs",
+    id: "contact",
     label: "Contact Us",
   },
 ];
@@ -99,18 +99,13 @@ const HomeNavbar = ({ onNavigation, isFixed = true }) => {
   }
 
   function handleNavigation(id) {
-    if (id === "product") {
-      router.push("/product"); // Navigasi ke halaman produk
-    } else if (id === "news") {
-      router.push("/news"); // Navigasi ke halaman berita
-    } else if (id === "people") {
-      router.push("/people"); // Navigasi ke halaman berita
-    } else if (usePathName !== "/") {
+    if (usePathName != "/") {
       router.push(`/#${id}`);
     } else {
       onNavigation(id);
     }
   }
+
   return (
     <div>
       <nav className={getNavClassName()}>
@@ -167,7 +162,7 @@ const HomeNavbar = ({ onNavigation, isFixed = true }) => {
             </svg>
           </button>
           <Link
-            href="/register"
+            href="/internship"
             passHref
             className={`bg-[#332C2B] text-white text-[inter] text-[16px] rounded-full px-8 py-3 hover:scale-110 transition duration-400 hidden lg:block`}
           >
@@ -228,7 +223,7 @@ const HomeNavbar = ({ onNavigation, isFixed = true }) => {
             </button>
           </div>
 
-          <div className="border-black border-b-[1px] border-black border-opacity-5 border-solid"></div>
+          <div className="border-black border-b-[1px] border-opacity-5 border-solid"></div>
 
           <ul className="text-left container mx-auto">
             {navbarLinks.map((row) => (

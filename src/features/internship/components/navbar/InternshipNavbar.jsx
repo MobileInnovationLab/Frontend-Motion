@@ -107,7 +107,7 @@ const InternshipNavbar = ({ onNavigation, isFixed = true }) => {
       <nav className={getNavClassName()}>
         <div className="container justify-between mx-auto flex border-b-4 border-black">
           <div className="flex items-center">
-            <Link href="/" passHref className="flex items-center">
+            <Link href="/" className="flex items-center">
               <div className="w-[34px] h-[34px]">
                 <img
                   src={getNavLogoSource()}
@@ -221,7 +221,7 @@ const InternshipNavbar = ({ onNavigation, isFixed = true }) => {
             </button>
           </div>
 
-          <div className="border-black border-b-[1px] border-black border-opacity-5 border-solid"></div>
+          <div className="border-black border-b-[1px] border-opacity-5 border-solid"></div>
 
           <ul className="text-left container mx-auto">
             {navbarLinks.map((row) => (
