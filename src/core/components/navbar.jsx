@@ -25,7 +25,7 @@ const Navbar = (props) => {
         { text: "Contact Us", href: "/contact" },
       ],
     },
-    { text: "Product", href: "/product" },
+    { text: "Project", href: "/project" },
     { text: "Achievement", href: "/achievement" },
     { text: "Blog", href: "/blog" },
     // { text: '', href: '' },
@@ -138,8 +138,8 @@ const Navbar = (props) => {
               </div>
             </li>
             <li className={styles["nav-items-active"]}>
-              <Link href="/product" legacyBehavior>
-                <a>Product</a>
+              <Link href="/project" legacyBehavior>
+                <a>Project</a>
               </Link>
             </li>
             <li className={styles["nav-items-active"]}>

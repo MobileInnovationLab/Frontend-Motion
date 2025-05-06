@@ -15,8 +15,8 @@ const navbarLinks = [
     label: "About",
   },
   {
-    id: "product",
-    label: "Product",
+    id: "project",
+    label: "Projects",
   },
   {
     id: "people",
@@ -63,7 +63,7 @@ const ProductNavbar = ({ onNavigation, isFixed = true }) => {
     } text-center m-auto left-0 right-0 py-5 z-10`;
 
     if (isNavbarScroll || !isFixed) {
-      className += " bg-white shadow-sm";
+      className += "shadow-sm backdrop-blur-xl";
     } else {
       className += " bg-[#C1271A]";
     }
@@ -131,7 +131,9 @@ const ProductNavbar = ({ onNavigation, isFixed = true }) => {
                   <a
                     href="#"
                     onClick={() => handleNavigation(row.id)}
-                    className="relative w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
+                    className={`relative w-fit block after:block after:content-[''] after:absolute after:h-[2px] ${
+                      isNavbarScroll ? "after:bg-[#332C2B]" : "after:bg-white"
+                    } after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center`}
                   >
                     {row.label}
                   </a>

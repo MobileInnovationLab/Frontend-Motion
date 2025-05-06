@@ -9,11 +9,11 @@ import { useRouter } from "next/navigation";
 
 import GeneralSeo from "@/core/components/seo/generalSeo";
 import InternshipFooter from "@/features/internship/components/footer/InternshipFooter";
-import ProductNavbar from "../../components/ProductNavbar";
-import ContentProduct from "../../components/contentProduct";
+import ProjectNavbar from "../../components/ProjectNavbar";
+import ContentProduct from "../../components/contentProject";
 import NotFound from "../../components/NotFound";
 
-const ProductView = () => {
+const ProjectView = () => {
   const router = useRouter();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -22,7 +22,7 @@ const ProductView = () => {
   const itemsPerPage = 5;
   
   const handleShowDetails = (title) => {
-    router.push(`/product/detailProduct`);
+    router.push(`/project/detailProject`);
   };
 
   useEffect(() => {}, [search]);
@@ -104,7 +104,7 @@ const ProductView = () => {
   return (
     <div className={styles["main-body"]}>
       <GeneralSeo title="Product" />
-      <ProductNavbar />
+      <ProjectNavbar />
 
       <div className="container mx-auto flex flex-col items-center">
         <BigTitle>
@@ -257,4 +257,4 @@ const ProductView = () => {
   );
 };
 
-export default ProductView;
+export default ProjectView;

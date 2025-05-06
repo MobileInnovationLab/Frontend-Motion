@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const CardProduct = ({ id, nama, team, member }) => {
+const CardProject = ({ id, nama, team, member }) => {
   return (
     <div className="rounded-[30px] shadow-xl bg-white">
       <img
@@ -25,4 +25,4 @@ const CardProduct = ({ id, nama, team, member }) => {
     </div>
   );
 };
-export default CardProduct;
+export default CardProject;

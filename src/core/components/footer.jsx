@@ -34,8 +34,8 @@ export default function Footer() {
           <Link href="/about" legacyBehavior>
             <a className={`${styles["footer-item"]} ${styles["link"]}`}>About</a>
           </Link>
-          <Link href="/product" legacyBehavior>
-            <a className={`${styles["footer-item"]} ${styles["link"]}`}>Product</a>
+          <Link href="/project" legacyBehavior>
+            <a className={`${styles["footer-item"]} ${styles["link"]}`}>Project</a>
           </Link>
           <Link href="/achievement" legacyBehavior>
             <a className={`${styles["footer-item"]} ${styles["link"]}`}>Achievement</a>

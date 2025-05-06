@@ -63,7 +63,7 @@ const HomeNavbar = ({ onNavigation, isFixed = true }) => {
     } text-center m-auto left-0 right-0 py-5 z-10`;
 
     if (isNavbarScroll || !isFixed) {
-      className += " bg-white shadow-sm";
+      className += " shadow-sm backdrop-blur-xl";
     } else {
       className += " bg-transparent";
     }
@@ -126,7 +126,9 @@ const HomeNavbar = ({ onNavigation, isFixed = true }) => {
                   <a
                     href="#"
                     onClick={() => handleNavigation(row.id)}
-                    className="relative w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
+                    className={`relative w-fit block after:block after:content-[''] after:absolute after:h-[2px] ${
+                      isNavbarScroll ? "after:bg-[#332C2B]" : "after:bg-white"
+                    } after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center`}
                   >
                     {row.label}
                   </a>
@@ -164,7 +166,7 @@ const HomeNavbar = ({ onNavigation, isFixed = true }) => {
           <Link
             href="/internship"
             passHref
-            className={`bg-[#332C2B] text-white text-[inter] text-[16px] rounded-full px-8 py-3 hover:scale-110 transition duration-400 hidden lg:block`}
+            className={`bg-[#332C2B] text-white text-[inter] text-[16px] rounded-full px-8 py-3 hover:scale-105 transition duration-400 hidden lg:block`}
           >
             Internship
           </Link>

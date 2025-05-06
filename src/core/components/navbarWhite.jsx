@@ -21,7 +21,7 @@ function NavbarWhite({ router }, props) {
         { text: "Contact Us", href: "/contact" },
       ],
     },
-    { text: "Product", href: "/product" },
+    { text: "Project", href: "/project" },
     { text: "Achievement", href: "/achievement" },
     { text: "Blog", href: "/blog" },
     // { text: '', href: '' },
@@ -188,7 +188,7 @@ function NavbarWhite({ router }, props) {
               </div>
             </li>
             <li className={styles["nav-items-active"]}>
-              <Link href="/product">
+              <Link href="/project">
                 <a>Product</a>
               </Link>
             </li>
