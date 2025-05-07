@@ -1,6 +1,6 @@
 const NewsEvent = () => {
   return (
-    <div className="flex flex-col shadow-xl rounded-3xl w-auto overflow-x-auto">
+    <div className="flex flex-col rounded-3xl w-auto overflow-x-auto bg-white">
       <img src="/images/contactUs/photoFirst.png" className="rounded-t-3xl" alt="" />
       <div className="px-8 py-5">
         <h3 className="font-[inter] text-[#C1271A] pb-2">Thuesday, January 08, 2025</h3>

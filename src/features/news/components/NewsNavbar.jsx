@@ -15,8 +15,8 @@ const navbarLinks = [
     label: "About",
   },
   {
-    id: "product",
-    label: "Product",
+    id: "project",
+    label: "Projects",
   },
   {
     id: "people",
@@ -99,13 +99,7 @@ const NewsNavbar = ({ onNavigation, isFixed = true }) => {
   }
 
   function handleNavigation(id) {
-    if (id === "product") {
-      router.push("/product"); // Navigasi ke halaman produk
-    } else if (id === "news") {
-      router.push("/news"); // Navigasi ke halaman berita
-    } else if (id === "people") {
-      router.push("/people"); // Navigasi ke halaman berita
-    } else if (usePathName !== "/") {
+    if (usePathName != "/") {
       router.push(`/#${id}`);
     } else {
       onNavigation(id);
