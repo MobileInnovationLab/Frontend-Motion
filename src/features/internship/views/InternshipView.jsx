@@ -143,7 +143,7 @@ const InternshipView = () => {
       <InternshipNavbar onNavigation={handleNavigation} />
       <motion.section
         ref={homeRef}
-        className="relative w-full bg-[url('/images/recruitment/aslab-member.jpg')] bg-cover bg-no-repeat bg-[top_bottom_0rem]"
+        className="relative w-full bg-[url('/images/home/motion-lab.png')] bg-cover bg-no-repeat bg-[top_bottom_0rem]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
