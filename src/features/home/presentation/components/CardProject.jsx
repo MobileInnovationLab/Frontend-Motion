@@ -1,24 +1,26 @@
 import Link from "next/link";
 
-const CardProject = ({ id, nama, team, member }) => {
+const CardProject = ({ id, nama, team, member, thumbnail, about }) => {
   return (
-    <div className="w-[90%] md:max-w-md lg:w-full rounded-[30px] bg-white">
-      <img
-        src="/images/contactUs/photoFirst.png"
-        className="rounded-t-[30px]"
-        alt="first"
-      />
-      <div className=" px-4 py-6">
-        <div className="pb-8">
-          <h1 className="font-bold font-[inter] text-2xl">{nama}</h1>
-          <h3 className="font-[inter] text-lg py-2">Team {team}</h3>
-          <h3 className="font-[inter] font-bold text-lg text-wrap text-ellipsis overflow-hidden line-clamp-2 ">
+    <div className="w-[90%] md:max-w-md lg:w-full rounded-[30px] bg-white shadow-lg">
+      <div className="w-full">
+        <img
+          src={thumbnail || "/images/contactUs/photoFirst.png"}
+          className="rounded-t-[30px] w-full h-full object-cover"
+          alt={nama}
+        />
+      </div>
+      <div className="px-6 py-6">
+        <div className="pb-6">
+          <h1 className="font-bold font-[inter] text-2xl mb-3">{nama}</h1>
+          <h3 className="font-[inter] text-lg text-gray-700">Team {team}</h3>
+          <h3 className="font-[inter] font-bold text-lg text-wrap text-ellipsis overflow-hidden line-clamp-2">
             {member}
           </h3>
         </div>
-        <Link href={`/product/${id}`}>
-          <button className="w-full font-[inter] font-bold text-[#C1271A] text-xl py-2 border border-[#C1271A] rounded-full hover:bg-[#C1271A] hover:text-white">
-            Click for details
+        <Link href={`/project/detailProject/${id}`}>
+          <button className="w-full font-[inter] font-bold text-[#C1271A] text-lg py-2.5 border-2 border-[#C1271A] rounded-full hover:bg-[#C1271A] hover:text-white transition-colors duration-200">
+            View Details
           </button>
         </Link>
       </div>

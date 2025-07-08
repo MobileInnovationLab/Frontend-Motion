@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -26,12 +27,18 @@ import RevealText from "../components/animations/RevealText";
 
 // Constants
 import { STATS, PROJECTS } from "../constants/homeConstants";
+import { DIVISIONS } from "@/features/people/constants/peopleConstants";
+
+// Services
+import { projectService } from "@/features/project/services/projectService";
 
 // Styles
 import "@/core/styles/globals.scss";
 
 export default function HomeView() {
   const [projects, setProjects] = useState([]);
+  const [projectsLoading, setProjectsLoading] = useState(true);
+  const [projectsError, setProjectsError] = useState(null);
   const scrollRef = useRef(null);
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
@@ -41,21 +48,30 @@ export default function HomeView() {
   const newsRef = useRef(null);
   const contactRef = useRef(null);
 
-  const laboratoryAssistants = Array.from({ length: 30 }, (_, index) => ({
-    name: `Member ${index + 1}`,
-    role: "Laboratory Assistant",
-    image: "/images/about/dummy.webp",
-    linkedin: "#",
-    instagram: "#",
-  }));
-
+  const laboratoryAssistants = DIVISIONS.flatMap(
+    (division) => division.members
+  );
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await api.get("/project-showcases");
-        setProjects(response.data);
+        setProjectsLoading(true);
+        const response = await projectService.getAllProjects();
+        console.log("📦 Fetched projects for homepage:", response);
+
+        // Filter proyek dari generasi 9
+        const gen9Projects = response.data
+          .filter((project) => project.generation === "9")
+          .sort((a, b) => new Date(b.created_at) - new Date(a.created_at)) // Sort by newest first
+          .slice(0, 3); // Take first 3
+
+        console.log("🎯 Latest Gen 9 projects:", gen9Projects);
+        setProjects(gen9Projects);
+        setProjectsError(null);
       } catch (err) {
         console.error("Error fetching projects:", err);
+        setProjectsError("Failed to load projects");
+      } finally {
+        setProjectsLoading(false);
       }
     };
 
@@ -66,7 +82,7 @@ export default function HomeView() {
   const secondRow = laboratoryAssistants.slice(15, 30);
 
   const RenderRow = ({ rowData }) => (
-    <div className="flex flex-row gap-8">
+    <div className="flex flex-row gap-8 px-4 md:px-12 lg:px-4 py-6 overflow-x-auto">
       {rowData.map((member, index) => (
         <motion.div
           key={index}
@@ -74,12 +90,12 @@ export default function HomeView() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{
-            duration: 0.5,
+            duration: 0.1,
             delay: index * 0.1,
             ease: [0.25, 0.1, 0.25, 1],
           }}
           whileHover={{ scale: 1.05 }}
-          className="flex flex-col w-64 rounded-3xl shadow-lg p-6 transition-transform duration-300"
+          className="flex flex-col w-[350px] min-h-[340px] justify-between rounded-3xl shadow-lg p-6 transition-transform duration-300"
         >
           <div className="w-full text-center">
             <div className="rounded-full inline-block">
@@ -90,19 +106,11 @@ export default function HomeView() {
               />
             </div>
           </div>
-          <div className="flex flex-col items-center w-full mt-4">
-            <h2 className="font-[rubik] font-semibold text-lg text-center">
-              {member.name.length > 25 ? (
-                <>
-                  {member.name.slice(0, 25)}
-                  <br />
-                  {member.name.slice(25)}
-                </>
-              ) : (
-                member.name
-              )}
+          <div className="flex flex-col items-center w-full mt-6">
+            <h2 className="font-[rubik] font-semibold text-lg text-center line-clamp-2 break-words">
+              {member.name}
             </h2>
-            <p className="font-[inter] text-base text-center text-[#6A6A6A] mt-3">
+            <p className="font-[inter] text-base text-center text-[#6A6A6A] mt-3 line-clamp-1 break-words">
               {member.role}
             </p>
             <hr className="w-1/2 my-4 border-[#6A6A6A]" />
@@ -154,7 +162,6 @@ export default function HomeView() {
     <div className="bg-[#FCF6F6]">
       <GeneralSeo />
       <HomeNavbar onNavigation={handleNavigation} />
-
       {/* Hero Section */}
       <section
         ref={homeRef}
@@ -209,7 +216,6 @@ export default function HomeView() {
           </ScaleIn>
         </div>
       </section>
-
       {/* About Section */}
       <section ref={aboutRef} className="container mx-auto lg:py-16">
         <SlideIn direction="up">
@@ -285,9 +291,7 @@ export default function HomeView() {
           ))}
         </motion.div>
       </section>
-
       <div className="my-16 lg:my-40"></div>
-
       {/* Division Section */}
       <section ref={divisionRef} className="container mx-auto py-16">
         <SlideIn direction="up">
@@ -377,8 +381,7 @@ export default function HomeView() {
           </motion.div>
         </motion.div>
       </section>
-
-      {/* Projects Section */}
+      {/* Projects Section */}{" "}
       <section ref={projectRef} className="container mx-auto py-8 md:py-16">
         <SlideIn direction="up">
           <SectionTitle
@@ -402,29 +405,53 @@ export default function HomeView() {
           }}
           className="flex gap-4 md:gap-x-8 lg:grid lg:grid-cols-3 lg:gap-8 pt-16 overflow-x-auto whitespace-nowrap no-scrollbar"
         >
-          {PROJECTS.map((project, index) => (
-            <motion.div
-              key={index}
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    duration: 0.5,
-                    ease: [0.25, 0.1, 0.25, 1],
+          {projectsLoading ? (
+            // Loading state
+            <div className="col-span-3 flex justify-center items-center min-h-[200px]">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#C1271A]"></div>
+            </div>
+          ) : projectsError ? (
+            // Error state
+            <div className="col-span-3 flex justify-center items-center min-h-[200px] text-red-600">
+              {projectsError}
+            </div>          ) : projects.length > 0 ? (
+            projects.map((project) => (
+              <motion.div
+                key={project.id}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      duration: 0.5,
+                      ease: [0.25, 0.1, 0.25, 1],
+                    },
                   },
-                },
-              }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <CardProject
-                nama={project.nama}
-                team={project.team}
-                member={project.member}
-              />
-            </motion.div>
-          ))}
+                }}
+                whileHover={{ scale: 1.05 }}
+                onClick={() => router.push(`/project/detailProject/${project.id}`)}
+                className="cursor-pointer"
+              >                <CardProject
+                  id={project.id}
+                  nama={project.project_name}
+                  team={project.team_name}
+                  member={project.team_members}
+                  thumbnail={
+                    project.thumbnail 
+                      ? `https://admin.motionlaboratory.com/storage/project-showcase/${project.thumbnail}` 
+                      : "/images/contactUs/photoFirst.png"
+                  }
+                  about={project.about}
+                />
+              </motion.div>
+            ))
+          ) : (
+            // Empty state
+            <div className="col-span-3 flex justify-center items-center min-h-[200px] text-gray-500">
+              No projects available
+            </div>
+          )}
         </motion.div>
 
         <motion.div
@@ -437,9 +464,8 @@ export default function HomeView() {
           </Link>
         </motion.div>
       </section>
-
       {/* People Section */}
-      <section ref={peopleRef} className="py-20">
+      <section ref={peopleRef} className="pt-20">
         <div className="">
           <SlideIn direction="up">
             <SectionTitle
@@ -458,7 +484,15 @@ export default function HomeView() {
           </div>
         </div>
       </section>
-
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="container mx-auto pb-8"
+      >
+        <Link href={"/people"}>
+          <SecondaryButton>See More</SecondaryButton>
+        </Link>
+      </motion.div>
       {/* News Section */}
       <section ref={newsRef} className="container mx-auto py-0 md:py-16">
         <SlideIn direction="up">
@@ -522,7 +556,6 @@ export default function HomeView() {
           </Link>
         </motion.div>
       </section>
-
       <TopButton />
       <section ref={contactRef}>
         <InternshipFooter />
