@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
-// Components
 import GeneralSeo from "@/core/components/seo/generalSeo";
 import BigTitle from "@/core/components/bigTitle";
 import TopButton from "@/core/components/topButton";
@@ -15,38 +14,47 @@ import NotFound from "../../components/NotFound";
 import SearchBar from "../components/SearchBar";
 import Pagination from "../components/Pagination";
 
-// Animation Components
 import FadeIn from "../components/animations/FadeIn";
 import StaggerContainer from "../components/animations/StaggerContainer";
 import StaggerItem from "../components/animations/StaggerItem";
 
-// Constants
-import {
-  GENERATIONS,
-  ITEMS_PER_PAGE,
-  DUMMY_DESCRIPTION,
-} from "../constants/projectConstants";
+import { projectService } from "../../services/projectService";
 
-// Styles
+import { GENERATIONS, ITEMS_PER_PAGE } from "../constants/projectConstants";
+
 import styles from "@/core/styles/pages/product.module.scss";
+import ProjectNotFound from "../../containers/errors/ProjectNotFound";
 
 const ProjectView = () => {
   const router = useRouter();
   const [search, setSearch] = useState("");
-  const [currentPage, setCurrentPage] = useState(GENERATIONS[GENERATIONS.length - 1].id);
-  const [activeCategory, setActiveCategory] = useState(9);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [activeCategory, setActiveCategory] = useState(10);
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Mock data - In real app, this would come from an API
-  const teams = Array.from({ length: 6 }, (_, index) => ({
-    title: `Project ${String.fromCharCode(65 + index)}`,
-    team: index + 1,
-    description: DUMMY_DESCRIPTION,
-    qrcode: "/images/product/dummy-product.png",
-    generationId: 8, // Set to latest generation
-  }));
+  useEffect(() => {
+    fetchProjects();
+  }, []);
 
-  const handleShowDetails = (title) => {
-    router.push(`/project/detailProject`);
+  const fetchProjects = async () => {
+    try {
+      setLoading(true);
+      const response = await projectService.getAllProjects();
+      console.log("📦 Fetched projects response:", response);
+      setProjects(response.data);
+      setError(null);
+    } catch (err) {
+      setError("Failed to fetch projects");
+      console.error("Error fetching projects:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const handleShowDetails = (id) => {
+    console.log("🔗 Navigating to project with ID:", id);
+    router.push(`/project/detailProject/${id}`);
   };
 
   const handleSearch = (value) => {
@@ -62,22 +70,41 @@ const ProjectView = () => {
     setActiveCategory(categoryId);
     setCurrentPage(1);
   };
+  const filteredProjects = projects.filter((project) => {
+    const matchesSearch =
+      project.project_name.toLowerCase().includes(search.toLowerCase()) ||
+      project.team_name.toLowerCase().includes(search.toLowerCase());
+    const projectGeneration = parseInt(project.generation);
+    const matchesGeneration =
+      activeCategory === 10 || projectGeneration === activeCategory;
 
-  // Filter and paginate teams
-  const filteredTeams = teams.filter(
-    (teamData) => teamData.generationId === activeCategory
-  );
+    if (project.project_name.toLowerCase().includes(search.toLowerCase())) {
+      console.log(
+        `Project "${project.project_name}" - Gen: ${project.generation}, Active: ${activeCategory}, Matches: ${matchesGeneration}`
+      );
+    }
+
+    return matchesSearch && matchesGeneration;
+  });
+
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
-  const currentItems = filteredTeams.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(filteredTeams.length / ITEMS_PER_PAGE);
+  const currentItems = filteredProjects.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
+  console.log("🔍 Filtered projects:", filteredProjects);
+  console.log("Page:", currentPage);
+  console.log("Index of first item:", indexOfFirstItem);
+  console.log("Index of last item:", indexOfLastItem);
+  console.log("Current items:", currentItems);
+  const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
 
   return (
     <div className={styles["main-body"]}>
       <GeneralSeo title="Product" />
       <ProjectNavbar />
 
-      {/* Header Section */}
       <FadeIn>
         <div className="container mx-auto flex flex-col items-center">
           <BigTitle>
@@ -85,13 +112,13 @@ const ProjectView = () => {
             <span className="font-normal">we{`'`}re</span> proud of{" "}
           </BigTitle>
           <p className="font-normal text-[#6A6A6A] text-base lg:text-lg text-center pt-2">
-            Motionhack is a project that is always held every time the study group
-            ends by creating a real project.
+            Motionhack is a project that is always held every time the study
+            group ends by creating a real project.
           </p>
         </div>
       </FadeIn>
 
-      {/* Categories Section */}
+
       <FadeIn delay={0.2}>
         <div className="overflow-x-auto whitespace-nowrap no-scrollbar">
           <section className="flex space-x-4 p-4 pl-8 md:pl-12 lg:pl-24">
@@ -123,29 +150,35 @@ const ProjectView = () => {
         </div>
       </FadeIn>
 
-      {/* Search Section */}
       <FadeIn delay={0.3}>
         <section className="container mx-auto py-8 md:py-16">
           <SearchBar onSearch={handleSearch} />
         </section>
       </FadeIn>
 
-      {/* Projects Section */}
       <section>
         <div className="container mx-auto border rounded">
-          {filteredTeams.length > 0 ? (
+          {loading ? (
+            <div className="flex justify-center items-center p-8">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#C1271A]"></div>
+            </div>
+          ) : error ? (
+            <div className="text-center p-8 text-red-600">{error}</div>
+          ) : currentItems.length > 0 ? (
             <StaggerContainer>
-              {currentItems.map((teamData, index) => (
-                <StaggerItem key={index}>
+              {currentItems.map((project) => (
+                <StaggerItem key={project.id}>
                   <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.2 }}
+                    whileHover={{ scale: 1.01 }}
+                    transition={{ duration: 0.3 }}
                   >
+                    {" "}
                     <ContentProduct
-                      title={teamData.title}
-                      team={teamData.team}
-                      description={teamData.description}
-                      qrcode={teamData.qrcode}
+                      id={project.id}
+                      title={project.project_name}
+                      team={project.team_name}
+                      description={project.about}
+                      thumbnail={project.thumbnail}
                       onShowDetails={handleShowDetails}
                     />
                   </motion.div>
@@ -154,13 +187,17 @@ const ProjectView = () => {
             </StaggerContainer>
           ) : (
             <FadeIn>
-              <NotFound />
+              <ProjectNotFound
+                onSeeNewestProject={() => {
+                  setActiveCategory(9);
+                  setCurrentPage(1);
+                }}
+              />
             </FadeIn>
           )}
         </div>
       </section>
 
-      {/* Pagination Section */}
       {currentItems.length > 0 && (
         <FadeIn delay={0.4}>
           <Pagination

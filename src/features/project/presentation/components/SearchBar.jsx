@@ -3,7 +3,7 @@ import React from 'react';
 const SearchBar = ({ onSearch }) => {
   return (
     <form>
-      <div className="relative w-full">
+      <div className="relative w-full z-10">
         <button
           type="submit"
           className="absolute inset-y-0 start-6 flex items-center pointer-events-none"

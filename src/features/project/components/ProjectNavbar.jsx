@@ -172,12 +172,12 @@ const ProductNavbar = ({ onNavigation, isFixed = true }) => {
         </div>
       </nav>
       <div
-        className={`z-10 bg-black fixed top-0 left-0 right-0 bg-opacity-80 transition duration-300 ${
+        className={`z-50 bg-black fixed top-0 left-0 right-0 bg-opacity-80 transition duration-300 ${
           isNavbarOpened ? "opacity-1 bottom-0" : "opacity-0"
         }`}
       >
         <nav
-          className={`transition duration-400 text-center m-auto left-0 right-0 z-10 bg-white z-20" ${
+          className={`transition duration-400 text-center m-auto left-0 right-0 z-50 bg-white z-20" ${
             isNavbarOpened ? "fixed" : "hidden"
           }`}
         >

@@ -8,6 +8,7 @@ export const GENERATIONS = [
   { id: 7, name: "Gelato 7.0" },
   { id: 8, name: "Hazelnut 8.0" },
   { id: 9, name: "Ikura 9.0" },
+  { id: 10, name: "All" },
 ];
 
 export const ITEMS_PER_PAGE = 5;

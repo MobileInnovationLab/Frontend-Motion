@@ -3,6 +3,7 @@ const nextConfig = {
   trailingSlash: true,
   output: "standalone",
   images: {
+    domains: ['admin.motionlaboratory.com'],
     remotePatterns: [
       {
         protocol: "https",
