@@ -93,11 +93,6 @@ const ProjectView = () => {
     indexOfFirstItem,
     indexOfLastItem
   );
-  console.log("🔍 Filtered projects:", filteredProjects);
-  console.log("Page:", currentPage);
-  console.log("Index of first item:", indexOfFirstItem);
-  console.log("Index of last item:", indexOfLastItem);
-  console.log("Current items:", currentItems);
   const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
 
   return (
@@ -151,7 +146,7 @@ const ProjectView = () => {
       </FadeIn>
 
       <FadeIn delay={0.3}>
-        <section className="container mx-auto py-8 md:py-16">
+        <section className="container mx-auto py-8 md:py-16 z-10">
           <SearchBar onSearch={handleSearch} />
         </section>
       </FadeIn>

@@ -247,7 +247,7 @@ export const DIVISIONS = [
       {
         name: "Ragadhitya Janatantra",
         role: "Member of Project & Competition",
-        image: "/images/member/Competition-Raga.png",
+        image: "/images/member/Competition-Raga.jpg",
         linkedin: "#",
         instagram: "#",
         division: "Project & Competition Division"

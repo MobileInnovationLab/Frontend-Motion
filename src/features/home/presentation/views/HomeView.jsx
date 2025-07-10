@@ -31,6 +31,7 @@ import { DIVISIONS } from "@/features/people/constants/peopleConstants";
 
 // Services
 import { projectService } from "@/features/project/services/projectService";
+import { peopleService } from "@/features/people/services/peopleService";
 
 // Styles
 import "@/core/styles/globals.scss";
@@ -39,6 +40,9 @@ export default function HomeView() {
   const [projects, setProjects] = useState([]);
   const [projectsLoading, setProjectsLoading] = useState(true);
   const [projectsError, setProjectsError] = useState(null);
+  const [people, setPeople] = useState([]);
+  const [peopleLoading, setPeopleLoading] = useState(false);
+  const [peopleError, setPeopleError] = useState(null);
   const scrollRef = useRef(null);
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
@@ -48,34 +52,59 @@ export default function HomeView() {
   const newsRef = useRef(null);
   const contactRef = useRef(null);
 
-  const laboratoryAssistants = DIVISIONS.flatMap(
-    (division) => division.members
-  );
+  const laboratoryAssistants = DIVISIONS.flatMap((division) => division.members);
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         setProjectsLoading(true);
         const response = await projectService.getAllProjects();
         console.log("📦 Fetched projects for homepage:", response);
-
-        // Filter proyek dari generasi 9
         const gen9Projects = response.data
           .filter((project) => project.generation === "9")
-          .sort((a, b) => new Date(b.created_at) - new Date(a.created_at)) // Sort by newest first
-          .slice(0, 3); // Take first 3
+          .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+          .slice(0, 3);
 
-        console.log("🎯 Latest Gen 9 projects:", gen9Projects);
         setProjects(gen9Projects);
         setProjectsError(null);
       } catch (err) {
-        console.error("Error fetching projects:", err);
         setProjectsError("Failed to load projects");
       } finally {
         setProjectsLoading(false);
       }
     };
 
+    const fetchPeople = async () => {
+      try {
+        setPeopleLoading(true);
+        const data = await peopleService.getAllPeople();
+
+        const grouped = data.reduce((acc, person) => {
+          const division = person.division || "Unknown";
+          if (!acc[division]) acc[division] = [];
+          acc[division].push(person);
+          return acc;
+        }, {});
+
+        const groupedDivisions = Object.entries(grouped).map(
+          ([divisionName, members], index) => ({
+            id: index + 1,
+            division: divisionName,
+            members,
+          })
+        );
+
+        setPeople(groupedDivisions);
+        setPeopleError(null);
+      } catch (err) {
+        console.error("❌ Error fetching people:", err);
+        setPeopleError("Failed to load people");
+      } finally {
+        setPeopleLoading(false);
+      }
+    };
+
     fetchProjects();
+    fetchPeople();
   }, []);
 
   const firstRow = laboratoryAssistants.slice(0, 15);
@@ -162,7 +191,6 @@ export default function HomeView() {
     <div className="bg-[#FCF6F6]">
       <GeneralSeo />
       <HomeNavbar onNavigation={handleNavigation} />
-      {/* Hero Section */}
       <section
         ref={homeRef}
         className="w-full bg-[url('/images/main-index/bg-main.webp')] bg-cover bg-no-repeat bg-[center_bottom_0rem] min-h-screen"
@@ -381,7 +409,6 @@ export default function HomeView() {
           </motion.div>
         </motion.div>
       </section>
-      {/* Projects Section */}{" "}
       <section ref={projectRef} className="container mx-auto py-8 md:py-16">
         <SlideIn direction="up">
           <SectionTitle
@@ -403,18 +430,17 @@ export default function HomeView() {
               },
             },
           }}
-          className="flex gap-4 md:gap-x-8 lg:grid lg:grid-cols-3 lg:gap-8 pt-16 overflow-x-auto whitespace-nowrap no-scrollbar"
+          className="flex md:grid md:grid-cols-3 md:gap-8 gap-4 overflow-x-auto flex-nowrap no-scrollbar py-4 px-4 md:px-0"
         >
           {projectsLoading ? (
-            // Loading state
             <div className="col-span-3 flex justify-center items-center min-h-[200px]">
               <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#C1271A]"></div>
             </div>
           ) : projectsError ? (
-            // Error state
             <div className="col-span-3 flex justify-center items-center min-h-[200px] text-red-600">
               {projectsError}
-            </div>          ) : projects.length > 0 ? (
+            </div>
+          ) : projects.length > 0 ? (
             projects.map((project) => (
               <motion.div
                 key={project.id}
@@ -429,17 +455,19 @@ export default function HomeView() {
                     },
                   },
                 }}
-                whileHover={{ scale: 1.05 }}
-                onClick={() => router.push(`/project/detailProject/${project.id}`)}
-                className="cursor-pointer"
-              >                <CardProject
+                onClick={() =>
+                  router.push(`/project/detailProject/${project.id}`)
+                }
+                className="cursor-pointer flex-shrink-0 w-[85%] md:w-auto"
+              >
+                <CardProject
                   id={project.id}
                   nama={project.project_name}
                   team={project.team_name}
                   member={project.team_members}
                   thumbnail={
-                    project.thumbnail 
-                      ? `https://admin.motionlaboratory.com/storage/project-showcase/${project.thumbnail}` 
+                    project.thumbnail
+                      ? `https://admin.motionlaboratory.com/storage/project-showcase/${project.thumbnail}`
                       : "/images/contactUs/photoFirst.png"
                   }
                   about={project.about}
@@ -447,24 +475,19 @@ export default function HomeView() {
               </motion.div>
             ))
           ) : (
-            // Empty state
             <div className="col-span-3 flex justify-center items-center min-h-[200px] text-gray-500">
               No projects available
             </div>
           )}
         </motion.div>
 
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="py-8"
-        >
+        <div className="py-8">
           <Link href={"/project"}>
             <SecondaryButton>See More</SecondaryButton>
           </Link>
-        </motion.div>
+        </div>
       </section>
-      {/* People Section */}
+
       <section ref={peopleRef} className="pt-20">
         <div className="">
           <SlideIn direction="up">
@@ -484,15 +507,11 @@ export default function HomeView() {
           </div>
         </div>
       </section>
-      <motion.div
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="container mx-auto pb-8"
-      >
+      <div className="container mx-auto pb-8">
         <Link href={"/people"}>
           <SecondaryButton>See More</SecondaryButton>
         </Link>
-      </motion.div>
+      </div>
       {/* News Section */}
       <section ref={newsRef} className="container mx-auto py-0 md:py-16">
         <SlideIn direction="up">
@@ -546,15 +565,11 @@ export default function HomeView() {
           </div>
         </motion.div>
 
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="py-8 text-center"
-        >
+        <div className="py-8 text-center">
           <Link href="/news">
             <SecondaryButton>See More</SecondaryButton>
           </Link>
-        </motion.div>
+        </div>
       </section>
       <TopButton />
       <section ref={contactRef}>

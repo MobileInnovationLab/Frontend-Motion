@@ -1,6 +1,6 @@
 import api from "@/core/api/api";
 
-const BASE_URL = "/people";
+const BASE_URL = "/aslab";
 
 export const peopleService = {
   // Get all people

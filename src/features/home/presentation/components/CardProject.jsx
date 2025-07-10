@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const CardProject = ({ id, nama, team, member, thumbnail, about }) => {
   return (
-    <div className="w-[90%] md:max-w-md lg:w-full rounded-[30px] bg-white shadow-lg">
+    <div className="w-[90%] md:max-w-md lg:w-full rounded-[30px] bg-white">
       <div className="w-full">
         <img
           src={thumbnail || "/images/contactUs/photoFirst.png"}

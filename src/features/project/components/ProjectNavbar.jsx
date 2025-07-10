@@ -58,7 +58,7 @@ const ProductNavbar = ({ onNavigation, isFixed = true }) => {
   }
 
   function getNavClassName() {
-    let className = `transition duration-300 ${
+    let className = `z-50 transition duration-300 ${
       isFixed ? "fixed" : ""
     } text-center m-auto left-0 right-0 py-5 z-10`;
 
@@ -224,7 +224,7 @@ const ProductNavbar = ({ onNavigation, isFixed = true }) => {
             </button>
           </div>
 
-          <div className="border-black border-b-[1px] border-black border-opacity-5 border-solid"></div>
+          <div className="border-black border-b-[1px] border-opacity-5 border-solid"></div>
 
           <ul className="text-left container mx-auto">
             {navbarLinks.map((row) => (
