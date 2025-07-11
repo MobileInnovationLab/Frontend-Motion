@@ -112,7 +112,7 @@ const InternshipRegisterFailedView = () => {
             className="text-gray-600 mb-8"
             variants={textVariants}
           >
-            We&apos;re sorry,, but there was an error processing your registration. Please try again later.
+            We&apos;re sorry, but there was an error processing your registration. Please try again later.
           </motion.p>
           <motion.button
             onClick={() => router.push("/register")}
