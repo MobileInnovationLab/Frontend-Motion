@@ -71,14 +71,17 @@ const DetailsNews = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
+          className="flex justify-center"
         >
-          <Image
-            src={image}
-            alt="News image"
-            width={1200}
-            height={600}
-            className="rounded-2xl md:rounded-t-[20px] w-full h-auto"
-          />
+          <div className="relative w-full max-w-lg aspect-[1/1] rounded-2xl overflow-hidden">
+            <Image
+              src={image}
+              alt="News image"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
         </motion.div>
         <FadeIn delay={0.3}>
           <div

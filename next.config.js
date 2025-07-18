@@ -8,6 +8,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "admin.motionlaboratory.com",
       },
+      {
+        protocol: "http", 
+        hostname: "admin.motionlaboratory.com",
+      },
     ],
   },
 };
