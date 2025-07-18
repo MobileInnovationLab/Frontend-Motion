@@ -1,4 +1,4 @@
-import PeopleView from "@/features/people/presentation/view/PeopleView";
+import PeopleView from "@/features/people/views/PeoplePageView";
 
 const page = () => {
   return <PeopleView />;

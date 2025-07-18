@@ -1,4 +1,4 @@
-import api from "@/core/api/api";
+import api from "@/shared/api/api";
 
 const BASE_URL = "/aslab";
 

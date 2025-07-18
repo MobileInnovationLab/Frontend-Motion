@@ -1,8 +1,7 @@
 "use client";
 
-import InternshipNavbar from "../../components/navbar/InternshipNavbar";
 import Button from "../../components/ui/ButtonVideoList";
-import useCurriculumMobileProgrammingViewModel from "../../viewModels/useCurriculumMobileProgramingViewModel";
+import useCurriculumMobileProgrammingViewModel from "../../hooks/useCurriculumMobileProgramingViewModel";
 
 const CurriculumMobileProgrammingView = () => {
   const {
@@ -92,7 +91,6 @@ const CurriculumMobileProgrammingView = () => {
 
   return (
     <>
-      <InternshipNavbar isFixed={false} />
       <section className="bg-[url('/images/recruitment/sub-header.png')] bg-cover bg-no-repeat bg-[center_bottom_0rem] w-full">
         <h1 className="text-[28px] lg:text-[48px] font-bold font-[rubik] text-center text-white flex justify-center py-40">
           Mobile Programming

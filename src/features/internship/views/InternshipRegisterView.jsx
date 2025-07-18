@@ -6,10 +6,10 @@ import useRecruitmentRegisterViewModel, {
   generationOptions,
   majorOptions,
   linkSoal,
-} from "../viewModels/useRecruitmentRegisterViewModel";
-import RecruitmentTextInputField from "@/core/components/input/RecruitmentTextInputField";
-import RecruitmentSelectInputField from "@/core/components/input/RecruitmentSelectInputField";
-import InternshipNavbar from "../components/navbar/InternshipNavbar";
+} from "../hooks/useRecruitmentRegisterViewModel";
+import RecruitmentTextInputField from "@/shared/components/input/RecruitmentTextInputField";
+import RecruitmentSelectInputField from "@/shared/components/input/RecruitmentSelectInputField";
+import Navbar from "@/shared/components/navbar";
 import { useState } from 'react';
 import Modal from './InternshipRegisterGuideModal';
 
@@ -77,10 +77,8 @@ const InternshipRegisterView = () => {
 
   return (
     <>
-      <InternshipNavbar isFixed={false} />
-
-      {process.env.NEXT_PUBLIC_RECRUITMENT_CLOSED == "false" ? (
-        <section className="flex flex-col items-center justify-center container mx-auto px-10 lg:px-[20rem] text-center my-20">
+      {process.env.NEXT_PUBLIC_RECRUITMENT_CLOSED == "true" ? (
+        <section className="h-screen flex flex-col items-center justify-center container mx-auto px-10 lg:px-[20rem] text-center ">
           <img src="/images/internship/registration-closed.png" alt="" />
           <h2 className="font-semibold text-[18px] lg:text-[32px] text-[rubik]">
             Officialy Closed

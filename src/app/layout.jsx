@@ -1,7 +1,8 @@
 import NextTopLoader from "nextjs-toploader";
-import "@/core/styles/globals.scss";
+import NavbarClientWrapper from "@/shared/components/NavbarClientWrapper"; 
+import "@/styles/globals.scss";
 import "react-multi-carousel/lib/styles.css";
-import "@/core/styles/tailwind.scss";
+import "@/styles/tailwind.scss";
 
 export const metadata = {
   title: "Mobile Innovation Laboratory",
@@ -63,6 +64,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <NextTopLoader color="#FFFFFF" showSpinners={false} />
+        <NavbarClientWrapper />
         {children}
       </body>
     </html>

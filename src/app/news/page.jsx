@@ -1,4 +1,4 @@
-import NewsView from "@/features/news/presentation/views/NewsView";
+import NewsView from "@/features/news/views/NewsPageView";
 
 const page = () => {
   return <NewsView />;

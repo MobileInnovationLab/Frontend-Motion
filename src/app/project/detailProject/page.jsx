@@ -1,4 +1,4 @@
-import DetailProject from "@/features/project/presentation/view/DetailProjectView";
+import DetailProject from "@/features/project/views/DetailProjectPageView";
 
 const page = () => {
   return <DetailProject />;
