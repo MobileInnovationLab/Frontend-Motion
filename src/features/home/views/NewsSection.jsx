@@ -12,18 +12,19 @@ export default function NewsSection({ innerRef }) {
   const { news, newsLoading, newsError } = useHomeData();
 
   return (
-    <section id="news" ref={innerRef} className="container mx-auto py-0 md:py-16">
+    <section
+      id="news"
+      ref={innerRef}
+      className="container mx-auto py-0 md:py-16"
+    >
       <SlideIn direction="up">
         <div className="w-full text-center">
-          <SectionTitle
-            subtitle="NEWS"
-            title="Stay Updated with Motion Lab!"
-          />
+          <SectionTitle subtitle="NEWS" title="Stay Updated with Motion Lab!" />
           <p className="font-[rubik] text-[#6A6A6A] max-w-4xl mx-auto">
             Discover the latest stories, achievements, and updates from Motion
             Lab. From groundbreaking innovations to inspiring success stories,
-            explore how our community continues to push the boundaries of
-            mobile technology. Stay in the loop and be part of the journey!
+            explore how our community continues to push the boundaries of mobile
+            technology. Stay in the loop and be part of the journey!
           </p>
         </div>
       </SlideIn>
@@ -58,7 +59,9 @@ export default function NewsSection({ innerRef }) {
               }}
               className="flex-shrink-0 w-[85%] md:w-auto"
             >
-              <NewsEvent data={item} isLoading={newsLoading} />
+              <Link href={`/news/detailNews/${item.id}`}>
+                <NewsEvent data={item} isLoading={newsLoading} />
+              </Link>
             </motion.div>
           ))}
         </div>

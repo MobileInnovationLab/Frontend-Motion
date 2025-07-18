@@ -36,6 +36,7 @@ const DetailsNews = () => {
   });
   const image = newsData.thumbnail_content;
   const content = newsData.body;
+  const author = newsData.author;
 
   const imageVariants = {
     hidden: { scale: 0.8, opacity: 0 },
@@ -55,7 +56,10 @@ const DetailsNews = () => {
       <FadeIn>
         <section className="container mx-auto">
           <BigTitle>{title}</BigTitle>
-          <p className="font-normal font-[inter] text-xl md:text-base lg:text-lg text-start py-8">
+          <p className="font-normal font-[inter] text-xl md:text-base lg:text-base text-center py-4">
+            <span className="font-bold">{author}</span> - Motion Lab
+          </p>
+          <p className="font-normal font-[inter] text-xl md:text-base lg:text-base text-center ">
             {date}
           </p>
         </section>
@@ -78,7 +82,7 @@ const DetailsNews = () => {
         </motion.div>
         <FadeIn delay={0.3}>
           <div
-            className="text-xl lg:text-3xl font-[inter] text-justify py-8"
+            className="text-sm lg:text-base font-[inter] text-justify py-8"
             dangerouslySetInnerHTML={{ __html: content }}
           />
         </FadeIn>

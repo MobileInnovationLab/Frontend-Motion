@@ -49,7 +49,7 @@ const NewsView = () => {
       </FadeIn>
 
       {/* Category Section */}
-      <FadeIn delay={0.2}>
+      {/* <FadeIn delay={0.2}>
         <section className="container mx-auto py-4 md:py-8">
           <CategoryButtons
             categories={CATEGORIES}
@@ -57,17 +57,17 @@ const NewsView = () => {
             onCategoryChange={handleCategoryChange}
           />
         </section>
-      </FadeIn>
+      </FadeIn> */}
 
       {/* Sort Section */}
-      <FadeIn delay={0.3}>
+      {/* <FadeIn delay={0.3}>
         <section className="container mx-auto py-4 md:py-10">
           <SortButtons onSortChange={handleSortChange} currentSort={sortBy} />
         </section>
-      </FadeIn>
-
+      </FadeIn> */}
+      <div className="h-10"></div>
       {/* News Grid Section */}
-      <section className="container mx-auto">
+      <section className="container mx-auto py-8">
         {loading ? (
           <div className="text-center py-12 text-gray-500">Loading news...</div>
         ) : error ? (
