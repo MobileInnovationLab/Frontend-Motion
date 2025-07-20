@@ -12,6 +12,7 @@ import {
   buttonVariants,
 } from "../constants/animations";
 import Footer from "@/shared/components/footer";
+import BigTitle from "@/features/news/components/ui/BigTittle";
 
 const PeopleView = () => {
   const {
@@ -35,18 +36,19 @@ const PeopleView = () => {
           className="flex flex-col items-center"
           variants={containerVariants}
         >
-          <motion.h1
-            className="font-bold text-4xl md:text-4xl lg:text-5xl font-[inter] text-center"
-            variants={titleVariants}
-          >
-            Laboratory Assistent
-          </motion.h1>
-          <motion.p
-            className="font-[inter] font-thin text-base lg:text-2xl text-center pt-4 flex flex-col md:flex-row"
-            variants={titleVariants}
-          >
-            Mobile Innovation Laboratory
-          </motion.p>
+          <div className="bg-cover bg-center bg-no-repeat w-full text-center">
+            <h1 className="font-bold text-4xl md:text-4xl lg:text-5xl font-[rubik]">
+              <span>Not All Heroes Wear Lab Coats -</span>{" "}
+              <span className="text-[#F82F1E]">Meet Our Aslab !</span>
+            </h1>
+          </div>
+          <p className="font-normal text-[#6A6A6A] text-base lg:text-lg text-center pt-2 hidden md:flex">
+            Say hello to the passionate tech mentors behind Motion Lab! Our
+            Laboratory Assistants are here to guide, support, and grow with you.
+            Ready to help with challenges, share insights, and make your journey
+            smoother and more exciting. Because at Motion Lab, we grow best when
+            we grow together
+          </p>
         </motion.div>
       </motion.section>
 

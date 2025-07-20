@@ -15,13 +15,6 @@ export default function Footer() {
           />
           <p className={styles["bottom-text"]}>Mobile Innovation Laboratory</p>
           <p className={styles["bottom-text"]}>Every Movement is Motion</p>
-          <a
-            href="https://www.youtube.com/@MotionLabTelkomUniversity"
-            target="_blank"
-            className={`${styles["bottom-text"]} hover:underline`}
-          >
-            Socials
-          </a>
         </section>
         <section className={styles["footer-column"]}>
           <h1 className={styles["footer-titles"]}>Get In Touch</h1>
@@ -193,7 +186,7 @@ export default function Footer() {
           />
         </svg>
         <p className={styles.copyright}>
-          Copywright Mobile Innovation Laboratory 2025
+          Copyright Mobile Innovation Laboratory 2025
         </p>
       </footer>
     </>
