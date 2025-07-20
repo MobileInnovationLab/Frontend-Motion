@@ -13,7 +13,7 @@ const CardProject = ({ id, nama, team, member, thumbnail, about }) => {
       <div className="px-6 py-6">
         <div className="pb-6">
           <h1 className="font-bold font-[inter] text-2xl mb-3">{nama}</h1>
-          <h3 className="font-[inter] text-lg text-gray-700">Team {team}</h3>
+          <h3 className="font-[inter] text-lg text-gray-700">{team}</h3>
           <h3 className="font-[inter] font-bold text-lg text-wrap text-ellipsis overflow-hidden line-clamp-2">
             {member}
           </h3>

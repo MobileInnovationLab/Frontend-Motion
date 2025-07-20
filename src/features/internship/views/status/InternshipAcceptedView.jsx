@@ -17,9 +17,8 @@ const InternshipAcceptedView = () => {
 
   return (
     <>
-      <Confetti width={width} height={height} />
-
-      <section className="flex flex-col items-center justify-center container mx-auto px-10 lg:px-[20rem] text-center my-20">
+      <section className="flex flex-col items-center justify-center container mx-auto px-10 lg:px-[20rem] text-center py-20">
+        <Confetti width={width} height={height} />
         <img src="/images/recruitment/recruitment-accepted.png" alt="" />
         <h2 className="font-semibold text-[18px] lg:text-[32px] text-[rubik]">
           Congratulations !
@@ -29,10 +28,9 @@ const InternshipAcceptedView = () => {
           <b className="text-[#F82F1E] uppercase">
             {searchParams.get("name")} ({searchParams.get("nim")})
           </b>{" "}
-          ! You have been selected as a new intern for Mobile Innovation
-          Laboratory Ikura 9.0 for{" "}
-          <span className="text-[#F82F1E]">{searchParams.get("division")}</span>
-          . Please join the WhatsApp group below.
+          ! you are officially selected as a member of the Mobile Innovation
+          Laboratory Ikura 9.0. Thank you for participating in the member
+          selection activities!
         </p>
         <div className="my-3 lg:my-6"></div>
         <Link
