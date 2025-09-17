@@ -77,7 +77,7 @@ const InternshipRegisterView = () => {
 
   return (
     <>
-      {process.env.NEXT_PUBLIC_RECRUITMENT_CLOSED == "true" ? (
+      {process.env.NEXT_PUBLIC_RECRUITMENT_CLOSED == "false" ? (
         <section className="h-screen flex flex-col items-center justify-center container mx-auto px-10 lg:px-[20rem] text-center ">
           <img src="/images/internship/registration-closed.png" alt="" />
           <h2 className="font-semibold text-[18px] lg:text-[32px] text-[rubik]">
@@ -93,7 +93,7 @@ const InternshipRegisterView = () => {
         <>
           <section className="bg-[url('/images/recruitment/sub-header.png')] bg-cover bg-no-repeat bg-[center_bottom_0rem] w-full">
             <h1 className="text-[28px] lg:text-[48px] font-bold font-[rubik] text-center text-white flex justify-center py-40">
-              Recruitment Member 9.0
+              Recruitment Member 10.0
             </h1>
           </section>
 
@@ -248,7 +248,7 @@ const InternshipRegisterView = () => {
 
                   <RecruitmentTextInputField
                     label="Upload Twibbon"
-                    link="https://bit.ly/TwibbonMotion2024"
+                    link="https://bit.ly/TwibbonMotion2025"
                     name="twibbon_evidence"
                     placeholder="Link Instagram Post"
                     onChange={formik.handleChange}

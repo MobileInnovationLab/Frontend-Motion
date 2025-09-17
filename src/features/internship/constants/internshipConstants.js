@@ -98,7 +98,7 @@ export const CURRICULUMS = [
 export const REQUIREMENTS = [
   {
     number: "01",
-    text: "Active Telkom University undergraduate student batch 2022-2024 from all major",
+    text: "Active Telkom University undergraduate student batch 2023-2025 from all major",
   },
   {
     number: "05",
