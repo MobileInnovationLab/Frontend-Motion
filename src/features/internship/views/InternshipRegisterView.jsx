@@ -248,7 +248,7 @@ const InternshipRegisterView = () => {
 
                   <RecruitmentTextInputField
                     label="Upload Twibbon"
-                    link="https://bit.ly/TwibbonMotion2024"
+                    link="https://bit.ly/TwibbonMotion2025"
                     name="twibbon_evidence"
                     placeholder="Link Instagram Post"
                     onChange={formik.handleChange}
