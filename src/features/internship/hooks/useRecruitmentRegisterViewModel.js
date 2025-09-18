@@ -169,8 +169,20 @@ export const majorOptions = [
     value: "S1 Terapan Digital Creative Multimedia",
   },
   {
-    label: "S1 Business Digital",
-    value: "S1 Business Digital",
+    label: "S1 Film dan Animasi",
+    value: "S1 Film dan Animasi",
+  },
+  {
+    label: "S1 Digital Business",
+    value: "S1 Digital Business",
+  },
+  {
+    label: "S1 Psikologi (Digital Psychology)",
+    value: "S1 Psikologi (Digital Psychology)",
+  },
+  {
+    label: "S1 Manajemen Rekayasa Industri",
+    value: "S1 Manajemen Rekayasa Industri",
   },
 ];
 
