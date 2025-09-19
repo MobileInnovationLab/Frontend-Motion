@@ -17,8 +17,24 @@ export const majorOptions = [
     value: "S1 Teknik Telekomunikasi",
   },
   {
+    label: "S1 Teknik Telekomunikasi (International Class)",
+    value: "S1 Teknik Telekomunikasi (International Class)",
+  },
+  {
+    label: "D3 Teknik Telekomunikasi",
+    value: "D3 Teknik Telekomunikasi",
+  },
+  {
     label: "S1 Teknik Elektro",
     value: "S1 Teknik Elektro",
+  },
+  {
+    label: "S1 Teknik Elektro (International Class)",
+    value: "S1 Teknik Elektro (International Class)",
+  },
+  {
+    label: "S1 Electrical Energy Engineering",
+    value: "S1 Electrical Energy Engineering",
   },
   {
     label: "S1 Smart Science and Technology",
@@ -41,12 +57,32 @@ export const majorOptions = [
     value: "S1 Teknik Industri",
   },
   {
+    label: "S1 Teknik Industri (International Class)",
+    value: "S1 Teknik Industri (International Class)",
+  },
+  {
     label: "S1 Sistem Informasi",
     value: "S1 Sistem Informasi",
   },
   {
+    label: "S2 Sistem Informasi",
+    value: "S2 Sistem Informasi",
+  },
+  {
+    label: "S1 Sistem Informasi (International Class)",
+    value: "S1 Sistem Informasi (International Class)",
+  },
+  {
+    label: "S1 Terapan Sistem Informasi Kota Cerdas",
+    value: "S1 Terapan Sistem Informasi Kota Cerdas",
+  },
+  {
     label: "S1 Teknik Logistik",
     value: "S1 Teknik Logistik",
+  },
+  {
+    label: "S1 Digital Supply Chain",
+    value: "S1 Digital Supply Chain",
   },
   {
     label: "S2 Teknik Industri",
@@ -57,8 +93,17 @@ export const majorOptions = [
     value: "S1 Informatika",
   },
   {
-    label: "S1 Teknologi Informasi",
+    label: "S1 Informatika (International Class)",
+    value: "S1 Informatika (International Class)",
+  },
+
+  {
+    label: "S1 Teknologi Informasi (Cyber Security & Digital Innovation)",
     value: "S1 Teknologi Informasi",
+  },
+  {
+    label: "S1 Teknologi Informasi (Cyber Security & Digital Innovation - International Class)",
+    value: "S1 Teknologi Informasi (Cyber Security & Digital Innovation - International Class)"
   },
   {
     label: "S1 Rekayasa Perangkat Lunak",
@@ -85,12 +130,24 @@ export const majorOptions = [
     value: "S1 International ICT Business",
   },
   {
-    label: "S1 Manajemen Bisnis Telekomunikasi & Informatika",
+    label: "S1 Manajemen Bisnis Telekomunikasi & Informatika (MBTI)",
     value: "S1 Manajemen Bisnis Telekomunikasi & Informatika (MBTI)",
+  },
+  {
+    label: "S1 MBTI (International Class)",
+    value: "S1 MBTI (International Class)",
   },
   {
     label: "S1 Akuntansi",
     value: "S1 Akuntansi",
+  },
+  {
+    label: "S1 Akuntansi (International Class)",
+    value: "S1 Akuntansi (International Class)",
+  },
+  {
+    label: "S2 Akuntansi",
+    value: "S2 Akuntansi",
   },
   {
     label: "S2 Manajemen",
@@ -105,16 +162,36 @@ export const majorOptions = [
     value: "S1 Administrasi Bisnis",
   },
   {
+    label: "S1 Administrasi Bisnis (International Class)",
+    value: "S1 Administrasi Bisnis (International Class)",
+  },
+  {
     label: "S1 Ilmu Komunikasi",
     value: "S1 Ilmu Komunikasi",
+  },
+  {
+    label: "S1 Ilmu komunikasi (International Class)",
+    value: "S1 Ilmu komunikasi (International Class)",
+  },
+  {
+    label: "S2 Ilmu Komunikasi",
+    value: "S2 Ilmu Komunikasi",
   },
   {
     label: "S1 Digital Public Relation",
     value: "S1 Digital Public Relation",
   },
   {
+    label: "S1 Visual Arts (Intermedia Visual Arts)",
+    value: "S1 Visual Arts (Intermedia Visual Arts)",
+  },
+  {
     label: "S1 Desain Komunikasi Visual",
     value: "S1 Desain Komunikasi Visual",
+  },
+  {
+    label: "S1 Desain Komunikasi Visual (International Class)",
+    value: "S1 Desain Komunikasi Visual (International Class)",
   },
   {
     label: "S1 Product Innovation & Management",
@@ -137,20 +214,28 @@ export const majorOptions = [
     value: "S2 Desain",
   },
   {
+    label: "S1 Digital Content Broadcasting",
+    value: "S1 Digital Content Broadcasting",
+  },
+  {
     label: "D3 Digital Connectivity",
     value: "D3 Digital Connectivity",
   },
   {
-    label: "D3 Teknik Informatika",
-    value: "D3 Teknik Informatika",
+    label: "D3 Teknik Informatika (d.h Rekayasa Perangkat Lunak Aplikasi)",
+    value: "D3 Teknik Informatika (d.h Rekayasa Perangkat Lunak Aplikasi)",
   },
   {
     label: "D3 Sistem Informasi",
     value: "D3 Sistem Informasi",
   },
   {
-    label: "D3 Sistem Informasi Akuntansi",
-    value: "D3 Sistem Informasi Akuntansi",
+    label: "D3 Digital Accounting (Sistem Informasi Akuntansi)",
+    value: "D3 Digital Accounting (Sistem Informasi Akuntansi)",
+  },
+  {
+    label: "S1 Teknik Komputer",
+    value: "S1 Teknik Komputer",
   },
   {
     label: "D3 Teknik Komputer",
@@ -184,6 +269,22 @@ export const majorOptions = [
     label: "S1 Manajemen Rekayasa Industri",
     value: "S1 Manajemen Rekayasa Industri",
   },
+  {
+    label: "S2 Cybersecurity and Digital Forensics",  
+    value: "S2 Cybersecurity and Digital Forensics",
+  },
+  {
+    label: "S1 Smart Science and Technology (Teknik Fisika)",
+    value: "S1 Smart Science and Technology (Teknik Fisika)",
+  },
+  {
+    label: "S1 Leisure Management",
+    value: "S1 Leisure Management",
+  },
+  {
+    label: "S1 Desain Produk & Inovasi",
+    value: "S1 Desain Produk & Inovasi",
+  }
 ];
 
 export const divisionOptions = [
