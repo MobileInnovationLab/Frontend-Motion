@@ -28,14 +28,15 @@ const InternshipAcceptedView = () => {
           <b className="text-[#F82F1E] uppercase">
             {searchParams.get("name")} ({searchParams.get("nim")})
           </b>{" "}
-          ! you are officially selected as a member of the{" "}
+          ! congratulations, you have successfully passed the document selection
+          stage for the{" "}
           <span className="text-[#F82F1E]">{searchParams.get("division")}</span>{" "}
-          in Mobile Innovation Laboratory Ikura 9.0. Thank you for participating
-          in the member selection activities!
+          in Mobile Innovation Laboratory Jaffle 10.0. Thank you for
+          participating in the member selection activities!
         </p>
         <div className="my-3 lg:my-6"></div>
         <Link
-          href="https://chat.whatsapp.com/BAQNe4upXyr7RqEfgTwqGW?mode=ac_t"
+          href="https://chat.whatsapp.com/LugrfjjTZNCLAHSQldWgpU"
           className="bg-[#F82F1E] text-white text-[inter] text-[14px] lg:text-[16px] rounded-full px-10 py-[1rem] hover:opacity-90 transition duration-800"
         >
           Join Group

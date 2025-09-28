@@ -16,8 +16,9 @@ const InternshipDeclinedView = () => {
         </h2>
         <p className="text-[inter] text-[14px] lg:text-[18px] text-[#6A6A6A] mt-3">
           Unfortunately, you have not been selected as a member for the Mobile
-          Innovation Laboratory Ikura 9.0. Keep your spirits high and never give
-          up! We look forward to seeing your continued growth and resilience.
+          Innovation Laboratory Jaffle 10.0. Keep your spirits high and never
+          give up! We look forward to seeing your continued growth and
+          resilience.
         </p>
       </section>
     </>
