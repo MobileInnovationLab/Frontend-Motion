@@ -34,7 +34,7 @@ export default function useRecruitmentAnnouncementViewModel() {
             )
             .join("&");
 
-          if (response.data.is_accepted == 1) {
+          if (response.data.is_accepted == 2) {
             router.push(`/accepted?${queryString}`);
           } else {
             router.push(`/declined?${queryString}`);
