@@ -1,6 +1,4 @@
-// app/layout.jsx
 import NextTopLoader from "nextjs-toploader";
-import NavbarClientWrapper from "@/shared/components/NavbarClientWrapper"; 
 import "@/styles/globals.scss";
 import "react-multi-carousel/lib/styles.css";
 import "@/styles/tailwind.scss";
@@ -10,10 +8,7 @@ export const metadata = {
   description: "Mobile Innovation Laboratory",
 };
 
-export default function RootLayout({ children }) {
-  // Cek apakah current route adalah auth route
-  const isAuthRoute = children.props.childProp.segment === '(auth)';
-  
+export default function AuthLayout({ children }) {
   return (
     <html>
       <head>
@@ -65,8 +60,6 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <NextTopLoader color="#FFFFFF" showSpinners={false} />
-        {/* Hanya tampilkan Navbar jika bukan auth route */}
-        {!isAuthRoute && <NavbarClientWrapper />}
         {children}
       </body>
     </html>
