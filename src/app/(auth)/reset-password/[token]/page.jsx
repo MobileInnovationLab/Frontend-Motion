@@ -55,7 +55,7 @@ export default function ResetPasswordTokenPage() {
     <div className="min-h-screen bg-[#FCF6F6] flex items-stretch">
       <div className="w-1/2 hidden lg:flex flex-col items-center justify-center p-12">
         <Image
-          src="/images/login/ilustrasi.png"
+          src="/images/login/pana.png"
           width={500}
           height={400}
           alt="Reset Password Illustration"
