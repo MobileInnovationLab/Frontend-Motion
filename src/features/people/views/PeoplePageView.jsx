@@ -59,7 +59,7 @@ const PeopleView = () => {
         variants={containerVariants}
       >
         <motion.section
-          className="flex space-x-4 md:space-x-6 p-4 pl-8 md:pl-12 lg:px-40"
+          className="flex space-x-4 md:space-x-6 px-4 md:px-12 lg:px-40 pb-4"
           variants={containerVariants}
         >
           {sortedGenerations.map((division) => (
@@ -90,16 +90,16 @@ const PeopleView = () => {
       </motion.div>
 
       <motion.section
-        className="container mx-auto"
+        className="container mx-auto px-4 md:px-8 lg:px-12"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="flex flex-wrap justify-center gap-6 lg:gap-8 items-stretch"
           variants={containerVariants}
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {filteredMembers.map((member, index) => (
               <motion.div
                 key={member.name}
@@ -108,6 +108,7 @@ const PeopleView = () => {
                 animate="visible"
                 exit="hidden"
                 custom={index}
+                className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] lg:w-[calc(25%-24px)] flex"
               >
                 <CardPeople member={member} />
               </motion.div>

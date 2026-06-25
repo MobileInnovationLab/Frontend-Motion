@@ -26,29 +26,16 @@ const CardPeople = ({ member }) => {
     }
   };
 
-  const formatName = (name) => {
-    if (name.length > 25) {
-      return (
-        <>
-          {name.slice(0, 25)}
-          <br />
-          {name.slice(25)}
-        </>
-      );
-    }
-    return name;
-  };
-
   return (
     <motion.div 
-      className="flex flex-col w-full rounded-3xl shadow-lg p-6 transition-transform duration-300"
+      className="flex flex-col w-full h-full bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 p-6 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
       variants={cardVariants}
       initial="hidden"
       animate="visible"
       whileHover="hover"
     >
-      <div className="w-full text-center">
-        <div className="rounded-full inline-block">
+      <div className="w-full text-center mt-2">
+        <div className="rounded-full inline-block p-1 border-2 border-transparent hover:border-[#E63946] transition-colors duration-300">
           <img
             src={member.image}
             alt={member.name}
@@ -56,30 +43,33 @@ const CardPeople = ({ member }) => {
           />
         </div>
       </div>
-      <div className="flex flex-col items-center w-full mt-4">
-        <h2 className="font-[rubik] font-semibold text-lg text-center line-clamp-1">
-          {formatName(member.name)}
+      <div className="flex flex-col items-center w-full mt-5 flex-grow">
+        <h2 className="font-[rubik] font-semibold text-lg text-center line-clamp-2 min-h-[3rem] flex items-center">
+          {member.name}
         </h2>
-        <p className="font-[inter] text-base text-center text-[#6A6A6A] mt-3">
+        <p className="font-[inter] text-sm md:text-base text-center text-[#6A6A6A] mt-2 flex-grow">
           {member.role}
         </p>
-        <hr className="w-1/2 my-4 border-[#6A6A6A]" />
-        <div className="flex justify-center">
-          <a
-            href={member.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mr-4"
-          >
-            <img src="/svg/linkedln.svg" alt="LinkedIn" />
-          </a>
-          <a 
-            href={member.instagram} 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-            <img src="/svg/instagram.svg" alt="Instagram" />
-          </a>
+        <div className="w-full mt-auto flex flex-col items-center">
+          <hr className="w-16 my-5 border-[#E63946] border-t-2 rounded" />
+          <div className="flex justify-center gap-5">
+            <a
+              href={member.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:scale-110 transition-transform duration-200"
+            >
+              <img src="/svg/linkedln.svg" alt="LinkedIn" className="w-6 h-6" />
+            </a>
+            <a 
+              href={member.instagram} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:scale-110 transition-transform duration-200"
+            >
+              <img src="/svg/instagram.svg" alt="Instagram" className="w-6 h-6" />
+            </a>
+          </div>
         </div>
       </div>
     </motion.div>

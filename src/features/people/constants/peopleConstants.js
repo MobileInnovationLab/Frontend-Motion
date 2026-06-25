@@ -171,7 +171,7 @@ export const DIVISIONS = [
       {
         name: "Aaron Joseph Karel Daimbani",
         role: "Member of Public Relation",
-        image: "/images/member/motion-member/pr-arron.png",
+        image: "/images/member/motion-member/pr-arron.jpg",
         linkedin: "#",
         instagram: "#",
         division: "Public Relation Division"
