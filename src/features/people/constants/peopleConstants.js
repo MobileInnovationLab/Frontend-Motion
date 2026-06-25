@@ -9,25 +9,17 @@ export const DIVISIONS = [
     division: "Core Team",
     members: [
       {
-        name: "Wildan Syukri Niam",
+        name: "Ardhian Calwa Nugraha",
         role: "Assistant Coordinator",
-        image: "/images/member/Koor-Wildan.png",
-        linkedin: "https://www.linkedin.com/in/wildanniam",
-        instagram: "https://www.instagram.com/wildanniam_",
-        division: "Core Team"
-      },
-      {
-        name: "Moses Eliyada Tambunan",
-        role: "Vice Assistant Coordinator",
-        image: "/images/member/Wakil-Moses.png",
+        image: "/images/member/motion-member/koor-calwa.png",
         linkedin: "#",
         instagram: "#",
         division: "Core Team"
       },
       {
-        name: "Puri Lalita Anagata",
+        name: "Sandra Dwi Setyani",
         role: "Administrator",
-        image: "/images/member/Administrator-Puri.png",
+        image: "/images/member/motion-member/admin-sandra.png",
         linkedin: "#",
         instagram: "#",
         division: "Core Team"
@@ -39,41 +31,41 @@ export const DIVISIONS = [
     division: "Study Group Division",
     members: [
       {
-        name: "Adelia Nasywa Karenina",
+        name: "Muhammad Ma'ruf Firdaus",
         role: "Head of Study Group Division",
-        image: "/images/member/SG-Adel.png",
-        linkedin: "https://www.linkedin.com/in/adeliakarenina",
-        instagram: "https://www.instagram.com/adellkarenina",
-        division: "Study Group Division"
-      },
-      {
-        name: "Reinhard Efraim Situmeang",
-        role: "Member of Study Group Division",
-        image: "/images/member/SG-Reinhard.png",
+        image: "/images/member/motion-member/sg-maruf.png",
         linkedin: "#",
         instagram: "#",
         division: "Study Group Division"
       },
       {
-        name: "Muhammad Arzu Kirana Berutu",
+        name: "Mochammad Kresna Satriawansyah",
         role: "Member of Study Group Division",
-        image: "/images/member/SG-Arzu.png",
-        linkedin: "https://www.linkedin.com/in/muhammadarzu",
-        instagram: "https://www.instagram.com/arzukrn",
+        image: "/images/member/motion-member/sg-kresna.png",
+        linkedin: "#",
+        instagram: "#",
         division: "Study Group Division"
       },
       {
-        name: "Muhamad Raihan Syahrin Sya'bani",
+        name: "Casta Garneta",
         role: "Member of Study Group Division",
-        image: "/images/member/SG-Raihan.png",
-        linkedin: "https://www.linkedin.com/in/raihansyahrin/",
-        instagram: "https://www.instagram.com/muhamadraihanss/",
+        image: "/images/member/motion-member/sg-casta.png",
+        linkedin: "#",
+        instagram: "#",
         division: "Study Group Division"
       },
       {
-        name: "Muhammad Darrel Prawira",
+        name: "Muhammad Fatih Maulana",
         role: "Member of Study Group Division",
-        image: "/images/member/SG-Darrel.png",
+        image: "/images/member/motion-member/sg-fatih.png",
+        linkedin: "#",
+        instagram: "#",
+        division: "Study Group Division"
+      },
+      {
+        name: "Akbar Rizqullah Putra Susanto",
+        role: "Member of Study Group Division",
+        image: "/images/member/motion-member/sg-akbar.png",
         linkedin: "#",
         instagram: "#",
         division: "Study Group Division"
@@ -85,33 +77,25 @@ export const DIVISIONS = [
     division: "Research Division",
     members: [
       {
-        name: "Yusry Anandita Yulianti",
+        name: "Muhammad Rifqi Setiawan",
         role: "Head of Research Division",
-        image: "/images/member/Research-Yusri.png",
-        linkedin: "http://www.linkedin.com/in/yusry-anandita-yulianti",
-        instagram: "https://www.instagram.com/yusryananditaa_",
-        division: "Research Division"
-      },
-      {
-        name: "Erfan Ferdianto",
-        role: "Member of Research Division",
-        image: "/images/member/Research-Erfan.png",
-        linkedin: "https://www.linkedin.com/in/erfan-ferdianto",
-        instagram: "https://www.instagram.com/rfansz",
-        division: "Research Division"
-      },
-      {
-        name: "Aqila Fitri",
-        role: "Member of Research Division",
-        image: "/images/member/SG-Aqila.png",
+        image: "/images/member/motion-member/research-rifqi.png",
         linkedin: "#",
         instagram: "#",
         division: "Research Division"
       },
       {
-        name: "Kelvyn Lukito",
+        name: "Damai Putra Yudha",
         role: "Member of Research Division",
-        image: "/images/member/SG-Kevin.png",
+        image: "/images/member/motion-member/research-damai.png",
+        linkedin: "#",
+        instagram: "#",
+        division: "Research Division"
+      },
+      {
+        name: "M. Paksi Pratama",
+        role: "Member of Research Division",
+        image: "/images/member/motion-member/research-paksi.png",
         linkedin: "#",
         instagram: "#",
         division: "Research Division"
@@ -123,29 +107,37 @@ export const DIVISIONS = [
     division: "Event & Business Division",
     members: [
       {
-        name: "Aaron James Effendi",
+        name: "Erfan Ferdianto",
         role: "Head of Event & Business Division",
-        image: "/images/member/EB-Aaron.png",
+        image: "/images/member/motion-member/eb-erfan.png",
         linkedin: "#",
         instagram: "#",
         division: "Event & Business Division"
       },
       {
-        name: "Aisya Safiya Furqani",
+        name: "Veiron Vaya Yarief",
         role: "Member of Event & Business",
-        image: "/images/member/EB-Aisya.png",
+        image: "/images/member/motion-member/eb-vei.png",
         linkedin: "#",
         instagram: "#",
         division: "Event & Business Division"
       },
       {
-        name: "Sandra Dwi Setyani",
+        name: "Alya Putri",
         role: "Member of Event & Business",
-        image: "/images/member/EB-Sandra.png",
-        linkedin: "http://linkedin.com/in/sandradwisetyani",
-        instagram: "http://instagram.com/sandraads_",
+        image: "/images/member/motion-member/eb-alya.png",
+        linkedin: "#",
+        instagram: "#",
         division: "Event & Business Division"
-      }
+      },
+      // {
+      //   name: "Rizki Nata Wirawan",
+      //   role: "Member of Event & Business",
+      //   image: "/images/member/motion-member/eb-rizki.png",
+      //   linkedin: "#",
+      //   instagram: "#",
+      //   division: "Event & Business Division"
+      // }
     ]
   },
   {
@@ -153,25 +145,33 @@ export const DIVISIONS = [
     division: "Public Relation Division",
     members: [
       {
-        name: "Asy-Syifa Ekhar Nanda Kautsar",
+        name: "Faisal Surya Saputra",
         role: "Head of Public Relation",
-        image: "/images/member/PR-Sifa.png",
-        linkedin: "http://www.linkedin.com/in/asy-syifa-ekhar-nanda-kautsar",
-        instagram: "https://www.instagram.com/asyifaa26_",
+        image: "/images/member/motion-member/pr-faisal.png",
+        linkedin: "#",
+        instagram: "#",
         division: "Public Relation Division"
       },
       {
-        name: "Chacha Alisa Dewintasari",
+        name: "Muhammad Fauzi Ramadhan",
         role: "Member of Public Relation",
-        image: "/images/member/PR-Chaca.png",
-        linkedin: "https://www.linkedin.com/in/chachaalishadewintasari",
-        instagram: "https://www.instagram.com/asyifaa26_",
+        image: "/images/member/motion-member/pr-fauzi.png",
+        linkedin: "#",
+        instagram: "#",
         division: "Public Relation Division"
       },
       {
-        name: "Muhammad Bintang Al-Fath",
+        name: "Zunadea Kusmiandita Suntoro",
         role: "Member of Public Relation",
-        image: "/images/member/PR-Bintang.png",
+        image: "/images/member/motion-member/pr-zuna.png",
+        linkedin: "#",
+        instagram: "#",
+        division: "Public Relation Division"
+      },
+      {
+        name: "Aaron Joseph Karel Daimbani",
+        role: "Member of Public Relation",
+        image: "/images/member/motion-member/pr-arron.png",
         linkedin: "#",
         instagram: "#",
         division: "Public Relation Division"
@@ -183,43 +183,35 @@ export const DIVISIONS = [
     division: "Website Division",
     members: [
       {
-        name: "Salma Safira Ramandha",
+        name: "Joshua Theo Pasqualito",
         role: "Head of Website Division",
-        image: "/images/member/Web-Salma.png",
-        linkedin: "http://www.linkedin.com/in/salmasafiraar",
-        instagram: "https://www.instagram.com/salmasafirar",
+        image: "/images/member/motion-member/web-theo.png",
+        linkedin: "#",
+        instagram: "#",
         division: "Website Division"
       },
       {
-        name: "Yazid Al Ghozali",
+        name: "Muhammad Fiqri Ananda Hakim",
         role: "Backend Engineer",
-        image: "/images/member/Web-Yazid.png",
-        linkedin: "https://www.linkedin.com/in/yazid-al-ghozali",
-        instagram: "https://www.instagram.com/yazidaalg",
+        image: "/images/member/motion-member/web-fiqri.png",
+        linkedin: "#",
+        instagram: "#",
         division: "Website Division"
       },
       {
-        name: "Muhammad Nur Shodiq",
+        name: "Ivan Mahadika Yanuarizqi",
         role: "UI/UX Designer",
-        image: "/images/member/Web-Shodiq.png",
-        linkedin: "https://www.linkedin.com/in/muhammadnurshodiq",
-        instagram: "https://www.instagram.com/shoodiiq",
+        image: "/images/member/motion-member/web-ivan.png",
+        linkedin: "#",
+        instagram: "#",
         division: "Website Division"
       },
       {
-        name: "Ardhian Calwa Nugraha",
+        name: "Genta Halilintar",
         role: "Front-end Engineer",
-        image: "/images/member/Web-Calwa.png",
-        linkedin: "https://www.linkedin.com/in/ardhiancalwa",
-        instagram: "https://www.instagram.com/ardhncalwaa",
-        division: "Website Division"
-      },
-      {
-        name: "Abdurrahman Farras Fadhila Triandhono",
-        role: "Front-end Engineer",
-        image: "/images/member/Web-Farras.png",
-        linkedin: "https://www.linkedin.com/in/abdurrahmanfarrasft",
-        instagram: "https://www.instagram.com/farras.ft",
+        image: "/images/member/motion-member/web-genta.png",
+        linkedin: "#",
+        instagram: "#",
         division: "Website Division"
       }
     ]
@@ -229,25 +221,25 @@ export const DIVISIONS = [
     division: "Project & Competition Division",
     members: [
       {
-        name: "Nurshandy Nuzul Ramadhani",
+        name: "Zahra Nur Azizah",
         role: "Head of Project & Competition Division",
-        image: "/images/member/Competition-Nurshandy.png",
-        linkedin: "http://www.linkedin.com/in/nurshaandynr",
-        instagram: "https://www.instagram.com/cindyeaz",
-        division: "Project & Competition Division"
-      },
-      {
-        name: "Tiara Sabrina",
-        role: "Member of Project & Competition",
-        image: "/images/member/Competition-Tiara.png",
+        image: "/images/member/motion-member/compe-zahra.png",
         linkedin: "#",
         instagram: "#",
         division: "Project & Competition Division"
       },
       {
-        name: "Ragadhitya Janatantra",
+        name: "Adam Lutfi Ramadhan",
         role: "Member of Project & Competition",
-        image: "/images/member/Competition-Raga.jpg",
+        image: "/images/member/motion-member/compe-adam.png",
+        linkedin: "#",
+        instagram: "#",
+        division: "Project & Competition Division"
+      },
+      {
+        name: "Nabil Fikry Khaidar",
+        role: "Member of Project & Competition",
+        image: "/images/member/motion-member/compe-nafi.png",
         linkedin: "#",
         instagram: "#",
         division: "Project & Competition Division"
