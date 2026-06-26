@@ -1,4 +1,4 @@
-import InternshipDeclinedView from "@/features/internship/views/InternshipDeclinedView";
+import InternshipDeclinedView from "@/features/internship/views/status/InternshipDeclinedView";
 
 const page = () => {
   return <InternshipDeclinedView />;

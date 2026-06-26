@@ -16,6 +16,15 @@ module.exports = {
         lg: "4rem",
         xl: "5rem",
         "2xl": "6rem",
+        "3xl": "8rem",
+        "4xl": "10rem",
+      },
+    },
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ["Inter", "sans-serif"]
+        },
       },
     },
     extend: {},
