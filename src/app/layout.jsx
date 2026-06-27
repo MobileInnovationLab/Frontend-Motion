@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   // Cek apakah current route adalah auth route
-  const isAuthRoute = children.props.childProp.segment === '(auth)';
+  const isAuthRoute = children?.props?.childProp?.segment === '(auth)';
   
   return (
     <html>
