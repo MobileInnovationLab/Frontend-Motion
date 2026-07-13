@@ -1,10 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Navbar from "./navbar";
 
 const NavbarClientWrapper = () => {
+  const pathname = usePathname();
   const [isInternship, setIsInternship] = useState(null);
+
+  // Daftar awalan route yang dianggap sebagai auth route (yang tadinya berada di grup (auth))
+  const isAuthRoute = ['/reset-password', '/login', '/register', '/forgot-password'].some(route => pathname?.startsWith(route));
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -41,6 +46,7 @@ const NavbarClientWrapper = () => {
     return () => window.removeEventListener("hashchange", scrollToHash);
   }, [isInternship]);
 
+  if (isAuthRoute) return null; // Hide navbar di halaman auth
   if (isInternship === null) return null; // Wait until client-side resolves
 
   const navProps = isInternship

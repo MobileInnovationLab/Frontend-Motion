@@ -11,9 +11,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  // Cek apakah current route adalah auth route
-  const isAuthRoute = children.props.childProp.segment === '(auth)';
-  
+  // Hapus pengecekan manual segment (auth) di sini karena children prop strukturnya bisa berubah di Next.js versi baru.
+  // Pengecekan route dipindah ke dalam NavbarClientWrapper menggunakan usePathname().
   return (
     <html>
       <head>
@@ -65,8 +64,8 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <NextTopLoader color="#FFFFFF" showSpinners={false} />
-        {/* Hanya tampilkan Navbar jika bukan auth route */}
-        {!isAuthRoute && <NavbarClientWrapper />}
+        {/* Navbar Client Wrapper akan menentukan sendiri apakah dia perlu tampil (misal disembunyikan di auth route) */}
+        <NavbarClientWrapper />
         {children}
       </body>
     </html>

@@ -1,33 +1,33 @@
-import { motion } from 'framer-motion';
-import PropTypes from 'prop-types';
+import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 
 const CardPeople = ({ member }) => {
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      scale: 0.9 
+    hidden: {
+      opacity: 0,
+      scale: 0.9,
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
       transition: {
         type: "spring",
         stiffness: 300,
-        damping: 20
-      }
+        damping: 20,
+      },
     },
     hover: {
       scale: 1.05,
       transition: {
         type: "spring",
         stiffness: 400,
-        damping: 10
-      }
-    }
+        damping: 10,
+      },
+    },
   };
 
   return (
-    <motion.div 
+    <motion.div
       className="flex flex-col w-full h-full bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 p-6 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
       variants={cardVariants}
       initial="hidden"
@@ -61,13 +61,17 @@ const CardPeople = ({ member }) => {
             >
               <img src="/svg/linkedln.svg" alt="LinkedIn" className="w-6 h-6" />
             </a>
-            <a 
-              href={member.instagram} 
-              target="_blank" 
+            <a
+              href={member.instagram}
+              target="_blank"
               rel="noopener noreferrer"
               className="hover:scale-110 transition-transform duration-200"
             >
-              <img src="/svg/instagram.svg" alt="Instagram" className="w-6 h-6" />
+              <img
+                src="/svg/instagram.svg"
+                alt="Instagram"
+                className="w-6 h-6"
+              />
             </a>
           </div>
         </div>
