@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@material-tailwind/react": "^2.1.10",
-    "axios": "^0.21.4",
+    "axios": "^1.7.9",
     "dompurify": "^3.2.6",
     "formik": "^2.4.5",
     "framer-motion": "^10.16.1",
@@ -31,7 +31,7 @@
     "react-slick": "^0.29.0",
     "react-spinners": "^0.13.8",
     "sass": "^1.69.5",
-    "sharp": "^0.29.3",
+    "sharp": "^0.33.5",
     "slick-carousel": "^1.8.1",
     "solid-toast": "^0.5.0",
     "swr": "^2.2.4",
@@ -39,9 +39,14 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
-    "eslint": "^8",
-    "eslint-config-next": "14.0.1",
-    "postcss": "^8.4.31",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "16.2.9",
+    "postcss": "^8.5.10",
     "tailwindcss": "^3.3.5"
+  },
+  "overrides": {
+    "postcss": "^8.5.10",
+    "glob": "^10.4.5",
+    "npm": "npm:noop@1.0.1"
   }
 }
