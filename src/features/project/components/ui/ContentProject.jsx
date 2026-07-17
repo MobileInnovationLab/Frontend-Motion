@@ -21,7 +21,9 @@ const ContentProject = ({
   const [imageLoading, setImageLoading] = useState(true);
 
   const imageUrl = thumbnail
-    ? `https://admin.motionlaboratory.com/storage/project-showcase/${thumbnail}`
+    ? thumbnail.startsWith("http")
+      ? thumbnail
+      : `https://admin.motionlaboratory.com/storage/project-showcase/${thumbnail}`
     : "/images/product/appstore.png";
   const handleImageLoad = () => {
     setImageLoading(false);

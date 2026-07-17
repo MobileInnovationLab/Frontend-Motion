@@ -22,12 +22,11 @@ export const useHomeData = () => {
         setProjectsLoading(true);
         const response = await projectService.getAllProjects();
 
-        const gen9Projects = response
-          .filter((project) => project.generation === "9")
+        const latestProjects = response
           .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
           .slice(0, 3);
 
-        setProjects(gen9Projects);
+        setProjects(latestProjects);
         setProjectsError(null);
       } catch (err) {
         setProjectsError("Failed to load projects");
