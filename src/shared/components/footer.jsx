@@ -59,25 +59,17 @@ export default function Footer() {
         </section>
         <section className={styles["footer-column"]}>
           <h1 className={styles["footer-titles"]}>Explore</h1>
-          <Link href="/internship/#about" legacyBehavior>
-            <a className={`${styles["footer-item"]} ${styles["link"]}`}>
-              About
-            </a>
+          <Link href="/internship/#about" className={`${styles["footer-item"]} ${styles["link"]}`}>
+            About
           </Link>
-          <Link href="/internship/#requirement" legacyBehavior>
-            <a className={`${styles["footer-item"]} ${styles["link"]}`}>
-              Requirement
-            </a>
+          <Link href="/internship/#requirement" className={`${styles["footer-item"]} ${styles["link"]}`}>
+            Requirement
           </Link>
-          <Link href="#benefits" legacyBehavior>
-            <a className={`${styles["footer-item"]} ${styles["link"]}`}>
-              Benefits
-            </a>
+          <Link href="#benefits" className={`${styles["footer-item"]} ${styles["link"]}`}>
+            Benefits
           </Link>
-          <Link href="#curriculum" legacyBehavior>
-            <a className={`${styles["footer-item"]} ${styles["link"]}`}>
-              Curriculum
-            </a>
+          <Link href="#curriculum" className={`${styles["footer-item"]} ${styles["link"]}`}>
+            Curriculum
           </Link>
         </section>
         <section className={styles["footer-column"]}>

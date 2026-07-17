@@ -8,7 +8,7 @@ const HeroSection = ({ homeRef }) => {
     <section
       id="internship-home"
       ref={homeRef}
-      className="relative w-full bg-[url('/images/home/motion-lab.png')] bg-cover bg-no-repeat bg-[center_30%] sm:bg-center"
+      className="relative w-full bg-[url('/images/member/motion-member/motion.jpg')] bg-cover bg-no-repeat bg-top"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
