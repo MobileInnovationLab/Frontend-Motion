@@ -69,7 +69,9 @@ export default function ProjectSection({ innerRef, projects, loading, error }) {
                 member={project.team_members}
                 thumbnail={
                   project.thumbnail
-                    ? `https://admin.motionlaboratory.com/storage/project-showcase/${project.thumbnail}`
+                    ? project.thumbnail.startsWith("http")
+                      ? project.thumbnail
+                      : `https://admin.motionlaboratory.com/storage/project-showcase/${project.thumbnail}`
                     : "/images/contactUs/photoFirst.png"
                 }
                 about={project.about}

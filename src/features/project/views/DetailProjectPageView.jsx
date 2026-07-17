@@ -85,18 +85,20 @@ const DetailProject = ({ params }) => {
         </div>
       </section>
 
-      <section className="container mx-auto py-4 md:py-16">
-        <h3 className="font-bold font-[inter] text-xl md:text-4xl pb-4">
-          Design System
-        </h3>
-        <Image
-          src={getImageUrl(project.design_system)}
-          alt="Design System"
-          width={1200}
-          height={600}
-          className="w-full h-auto"
-        />
-      </section>
+      {project.design_system && (
+        <section className="container mx-auto py-4 md:py-16">
+          <h3 className="font-bold font-[inter] text-xl md:text-4xl pb-4">
+            Design System
+          </h3>
+          <Image
+            src={getImageUrl(project.design_system)}
+            alt="Design System"
+            width={1200}
+            height={600}
+            className="w-full h-auto"
+          />
+        </section>
+      )}
 
       <Footer />
     </div>
