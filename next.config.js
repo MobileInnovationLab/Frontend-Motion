@@ -12,6 +12,10 @@ const nextConfig = {
         protocol: "http", 
         hostname: "admin.motionlaboratory.com",
       },
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
     ],
   },
 };
