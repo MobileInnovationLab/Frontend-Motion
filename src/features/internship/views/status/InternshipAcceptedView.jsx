@@ -27,16 +27,14 @@ const InternshipAcceptedView = () => {
           Hello{" "}
           <b className="text-[#F82F1E] uppercase">
             {searchParams.get("name")} ({searchParams.get("nim")})
-          </b>{" "}
-          ! Congratulations, you have successfully passed the interview stage
-          and officially joined as an intern in the{" "}
-          <span className="text-[#F82F1E]">{searchParams.get("division")}</span>{" "}
-          division in Mobile Innovation Laboratory Jaffle 10.0. Welcome, and
-          thank you for joining the internship program!
+          </b>
+          ! Congratulations on successfully passing the selection process and officially becoming a member of Mobile Innovation Laboratory Jaffle 10.0!{" "}
+          {/* <span className="text-[#F82F1E]">{searchParams.get("division")}</span>{" "} */}
+          Welcome to the team, we’re excited to have you with us!
         </p>
         <div className="my-3 lg:my-6"></div>
         <Link
-          href="https://chat.whatsapp.com/FsMv5rghaab3jPbTvEqzxq?mode=ems_copy_t"
+          href="https://chat.whatsapp.com/B7AmZgWWIVpHc8yq4lKR4D?s=cl&p=a&mlu=4"
           className="bg-[#F82F1E] text-white text-[inter] text-[14px] lg:text-[16px] rounded-full px-10 py-[1rem] hover:opacity-90 transition duration-800"
         >
           Join Group
