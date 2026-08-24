@@ -1,106 +1,158 @@
 "use client";
 
-import InternshipNavbar from "../../components/navbar/InternshipNavbar";
-import useCurriculumMobileProgrammingViewModel from "../../viewModels/useCurriculumMobileProgramingViewModel";
+import Button from "../../components/ui/ButtonVideoList";
+import useCurriculumMobileProgrammingViewModel from "../../hooks/useCurriculumMobileProgramingViewModel";
 
 const CurriculumMobileProgrammingView = () => {
-  const { android, ios, flutter, setAndroid, setIos, setFlutter } =
-    useCurriculumMobileProgrammingViewModel();
+  const {
+    platforms,
+    weeks,
+    videoDetails,
+    weekVideos,
+    weekTitles,
+    timeSince,
+    setPlatforms,
+    setWeeks,
+  } = useCurriculumMobileProgrammingViewModel();
+  const renderVideoContent = (platform, weekIndex) => {
+    const videoIds = weekVideos[platform]?.[weekIndex] || [];
+    const hasValidVideos = videoIds.some((videoId) =>
+      videoDetails.find((v) => v.id === videoId)
+    );
+
+    return (
+      <div
+        className={`flex overflow-x-auto space-x-4 py-4 ${
+          hasValidVideos ? "justify-start" : "justify-center"
+        }`}
+      >
+        {videoIds.map((videoId) => {
+          const video = videoDetails.find((v) => v.id === videoId);
+          if (video) {
+            return (
+              <div
+                key={video.id}
+                className="flex-none max-w-[15rem] md:max-w-xs bg-[#FFFFFF] p-4 rounded-lg shadow-lg"
+              >
+                <img
+                  className="w-full rounded-xl object-cover"
+                  src={video.snippet.thumbnails.medium.url}
+                  alt={video.snippet.title}
+                />
+                <a
+                  href={`https://youtu.be/${video.id}?feature=shared`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-[#332C2B] underline line-clamp-1"
+                >
+                  {video.snippet.title}
+                </a>
+                <div className="flex mt-4 items-center space-x-1 text-sm">
+                  <h4>{video.statistics.viewCount} views</h4>
+                  <h4 className="text-gray-300">•</h4>
+                  <h6>{timeSince(video.snippet.publishedAt)}</h6>
+                </div>
+                <h4 className="text-sm">
+                  Youtube {">"} Motion Lab Telkom University{" "}
+                </h4>
+              </div>
+            );
+          } else {
+            return (
+              <div key={videoId} className="mt-4">
+                <div className="flex flex-col items-center">
+                  <img
+                    src="/images/internship/error/video-not-found.svg"
+                    alt="Video not found graphic"
+                  />
+                  <h4 className="text-base font-bold">
+                    There is no video here :(
+                  </h4>
+                  <h4>
+                    Let’s check{" "}
+                    <a
+                      href="https://www.youtube.com/@MotionLabTelkomUniversity/videos"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500 underline"
+                    >
+                      Motion Lab Telkom University
+                    </a>{" "}
+                    for more contents ;)
+                  </h4>
+                </div>
+              </div>
+            );
+          }
+        })}
+      </div>
+    );
+  };
 
   return (
     <>
-      <InternshipNavbar isFixed={false} />
       <section className="bg-[url('/images/recruitment/sub-header.png')] bg-cover bg-no-repeat bg-[center_bottom_0rem] w-full">
         <h1 className="text-[28px] lg:text-[48px] font-bold font-[rubik] text-center text-white flex justify-center py-40">
           Mobile Programming
         </h1>
       </section>
 
-      <section className="container mx-auto lg:px-[18rem]">
+      <section className="container mx-auto lg:px-[8rem]">
         <div className="my-24"></div>
 
         <div className="flex flex-col gap-y-8">
           <div
             className="flex hover:cursor-pointer"
             onClick={() => {
-              setAndroid(!android);
+              setPlatforms((prev) => ({ ...prev, android: !prev.android }));
             }}
           >
             <h1 className="text-[32px] text-[inter] font-bold text-[#332C2B] me-2">
               Android
             </h1>
-            {android ? (
+            {platforms.android ? (
               <img src="/svg/arrow-down.svg" alt="arrow down" />
             ) : (
               <img src="/svg/arrow-right.svg" alt="arrow right" />
             )}
           </div>
-          {android && (
+          {platforms.android && (
             <>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 1 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Recycler View
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 2 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Tab View and Bottom Navigation View
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 3 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Working with Library and Move activity with Intent
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 4 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Working With Local Database
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 5 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Working With Firebase Tools
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 6 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Working With Firebase Tools
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 7 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  How to give notification
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 8 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Create Testing and Launching Apps
-                </p>
-              </div>
+              {weeks.android.map((week, index) => (
+                <div
+                  key={index}
+                  className="w-full bg-white px-10 py-5 rounded"
+                  onClick={() => {
+                    setWeeks((prev) => ({
+                      ...prev,
+                      android: prev.android.map((w, i) =>
+                        i === index ? !w : w
+                      ),
+                    }));
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex">
+                      <h2 className="text-[16px] font-bold text-[#332C2B]">
+                        Week {index + 1} -
+                      </h2>
+                      <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
+                        {weekTitles.android[index]}
+                      </p>
+                    </div>
+                    <Button
+                      text="Video List"
+                      icon={
+                        week
+                          ? "/svg/list-arrow-up.svg"
+                          : "/svg/list-arrow-down.svg"
+                      }
+                    />
+                  </div>
+
+                  {week && renderVideoContent("android", index)}
+                </div>
+              ))}
             </>
           )}
         </div>
@@ -109,84 +161,53 @@ const CurriculumMobileProgrammingView = () => {
           <div
             className="flex hover:cursor-pointer"
             onClick={() => {
-              setIos(!ios);
+              setPlatforms((prev) => ({ ...prev, ios: !prev.ios }));
             }}
           >
             <h1 className="text-[32px] text-[inter] font-bold text-[#332C2B] me-2">
               IOS
             </h1>
-            {ios ? (
+            {platforms.ios ? (
               <img src="/svg/arrow-down.svg" alt="arrow down" />
             ) : (
               <img src="/svg/arrow-right.svg" alt="arrow right" />
             )}
           </div>
-          {ios && (
+          {platforms.ios && (
             <>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 1 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Introduction IDE XCode and Human Interface Guidelines
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 2 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Slicing UI and Navigation
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 3 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Animation and Package
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 4 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Concurrency
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 5 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Core Data
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 6 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Networking
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 7 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Architecture Pattern Aplikasi iOS (MVVM)
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 8 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Testing
-                </p>
-              </div>
+              {weeks.ios.map((week, index) => (
+                <div
+                  key={index}
+                  className="w-full bg-white px-10 py-5 rounded"
+                  onClick={() => {
+                    setWeeks((prev) => ({
+                      ...prev,
+                      ios: prev.ios.map((w, i) => (i === index ? !w : w)),
+                    }));
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex">
+                      <h2 className="text-[16px] font-bold text-[#332C2B]">
+                        Week {index + 1} -
+                      </h2>
+                      <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
+                      {weekTitles.ios[index]}
+                      </p>
+                    </div>
+                    <Button
+                      text="Video List"
+                      icon={
+                        week
+                          ? "/svg/list-arrow-up.svg"
+                          : "/svg/list-arrow-down.svg"
+                      }
+                    />
+                  </div>
+
+                  {week && renderVideoContent("ios", index)}
+                </div>
+              ))}
             </>
           )}
         </div>
@@ -195,84 +216,55 @@ const CurriculumMobileProgrammingView = () => {
           <div
             className="flex hover:cursor-pointer"
             onClick={() => {
-              setFlutter(!flutter);
+              setPlatforms((prev) => ({ ...prev, flutter: !prev.flutter }));
             }}
           >
             <h1 className="text-[32px] text-[inter] font-bold text-[#332C2B] me-2">
               Flutter
             </h1>
-            {flutter ? (
+            {platforms.flutter ? (
               <img src="/svg/arrow-down.svg" alt="arrow down" />
             ) : (
               <img src="/svg/arrow-right.svg" alt="arrow right" />
             )}
           </div>
-          {flutter && (
+          {platforms.flutter && (
             <>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 1 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Introduction to Flutter Widgets
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 2 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Playing with Widget Menu
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 3 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Animation and Package
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 4 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Concurrency
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 5 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Core Data
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 6 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Networking
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 7 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Architecture Pattern Aplikasi iOS (MVVM)
-                </p>
-              </div>
-              <div className="flex w-full bg-white px-10 py-5 rounded">
-                <h2 className="text-[16px] text-[inter] font-bold text-[#332C2B]">
-                  Week 8 -
-                </h2>
-                <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
-                  Testing
-                </p>
-              </div>
+              {weeks.flutter.map((week, index) => (
+                <div
+                  key={index}
+                  className="w-full bg-white px-10 py-5 rounded"
+                  onClick={() => {
+                    setWeeks((prev) => ({
+                      ...prev,
+                      flutter: prev.flutter.map((w, i) =>
+                        i === index ? !w : w
+                      ),
+                    }));
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex">
+                      <h2 className="text-[16px] font-bold text-[#332C2B]">
+                        Week {index + 1} -
+                      </h2>
+                      <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
+                      {weekTitles.flutter[index]}
+                      </p>
+                    </div>
+                    <Button
+                      text="Video List"
+                      icon={
+                        week
+                          ? "/svg/list-arrow-up.svg"
+                          : "/svg/list-arrow-down.svg"
+                      }
+                    />
+                  </div>
+
+                  {week && renderVideoContent("flutter", index)}
+                </div>
+              ))}
             </>
           )}
         </div>

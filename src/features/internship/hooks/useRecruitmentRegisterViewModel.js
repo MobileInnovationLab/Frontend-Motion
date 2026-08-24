@@ -1,0 +1,436 @@
+"use client";
+
+import { useFormik } from "formik";
+import { useRouter } from "next/navigation";
+import * as Yup from "yup";
+import api from "@/shared/api/api";
+
+export const generationOptions = [
+  { label: 2025, value: 2025 },
+  { label: 2024, value: 2024 },
+  { label: 2023, value: 2023 },
+];
+
+export const majorOptions = [
+  {
+    label: "S1 Teknik Telekomunikasi",
+    value: "S1 Teknik Telekomunikasi",
+  },
+  {
+    label: "S1 Teknik Telekomunikasi (International Class)",
+    value: "S1 Teknik Telekomunikasi (International Class)",
+  },
+  {
+    label: "D3 Teknik Telekomunikasi",
+    value: "D3 Teknik Telekomunikasi",
+  },
+  {
+    label: "S1 Teknik Elektro",
+    value: "S1 Teknik Elektro",
+  },
+  {
+    label: "S1 Teknik Elektro (International Class)",
+    value: "S1 Teknik Elektro (International Class)",
+  },
+  {
+    label: "S1 Electrical Energy Engineering",
+    value: "S1 Electrical Energy Engineering",
+  },
+  {
+    label: "S1 Smart Science and Technology",
+    value: "S1 Smart Science and Technology",
+  },
+  {
+    label: "S1 Computer Engineering",
+    value: "S1 Computer Engineering",
+  },
+  {
+    label: "S1 Teknik Biomedis",
+    value: "S1 Teknik Biomedis",
+  },
+  {
+    label: "S2 Teknik Elektro-Telekomunikasi",
+    value: "S2 Teknik Elektro-Telekomunikasi",
+  },
+  {
+    label: "S1 Teknik Industri",
+    value: "S1 Teknik Industri",
+  },
+  {
+    label: "S1 Teknik Industri (International Class)",
+    value: "S1 Teknik Industri (International Class)",
+  },
+  {
+    label: "S1 Sistem Informasi",
+    value: "S1 Sistem Informasi",
+  },
+  {
+    label: "S2 Sistem Informasi",
+    value: "S2 Sistem Informasi",
+  },
+  {
+    label: "S1 Sistem Informasi (International Class)",
+    value: "S1 Sistem Informasi (International Class)",
+  },
+  {
+    label: "S1 Terapan Sistem Informasi Kota Cerdas",
+    value: "S1 Terapan Sistem Informasi Kota Cerdas",
+  },
+  {
+    label: "S1 Teknik Logistik",
+    value: "S1 Teknik Logistik",
+  },
+  {
+    label: "S1 Digital Supply Chain",
+    value: "S1 Digital Supply Chain",
+  },
+  {
+    label: "S2 Teknik Industri",
+    value: "S2 Teknik Industri",
+  },
+  {
+    label: "S1 Informatika",
+    value: "S1 Informatika",
+  },
+  {
+    label: "S1 Informatika (International Class)",
+    value: "S1 Informatika (International Class)",
+  },
+
+  {
+    label: "S1 Teknologi Informasi (Cyber Security & Digital Innovation)",
+    value: "S1 Teknologi Informasi",
+  },
+  {
+    label: "S1 Teknologi Informasi (Cyber Security & Digital Innovation - International Class)",
+    value: "S1 Teknologi Informasi (Cyber Security & Digital Innovation - International Class)"
+  },
+  {
+    label: "S1 Rekayasa Perangkat Lunak",
+    value: "S1 Rekayasa Perangkat Lunak",
+  },
+  {
+    label: "S1 Data Sains",
+    value: "S1 Data Sains",
+  },
+  {
+    label: "S1 PJJ Informatika",
+    value: "S1 PJJ Informatika",
+  },
+  {
+    label: "S2 Informatika",
+    value: "S2 Informatika",
+  },
+  {
+    label: "S2 Cyber Security and Digital Forensic",
+    value: "S2 Cyber Security and Digital Forensic",
+  },
+  {
+    label: "S1 International ICT Business",
+    value: "S1 International ICT Business",
+  },
+  {
+    label: "S1 Manajemen Bisnis Telekomunikasi & Informatika (MBTI)",
+    value: "S1 Manajemen Bisnis Telekomunikasi & Informatika (MBTI)",
+  },
+  {
+    label: "S1 MBTI (International Class)",
+    value: "S1 MBTI (International Class)",
+  },
+  {
+    label: "S1 Akuntansi",
+    value: "S1 Akuntansi",
+  },
+  {
+    label: "S1 Akuntansi (International Class)",
+    value: "S1 Akuntansi (International Class)",
+  },
+  {
+    label: "S2 Akuntansi",
+    value: "S2 Akuntansi",
+  },
+  {
+    label: "S2 Manajemen",
+    value: "S2 Manajemen",
+  },
+  {
+    label: "S2 Manajemen PJJ",
+    value: "S2 Manajemen PJJ",
+  },
+  {
+    label: "S1 Administrasi Bisnis",
+    value: "S1 Administrasi Bisnis",
+  },
+  {
+    label: "S1 Administrasi Bisnis (International Class)",
+    value: "S1 Administrasi Bisnis (International Class)",
+  },
+  {
+    label: "S1 Ilmu Komunikasi",
+    value: "S1 Ilmu Komunikasi",
+  },
+  {
+    label: "S1 Ilmu komunikasi (International Class)",
+    value: "S1 Ilmu komunikasi (International Class)",
+  },
+  {
+    label: "S2 Ilmu Komunikasi",
+    value: "S2 Ilmu Komunikasi",
+  },
+  {
+    label: "S1 Digital Public Relation",
+    value: "S1 Digital Public Relation",
+  },
+  {
+    label: "S1 Visual Arts (Intermedia Visual Arts)",
+    value: "S1 Visual Arts (Intermedia Visual Arts)",
+  },
+  {
+    label: "S1 Desain Komunikasi Visual",
+    value: "S1 Desain Komunikasi Visual",
+  },
+  {
+    label: "S1 Desain Komunikasi Visual (International Class)",
+    value: "S1 Desain Komunikasi Visual (International Class)",
+  },
+  {
+    label: "S1 Product Innovation & Management",
+    value: "S1 Product Innovation & Management",
+  },
+  {
+    label: "S1 Desain Interior",
+    value: "S1 Desain Interior",
+  },
+  {
+    label: "S1 Kriya (Fashion and Textile Design)",
+    value: "S1 Kriya",
+  },
+  {
+    label: "S1 Creative Arts (Intermedia Visual Arts)",
+    value: "S1 Creative Arts",
+  },
+  {
+    label: "S2 Desain",
+    value: "S2 Desain",
+  },
+  {
+    label: "S1 Digital Content Broadcasting",
+    value: "S1 Digital Content Broadcasting",
+  },
+  {
+    label: "D3 Digital Connectivity",
+    value: "D3 Digital Connectivity",
+  },
+  {
+    label: "D3 Teknik Informatika (d.h Rekayasa Perangkat Lunak Aplikasi)",
+    value: "D3 Teknik Informatika (d.h Rekayasa Perangkat Lunak Aplikasi)",
+  },
+  {
+    label: "D3 Sistem Informasi",
+    value: "D3 Sistem Informasi",
+  },
+  {
+    label: "D3 Digital Accounting (Sistem Informasi Akuntansi)",
+    value: "D3 Digital Accounting (Sistem Informasi Akuntansi)",
+  },
+  {
+    label: "S1 Teknik Komputer",
+    value: "S1 Teknik Komputer",
+  },
+  {
+    label: "D3 Teknik Komputer",
+    value: "D3 Teknik Komputer",
+  },
+  {
+    label: "D3 Digital Marketing",
+    value: "D3 Digital Marketing",
+  },
+  {
+    label: "D3 Hospitality and Culinary Art",
+    value: "D3 Hospitality and Culinary Art",
+  },
+  {
+    label: "S1 Terapan Digital Creative Multimedia (DCM)",
+    value: "S1 Terapan Digital Creative Multimedia",
+  },
+  {
+    label: "S1 Film dan Animasi",
+    value: "S1 Film dan Animasi",
+  },
+  {
+    label: "S1 Digital Business",
+    value: "S1 Digital Business",
+  },
+  {
+    label: "S1 Psikologi (Digital Psychology)",
+    value: "S1 Psikologi (Digital Psychology)",
+  },
+  {
+    label: "S1 Manajemen Rekayasa Industri",
+    value: "S1 Manajemen Rekayasa Industri",
+  },
+  {
+    label: "S2 Cybersecurity and Digital Forensics",  
+    value: "S2 Cybersecurity and Digital Forensics",
+  },
+  {
+    label: "S1 Smart Science and Technology (Teknik Fisika)",
+    value: "S1 Smart Science and Technology (Teknik Fisika)",
+  },
+  {
+    label: "S1 Leisure Management",
+    value: "S1 Leisure Management",
+  },
+  {
+    label: "S1 Desain Produk & Inovasi",
+    value: "S1 Desain Produk & Inovasi",
+  }
+];
+
+export const divisionOptions = [
+  { value: "Digital Business", label: "Digital Business" },
+  { value: "UI/UX Design", label: "UI/UX Design" },
+  { value: "Mobile Programming", label: "Mobile Programming" },
+];
+
+export const linkSoal = [
+  // BMC A - E
+  "https://docs.google.com/document/d/1KnKYQrLAR8wS1wAUk0LhM4jg2m270QKHTeC2Fb5rQq4/edit?tab=t.0",
+  "https://docs.google.com/document/d/1_4FQHokncRDECn3vr7Lrc41uq96Bf3KpE6sTygU5eCk/edit?tab=t.0",
+  "https://docs.google.com/document/d/1vBorrPJwFQ-Z8zNg-pqJR0q2VFs67ArW-MZTlq4oJPI/edit?tab=t.0",
+  "https://docs.google.com/document/d/1UlF8VrWtdP47YIscbKOiOqYKqes0ZBtyEoQn-OTXBX4/edit?tab=t.0",
+  "https://docs.google.com/document/d/1CBd67CNXef670CjRmI_brbpPeB906jg2xloP1WxEIL8/edit?tab=t.0",
+];
+
+export default function useRecruitmentRegisterViewModel() {
+  const router = useRouter();
+  const formik = useFormik({
+    validateOnChange: false,
+    initialValues: {
+      name: "",
+      email: "",
+      nim: "",
+      motivaton_letter: "",
+      cv: "",
+      ksm: "",
+      portfolio: "",
+      major: "",
+      generation: "",
+      division: "",
+      share_poster: "",
+      whatsapp: "",
+      yt_evidence: "",
+      linkedin_evidence: "",
+      twibbon_evidence: "",
+      line_evidence: "",
+      instagram_evidence: "",
+    },
+    validationSchema: Yup.object().shape({
+      name: Yup.string().required("The name field is required"),
+      email: Yup.string()
+        .email("Please input a valid email")
+        .required("The email field is required")
+        .matches(
+          /^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@student.telkomuniversity.ac.id$/,
+          "Telkom University Student's Email Required (ex. example@student.telkomuniversity.ac.id)."
+        ),
+      nim: Yup.number()
+        .typeError("NIM must be a number")
+        .required("The nim field is required"),
+      cv: Yup.string()
+        .required("The cv link field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
+      portfolio: Yup.string()
+        .required("The portfolio/folder link field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
+      motivation_letter: Yup.string()
+        .required("The motivation letter link field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
+      share_poster: Yup.string()
+        .required("The share poster link field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
+      ksm: Yup.string()
+        .required("The ksm link field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
+      major: Yup.string().required("The major link field is required"),
+      generation: Yup.string().required(
+        "The generation letter field is required"
+      ),
+      division: Yup.string().required("The division letter field is required"),
+      whatsapp: Yup.string().required("The whatsapp letter field is required"),
+      share_poster: Yup.string()
+        .required("The screenshot post instagram letter field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
+      yt_evidence: Yup.string()
+        .required("The screenshot youtube subscribed field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
+      line_evidence: Yup.string()
+        .required("The screenshot follow line field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
+      instagram_evidence: Yup.string()
+        .required("The screenshot follow instagram field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
+      linkedin_evidence: Yup.string()
+        .required("The screenshot linkedin followed field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
+      twibbon_evidence: Yup.string()
+        .required("The screenshot upload twibbon field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
+    }),
+    onSubmit: (values, { setSubmitting }) => {
+      setSubmitting(true);
+
+      api
+        .post("/recruitation", values)
+        .then((response) => {
+          router.push("/success");
+        })
+        .catch((err) => {
+          if (err.response?.status === 400) {
+            router.push(
+              `/register/failed?message=${err.response.data.message}`
+            );
+          }
+
+          setSubmitting(false);
+        });
+    },
+  });
+
+  return {
+    formik,
+  };
+}
