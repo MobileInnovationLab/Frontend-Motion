@@ -21,7 +21,7 @@ const InternshipDeclinedView = () => {
             {searchParams.get("name")} ({searchParams.get("nim")})
           </b>
           ! Unfortunately, you have not been selected as a Laboratory Assistant
-          (Aslab) of Mobile Innovation Laboratory Jaffle 10.0. Keep your spirits
+          (Aslab) of Mobile Innovation Laboratory Gen 11.0. Keep your spirits
           high and never give up! We look forward to seeing your continued
           growth and resilience.
         </p>
