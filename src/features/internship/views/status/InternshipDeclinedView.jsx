@@ -1,8 +1,9 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const InternshipDeclinedView = () => {
+  const router = useRouter();
   const searchParams = useSearchParams();
   if (!searchParams.get("name")) {
     router.push("/");
@@ -15,10 +16,14 @@ const InternshipDeclinedView = () => {
           Ooops... Sorry !
         </h2>
         <p className="text-[inter] text-[14px] lg:text-[18px] text-[#6A6A6A] mt-3">
-          Unfortunately, you have not been selected as a member for the Mobile
-          Innovation Laboratory Jaffle 10.0. Keep your spirits high and never
-          give up! We look forward to seeing your continued growth and
-          resilience.
+          Hello{" "}
+          <b className="text-[#F82F1E] uppercase">
+            {searchParams.get("name")} ({searchParams.get("nim")})
+          </b>
+          ! Unfortunately, you have not been selected as a Laboratory Assistant
+          (Aslab) of Mobile Innovation Laboratory Jaffle 10.0. Keep your spirits
+          high and never give up! We look forward to seeing your continued
+          growth and resilience.
         </p>
       </section>
     </>
