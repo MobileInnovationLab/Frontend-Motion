@@ -28,7 +28,7 @@ const InternshipAcceptedView = () => {
           <b className="text-[#F82F1E] uppercase">
             {searchParams.get("name")} ({searchParams.get("nim")})
           </b>
-          ! Congratulations on successfully passing the selection process and officially becoming a Laboratory Assistant (Aslab) of Mobile Innovation Laboratory Jaffle 10.0, accepted in the{" "}
+          ! Congratulations on successfully passing the selection process and officially becoming a Laboratory Assistant (Aslab) of Mobile Innovation Laboratory Gen 11.0, accepted in the{" "}
           <span className="text-[#F82F1E] font-semibold">
             {searchParams.get("division")}
           </span>{" "}
