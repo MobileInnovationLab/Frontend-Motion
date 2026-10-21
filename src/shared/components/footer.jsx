@@ -3,6 +3,8 @@ import Image from "next/image";
 import styles from "../../styles/components/footer.module.scss";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <>
       <footer className={styles["footer-container"]}>
@@ -178,7 +180,7 @@ export default function Footer() {
           />
         </svg>
         <p className={styles.copyright}>
-          Copyright Mobile Innovation Laboratory 2025
+          Copyright Mobile Innovation Laboratory {currentYear}
         </p>
       </footer>
     </>
