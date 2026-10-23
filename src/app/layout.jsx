@@ -1,6 +1,7 @@
 // app/layout.jsx
 import NextTopLoader from "nextjs-toploader";
 import NavbarClientWrapper from "@/shared/components/NavbarClientWrapper"; 
+import { ThemeProvider } from "@/shared/context/ThemeContext";
 import "@/styles/globals.scss";
 import "react-multi-carousel/lib/styles.css";
 import "@/styles/tailwind.scss";
@@ -11,12 +12,33 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  // Hapus pengecekan manual segment (auth) di sini karena children prop strukturnya bisa berubah di Next.js versi baru.
-  // Pengecekan route dipindah ke dalam NavbarClientWrapper menggunakan usePathname().
   return (
-    <html>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
+        {/* Anti-FOUC (Flash of Unstyled Content) Script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var storedTheme = localStorage.getItem('theme');
+                  var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  var isDark = storedTheme ? storedTheme === 'dark' : prefersDark;
+                  if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    document.documentElement.style.colorScheme = 'dark';
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    document.documentElement.style.colorScheme = 'light';
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -24,7 +46,7 @@ export default function RootLayout({ children }) {
           crossOrigin="true"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter&family=Rubik:wght@400;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rubik:wght@400;600;700&display=swap"
           rel="stylesheet"
         />
         <link
@@ -63,10 +85,12 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <NextTopLoader color="#FFFFFF" showSpinners={false} />
-        {/* Navbar Client Wrapper akan menentukan sendiri apakah dia perlu tampil (misal disembunyikan di auth route) */}
-        <NavbarClientWrapper />
-        {children}
+        <ThemeProvider>
+          <NextTopLoader color="#EF4444" showSpinners={false} />
+          {/* Navbar Client Wrapper akan menentukan sendiri apakah dia perlu tampil (misal disembunyikan di auth route) */}
+          <NavbarClientWrapper />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
