@@ -5,20 +5,80 @@ import useRecruitmentRegisterViewModel, {
   divisionOptions,
   generationOptions,
   majorOptions,
-} from "../viewModels/useRecruitmentRegisterViewModel";
-import RecruitmentTextInputField from "@/core/components/input/RecruitmentTextInputField";
-import RecruitmentSelectInputField from "@/core/components/input/RecruitmentSelectInputField";
-import InternshipNavbar from "../components/navbar/InternshipNavbar";
+  linkSoal,
+} from "../hooks/useRecruitmentRegisterViewModel";
+import RecruitmentTextInputField from "@/shared/components/input/RecruitmentTextInputField";
+import RecruitmentSelectInputField from "@/shared/components/input/RecruitmentSelectInputField";
+import Navbar from "@/shared/components/navbar";
+import { useState } from 'react';
+import Modal from './InternshipRegisterGuideModal';
+
 
 const InternshipRegisterView = () => {
   const { formik } = useRecruitmentRegisterViewModel();
 
+  const [selectedDivision, setSelectedDivision] = useState('');
+
+  const handleDivisionChange = (e) => {
+    setSelectedDivision(e.target.value);
+    formik.handleChange(e);
+  };
+
+  const getOrGenerateLink = () => {
+    const storedLink = localStorage.getItem('randomizedLink');
+  
+    if (storedLink) {
+      return storedLink;
+    } else {
+      const newRandomizedLink = linkSoal[Math.floor(Math.random() * linkSoal.length)];
+      localStorage.setItem('randomizedLink', newRandomizedLink);
+      return newRandomizedLink;
+    }
+  };
+
+  const getPortfolioLabel = () => {
+    if(selectedDivision == "Digital Business"){
+      const link = getOrGenerateLink();
+      return { 
+        portfolioLabel: 
+        (
+          <>
+            BMC{' '} <span className="text-[#F82F1E]">*</span> (Required for DB){' '}
+            <span class="rounded-full bg-red-500 ms-1 px-2 py-1 text-xs font-bold mr-3">
+              <a href={link} target="_blank" rel="noopener noreferrer" className="text-white">Soal DB</a>
+            </span>
+          </>
+        ),
+        portfolioPlaceholder: 'Link Folder BMC'
+      };
+    } else if(selectedDivision == "Mobile Programming"){
+      return { 
+        portfolioLabel: 
+        (
+          <>
+            Portofolio{' '} <span className="text-[#F82F1E]">*</span> (Include github link in the portfolio){' '}
+          </>
+        ),
+        portfolioPlaceholder: 'Link Portfolio'
+      };
+    } else {
+      return {
+        portfolioLabel: <>Portofolio <span className="text-[#F82F1E]">*</span></>,
+        portfolioPlaceholder: 'Link Portfolio'
+      };
+    }
+  };
+
+  const { portfolioLabel, portfolioPlaceholder } = getPortfolioLabel();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <>
-      <InternshipNavbar isFixed={false} />
-
-      {process.env.NEXT_PUBLIC_RECRUITMENT_CLOSED == "true" ? (
-        <section className="flex flex-col items-center justify-center container mx-auto px-10 lg:px-[20rem] text-center my-20">
+      {process.env.NEXT_PUBLIC_RECRUITMENT_CLOSED == "false" ? (
+        <section className="h-screen flex flex-col items-center justify-center container mx-auto px-10 lg:px-[20rem] text-center ">
           <img src="/images/internship/registration-closed.png" alt="" />
           <h2 className="font-semibold text-[18px] lg:text-[32px] text-[rubik]">
             Officialy Closed
@@ -33,7 +93,7 @@ const InternshipRegisterView = () => {
         <>
           <section className="bg-[url('/images/recruitment/sub-header.png')] bg-cover bg-no-repeat bg-[center_bottom_0rem] w-full">
             <h1 className="text-[28px] lg:text-[48px] font-bold font-[rubik] text-center text-white flex justify-center py-40">
-              Recruitment Member 8.0
+              Recruitment Member 10.0
             </h1>
           </section>
 
@@ -51,6 +111,16 @@ const InternshipRegisterView = () => {
                 onSubmit={formik.handleSubmit}
                 className="flex flex-col gap-y-7"
               >
+                
+                <button
+                  className=" lg:w-1/3 w-auto bg-[#C2271A] text-white text-[inter] text-[16px] rounded-full px-8 py-4 hover:opacity-90 transition duration-800 items-center"
+                  type="button"
+                  onClick={openModal}
+                >
+                  Panduan Pengerjaan
+                </button>
+                <Modal isOpen={isModalOpen} onClose={closeModal} />
+
                 <RecruitmentTextInputField
                   label="Full Name"
                   name="name"
@@ -130,7 +200,7 @@ const InternshipRegisterView = () => {
                     label="Division"
                     name="division"
                     placeholder="Choose division"
-                    onChange={formik.handleChange}
+                    onChange={handleDivisionChange}
                     error={formik.errors.division}
                     suffix={<img src="/svg/arrow-down.svg" alt="arrow down" />}
                     required
@@ -155,9 +225,9 @@ const InternshipRegisterView = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
                   <RecruitmentTextInputField
                     className="mb-8 lg:mb-0"
-                    label="Portfolio"
+                    label= {portfolioLabel}
                     name="portfolio"
-                    placeholder="Link Portfolio"
+                    placeholder={portfolioPlaceholder}
                     onChange={formik.handleChange}
                     error={formik.errors.portfolio}
                     suffix={<img src="/svg/link.svg" alt="link" />}
@@ -175,6 +245,17 @@ const InternshipRegisterView = () => {
                 </div>
 
                 <hr />
+
+                  <RecruitmentTextInputField
+                    label="Upload Twibbon"
+                    link="https://bit.ly/TwibbonMotion2025"
+                    name="twibbon_evidence"
+                    placeholder="Link Instagram Post"
+                    onChange={formik.handleChange}
+                    error={formik.errors.twibbon_evidence}
+                    required
+                    suffix={<img src="/svg/link.svg" alt="link" />}
+                  />
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
                   <RecruitmentTextInputField
@@ -245,6 +326,7 @@ const InternshipRegisterView = () => {
                     suffix={<img src="/svg/link.svg" alt="link" />}
                   />
                 </div>
+                
 
                 <button
                   // disabled={formik.isSubmitting}

@@ -34,3 +34,27 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+# How to update application
+
+The first thing you need to do is add, commit, and push your code to Github Repository.
+
+This command will update application on vercel server for development environment.
+
+```bash
+# step 1
+git tag v0.0.1-development
+# step 2
+git push origin v0.0.1-development
+```
+
+For update application on production environment.
+
+```bash
+# step 1
+git tag v0.0.1-production
+#step 2
+git push origin v0.0.1-production
+```
+
+This will trigger an Github Action to build application based on tags for update to Production or Development Environment.

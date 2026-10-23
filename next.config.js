@@ -6,7 +6,15 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**",
+        hostname: "admin.motionlaboratory.com",
+      },
+      {
+        protocol: "http", 
+        hostname: "admin.motionlaboratory.com",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
       },
     ],
   },
