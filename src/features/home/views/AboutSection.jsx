@@ -50,7 +50,7 @@ export default function AboutSection({ innerRef }) {
             },
           },
         }}
-        className="flex justify-around mt-8 lg:mt-14 flex-row gap-y-10"
+        className="flex flex-wrap justify-around mt-8 lg:mt-14 flex-row gap-y-10"
       >
         {STATS.map((stat, index) => (
           <motion.div
@@ -68,7 +68,7 @@ export default function AboutSection({ innerRef }) {
             }}
             className="flex items-center space-x-0 md:space-x-6"
           >
-            <div className="text-center px-3 lg:px-14">
+            <div className="text-center px-1 sm:px-3 lg:px-14">
               <h2 className="font-[rubik] font-bold text-xl md:text-5xl text-[#C1271A]">
                 {stat.value}
               </h2>
