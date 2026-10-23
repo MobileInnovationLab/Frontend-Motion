@@ -1,22 +1,22 @@
 import api from "@/shared/api/api";
 
-const BASE_URL = "/blogs";
+const BASE_URL = "/news";
 
 export const newsService = {
   getAllNews: async () => {
     try {
       const response = await api.get(BASE_URL);
-      return response.data.data.data; 
+      return response.data.data.data;
     } catch (error) {
       throw error;
     }
   },
-  getNewsById: async (id) => {
+  getNewsBySlug: async (slug) => {
     try {
-      const response = await api.get(`${BASE_URL}/${id}`);
+      const response = await api.get(`${BASE_URL}/${slug}`);
       return response.data.data;
     } catch (error) {
       throw error;
     }
-  }
-}; 
+  },
+};

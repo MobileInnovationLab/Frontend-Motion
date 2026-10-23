@@ -10,8 +10,8 @@ import { useNewsDetail } from "../hooks/useDetailNewsData";
 import Footer from "@/shared/components/footer";
 
 const DetailsNews = () => {
-  const { id } = useParams();
-  const { newsData, loading, error } = useNewsDetail(id);
+  const { slug } = useParams();
+  const { newsData, loading, error } = useNewsDetail(slug);
 
   if (loading) {
     return <div className="text-center py-20 text-gray-500">Loading...</div>;
@@ -36,7 +36,7 @@ const DetailsNews = () => {
   });
   const image = newsData.thumbnail_content;
   const content = newsData.body;
-  const author = newsData.author;
+  const author = newsData.author?.name;
 
   const imageVariants = {
     hidden: { scale: 0.8, opacity: 0 },

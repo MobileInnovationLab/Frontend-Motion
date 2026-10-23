@@ -73,12 +73,12 @@ const NewsView = () => {
         ) : error ? (
           <div className="text-center py-12 text-red-500">{error}</div>
         ) : (
-          <StaggerContainer>
+          <StaggerContainer key={currentPage}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {paginatedItems.map((item) => (
                 <StaggerItem key={item.id}>
                   <NewsCard
-                    id={item.id}
+                    slug={item.slug}
                     image={item.thumbnail_content}
                     date={new Date(item.created_at).toLocaleDateString(
                       "id-ID",
