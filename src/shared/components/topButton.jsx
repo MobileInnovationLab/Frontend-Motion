@@ -25,7 +25,7 @@ export default function TopButton() {
         onClick={handleScrollToTop}
         className={`${
           upButton ? "lg:block" : "hidden"
-        }  lg:sticky lg:w-20 lg:h-20 lg:bottom-8 lg:rounded-full lg:ml-[91%] lg:z-40 lg:-mt-[120px] lg:mb-10 lg:bg-[#332c2b] lg:shadow-[0_4px_50px_rgba(0,0,0,0.25)] lg:border-none lg:cursor-pointer transition-opacity duration-300`}
+        }  lg:sticky lg:w-20 lg:h-20 lg:bottom-8 lg:rounded-full lg:ml-[91%] lg:z-40 lg:-mt-[120px] lg:mb-10 lg:bg-[#332c2b] dark:lg:bg-[#1E293B] lg:shadow-[0_4px_50px_rgba(0,0,0,0.25)] dark:lg:shadow-[0_4px_30px_rgba(0,0,0,0.5)] lg:border lg:border-transparent dark:lg:border-[#334155] lg:cursor-pointer transition-all duration-300 hover:scale-105`}
       >
         <svg
           width="50"

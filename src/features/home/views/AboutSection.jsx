@@ -27,7 +27,7 @@ export default function AboutSection({ innerRef }) {
 
       <RevealText delay={0.4}>
         <div className="flex flex-col lg:flex-row gap-y-5 justify-between items-center">
-          <p className="text-base/8 lg:text-lg/8 w-full text-justify text-inter text-[#6A6A6A] tracking-wider">
+          <p className="text-base/8 lg:text-lg/8 w-full text-justify text-inter text-[#6A6A6A] dark:text-[#CBD5E1] tracking-wider">
             Mobile Innovation Laboratory is one of the research laboratories
             under the Faculty of Informatics, Telkom University. Motion Lab
             focuses on the creation, development, and research of mobile
@@ -69,15 +69,15 @@ export default function AboutSection({ innerRef }) {
             className="flex items-center space-x-0 md:space-x-6"
           >
             <div className="text-center px-3 lg:px-14">
-              <h2 className="font-[rubik] font-bold text-xl md:text-5xl text-[#C1271A]">
+              <h2 className="font-[rubik] font-bold text-xl md:text-5xl text-[#C1271A] dark:text-[#EF4444]">
                 {stat.value}
               </h2>
-              <p className="font-[inter] text-xs text-justify lg:text-2xl text-[#6A6A6A]">
+              <p className="font-[inter] text-xs text-justify lg:text-2xl text-[#6A6A6A] dark:text-[#CBD5E1]">
                 {stat.label}
               </p>
             </div>
             {index !== STATS.length - 1 && (
-              <div className="w-px h-8 md:h-12 lg:h-24 bg-[#6A6A6A]"></div>
+              <div className="w-px h-8 md:h-12 lg:h-24 bg-[#6A6A6A] dark:bg-slate-700"></div>
             )}
           </motion.div>
         ))}

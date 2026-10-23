@@ -14,7 +14,7 @@ const AboutSection = ({ aboutRef }) => {
         transition={{ duration: 0.5 }}
       >
         <motion.h3
-          className="text-center font-[rubik] text-red-500 text-[14px] lg:text-[18px]"
+          className="text-center font-[rubik] text-red-500 dark:text-[#EF4444] text-[14px] lg:text-[18px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
@@ -22,14 +22,14 @@ const AboutSection = ({ aboutRef }) => {
           ABOUT
         </motion.h3>
         <motion.h1
-          className="text-center font-[rubik] font-bold text-[28px] lg:text-[48px]"
+          className="text-center font-[rubik] font-bold text-[28px] lg:text-[48px] text-slate-900 dark:text-[#F8FAFC]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
           Internship Activities
         </motion.h1>
-        <h6 className="text-center font-[rubik] text-[#6A6A6A] lg:text-[18px] leading-10 px-10 lg:px-40">
+        <h6 className="text-center font-[rubik] text-[#6A6A6A] dark:text-[#CBD5E1] lg:text-[18px] leading-10 px-10 lg:px-40">
           Motion Internship by Motion Lab provides Telkom University students
           with experience in Digital Business, UI/UX Design, and Mobile
           Programming over 8 sessions.
@@ -76,17 +76,17 @@ const AboutSection = ({ aboutRef }) => {
               />
             </Carousel>
           </div>
-          <div className="flex flex-col justify-between bg-white text-left p-10 rounded-lg lg:w-3/4">
+          <div className="flex flex-col justify-between bg-white dark:bg-[#111827] border border-transparent dark:border-[#1E293B] text-left p-10 rounded-lg lg:w-3/4 transition-colors duration-300">
             <div>
-              <h2 className="text-[24px] font-[inter] font-bold mb-8">
+              <h2 className="text-[24px] font-[inter] font-bold mb-8 text-slate-900 dark:text-[#F8FAFC]">
                 What activities are planned?
               </h2>
-              <p className="text-[18px] font-[inter] font-light text-[#ACACAC] leading-10">
+              <p className="text-[18px] font-[inter] font-light text-[#ACACAC] dark:text-[#94A3B8] leading-10">
                 During the internship at Motion Lab, prospective members will
                 deepen their knowledge related to the chosen division. The main
                 activities in Motion Internship include:
               </p>
-              <ul className="text-[18px] font-[inter] font-light text-[#ACACAC] leading-10">
+              <ul className="text-[18px] font-[inter] font-light text-[#ACACAC] dark:text-[#94A3B8] leading-10">
                 <li>1. Choosing a division</li>
                 <li>2. Participating in study groups</li>
                 <li>3. Completing significant tasks</li>

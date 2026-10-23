@@ -12,7 +12,7 @@ const RouteMapSection = ({ activeImage, activeSection, handleClick }) => {
   return (
     <section>
       <motion.h1
-        className="container mx-auto text-center xl:text-left font-[rubik] font-bold text-[28px] lg:text-[48px]"
+        className="container mx-auto text-center xl:text-left font-[rubik] font-bold text-[28px] lg:text-[48px] text-slate-900 dark:text-[#F8FAFC]"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -35,10 +35,10 @@ const RouteMapSection = ({ activeImage, activeSection, handleClick }) => {
               <motion.section
                 key={index}
                 variants={fadeInUp}
-                className={`flex items-center bg-white border rounded-2xl xl:p-6 2xl:p-9 gap-x-5 cursor-pointer ${
+                className={`flex items-center bg-white dark:bg-[#111827] border rounded-2xl xl:p-6 2xl:p-9 gap-x-5 cursor-pointer transition-colors duration-200 ${
                   activeSection === item.section
-                    ? "border-2 border-[#C1271A]"
-                    : "border-gray-400 hover:border-red-300 active:border-[#C1271A]"
+                    ? "border-2 border-[#C1271A] dark:border-[#EF4444]"
+                    : "border-gray-400 dark:border-[#1E293B] hover:border-red-300 dark:hover:border-red-500 active:border-[#C1271A]"
                 }`}
                 onClick={() => handleClick(item.image, item.section)}
                 whileHover={{ scale: 1.02 }}
@@ -46,10 +46,10 @@ const RouteMapSection = ({ activeImage, activeSection, handleClick }) => {
               >
                 <img src={item.icon} alt={`Logo ${item.title}`} />
                 <div>
-                  <h2 className="text-[#C1271A] font-semibold text-sm">
+                  <h2 className="text-[#C1271A] dark:text-[#EF4444] font-semibold text-sm">
                     {item.step}
                   </h2>
-                  <h1 className="font-semibold text-base">{item.title}</h1>
+                  <h1 className="font-semibold text-base text-slate-900 dark:text-[#F8FAFC]">{item.title}</h1>
                 </div>
               </motion.section>
             ))}
@@ -57,7 +57,7 @@ const RouteMapSection = ({ activeImage, activeSection, handleClick }) => {
 
           {/* Main Image Preview */}
           <motion.div
-            className="w-full bg-white rounded-3xl"
+            className="w-full bg-white dark:bg-[#111827] border border-transparent dark:border-[#1E293B] rounded-3xl overflow-hidden"
             variants={scaleUp}
             animate="visible"
           >
@@ -80,10 +80,10 @@ const RouteMapSection = ({ activeImage, activeSection, handleClick }) => {
             {ROUTE_STEPS.map((item, index) => (
               <section
                 key={index}
-                className={`flex items-center bg-white border rounded-2xl p-4 gap-x-4 cursor-pointer ${
+                className={`flex items-center bg-white dark:bg-[#111827] border rounded-2xl p-4 gap-x-4 cursor-pointer transition-colors duration-200 ${
                   activeSection === item.section
-                    ? "border-2 border-[#C1271A]"
-                    : "border-gray-400 hover:border-red-300 active:border-[#C1271A]"
+                    ? "border-2 border-[#C1271A] dark:border-[#EF4444]"
+                    : "border-gray-400 dark:border-[#1E293B] hover:border-red-300 dark:hover:border-red-500 active:border-[#C1271A]"
                 }`}
                 onClick={() => handleClick(item.image, item.section)}
               >
@@ -93,10 +93,10 @@ const RouteMapSection = ({ activeImage, activeSection, handleClick }) => {
                   className="w-10 h-10"
                 />
                 <div>
-                  <h2 className="text-[#C1271A] font-semibold text-sm">
+                  <h2 className="text-[#C1271A] dark:text-[#EF4444] font-semibold text-sm">
                     {item.step}
                   </h2>
-                  <h1 className="font-semibold text-base">{item.title}</h1>
+                  <h1 className="font-semibold text-base text-slate-900 dark:text-[#F8FAFC]">{item.title}</h1>
                 </div>
               </section>
             ))}

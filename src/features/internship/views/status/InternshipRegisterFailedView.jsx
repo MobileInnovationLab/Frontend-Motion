@@ -74,16 +74,16 @@ const InternshipRegisterFailedView = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-[#090D16] text-slate-900 dark:text-[#F8FAFC] transition-colors duration-300">
       <div className="container mx-auto py-20">
         <motion.div 
-          className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8 text-center"
+          className="max-w-md mx-auto bg-white dark:bg-[#111827] border border-transparent dark:border-[#1E293B] rounded-2xl shadow-lg p-8 text-center transition-colors duration-200"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           <motion.div 
-            className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6"
+            className="w-20 h-20 bg-red-100 dark:bg-red-950/50 rounded-full flex items-center justify-center mx-auto mb-6"
             variants={errorIconVariants}
           >
             <svg
@@ -101,13 +101,13 @@ const InternshipRegisterFailedView = () => {
             </svg>
           </motion.div>
           <motion.h1 
-            className="text-3xl font-bold mb-4"
+            className="text-3xl font-bold mb-4 text-slate-900 dark:text-[#F8FAFC]"
             variants={textVariants}
           >
             Registration Failed
           </motion.h1>
           <motion.p 
-            className="text-gray-600 mb-8"
+            className="text-gray-600 dark:text-[#CBD5E1] mb-8"
             variants={textVariants}
           >
             We&apos;re sorry, but there was an error processing your registration. Please try again later.

@@ -74,17 +74,14 @@ const Navbar = ({
     } text-center m-auto left-0 right-0 py-4 md:py-5 z-30`;
 
     if (isNavbarScroll || !isFixed) {
-      className += isProjectPage
-        ? " shadow-sm backdrop-blur-xl bg-white/85 dark:bg-[#090D16]/85 border-b border-slate-200/60 dark:border-[#1E293B]/60"
-        : " shadow-sm backdrop-blur-xl bg-white/85 border-b border-slate-200/60";
+      className +=
+        " shadow-sm backdrop-blur-xl bg-white/85 dark:bg-[#090D16]/85 border-b border-slate-200/60 dark:border-[#1E293B]/60";
     } else {
       if (isHomePath || isInternshipPath) {
         className += " bg-transparent";
-      } else if (isProjectPage) {
+      } else {
         className +=
           " bg-[#C1271A] dark:bg-[#0F172A] border-b border-transparent dark:border-[#1E293B]";
-      } else {
-        className += " bg-[#C1271A]";
       }
     }
 
@@ -95,9 +92,7 @@ const Navbar = ({
 
   const getTextColor = () => {
     if (isNavbarScroll) {
-      return isProjectPage
-        ? "text-[#332C2B] dark:text-[#F8FAFC]"
-        : "text-[#332C2B]";
+      return "text-[#332C2B] dark:text-[#F8FAFC]";
     }
     return "text-white";
   };
@@ -164,11 +159,7 @@ const Navbar = ({
         variants={navVariants}
       >
         <div
-          className={`container justify-between mx-auto flex items-center ${
-            isProjectPage
-              ? "border-b-2 border-black/10 dark:border-[#1E293B]"
-              : "border-b-2 border-black/10"
-          } pb-3`}
+          className="container justify-between mx-auto flex items-center border-b-2 border-black/10 dark:border-[#1E293B] pb-3"
         >
           <div className="flex items-center">
             {/* Logo */}
@@ -185,7 +176,7 @@ const Navbar = ({
               >
                 <img
                   src={
-                    isProjectPage && isDark
+                    isDark
                       ? "/images/navbar/logo-white-transparent.png"
                       : isNavbarScroll || !isFixed
                       ? "/images/navbar/logo-red-transparent.png"
@@ -218,9 +209,7 @@ const Navbar = ({
                     onClick={() => handleNavigation(item.id)}
                     className={`relative w-fit block after:block after:content-[''] after:absolute after:h-[2px] ${
                       isNavbarScroll
-                        ? isProjectPage
-                          ? "after:bg-[#332C2B] dark:after:bg-[#F8FAFC]"
-                          : "after:bg-[#332C2B]"
+                        ? "after:bg-[#332C2B] dark:after:bg-[#F8FAFC]"
                         : "after:bg-white"
                     } after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center`}
                   >
@@ -231,7 +220,7 @@ const Navbar = ({
             </ul>
           </div>
 
-          {/* Right Action Cluster: CTA + Theme Toggle (only on project showcase) */}
+          {/* Right Action Cluster: CTA + Global Theme Toggle */}
           <div className="flex items-center gap-3 md:gap-4">
             {/* CTA */}
             <motion.div
@@ -246,18 +235,14 @@ const Navbar = ({
             >
               <Link
                 href={ctaHref}
-                className={`hidden lg:block ${
-                  isProjectPage
-                    ? "bg-[#332C2B] dark:bg-[#1E293B] hover:bg-black dark:hover:bg-[#334155] border border-transparent dark:border-[#334155]"
-                    : "bg-[#332C2B] hover:bg-black"
-                } text-white text-[inter] text-[15px] rounded-full px-7 py-2.5 transition duration-300`}
+                className="hidden lg:block bg-[#332C2B] dark:bg-[#1E293B] hover:bg-black dark:hover:bg-[#334155] border border-transparent dark:border-[#334155] text-white text-[inter] text-[15px] rounded-full px-7 py-2.5 transition duration-300"
               >
                 {ctaLabel}
               </Link>
             </motion.div>
 
-            {/* Dark Mode Theme Switcher Toggle - Only appears on project showcase page */}
-            {isProjectPage && <ThemeToggle />}
+            {/* Dark Mode Theme Switcher Toggle - Available globally */}
+            <ThemeToggle />
 
             {/* Mobile menu trigger button */}
             <motion.button
@@ -272,7 +257,7 @@ const Navbar = ({
             >
               <svg
                 className={`w-6 h-6 ${
-                  isProjectPage && isDark
+                  isDark
                     ? "text-[#F8FAFC]"
                     : !isNavbarScroll && isFixed
                     ? "text-white"
@@ -306,11 +291,7 @@ const Navbar = ({
               animate="open"
               exit="closed"
               variants={menuVariants}
-              className={`transition duration-400 text-center m-auto left-0 right-0 ${
-                isProjectPage
-                  ? "bg-white dark:bg-[#0F172A] border-b border-slate-200 dark:border-[#1E293B]"
-                  : "bg-white border-b border-slate-200"
-              } z-20`}
+              className="transition duration-400 text-center m-auto left-0 right-0 bg-white dark:bg-[#0F172A] border-b border-slate-200 dark:border-[#1E293B] z-20"
             >
               <div className="container justify-between mx-auto flex items-center py-5">
                 <div className="flex items-center">
@@ -327,7 +308,7 @@ const Navbar = ({
                     <div className="w-[34px] h-[34px]">
                       <img
                         src={
-                          isProjectPage && isDark
+                          isDark
                             ? "/images/navbar/logo-white-transparent.png"
                             : "/images/navbar/logo-red-transparent.png"
                         }
@@ -339,8 +320,8 @@ const Navbar = ({
                 </div>
 
                 <div className="flex items-center gap-3">
-                  {/* ThemeToggle on mobile only when on project showcase */}
-                  {isProjectPage && <ThemeToggle />}
+                  {/* ThemeToggle on mobile */}
+                  <ThemeToggle />
                   <motion.button
                     type="button"
                     onClick={handleNavbarOpened}
@@ -399,11 +380,7 @@ const Navbar = ({
                     <a
                       href="#"
                       onClick={() => handleNavigation(item.id)}
-                      className={`hover:text-[#332C2B] ${
-                        isProjectPage
-                          ? "dark:hover:text-[#F8FAFC] text-[#6A6A6A] dark:text-[#CBD5E1]"
-                          : "text-[#6A6A6A]"
-                      } text-[inter] text-[16px] transition ease-out duration-300`}
+                      className="hover:text-[#332C2B] dark:hover:text-[#F8FAFC] text-[#6A6A6A] dark:text-[#CBD5E1] text-[inter] text-[16px] transition ease-out duration-300"
                     >
                       {item.label}
                     </a>
@@ -423,11 +400,7 @@ const Navbar = ({
                 >
                   <motion.button
                     onClick={() => router.push(ctaHref)}
-                    className={`bg-[#332C2B] ${
-                      isProjectPage
-                        ? "dark:bg-[#1E293B] dark:hover:bg-[#334155] border border-transparent dark:border-[#334155]"
-                        : ""
-                    } w-full text-white text-[inter] text-[16px] rounded-full py-4 hover:bg-opacity-90 transition duration-400`}
+                    className="bg-[#332C2B] dark:bg-[#1E293B] dark:hover:bg-[#334155] border border-transparent dark:border-[#334155] w-full text-white text-[inter] text-[16px] rounded-full py-4 hover:bg-opacity-90 transition duration-400"
                     whileHover={{
                       scale: 1.03,
                       transition: {

@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 
-import Navbar from "@/shared/components/navbar";
 import BigTitle from "@/shared/components/bigTitle";
 import DivisionBox from "@/shared/components/divisionBox";
 import Footer from "@/shared/components/footer";
@@ -253,7 +252,6 @@ export default function Page() {
   return (
     <div className={styles["main-body"]}>
       <GeneralSeo title="About" />
-      <Navbar />
 
       <BigTitle>About Us</BigTitle>
 

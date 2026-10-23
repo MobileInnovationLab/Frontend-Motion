@@ -7,13 +7,13 @@ $rubik: "Rubik", sans-serif;
 
 $main1: #c1271a;
 $main2: #f82f1e;
-$black: #332c2b;
+$black: var(--text-primary, #332c2b);
 $text-header: #ffffff;
 $sub-text-header: #ffeaea;
-$text-desc: #6a6a6a;
+$text-desc: var(--text-secondary, #6a6a6a);
 $button-outline: #858585;
 
-$background: #fcf6f6;
+$background: var(--bg-canvas, #fcf6f6);
 
 // multiple variables
 
