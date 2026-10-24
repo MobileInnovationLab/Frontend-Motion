@@ -9,6 +9,7 @@ export const useNewsData = () => {
   const fetchNews = async () => {
     try {
       setLoading(true);
+      setError(null);
       const response = await newsService.getAllNews();
       setNews(response);
     } catch (err) {

@@ -8,22 +8,42 @@ import FadeIn from "../components/animations/FadeIn";
 import { motion } from "framer-motion";
 import { useNewsDetail } from "../hooks/useDetailNewsData";
 import Footer from "@/shared/components/footer";
+import NewsFeedbackState from "../components/ui/NewsFeedbackState";
 
 const DetailsNews = () => {
-  const { id } = useParams();
-  const { newsData, loading, error } = useNewsDetail(id);
+  const { slug } = useParams();
+  const { newsData, loading, error, refetch } = useNewsDetail(slug);
 
   if (loading) {
     return <div className="text-center py-20 text-gray-500">Loading...</div>;
   }
 
   if (error) {
-    return <div className="text-center py-20 text-red-500">{error}</div>;
+    return (
+      <div className="min-h-screen flex items-center pt-20">
+        <NewsFeedbackState
+          type="error"
+          title="Failed to Load News"
+          message="Something went wrong while loading this news. Please try again later."
+          onRetry={refetch}
+          backHref="/news"
+          backLabel="Back to News"
+        />
+      </div>
+    );
   }
 
   if (!newsData) {
     return (
-      <div className="text-center py-20 text-red-500">News not found.</div>
+      <div className="min-h-screen flex items-center pt-20">
+        <NewsFeedbackState
+          type="not-found"
+          title="News Not Found"
+          message="The news you are looking for is unavailable or has been removed."
+          backHref="/news"
+          backLabel="Back to News"
+        />
+      </div>
     );
   }
 
@@ -36,7 +56,7 @@ const DetailsNews = () => {
   });
   const image = newsData.thumbnail_content;
   const content = newsData.body;
-  const author = newsData.author;
+  const author = newsData.author?.name;
 
   const imageVariants = {
     hidden: { scale: 0.8, opacity: 0 },
