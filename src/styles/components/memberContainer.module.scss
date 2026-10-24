@@ -3,7 +3,9 @@
 .container {
     width: 145px;
     height: 230px;
-    background-color: white;
+    background-color: var(--bg-surface-card, white);
+    border: 1px solid var(--border-subtle, transparent);
+    border-radius: 1rem;
     text-align: center;
 
     .image {

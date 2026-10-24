@@ -12,10 +12,10 @@ const InternshipDeclinedView = () => {
     <>
       <section className="flex flex-col items-center justify-center container mx-auto px-10 lg:px-[20rem] text-center py-20">
         <img src="/images/recruitment/recruitment-declined.png" alt="" />
-        <h2 className="font-semibold text-[18px] lg:text-[32px] text-[rubik]">
+        <h2 className="font-semibold text-[18px] lg:text-[32px] text-[rubik] text-slate-900 dark:text-[#F8FAFC]">
           Ooops... Sorry !
         </h2>
-        <p className="text-[inter] text-[14px] lg:text-[18px] text-[#6A6A6A] mt-3">
+        <p className="text-[inter] text-[14px] lg:text-[18px] text-[#6A6A6A] dark:text-[#CBD5E1] mt-3">
           Hello{" "}
           <b className="text-[#F82F1E] uppercase">
             {searchParams.get("name")} ({searchParams.get("nim")})

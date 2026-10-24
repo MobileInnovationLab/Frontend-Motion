@@ -16,7 +16,7 @@ const RecruitmentTextInputField = ({
     <div className={getCustomClassNameUtils("flex flex-col", containerClass)}>
       <label
         htmlFor=""
-        className="text-[#6A6A6A] font-[inter] text-[14px] mb-2"
+        className="text-[#6A6A6A] dark:text-[#CBD5E1] font-[inter] text-[14px] mb-2"
       >
         {label} {required && <span className="text-[#F82F1E]">*</span>}
         {link && (
@@ -33,7 +33,7 @@ const RecruitmentTextInputField = ({
           <input
             {...props}
             className={getCustomClassNameUtils(
-              "w-full bg-[#F6FAFD] border rounded-full border-solid border-[#B9C0CD] focus:border-[#F82F1E] focus:outline-none py-3 px-6",
+              "w-full bg-[#F6FAFD] dark:bg-[#1E293B] border rounded-full border-solid border-[#B9C0CD] dark:border-[#334155] text-slate-900 dark:text-[#F8FAFC] placeholder-slate-400 dark:placeholder-slate-500 focus:border-[#F82F1E] focus:outline-none py-3 px-6 transition-colors duration-200",
               className
             )}
             type="text"

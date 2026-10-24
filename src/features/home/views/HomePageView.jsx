@@ -39,7 +39,7 @@ export default function HomeView() {
   const secondRow = laboratoryAssistants.slice(15, 30);
 
   return (
-    <div className="bg-[#FCF6F6]">
+    <div className="bg-[#FCF6F6] dark:bg-[#090D16] text-slate-900 dark:text-[#F8FAFC] min-h-screen transition-colors duration-300">
       <GeneralSeo />
       <HeroSection innerRef={refs.homeRef} />
       <AboutSection innerRef={refs.aboutRef} />

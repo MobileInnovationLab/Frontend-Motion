@@ -36,10 +36,46 @@ table {
 
 //smooth scroll
 
+:root {
+  --bg-canvas: #fcf6f6;
+  --bg-surface-elevated: #ffffff;
+  --bg-surface-card: #ffffff;
+  --border-subtle: #e2e8f0;
+  --border-divider: #cbd5e1;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --brand-accent: #c1271a;
+  --brand-accent-hover: #ef4444;
+  color-scheme: light;
+}
+
+html.dark,
+[data-theme="dark"] {
+  --bg-canvas: #090d16;
+  --bg-surface-elevated: #0f172a;
+  --bg-surface-card: #111827;
+  --border-subtle: #1e293b;
+  --border-divider: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --brand-accent: #ef4444;
+  --brand-accent-hover: #f87171;
+  color-scheme: dark;
+}
+
 html {
   scroll-behavior: smooth;
   transition: 0.3s;
 }
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 
 // slicklmao
 
