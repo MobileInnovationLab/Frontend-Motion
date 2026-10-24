@@ -15,9 +15,10 @@ import FadeIn from "../components/animations/FadeIn";
 import StaggerContainer from "../components/animations/StaggerContainer";
 import StaggerItem from "../components/animations/StaggerItem";
 import Footer from "@/shared/components/footer";
+import NewsFeedbackState from "../components/ui/NewsFeedbackState";
 
 const NewsView = () => {
-  const { news, loading, error } = useNewsData();
+  const { news, loading, error, refetch } = useNewsData();
   const {
     activeCategory,
     sortBy,
@@ -71,7 +72,20 @@ const NewsView = () => {
         {loading ? (
           <div className="text-center py-12 text-gray-500">Loading news...</div>
         ) : error ? (
-          <div className="text-center py-12 text-red-500">{error}</div>
+          <NewsFeedbackState
+            type="error"
+            title="Failed to Load News"
+            message="Something went wrong while loading the news. Please try again."
+            onRetry={refetch}
+          />
+        ) : paginatedItems.length === 0 ? (
+          <NewsFeedbackState
+            type="empty"
+            title="No News Yet"
+            message="The latest news from Motion Lab will appear here."
+            backHref="/"
+            backLabel="Back to Home"
+          />
         ) : (
           <StaggerContainer key={currentPage}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -94,11 +108,6 @@ const NewsView = () => {
               ))}
             </div>
           </StaggerContainer>
-        )}
-        {!loading && !error && paginatedItems.length === 0 && (
-          <div className="text-center text-gray-500 py-12">
-            Tidak ada berita dalam kategori ini.
-          </div>
         )}
       </section>
 
