@@ -50,7 +50,7 @@ export default function AboutSection({ innerRef }) {
             },
           },
         }}
-        className="flex justify-around mt-8 lg:mt-14 flex-row gap-y-10"
+        className="flex flex-wrap justify-around mt-8 lg:mt-14 flex-row gap-y-10"
       >
         {STATS.map((stat, index) => (
           <motion.div
