@@ -29,7 +29,7 @@ const NewsView = () => {
     usePagination(filteredAndSortedNews, 1);
 
   return (
-    <div className={styles["main-body"]}>
+    <div className="min-h-screen bg-[#FCF6F6] dark:bg-[#090D16] text-slate-900 dark:text-[#F8FAFC] transition-colors duration-300">
       <GeneralSeo title="News" />
 
       {/* Header Section */}
@@ -39,7 +39,7 @@ const NewsView = () => {
             <span>Stay Updated with</span>{" "}
             <span className="text-[#F82F1E]">Motion Lab!</span>
           </BigTitle>
-          <p className="font-normal text-[#6A6A6A] text-base lg:text-lg text-center pt-2 hidden md:flex">
+          <p className="font-normal text-[#6A6A6A] dark:text-[#CBD5E1] text-base lg:text-lg text-center pt-2 hidden md:flex">
             Discover the latest stories, achievements, and updates from Motion
             Lab. From groundbreaking innovations to inspiring success stories,
             explore how our community continues to push the boundaries of mobile

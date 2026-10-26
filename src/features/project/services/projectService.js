@@ -2,16 +2,32 @@ import api from "@/shared/api/api";
 
 const BASE_URL = "/project-showcases";
 
+const normalizeUrl = (url, fallback) => {
+  const target = url || fallback;
+  if (!target || typeof target !== "string") return "";
+  let clean = target.trim();
+  if (clean.startsWith("http://admin.motionlaboratory.com")) {
+    clean = clean.replace("http://admin.motionlaboratory.com", "https://admin.motionlaboratory.com");
+  }
+  if (clean.includes("/storage/project-showcase/")) {
+    clean = clean.replace("/storage/project-showcase/", "/storage/project-showcases/");
+  }
+  if (!clean.startsWith("http")) {
+    clean = `https://admin.motionlaboratory.com/storage/project-showcases/${clean.replace(/^\/+/, "")}`;
+  }
+  return clean;
+};
+
 const mapProjectData = (p) => ({
   id: p.id,
   project_name: p.title,
   team_name: p.team_name || "",
   team_members: p.team_members || "",
   about: p.description,
-  thumbnail: p.image_url,
+  thumbnail: normalizeUrl(p.image_url, p.image),
   generation: p.generation || 10,
-  header: p.header_url || p.image_url,
-  design_system: p.design_system_url || "", 
+  header: normalizeUrl(p.header_url, p.header || p.image_url || p.image),
+  design_system: normalizeUrl(p.design_system_url, p.design_system), 
   medium: p.medium || "",
   figma: p.figma || "",
   github: p.github || "",

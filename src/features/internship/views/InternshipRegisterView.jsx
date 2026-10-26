@@ -80,10 +80,10 @@ const InternshipRegisterView = () => {
       {process.env.NEXT_PUBLIC_RECRUITMENT_CLOSED == "false" ? (
         <section className="h-screen flex flex-col items-center justify-center container mx-auto px-10 lg:px-[20rem] text-center ">
           <img src="/images/internship/registration-closed.png" alt="" />
-          <h2 className="font-semibold text-[18px] lg:text-[32px] text-[rubik]">
+          <h2 className="font-semibold text-[18px] lg:text-[32px] text-[rubik] text-slate-900 dark:text-[#F8FAFC]">
             Officialy Closed
           </h2>
-          <p className="text-[inter] text-[14px] lg:text-[18px] text-[#6A6A6A] mt-3">
+          <p className="text-[inter] text-[14px] lg:text-[18px] text-[#6A6A6A] dark:text-[#CBD5E1] mt-3">
             Open recruitment is now closed and we are no longer accepting more
             applicants. Thank you for your enthusiasm!
           </p>
@@ -106,7 +106,7 @@ const InternshipRegisterView = () => {
           </section>
 
           <section className="container mx-auto my-10">
-            <div className="bg-white rounded px-10 py-14 lg:mx-[10rem]">
+            <div className="bg-white dark:bg-[#111827] border border-transparent dark:border-[#1E293B] rounded-2xl px-10 py-14 lg:mx-[10rem] transition-colors duration-200">
               <form
                 onSubmit={formik.handleSubmit}
                 className="flex flex-col gap-y-7"

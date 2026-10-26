@@ -28,7 +28,7 @@ const CardPeople = ({ member }) => {
 
   return (
     <motion.div
-      className="flex flex-col w-full h-full bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 p-6 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
+      className="flex flex-col w-full h-full bg-white dark:bg-[#111827] rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none border border-gray-100 dark:border-[#1E293B] p-6 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
       variants={cardVariants}
       initial="hidden"
       animate="visible"
@@ -44,10 +44,10 @@ const CardPeople = ({ member }) => {
         </div>
       </div>
       <div className="flex flex-col items-center w-full mt-5 flex-grow">
-        <h2 className="font-[rubik] font-semibold text-lg text-center line-clamp-2 min-h-[3rem] flex items-center">
+        <h2 className="font-[rubik] font-semibold text-lg text-center line-clamp-2 min-h-[3rem] flex items-center text-slate-900 dark:text-[#F8FAFC]">
           {member.name}
         </h2>
-        <p className="font-[inter] text-sm md:text-base text-center text-[#6A6A6A] mt-2 flex-grow">
+        <p className="font-[inter] text-sm md:text-base text-center text-[#6A6A6A] dark:text-[#CBD5E1] mt-2 flex-grow">
           {member.role}
         </p>
         <div className="w-full mt-auto flex flex-col items-center">

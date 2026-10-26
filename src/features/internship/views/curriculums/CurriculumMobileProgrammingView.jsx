@@ -32,7 +32,7 @@ const CurriculumMobileProgrammingView = () => {
             return (
               <div
                 key={video.id}
-                className="flex-none max-w-[15rem] md:max-w-xs bg-[#FFFFFF] p-4 rounded-lg shadow-lg"
+                className="flex-none max-w-[15rem] md:max-w-xs bg-white dark:bg-[#1E293B] border border-transparent dark:border-[#334155] p-4 rounded-xl shadow-lg transition-colors duration-200"
               >
                 <img
                   className="w-full rounded-xl object-cover"
@@ -43,16 +43,16 @@ const CurriculumMobileProgrammingView = () => {
                   href={`https://youtu.be/${video.id}?feature=shared`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-bold text-[#332C2B] underline line-clamp-1"
+                  className="font-bold text-[#332C2B] dark:text-[#F8FAFC] underline line-clamp-1 mt-2 block"
                 >
                   {video.snippet.title}
                 </a>
-                <div className="flex mt-4 items-center space-x-1 text-sm">
+                <div className="flex mt-4 items-center space-x-1 text-sm text-slate-500 dark:text-[#94A3B8]">
                   <h4>{video.statistics.viewCount} views</h4>
-                  <h4 className="text-gray-300">•</h4>
+                  <h4 className="text-gray-300 dark:text-gray-600">•</h4>
                   <h6>{timeSince(video.snippet.publishedAt)}</h6>
                 </div>
-                <h4 className="text-sm">
+                <h4 className="text-sm text-slate-500 dark:text-[#94A3B8] mt-1">
                   Youtube {">"} Motion Lab Telkom University{" "}
                 </h4>
               </div>
@@ -65,10 +65,10 @@ const CurriculumMobileProgrammingView = () => {
                     src="/images/internship/error/video-not-found.svg"
                     alt="Video not found graphic"
                   />
-                  <h4 className="text-base font-bold">
+                  <h4 className="text-base font-bold text-slate-900 dark:text-[#F8FAFC]">
                     There is no video here :(
                   </h4>
-                  <h4>
+                  <h4 className="text-slate-600 dark:text-[#CBD5E1]">
                     Let’s check{" "}
                     <a
                       href="https://www.youtube.com/@MotionLabTelkomUniversity/videos"
@@ -107,7 +107,7 @@ const CurriculumMobileProgrammingView = () => {
               setPlatforms((prev) => ({ ...prev, android: !prev.android }));
             }}
           >
-            <h1 className="text-[32px] text-[inter] font-bold text-[#332C2B] me-2">
+            <h1 className="text-[32px] text-[inter] font-bold text-[#332C2B] dark:text-[#F8FAFC] me-2">
               Android
             </h1>
             {platforms.android ? (
@@ -121,7 +121,7 @@ const CurriculumMobileProgrammingView = () => {
               {weeks.android.map((week, index) => (
                 <div
                   key={index}
-                  className="w-full bg-white px-10 py-5 rounded"
+                  className="w-full bg-white dark:bg-[#111827] border border-transparent dark:border-[#1E293B] px-10 py-5 rounded-2xl cursor-pointer transition-colors duration-200"
                   onClick={() => {
                     setWeeks((prev) => ({
                       ...prev,
@@ -133,10 +133,10 @@ const CurriculumMobileProgrammingView = () => {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex">
-                      <h2 className="text-[16px] font-bold text-[#332C2B]">
+                      <h2 className="text-[16px] font-bold text-[#332C2B] dark:text-[#F8FAFC]">
                         Week {index + 1} -
                       </h2>
-                      <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
+                      <p className="text-[16px] text-[inter] text-[#332C2B] dark:text-[#CBD5E1] ms-2">
                         {weekTitles.android[index]}
                       </p>
                     </div>
@@ -164,7 +164,7 @@ const CurriculumMobileProgrammingView = () => {
               setPlatforms((prev) => ({ ...prev, ios: !prev.ios }));
             }}
           >
-            <h1 className="text-[32px] text-[inter] font-bold text-[#332C2B] me-2">
+            <h1 className="text-[32px] text-[inter] font-bold text-[#332C2B] dark:text-[#F8FAFC] me-2">
               IOS
             </h1>
             {platforms.ios ? (
@@ -178,7 +178,7 @@ const CurriculumMobileProgrammingView = () => {
               {weeks.ios.map((week, index) => (
                 <div
                   key={index}
-                  className="w-full bg-white px-10 py-5 rounded"
+                  className="w-full bg-white dark:bg-[#111827] border border-transparent dark:border-[#1E293B] px-10 py-5 rounded-2xl cursor-pointer transition-colors duration-200"
                   onClick={() => {
                     setWeeks((prev) => ({
                       ...prev,
@@ -188,10 +188,10 @@ const CurriculumMobileProgrammingView = () => {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex">
-                      <h2 className="text-[16px] font-bold text-[#332C2B]">
+                      <h2 className="text-[16px] font-bold text-[#332C2B] dark:text-[#F8FAFC]">
                         Week {index + 1} -
                       </h2>
-                      <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
+                      <p className="text-[16px] text-[inter] text-[#332C2B] dark:text-[#CBD5E1] ms-2">
                       {weekTitles.ios[index]}
                       </p>
                     </div>
@@ -219,7 +219,7 @@ const CurriculumMobileProgrammingView = () => {
               setPlatforms((prev) => ({ ...prev, flutter: !prev.flutter }));
             }}
           >
-            <h1 className="text-[32px] text-[inter] font-bold text-[#332C2B] me-2">
+            <h1 className="text-[32px] text-[inter] font-bold text-[#332C2B] dark:text-[#F8FAFC] me-2">
               Flutter
             </h1>
             {platforms.flutter ? (
@@ -233,7 +233,7 @@ const CurriculumMobileProgrammingView = () => {
               {weeks.flutter.map((week, index) => (
                 <div
                   key={index}
-                  className="w-full bg-white px-10 py-5 rounded"
+                  className="w-full bg-white dark:bg-[#111827] border border-transparent dark:border-[#1E293B] px-10 py-5 rounded-2xl cursor-pointer transition-colors duration-200"
                   onClick={() => {
                     setWeeks((prev) => ({
                       ...prev,
@@ -245,10 +245,10 @@ const CurriculumMobileProgrammingView = () => {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex">
-                      <h2 className="text-[16px] font-bold text-[#332C2B]">
+                      <h2 className="text-[16px] font-bold text-[#332C2B] dark:text-[#F8FAFC]">
                         Week {index + 1} -
                       </h2>
-                      <p className="text-[16px] text-[inter] text-[#332C2B] ms-2">
+                      <p className="text-[16px] text-[inter] text-[#332C2B] dark:text-[#CBD5E1] ms-2">
                       {weekTitles.flutter[index]}
                       </p>
                     </div>

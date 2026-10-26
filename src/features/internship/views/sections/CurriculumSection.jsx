@@ -9,7 +9,7 @@ const CurriculumSection = ({ curriculumRef }) => {
   return (
     <section id="curriculum" ref={curriculumRef} className="container mx-auto">
       <motion.h3
-        className="text-center font-[rubik] text-red-500 text-[14px] lg:text-[18px]"
+        className="text-center font-[rubik] text-red-500 dark:text-[#EF4444] text-[14px] lg:text-[18px]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
@@ -17,7 +17,7 @@ const CurriculumSection = ({ curriculumRef }) => {
         CURRICULUM
       </motion.h3>
       <motion.h1
-        className="text-center font-[rubik] font-bold text-[28px] lg:text-[48px]"
+        className="text-center font-[rubik] font-bold text-[28px] lg:text-[48px] text-slate-900 dark:text-[#F8FAFC]"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
@@ -34,7 +34,7 @@ const CurriculumSection = ({ curriculumRef }) => {
         {CURRICULUMS.map((curriculum, index) => (
           <motion.div key={index} variants={fadeInUp}>
             <Link
-              className="bg-white pb-10 w-full transition duration-200"
+              className="bg-white dark:bg-[#111827] border border-transparent dark:border-[#1E293B] rounded-2xl overflow-hidden pb-10 w-full transition duration-200 block shadow-sm dark:shadow-none"
               href={curriculum.href}
             >
               <motion.div
@@ -61,11 +61,11 @@ const CurriculumSection = ({ curriculumRef }) => {
                     src={curriculum.logo}
                     alt={`logo-${curriculum.title.toLowerCase()}`}
                   />
-                  <h2 className="text-[rubik] font-semibold text-[22px] my-3">
+                  <h2 className="text-[rubik] font-semibold text-[22px] my-3 text-slate-900 dark:text-[#F8FAFC]">
                     {curriculum.title}
                   </h2>
                 </div>
-                <p className="text-[#6A6A6A] text-inter text-[16px]">
+                <p className="text-[#6A6A6A] dark:text-[#CBD5E1] text-inter text-[16px]">
                   {curriculum.description}
                 </p>
               </div>
