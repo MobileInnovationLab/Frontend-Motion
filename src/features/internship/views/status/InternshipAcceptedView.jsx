@@ -21,7 +21,7 @@ const InternshipAcceptedView = () => {
   const division = searchParams.get("division") || "";
   const nim = searchParams.get("nim") || "";
 
-  const { value: acceptedText } = useStaticOption(
+  const { value: acceptedText, loading } = useStaticOption(
     "internship_accepted_text",
     DEFAULT_ACCEPTED_TEXT
   );
@@ -40,9 +40,22 @@ const InternshipAcceptedView = () => {
         <h2 className="font-semibold text-[18px] lg:text-[32px] text-[rubik] text-slate-900 dark:text-[#F8FAFC]">
           Congratulations !
         </h2>
-        <p className="text-[inter] text-[14px] lg:text-[18px] text-[#6A6A6A] dark:text-[#CBD5E1] mt-3 whitespace-pre-line">
-          {renderTemplateWithRegex(acceptedText, { name, division, nim })}
-        </p>
+
+        {loading ? (
+          <div
+            data-testid="static-option-skeleton"
+            className="animate-pulse flex flex-col items-center justify-center gap-2 mt-4 max-w-2xl mx-auto w-full"
+          >
+            <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded w-full"></div>
+            <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded w-5/6"></div>
+            <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded w-4/6"></div>
+          </div>
+        ) : (
+          <p className="text-[inter] text-[14px] lg:text-[18px] text-[#6A6A6A] dark:text-[#CBD5E1] mt-3 whitespace-pre-line">
+            {renderTemplateWithRegex(acceptedText, { name, division, nim })}
+          </p>
+        )}
+
         <div className="my-3 lg:my-6"></div>
         <Link
           href="https://chat.whatsapp.com/KVidot3iVaVKynuE69W7Pt?mode=gi_t"

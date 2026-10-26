@@ -4,29 +4,39 @@ import { useEffect, useState } from "react";
 import { staticOptionService } from "../services/staticOptionService";
 
 /**
- * Custom hook to fetch a static option by key with fallback default value and alternate keys support.
+ * Custom hook to fetch a static option by key with fallback default value,
+ * alternate keys support, and AbortController to prevent race conditions.
  */
 export const useStaticOption = (key, defaultValue = "", alternateKeys = []) => {
   const [value, setValue] = useState(defaultValue);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let isMounted = true;
+    const controller = new AbortController();
+    setLoading(true);
 
     const fetchOption = async () => {
       try {
         const result = await staticOptionService.getOptionWithFallback(
           key,
           defaultValue,
-          alternateKeys
+          alternateKeys,
+          controller.signal
         );
-        if (isMounted && result) {
+        if (
+          !controller.signal.aborted &&
+          result !== null &&
+          result !== undefined &&
+          result !== ""
+        ) {
           setValue(result);
         }
       } catch (err) {
-        // Retain default value on error
+        if (err?.name !== "AbortError" && err?.name !== "CanceledError") {
+          // Retain defaultValue on non-abort errors
+        }
       } finally {
-        if (isMounted) {
+        if (!controller.signal.aborted) {
           setLoading(false);
         }
       }
@@ -35,11 +45,16 @@ export const useStaticOption = (key, defaultValue = "", alternateKeys = []) => {
     fetchOption();
 
     return () => {
-      isMounted = false;
+      controller.abort();
     };
   }, [key]);
 
-  return { value, loading };
+  return {
+    value,
+    data: value,
+    loading,
+    isLoading: loading,
+  };
 };
 
 export default useStaticOption;

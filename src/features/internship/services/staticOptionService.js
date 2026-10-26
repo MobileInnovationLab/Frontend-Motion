@@ -18,47 +18,52 @@ export const extractStaticOptionValue = (data, key) => {
 
 export const staticOptionService = {
   // Get all static options
-  getAll: async () => {
+  getAll: async (options = {}) => {
     try {
-      const response = await api.get(BASE_URL);
+      const response = await api.get(BASE_URL, options);
       return response.data;
     } catch (error) {
-      console.warn("Failed to fetch static options:", error?.message || error);
+      if (error?.name !== "AbortError" && error?.name !== "CanceledError") {
+        console.warn("Failed to fetch static options:", error?.message || error);
+      }
       return null;
     }
   },
 
   // Get static option by key
-  getByKey: async (key) => {
+  getByKey: async (key, options = {}) => {
     try {
-      const response = await api.get(`${BASE_URL}/${key}`);
+      const response = await api.get(`${BASE_URL}/${key}`, options);
       return response.data;
     } catch (error) {
-      console.warn(`Failed to fetch static option for key "${key}":`, error?.message || error);
+      if (error?.name !== "AbortError" && error?.name !== "CanceledError") {
+        console.warn(`Failed to fetch static option for key "${key}":`, error?.message || error);
+      }
       return null;
     }
   },
 
-  // Get option value with fallback and optional alternate keys
-  getOptionWithFallback: async (key, fallbackValue = "", alternateKeys = []) => {
+  // Get option value with fallback, alternate keys, and optional abort signal
+  getOptionWithFallback: async (key, fallbackValue = "", alternateKeys = [], signal = null) => {
     const keysToTry = [key, ...alternateKeys];
+    const reqOptions = signal ? { signal } : {};
 
     // Try key-specific endpoints
     for (const k of keysToTry) {
       try {
-        const res = await staticOptionService.getByKey(k);
+        const res = await staticOptionService.getByKey(k, reqOptions);
         const val = extractStaticOptionValue(res, k);
         if (val !== null && val !== undefined && val !== "") {
           return val;
         }
       } catch (err) {
-        // Try next key
+        if (signal?.aborted) throw err;
       }
     }
 
     // Try fetching from all options index
     try {
-      const allRes = await staticOptionService.getAll();
+      const allRes = await staticOptionService.getAll(reqOptions);
       for (const k of keysToTry) {
         const val = extractStaticOptionValue(allRes, k);
         if (val !== null && val !== undefined && val !== "") {
@@ -66,7 +71,7 @@ export const staticOptionService = {
         }
       }
     } catch (err) {
-      // Fallback
+      if (signal?.aborted) throw err;
     }
 
     return fallbackValue;
