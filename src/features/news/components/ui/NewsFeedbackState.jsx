@@ -10,10 +10,10 @@ const ICON_PATHS = {
 };
 
 const BUTTON_CLASS =
-  "block w-full sm:w-44 text-center border border-solid border-[#C1271A] text-[#C1271A] hover:bg-[#C1271A] hover:text-white font-[rubik] text-sm font-bold py-2.5 rounded-full transition duration-300 ease-in-out";
+  "block w-full sm:w-44 text-center border border-solid border-[#C1271A] text-[#C1271A] hover:bg-[#C1271A] hover:text-white dark:border-[#EF4444] dark:text-[#EF4444] dark:hover:bg-[#EF4444] dark:hover:text-white font-[rubik] text-sm font-bold py-2.5 rounded-full transition duration-300 ease-in-out";
 
 const RETRY_CLASS =
-  "block w-full sm:w-auto px-6 text-center border border-solid border-[#C1271A] bg-[#C1271A] hover:bg-[#F82F1E] hover:border-[#F82F1E] text-white font-[rubik] text-sm font-bold py-2.5 rounded-full transition duration-300 ease-in-out";
+  "block w-full sm:w-auto px-6 text-center border border-solid border-[#C1271A] bg-[#C1271A] hover:bg-[#F82F1E] hover:border-[#F82F1E] text-white dark:border-[#EF4444] dark:bg-[#EF4444] dark:hover:bg-[#F87171] dark:hover:border-[#F87171] font-[rubik] text-sm font-bold py-2.5 rounded-full transition duration-300 ease-in-out";
 
 const NewsFeedbackState = ({
   type,
@@ -25,8 +25,8 @@ const NewsFeedbackState = ({
 }) => {
   return (
     <div className="w-full flex justify-center px-4 py-12 md:py-16">
-      <div className="w-full max-w-md p-6 sm:p-8 bg-white rounded-3xl border border-solid border-[#E3E3E3] shadow-sm flex flex-col items-center text-center text-red-500">
-        <div className="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-[#FCF6F6]">
+      <div className="w-full max-w-md p-6 sm:p-8 bg-white dark:bg-[#111827] rounded-3xl border border-solid border-[#E3E3E3] dark:border-[#1E293B] shadow-sm flex flex-col items-center text-center text-red-500 transition-colors duration-300">
+        <div className="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-[#FCF6F6] dark:bg-red-950/50">
           <svg
             className="w-8 h-8"
             fill="none"
@@ -39,10 +39,10 @@ const NewsFeedbackState = ({
             <path d={ICON_PATHS[type]} />
           </svg>
         </div>
-        <h3 className="font-[rubik] text-xl font-bold text-[#332C2B] mb-2">
+        <h3 className="font-[rubik] text-xl font-bold text-[#332C2B] dark:text-[#F8FAFC] mb-2">
           {title}
         </h3>
-        <p className="text-sm text-[#6A6A6A] mb-6">{message}</p>
+        <p className="text-sm text-[#6A6A6A] dark:text-[#CBD5E1] mb-6">{message}</p>
         <div className="w-full flex flex-col sm:flex-row justify-center gap-3">
           {onRetry && (
             <button type="button" onClick={onRetry} className={RETRY_CLASS}>
