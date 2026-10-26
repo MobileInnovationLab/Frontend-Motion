@@ -5,10 +5,23 @@ import { useRouter } from "next/navigation";
 import * as Yup from "yup";
 import api from "@/shared/api/api";
 import { useState } from "react";
+import useStaticOption from "./useStaticOption";
+
+const DEFAULT_ANNOUNCEMENT_TEXT = "Motion Lab 11.0 Member Announcement";
 
 export default function useRecruitmentAnnouncementViewModel() {
   const router = useRouter();
   const [isNotFound, setIsNotFound] = useState(false);
+  const {
+    value: announcementText,
+    loading,
+    isLoading,
+  } = useStaticOption(
+    "announcment_internship_text",
+    DEFAULT_ANNOUNCEMENT_TEXT,
+    ["announcement_internship_text"]
+  );
+
   const formik = useFormik({
     validateOnChange: false,
     initialValues: {
@@ -34,11 +47,15 @@ export default function useRecruitmentAnnouncementViewModel() {
             )
             .join("&");
 
-          if (response.data.is_accepted == 2) {
-            router.push(`/accepted?${queryString}`);
-          } else {
-            router.push(`/declined?${queryString}`);
+          let targetPath = response.data.is_accepted == 2 ? "/accepted" : "/declined";
+          if (typeof window !== "undefined") {
+            const isSubdomain = window.location.host.includes("internship");
+            if (!isSubdomain && window.location.pathname.startsWith("/internship")) {
+              targetPath = `/internship${targetPath}`;
+            }
           }
+
+          router.push(`${targetPath}?${queryString}`);
         })
         .catch((err) => {
           if (err.response?.status === 404) {
@@ -52,5 +69,8 @@ export default function useRecruitmentAnnouncementViewModel() {
   return {
     formik,
     isNotFound,
+    announcementText,
+    loading,
+    isLoading,
   };
 }
