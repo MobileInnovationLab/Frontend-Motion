@@ -59,7 +59,7 @@ export default function NewsSection({ innerRef }) {
               }}
               className="flex-shrink-0 w-[85%] md:w-auto"
             >
-              <Link href={`/news/detailNews/${item.id}`}>
+              <Link href={`/news/detailNews/${item.slug}`}>
                 <NewsEvent data={item} isLoading={newsLoading} />
               </Link>
             </motion.div>
