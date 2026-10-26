@@ -1,6 +1,5 @@
 "use client";
 
-import Navbar from "@/shared/components/navbar";
 import BigTitle from "@/shared/components/bigTitle";
 import styles from "@/styles/pages/blog.module.scss";
 import Footer from "@/shared/components/footer";
@@ -41,8 +40,6 @@ function Blog() {
   return (
     <div className={styles["main-body"]}>
       <GeneralSeo title="Blog" />
-
-      <Navbar />
 
       <BigTitle>Our Blog</BigTitle>
 

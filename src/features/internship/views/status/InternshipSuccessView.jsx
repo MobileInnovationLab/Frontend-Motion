@@ -70,9 +70,9 @@ const InternshipSuccessView = () => {
   // }, [router]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-[#090D16] dark:to-[#0F172A] flex items-center justify-center p-4 transition-colors duration-300">
       <motion.div
-        className="w-full max-w-md bg-white rounded-xl shadow-2xl p-8 text-center"
+        className="w-full max-w-md bg-white dark:bg-[#111827] border border-transparent dark:border-[#1E293B] rounded-2xl shadow-2xl p-8 text-center transition-colors duration-200"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -80,11 +80,11 @@ const InternshipSuccessView = () => {
         aria-live="polite"
       >
         <motion.div
-          className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
+          className="w-24 h-24 bg-green-100 dark:bg-green-950/50 rounded-full flex items-center justify-center mx-auto mb-6"
           variants={successIconVariants}
         >
           <svg
-            className="w-12 h-12 text-green-600"
+            className="w-12 h-12 text-green-600 dark:text-green-400"
             fill="currentColor"
             viewBox="0 0 20 20"
             aria-hidden="true"
@@ -98,14 +98,14 @@ const InternshipSuccessView = () => {
         </motion.div>
 
         <motion.h1
-          className="text-3xl font-bold text-gray-900 mb-4"
+          className="text-3xl font-bold text-gray-900 dark:text-[#F8FAFC] mb-4"
           variants={textVariants}
         >
           Application Submitted Successfully!
         </motion.h1>
 
         <motion.p
-          className="text-gray-600 mb-6 leading-relaxed"
+          className="text-gray-600 dark:text-[#CBD5E1] mb-6 leading-relaxed"
           variants={textVariants}
         >
           Thank you for applying to our internship program. We will review your

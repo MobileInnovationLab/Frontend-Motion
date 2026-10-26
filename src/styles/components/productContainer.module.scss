@@ -3,7 +3,9 @@
 .container {
     height: 370px;
     width: 260px;
-    background-color: white;
+    background-color: var(--bg-surface-card, white);
+    border: 1px solid var(--border-subtle, transparent);
+    border-radius: 1rem;
     padding: 15px 15px 15px 20px;
 
     .img {

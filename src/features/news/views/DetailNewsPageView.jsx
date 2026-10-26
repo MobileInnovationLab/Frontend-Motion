@@ -71,15 +71,15 @@ const DetailsNews = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-[#FCF6F6] dark:bg-[#090D16] text-slate-900 dark:text-[#F8FAFC] transition-colors duration-300">
       <GeneralSeo title="News" />
       <FadeIn>
         <section className="container mx-auto">
           <BigTitle>{title}</BigTitle>
-          <p className="font-normal font-[inter] text-xl md:text-base lg:text-base text-center py-4">
+          <p className="font-normal font-[inter] text-xl md:text-base lg:text-base text-center py-4 text-slate-600 dark:text-[#CBD5E1]">
             <span className="font-bold">{author}</span> - Motion Lab
           </p>
-          <p className="font-normal font-[inter] text-xl md:text-base lg:text-base text-center ">
+          <p className="font-normal font-[inter] text-xl md:text-base lg:text-base text-center text-slate-500 dark:text-[#94A3B8]">
             {date}
           </p>
         </section>
@@ -93,7 +93,7 @@ const DetailsNews = () => {
           viewport={{ once: true }}
           className="flex justify-center"
         >
-          <div className="relative w-full max-w-lg aspect-[1/1] rounded-2xl overflow-hidden">
+          <div className="relative w-full max-w-lg aspect-[1/1] rounded-2xl overflow-hidden shadow-lg">
             <Image
               src={image}
               alt="News image"
@@ -105,7 +105,7 @@ const DetailsNews = () => {
         </motion.div>
         <FadeIn delay={0.3}>
           <div
-            className="text-sm lg:text-base font-[inter] text-justify py-8"
+            className="text-sm lg:text-base font-[inter] text-justify py-8 text-slate-700 dark:text-[#CBD5E1] leading-relaxed"
             dangerouslySetInnerHTML={{ __html: content }}
           />
         </FadeIn>

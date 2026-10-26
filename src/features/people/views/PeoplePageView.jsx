@@ -23,7 +23,7 @@ const PeopleView = () => {
   } = usePeople();
 
   return (
-    <div className={styles["main-body"]}>
+    <div className="min-h-screen bg-[#FCF6F6] dark:bg-[#090D16] text-slate-900 dark:text-[#F8FAFC] transition-colors duration-300">
       <GeneralSeo title="People" />
 
       <motion.section
@@ -37,12 +37,12 @@ const PeopleView = () => {
           variants={containerVariants}
         >
           <div className="bg-cover bg-center bg-no-repeat w-full text-center">
-            <h1 className="font-bold text-4xl md:text-4xl lg:text-5xl font-[rubik]">
+            <h1 className="font-bold text-4xl md:text-4xl lg:text-5xl font-[rubik] text-slate-900 dark:text-[#F8FAFC]">
               <span>Not All Heroes Wear Lab Coats -</span>{" "}
               <span className="text-[#F82F1E]">Meet Our Aslab !</span>
             </h1>
           </div>
-          <p className="font-normal text-[#6A6A6A] text-base lg:text-lg text-center pt-2 hidden md:flex">
+          <p className="font-normal text-[#6A6A6A] dark:text-[#CBD5E1] text-base lg:text-lg text-center pt-2 hidden md:flex">
             Say hello to the passionate tech mentors behind Motion Lab! Our
             Laboratory Assistants are here to guide, support, and grow with you.
             Ready to help with challenges, share insights, and make your journey
@@ -66,10 +66,10 @@ const PeopleView = () => {
             <motion.button
               key={division.id}
               type="button"
-              className={`px-4 py-2 md:px-8 md:py-4 rounded-full ${
+              className={`px-4 py-2 md:px-8 md:py-4 rounded-full transition-all duration-200 ${
                 activeCategory === division.id
-                  ? "bg-gradient-to-r from-[#E63946] to-[#C1271A]"
-                  : "border border-[#C1271A]"
+                  ? "bg-gradient-to-r from-[#E63946] to-[#C1271A] text-white shadow-sm"
+                  : "border border-[#C1271A] dark:border-[#EF4444] bg-white dark:bg-[#111827] text-[#C1271A] dark:text-[#EF4444] hover:bg-[#C1271A]/5 dark:hover:bg-[#EF4444]/10"
               }`}
               onClick={() => setActiveCategory(division.id)}
               variants={buttonVariants}
@@ -78,8 +78,8 @@ const PeopleView = () => {
               <h4
                 className={`font-bold text-base md:text-lg ${
                   activeCategory === division.id
-                    ? "text-[#FFFF]"
-                    : "text-[#C1271A]"
+                    ? "text-white"
+                    : "text-[#C1271A] dark:text-[#EF4444]"
                 }`}
               >
                 {division.division}

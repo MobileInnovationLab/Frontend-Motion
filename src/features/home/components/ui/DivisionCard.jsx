@@ -7,11 +7,11 @@ const DivisionCard = ({ icon, title, description }) => (
         <img src={icon || "/placeholder.svg"} alt={title} />
       </div>
     </div>
-    <div className="bg-white py-10 px-8 w-full rounded-xl md:rounded-2xl">
-      <h2 className="font-[rubik] font-semibold text-xl md:text-2xl text-center mb-5 mt-14">
+    <div className="bg-white dark:bg-[#111827] border border-transparent dark:border-[#1E293B] shadow-sm dark:shadow-lg py-10 px-8 w-full rounded-xl md:rounded-2xl transition-colors duration-300">
+      <h2 className="font-[rubik] font-semibold text-xl md:text-2xl text-center mb-5 mt-14 text-slate-900 dark:text-[#F8FAFC]">
         {title}
       </h2>
-      <p className="font-[inter] text-sm/6 md:text-lg/8 text-justify text-[#6A6A6A]">
+      <p className="font-[inter] text-sm/6 md:text-lg/8 text-justify text-[#6A6A6A] dark:text-[#CBD5E1]">
         {description}
       </p>
     </div>

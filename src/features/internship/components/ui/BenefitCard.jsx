@@ -14,11 +14,11 @@ const BenefitCard = ({ icon, title, description, animate = false, variants }) =>
           <img src={icon} alt={title.toLowerCase()} />
         </motion.div>
       </div>
-      <div className="bg-white rounded py-10 px-8 w-full">
-        <h2 className="font-[rubik] font-semibold text-[24px] text-center mb-5 mt-14">
+      <div className="bg-white dark:bg-[#111827] border border-transparent dark:border-[#1E293B] rounded-2xl py-10 px-8 w-full transition-colors duration-300">
+        <h2 className="font-[rubik] font-semibold text-[24px] text-center mb-5 mt-14 text-slate-900 dark:text-[#F8FAFC]">
           {title}
         </h2>
-        <p className="font-[inter] text-[18px] text-center">{description}</p>
+        <p className="font-[inter] text-[18px] text-center text-[#6A6A6A] dark:text-[#CBD5E1]">{description}</p>
       </div>
     </Wrapper>
   );

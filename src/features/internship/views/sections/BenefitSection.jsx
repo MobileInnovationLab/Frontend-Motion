@@ -10,7 +10,7 @@ const BenefitSection = ({ benefitRef }) => {
   return (
     <section id="benefit" ref={benefitRef} className="container mx-auto">
       <motion.h3
-        className="text-center font-[rubik] text-red-500 text-[14px] lg:text-[18px]"
+        className="text-center font-[rubik] text-red-500 dark:text-[#EF4444] text-[14px] lg:text-[18px]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
@@ -19,7 +19,7 @@ const BenefitSection = ({ benefitRef }) => {
       </motion.h3>
 
       <motion.h1
-        className="text-center font-[rubik] font-bold text-[28px] lg:text-[48px]"
+        className="text-center font-[rubik] font-bold text-[28px] lg:text-[48px] text-slate-900 dark:text-[#F8FAFC]"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}

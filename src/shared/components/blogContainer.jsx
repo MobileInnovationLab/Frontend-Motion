@@ -12,6 +12,7 @@ export default function BlogContainer(props) {
             alt="blog photo"
             layout="fill"
             objectFit="cover"
+            unoptimized
           />
         </div>
         <h3 className={styles.title}>{props.title}</h3>

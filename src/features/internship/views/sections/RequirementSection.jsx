@@ -21,7 +21,7 @@ const RequirementSection = ({ requirementRef }) => {
       className="container mx-auto"
     >
       <motion.h3
-        className="text-center font-[rubik] text-red-500 text-[14px] lg:text-[18px]"
+        className="text-center font-[rubik] text-red-500 dark:text-[#EF4444] text-[14px] lg:text-[18px]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
@@ -29,7 +29,7 @@ const RequirementSection = ({ requirementRef }) => {
         REQUIREMENTS
       </motion.h3>
       <motion.h1
-        className="text-center font-[rubik] font-bold text-[28px] lg:text-[48px]"
+        className="text-center font-[rubik] font-bold text-[28px] lg:text-[48px] text-slate-900 dark:text-[#F8FAFC]"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
@@ -45,11 +45,11 @@ const RequirementSection = ({ requirementRef }) => {
       >
         {REQUIREMENTS.map((item, index) => (
           <motion.div key={index} variants={fadeInUp}>
-            <div className="flex border-[2px] border-[#332C2B] border-solid rounded-full bg-white">
-              <div className="bg-[#332C2B] text-white rounded-full p-5 px-7 lg:p-6 lg:px-8 font-semibold text-center align-center text-[inter] text-[32px]">
+            <div className="flex border-[2px] border-[#332C2B] dark:border-[#334155] border-solid rounded-full bg-white dark:bg-[#111827] transition-colors duration-200">
+              <div className="bg-[#332C2B] dark:bg-[#1E293B] text-white rounded-full p-5 px-7 lg:p-6 lg:px-8 font-semibold text-center align-center text-[inter] text-[32px]">
                 {item.number}
               </div>
-              <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] my-auto mx-5">
+              <p className="align-center font-semibold text-[12px] lg:text-[14px] text-[#6A6A6A] dark:text-[#CBD5E1] my-auto mx-5">
                 {item.text}
               </p>
             </div>
