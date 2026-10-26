@@ -4,9 +4,21 @@ import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "../../utils/animationVariants";
 import { REQUIREMENTS } from "../../constants/internshipConstants";
 import { useEffect, useState } from "react";
+import useStaticOption from "../../hooks/useStaticOption";
 
 const RequirementSection = ({ requirementRef }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const { value: yearText } = useStaticOption("year_text", "2023-2025");
+
+  const displayRequirements = REQUIREMENTS.map((item) => {
+    if (item.number === "01") {
+      return {
+        ...item,
+        text: item.text.replace(/2023-2025/g, yearText || "2023-2025"),
+      };
+    }
+    return item;
+  });
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 1024); // <lg
@@ -43,7 +55,7 @@ const RequirementSection = ({ requirementRef }) => {
         initial="hidden"
         animate="visible"
       >
-        {REQUIREMENTS.map((item, index) => (
+        {displayRequirements.map((item, index) => (
           <motion.div key={index} variants={fadeInUp}>
             <div className="flex border-[2px] border-[#332C2B] dark:border-[#334155] border-solid rounded-full bg-white dark:bg-[#111827] transition-colors duration-200">
               <div className="bg-[#332C2B] dark:bg-[#1E293B] text-white rounded-full p-5 px-7 lg:p-6 lg:px-8 font-semibold text-center align-center text-[inter] text-[32px]">
@@ -53,7 +65,7 @@ const RequirementSection = ({ requirementRef }) => {
                 {item.text}
               </p>
             </div>
-            {(isMobile ? index < REQUIREMENTS.length - 1 : index < 5) && (
+            {(isMobile ? index < displayRequirements.length - 1 : index < 5) && (
               <div className="h-[50px] px-10 my-2">
                 <img
                   src="/images/recruitment/requirement-line.png"

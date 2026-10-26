@@ -5,10 +5,18 @@ import { useRouter } from "next/navigation";
 import * as Yup from "yup";
 import api from "@/shared/api/api";
 import { useState } from "react";
+import useStaticOption from "./useStaticOption";
+
+const DEFAULT_ANNOUNCEMENT_TEXT = "Motion Lab 11.0 Member Announcement";
 
 export default function useRecruitmentAnnouncementViewModel() {
   const router = useRouter();
   const [isNotFound, setIsNotFound] = useState(false);
+  const { value: announcementText } = useStaticOption(
+    "announcment_internship_text",
+    DEFAULT_ANNOUNCEMENT_TEXT,
+    ["announcement_internship_text"]
+  );
   const formik = useFormik({
     validateOnChange: false,
     initialValues: {
@@ -52,5 +60,6 @@ export default function useRecruitmentAnnouncementViewModel() {
   return {
     formik,
     isNotFound,
+    announcementText,
   };
 }

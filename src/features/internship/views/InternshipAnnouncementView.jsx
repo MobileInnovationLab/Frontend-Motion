@@ -3,14 +3,14 @@ import RecruitmentTextInputField from "@/shared/components/input/RecruitmentText
 import useRecruitmentAnnouncementViewModel from "../hooks/useRecruitmentAnnouncementView";
 
 const InternshipAnnouncementView = () => {
-  const { formik, isNotFound } = useRecruitmentAnnouncementViewModel();
+  const { formik, isNotFound, announcementText } = useRecruitmentAnnouncementViewModel();
 
   return (
     <section className="bg-white dark:bg-[#111827] border-y border-transparent dark:border-[#1E293B] transition-colors duration-300">
       <div className="container mx-auto flex flex-col md:flex-row items-center gap-x-20 py-10">
         <img src="/images/recruitment/recruitment-announcement.png" className="w-2/3 md:w-2/6 animate-pulse" alt="Recruitment Announcement" />
         <div className="flex flex-col justify-center">
-          <h2 className="text-[rubik] font-bold text-[28px] text-center lg:text-left mt-10 lg:mt-0 lg:text-[48px] mb-5 text-slate-900 dark:text-[#F8FAFC]">Motion Lab 11.0 Laboratory Assistant Announcement</h2>
+          <h2 className="text-[rubik] font-bold text-[28px] text-center lg:text-left mt-10 lg:mt-0 lg:text-[48px] mb-5 text-slate-900 dark:text-[#F8FAFC]">{announcementText}</h2>
           <form onSubmit={formik.handleSubmit} className="flex items-start gap-x-3">
             <div className="w-full">
               <RecruitmentTextInputField name="nim" onChange={formik.handleChange} error={isNotFound && "It seems i cant find your NIM. Have you registered before?"} className="py-[1rem]" placeholder="Input your NIM" />
