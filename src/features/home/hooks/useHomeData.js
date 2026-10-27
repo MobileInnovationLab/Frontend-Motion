@@ -1,99 +1,102 @@
 import { useEffect, useState } from "react";
 import { projectService } from "@/features/project/services/projectService";
-import { peopleService } from "@/features/people/services/peopleService";
 import { newsService } from "@/features/news/service/newsService";
 
-export const useHomeData = () => {
-  const [projects, setProjects] = useState([]);
-  const [projectsLoading, setProjectsLoading] = useState(true);
+const getLatestThree = (items = []) =>
+  [...items]
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+    .slice(0, 3);
+
+export const useHomeData = ({
+  initialProjects = [],
+  initialNews = [],
+} = {}) => {
+  const cachedProjects = projectService.getCachedProjects();
+  const cachedNews = newsService.getCachedNews();
+
+  const resolvedInitialProjects =
+    initialProjects.length > 0
+      ? initialProjects
+      : cachedProjects
+      ? getLatestThree(cachedProjects)
+      : [];
+
+  const resolvedInitialNews =
+    initialNews.length > 0
+      ? initialNews
+      : cachedNews
+      ? getLatestThree(cachedNews)
+      : [];
+
+  const [projects, setProjects] = useState(resolvedInitialProjects);
+  const [projectsLoading, setProjectsLoading] = useState(
+    resolvedInitialProjects.length === 0
+  );
   const [projectsError, setProjectsError] = useState(null);
 
-  const [people, setPeople] = useState([]);
-  const [peopleLoading, setPeopleLoading] = useState(true);
-  const [peopleError, setPeopleError] = useState(null);
-
-  const [news, setNews] = useState([]);
-  const [newsLoading, setNewsLoading] = useState(true);
+  const [news, setNews] = useState(resolvedInitialNews);
+  const [newsLoading, setNewsLoading] = useState(
+    resolvedInitialNews.length === 0
+  );
   const [newsError, setNewsError] = useState(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchProjects = async () => {
+      if (resolvedInitialProjects.length > 0) {
+        return;
+      }
       try {
         setProjectsLoading(true);
         const response = await projectService.getAllProjects();
-
-        const latestProjects = response
-          .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
-          .slice(0, 3);
-
-        setProjects(latestProjects);
+        if (!isMounted) return;
+        setProjects(getLatestThree(response));
         setProjectsError(null);
       } catch (err) {
+        if (!isMounted) return;
         setProjectsError("Failed to load projects");
       } finally {
-        setProjectsLoading(false);
-      }
-    };
-
-    const fetchPeople = async () => {
-      try {
-        setPeopleLoading(true);
-        const data = await peopleService.getAllPeople();
-
-        const grouped = data.reduce((acc, person) => {
-          const division = person.division || "Unknown";
-          if (!acc[division]) acc[division] = [];
-          acc[division].push(person);
-          return acc;
-        }, {});
-
-        const groupedDivisions = Object.entries(grouped).map(
-          ([divisionName, members], index) => ({
-            id: index + 1,
-            division: divisionName,
-            members,
-          })
-        );
-
-        setPeople(groupedDivisions);
-        setPeopleError(null);
-      } catch (err) {
-        setPeopleError("Failed to load people");
-      } finally {
-        setPeopleLoading(false);
+        if (isMounted) {
+          setProjectsLoading(false);
+        }
       }
     };
 
     const fetchNews = async () => {
+      if (resolvedInitialNews.length > 0) {
+        return;
+      }
       try {
         setNewsLoading(true);
         const data = await newsService.getAllNews();
-        const sorted = data
-          .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
-          .slice(0, 3);
-        setNews(sorted);
+        if (!isMounted) return;
+        setNews(getLatestThree(data));
         setNewsError(null);
       } catch (err) {
+        if (!isMounted) return;
         setNewsError("Failed to load news");
       } finally {
-        setNewsLoading(false);
+        if (isMounted) {
+          setNewsLoading(false);
+        }
       }
     };
 
     fetchProjects();
-    fetchPeople();
     fetchNews();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return {
     projects,
-    people,
     news,
     projectsLoading,
-    peopleLoading,
     newsLoading,
     projectsError,
-    peopleError,
     newsError,
   };
 };
