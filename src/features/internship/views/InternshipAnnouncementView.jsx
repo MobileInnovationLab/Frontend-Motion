@@ -3,20 +3,51 @@ import RecruitmentTextInputField from "@/shared/components/input/RecruitmentText
 import useRecruitmentAnnouncementViewModel from "../hooks/useRecruitmentAnnouncementView";
 
 const InternshipAnnouncementView = () => {
-  const { formik, isNotFound } = useRecruitmentAnnouncementViewModel();
+  const { formik, isNotFound, announcementText, loading } =
+    useRecruitmentAnnouncementViewModel();
 
   return (
-    <section className="bg-white">
+    <section className="bg-white dark:bg-[#111827] border-y border-transparent dark:border-[#1E293B] transition-colors duration-300">
       <div className="container mx-auto flex flex-col md:flex-row items-center gap-x-20 py-10">
-        <img src="/images/recruitment/recruitment-announcement.png" className="w-2/3 md:w-2/6 animate-pulse" alt="Recruitment Announcement" />
-        <div className="flex flex-col justify-center">
-          <h2 className="text-[rubik] font-bold text-[28px] text-center lg:text-left mt-10 lg:mt-0 lg:text-[48px] mb-5">Motion Lab 11.0 Laboratory Assistant Announcement</h2>
+        <img
+          src="/images/recruitment/recruitment-announcement.png"
+          className="w-2/3 md:w-2/6 animate-pulse"
+          alt="Recruitment Announcement"
+        />
+        <div className="flex flex-col justify-center w-full md:w-4/6">
+          {loading ? (
+            <div
+              data-testid="static-option-skeleton"
+              className="animate-pulse h-12 bg-slate-200 dark:bg-slate-700 rounded w-3/4 mb-5"
+            ></div>
+          ) : (
+            <h2 className="text-[rubik] font-bold text-[28px] text-center lg:text-left mt-10 lg:mt-0 lg:text-[48px] mb-5 text-slate-900 dark:text-[#F8FAFC]">
+              {announcementText}
+            </h2>
+          )}
           <form onSubmit={formik.handleSubmit} className="flex items-start gap-x-3">
             <div className="w-full">
-              <RecruitmentTextInputField name="nim" onChange={formik.handleChange} error={isNotFound && "It seems i cant find your NIM. Have you registered before?"} className="py-[1rem]" placeholder="Input your NIM" />
+              <RecruitmentTextInputField
+                name="nim"
+                onChange={formik.handleChange}
+                error={
+                  isNotFound &&
+                  "It seems i cant find your NIM. Have you registered before?"
+                }
+                className="py-[1rem]"
+                placeholder="Input your NIM"
+              />
             </div>
-            <button type="submit" disabled={formik.isSubmitting} className="bg-[#F82F1E] w-2/5 md:w-1/3 lg:w-1/4 mt-2 text-white mx-auto text-center text-[inter] text-[16px] rounded-full px-10 py-[1rem] hover:opacity-90 transition duration-800">
-              {formik.isSubmitting ? <ScaleLoader height={14} color="white" /> : "Check"}
+            <button
+              type="submit"
+              disabled={formik.isSubmitting}
+              className="bg-[#F82F1E] w-2/5 md:w-1/3 lg:w-1/4 mt-2 text-white mx-auto text-center text-[inter] text-[16px] rounded-full px-10 py-[1rem] hover:opacity-90 transition duration-800"
+            >
+              {formik.isSubmitting ? (
+                <ScaleLoader height={14} color="white" />
+              ) : (
+                "Check"
+              )}
             </button>
           </form>
         </div>

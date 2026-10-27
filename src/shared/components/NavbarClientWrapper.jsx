@@ -6,7 +6,8 @@ import Navbar from "./navbar";
 
 const NavbarClientWrapper = () => {
   const pathname = usePathname();
-  const [isInternship, setIsInternship] = useState(null);
+  const isInternshipRoute = Boolean(pathname?.startsWith("/internship"));
+  const [isInternship, setIsInternship] = useState(isInternshipRoute);
 
   // Daftar awalan route yang dianggap sebagai auth route (yang tadinya berada di grup (auth))
   const isAuthRoute = ['/reset-password', '/login', '/register', '/forgot-password'].some(route => pathname?.startsWith(route));
@@ -14,9 +15,9 @@ const NavbarClientWrapper = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const hostname = window.location.hostname;
-      setIsInternship(hostname.includes("internship"));
+      setIsInternship(hostname.includes("internship") || window.location.pathname.startsWith("/internship"));
     }
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     if (!isInternship) return;
@@ -47,7 +48,6 @@ const NavbarClientWrapper = () => {
   }, [isInternship]);
 
   if (isAuthRoute) return null; // Hide navbar di halaman auth
-  if (isInternship === null) return null; // Wait until client-side resolves
 
   const navProps = isInternship
     ? {

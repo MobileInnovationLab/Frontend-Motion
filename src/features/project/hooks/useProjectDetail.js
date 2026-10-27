@@ -8,9 +8,18 @@ export const useProjectDetail = (id) => {
   const [error, setError] = useState(null);
 
   const getImageUrl = (path) => {
-    if (!path) return "";
-    if (path.startsWith("http")) return path;
-    return `https://admin.motionlaboratory.com/storage/project-showcase/${path}`;
+    if (!path) return "/images/product/dummy-product.png";
+    let url = typeof path === "string" ? path.trim() : "";
+    if (url.startsWith("http://admin.motionlaboratory.com")) {
+      url = url.replace("http://admin.motionlaboratory.com", "https://admin.motionlaboratory.com");
+    }
+    if (url.includes("/storage/project-showcase/")) {
+      url = url.replace("/storage/project-showcase/", "/storage/project-showcases/");
+    }
+    if (!url.startsWith("http")) {
+      url = `https://admin.motionlaboratory.com/storage/project-showcases/${url.replace(/^\/+/, "")}`;
+    }
+    return url;
   };
 
   useEffect(() => {

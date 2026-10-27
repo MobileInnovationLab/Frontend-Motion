@@ -2,15 +2,15 @@ import he from "he";
 
 export default function NewsEvent({ data, isLoading }) {
   if (isLoading) {
-    return <div className="h-[300px] bg-gray-200 animate-pulse rounded-xl" />;
+    return <div className="h-[300px] bg-gray-200 dark:bg-[#111827] animate-pulse rounded-xl" />;
   }
   const cleanText = he.decode(data.body.replace(/<[^>]+>/g, ""));
   return (
-    <div className="rounded-xl overflow-hidden shadow-md bg-white">
+    <div className="rounded-xl overflow-hidden shadow-md bg-white dark:bg-[#111827] border border-transparent dark:border-[#1E293B] transition-colors duration-300">
       <img src={data.thumbnail_content} alt={data.title} className="w-full" />
       <div className="p-4">
-        <h3 className="font-bold text-lg mb-2">{data.title}</h3>
-        <p className="text-sm text-gray-600 line-clamp-3">{cleanText}</p>
+        <h3 className="font-bold text-lg mb-2 text-slate-900 dark:text-[#F8FAFC]">{data.title}</h3>
+        <p className="text-sm text-gray-600 dark:text-[#CBD5E1] line-clamp-3">{cleanText}</p>
       </div>
     </div>
   );

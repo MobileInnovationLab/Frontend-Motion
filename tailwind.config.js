@@ -1,11 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}", // Note the addition of the `app` directory.
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-
-    // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -20,14 +19,28 @@ module.exports = {
         "4xl": "10rem",
       },
     },
-    theme: {
-      extend: {
-        fontFamily: {
-          sans: ["Inter", "sans-serif"]
+    extend: {
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+      },
+      colors: {
+        obsidian: "#090D16",
+        surface: {
+          elevated: "#0F172A",
+          card: "#111827",
+        },
+        slate: {
+          border: "#1E293B",
+          outline: "#334155",
+        },
+        motion: {
+          red: "#EF4444",
+          redGlow: "#F87171",
+          redClassic: "#C1271A",
         },
       },
     },
-    extend: {},
   },
   plugins: [],
 };
+

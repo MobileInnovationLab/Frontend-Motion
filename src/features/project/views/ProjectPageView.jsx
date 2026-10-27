@@ -15,7 +15,6 @@ import { useFilteredProjects } from "../hooks/useFilteredProjects";
 import { GENERATIONS } from "../constants/projectConstants";
 import { ITEMS_PER_PAGE } from "../constants/projectConstants";
 import { motion } from "framer-motion";
-import styles from "@/styles/pages/product.module.scss";
 import StaggerContainer from "../components/animations/StaggerContainer";
 import StaggerItem from "../components/animations/StaggerItem";
 import Footer from "@/shared/components/footer";
@@ -44,16 +43,18 @@ const ProjectView = () => {
   }, [search, currentPage, activeCategory]);
 
   const handleDetail = (id) => router.push(`/project/detailProject/${id}`);
+
   return (
-    <div className={styles["main-body"]}>
-      <GeneralSeo title="Product" />
+    <div className="min-h-screen bg-[#FCF6F6] dark:bg-[#090D16] text-slate-900 dark:text-[#F8FAFC] transition-colors duration-300">
+      <GeneralSeo title="Product - Motion Laboratory" />
       <FadeIn>
-        <div className="container mx-auto flex flex-col items-center">
+        <div className="container mx-auto flex flex-col items-center px-4">
           <BigTitle>
-            <span className="text-red-600">Works</span>{" "}
-            <span className="font-normal">we{`'`}re</span> proud of{" "}
+            <span className="text-red-600 dark:text-[#EF4444]">Works</span>{" "}
+            <span className="font-normal text-slate-900 dark:text-[#F8FAFC]">we{`'`}re</span>{" "}
+            <span className="text-slate-900 dark:text-[#F8FAFC]">proud of</span>{" "}
           </BigTitle>
-          <p className="font-normal text-[#6A6A6A] text-base lg:text-lg text-center pt-2">
+          <p className="font-normal text-[#6A6A6A] dark:text-[#CBD5E1] text-base lg:text-lg text-center pt-2">
             Motionhack is a project that is always held every time the study
             group ends by creating a real project.
           </p>
@@ -62,41 +63,43 @@ const ProjectView = () => {
 
       <FadeIn delay={0.2}>
         <div className="overflow-x-auto whitespace-nowrap no-scrollbar">
-          <section className="flex space-x-4 p-4 pl-8 md:pl-12 lg:pl-24">
-            {GENERATIONS.sort((a, b) => b.id - a.id).map((generation) => (
-              <motion.button
-                key={generation.id}
-                type="button"
-                className={`px-4 py-2 md:px-8 md:py-4 rounded-full ${
-                  activeCategory === generation.id
-                    ? "bg-[#C1271A]"
-                    : "border border-[#C1271A]"
-                }`}
-                onClick={() => {
-                  setActiveCategory(generation.id);
-                  setCurrentPage(1);
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <h4
-                  className={`font-bold text-base md:text-lg ${
+          <section className="flex space-x-4 p-4 pl-8 md:pl-12 lg:pl-24 justify-start">
+            {GENERATIONS.slice()
+              .sort((a, b) => b.id - a.id)
+              .map((generation) => (
+                <motion.button
+                  key={generation.id}
+                  type="button"
+                  className={`px-4 py-2 md:px-8 md:py-4 rounded-full transition-all duration-200 ${
                     activeCategory === generation.id
-                      ? "text-[#FFFF]"
-                      : "text-[#C1271A]"
+                      ? "bg-[#C1271A] dark:bg-[#EF4444] text-white"
+                      : "border border-[#C1271A] dark:border-[#EF4444] bg-transparent text-[#C1271A] dark:text-[#EF4444] hover:bg-[#C1271A]/5 dark:hover:bg-[#EF4444]/10"
                   }`}
+                  onClick={() => {
+                    setActiveCategory(generation.id);
+                    setCurrentPage(1);
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  {generation.name}
-                </h4>
-              </motion.button>
-            ))}
+                  <h4
+                    className={`font-bold text-base md:text-lg ${
+                      activeCategory === generation.id
+                        ? "text-white"
+                        : "text-[#C1271A] dark:text-[#EF4444]"
+                    }`}
+                  >
+                    {generation.name}
+                  </h4>
+                </motion.button>
+              ))}
           </section>
         </div>
       </FadeIn>
 
       {showSearch ? (
         <FadeIn delay={0.3}>
-          <section className="container mx-auto py-8 md:py-16 z-10">
+          <section className="container mx-auto py-8 md:py-16 z-10 px-4">
             <SearchBar onSearch={setSearch} />
           </section>
         </FadeIn>
@@ -105,17 +108,17 @@ const ProjectView = () => {
       )}
 
       <section ref={topRef}>
-        <div className="container mx-auto border rounded">
+        <div className="container mx-auto px-4 md:px-8">
           {loading ? (
             <div className="flex justify-center items-center p-8">
-              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#C1271A]"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#C1271A] dark:border-[#EF4444]"></div>
             </div>
           ) : error ? (
-            <div className="text-center p-8 text-red-600">{error}</div>
+            <div className="text-center p-8 text-red-600 dark:text-[#EF4444]">{error}</div>
           ) : paginated.length > 0 ? (
             <StaggerContainer key={`${activeCategory}-${currentPage}`}>
               {paginated.map((project, index) => {
-                const isAllCategory = activeCategory === 10;
+                const isAllCategory = activeCategory === 11 || activeCategory === 10;
                 const globalIndex = (currentPage - 1) * ITEMS_PER_PAGE + index;
                 return (
                   <StaggerItem key={`${project.id}-${globalIndex}`}>
@@ -142,7 +145,7 @@ const ProjectView = () => {
             <FadeIn>
               <ProjectNotFound
                 onSeeNewestProject={() => {
-                  setActiveCategory(9);
+                  setActiveCategory(10);
                   setCurrentPage(1);
                 }}
               />

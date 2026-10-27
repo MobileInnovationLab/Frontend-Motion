@@ -1,7 +1,10 @@
 @import "../variable/var.scss";
 
 .main-body {
-	background-color: $background;
+	background-color: var(--bg-canvas, $background);
+	color: var(--text-primary, #332c2b);
+	transition: background-color 0.3s ease, color 0.3s ease;
+
 
 	.search {
 		@include variable-penengah-jati-diri-small(20px, 50px);
