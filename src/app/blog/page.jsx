@@ -1,12 +1,11 @@
 "use client";
 
-import Navbar from "@/core/components/navbar";
-import BigTitle from "@/core/components/bigTitle";
-import styles from "@/core/styles/pages/blog.module.scss";
-import Footer from "@/core/components/footer";
-import BlogContainer from "@/core/components/blogContainer";
-import React, { useState, useEffect } from "react";
-import GeneralSeo from "@/core/components/seo/generalSeo";
+import BigTitle from "@/shared/components/bigTitle";
+import styles from "@/styles/pages/blog.module.scss";
+import Footer from "@/shared/components/footer";
+import BlogContainer from "@/shared/components/blogContainer";
+import React, { useState } from "react";
+import GeneralSeo from "@/shared/components/seo/generalSeo";
 import { useRouter } from "next/navigation";
 
 function Blog() {
@@ -41,8 +40,6 @@ function Blog() {
   return (
     <div className={styles["main-body"]}>
       <GeneralSeo title="Blog" />
-
-      <Navbar />
 
       <BigTitle>Our Blog</BigTitle>
 
