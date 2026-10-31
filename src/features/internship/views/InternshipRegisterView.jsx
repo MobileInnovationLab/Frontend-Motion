@@ -12,10 +12,12 @@ import RecruitmentSelectInputField from "@/shared/components/input/RecruitmentSe
 import Navbar from "@/shared/components/navbar";
 import { useState } from 'react';
 import Modal from './InternshipRegisterGuideModal';
-
+import useStaticOption from "../hooks/useStaticOption";
 
 const InternshipRegisterView = () => {
   const { formik } = useRecruitmentRegisterViewModel();
+  const { value: isRecruitmentOpen } = useStaticOption("is_recruitment_open", "1");
+  const isClosed = isRecruitmentOpen === "0" || isRecruitmentOpen === "false" || isRecruitmentOpen === false;
 
   const [selectedDivision, setSelectedDivision] = useState('');
 
@@ -77,7 +79,7 @@ const InternshipRegisterView = () => {
 
   return (
     <>
-      {process.env.NEXT_PUBLIC_RECRUITMENT_CLOSED == "false" ? (
+      {isClosed ? (
         <section className="h-screen flex flex-col items-center justify-center container mx-auto px-10 lg:px-[20rem] text-center ">
           <img src="/images/internship/registration-closed.png" alt="" />
           <h2 className="font-semibold text-[18px] lg:text-[32px] text-[rubik] text-slate-900 dark:text-[#F8FAFC]">
