@@ -19,24 +19,26 @@ import NewsSection from "./NewsSection";
 import { DIVISIONS } from "@/features/people/constants/peopleConstants";
 import Footer from "@/shared/components/footer";
 
-export default function HomeView() {
+const LABORATORY_ASSISTANTS = DIVISIONS.flatMap((division) => division.members);
+const MID_INDEX = Math.ceil(LABORATORY_ASSISTANTS.length / 2);
+const FIRST_ROW = LABORATORY_ASSISTANTS.slice(0, MID_INDEX);
+const SECOND_ROW = LABORATORY_ASSISTANTS.slice(MID_INDEX);
+
+export default function HomeView({
+  initialProjects = [],
+  initialNews = [],
+} = {}) {
   const {
     projects,
-    people,
+    news,
     projectsLoading,
+    newsLoading,
     projectsError,
-    peopleLoading,
-    peopleError,
-  } = useHomeData();
+    newsError,
+  } = useHomeData({ initialProjects, initialNews });
 
   const refs = useHomeRefs();
   const handleNavigation = useHandleNavigation(refs);
-
-  const laboratoryAssistants = DIVISIONS.flatMap(
-    (division) => division.members
-  );
-  const firstRow = laboratoryAssistants.slice(0, 15);
-  const secondRow = laboratoryAssistants.slice(15, 30);
 
   return (
     <div className="bg-[#FCF6F6] dark:bg-[#090D16] text-slate-900 dark:text-[#F8FAFC] min-h-screen transition-colors duration-300">
@@ -53,10 +55,15 @@ export default function HomeView() {
       />
       <PeopleSection
         innerRef={refs.peopleRef}
-        firstRow={firstRow}
-        secondRow={secondRow}
+        firstRow={FIRST_ROW}
+        secondRow={SECOND_ROW}
       />
-      <NewsSection innerRef={refs.newsRef} />
+      <NewsSection
+        innerRef={refs.newsRef}
+        news={news}
+        newsLoading={newsLoading}
+        newsError={newsError}
+      />
       <TopButton />
       <section id="contact" ref={refs.contactRef}>
         <Footer />
