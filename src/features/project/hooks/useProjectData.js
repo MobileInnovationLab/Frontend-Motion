@@ -2,15 +2,19 @@ import { useEffect, useState } from "react";
 import { projectService } from "@/features/project/services/projectService";
 
 export const useProjectData = () => {
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const cached = projectService.getCachedProjects();
+  const [projects, setProjects] = useState(cached || []);
+  const [loading, setLoading] = useState(!cached);
   const [error, setError] = useState(null);
 
-  const fetchProjects = async () => {
+  const fetchProjects = async ({ forceRefresh = false } = {}) => {
     try {
-      setLoading(true);
-      const response = await projectService.getAllProjects();
+      if (!projectService.getCachedProjects() || forceRefresh) {
+        setLoading(true);
+      }
+      const response = await projectService.getAllProjects({ forceRefresh });
       setProjects(response);
+      setError(null);
     } catch (err) {
       setError("Failed to fetch projects");
     } finally {
@@ -19,8 +23,10 @@ export const useProjectData = () => {
   };
 
   useEffect(() => {
-    fetchProjects();
+    if (!cached) {
+      fetchProjects();
+    }
   }, []);
 
-  return { projects, loading, error, refetch: fetchProjects };
+  return { projects, loading, error, refetch: () => fetchProjects({ forceRefresh: true }) };
 };
