@@ -1,29 +1,24 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function LaboratoryRow({ rowData }) {
   return (
-    <div className="flex flex-row gap-8 px-4 md:px-12 lg:px-4 py-6 overflow-x-auto">
+    <div className="flex flex-row gap-8 pr-8 py-6">
       {rowData.map((member, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.1,
-            delay: index * 0.1,
-            ease: [0.25, 0.1, 0.25, 1],
-          }}
-          whileHover={{ scale: 1.05 }}
-          className="flex flex-col w-[350px] min-h-[340px] justify-between rounded-3xl bg-white dark:bg-[#111827] border border-transparent dark:border-[#1E293B] shadow-lg p-6 transition-colors duration-300"
+        <div
+          key={member.name || index}
+          className="flex flex-col w-[350px] min-h-[340px] justify-between rounded-3xl bg-white dark:bg-[#111827] border border-transparent dark:border-[#1E293B] shadow-lg p-6 transition-transform duration-200 hover:scale-105"
         >
           <div className="w-full text-center">
             <div className="rounded-full inline-block">
-              <img
+              <Image
                 src={member.image || "/placeholder.svg"}
                 alt={member.name}
+                width={128}
+                height={128}
+                sizes="128px"
+                loading="eager"
                 className="w-32 h-32 object-cover rounded-full"
               />
             </div>
@@ -37,28 +32,39 @@ export default function LaboratoryRow({ rowData }) {
             </p>
             <hr className="w-1/2 my-4 border-[#6A6A6A] dark:border-slate-700" />
             <div className="flex justify-center">
-              <motion.a
+              <a
                 href={member.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mr-4"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
+                className="mr-4 transition-transform duration-200 hover:scale-125 active:scale-90"
               >
-                <img src="/svg/linkedln.svg" alt="LinkedIn" />
-              </motion.a>
-              <motion.a
+                <img
+                  src="/svg/linkedln.svg"
+                  alt="LinkedIn"
+                  width="24"
+                  height="24"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+              <a
                 href={member.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
+                className="transition-transform duration-200 hover:scale-125 active:scale-90"
               >
-                <img src="/svg/instagram.svg" alt="Instagram" />
-              </motion.a>
+                <img
+                  src="/svg/instagram.svg"
+                  alt="Instagram"
+                  width="24"
+                  height="24"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
             </div>
           </div>
-        </motion.div>
+        </div>
       ))}
     </div>
   );

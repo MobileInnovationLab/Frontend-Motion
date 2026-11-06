@@ -39,6 +39,8 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
+        <link rel="preconnect" href="https://admin.motionlaboratory.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://admin.motionlaboratory.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

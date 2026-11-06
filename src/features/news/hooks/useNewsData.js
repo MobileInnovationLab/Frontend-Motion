@@ -2,15 +2,18 @@ import { useEffect, useState } from "react";
 import { newsService } from "@/features/news/service/newsService";
 
 export const useNewsData = () => {
-  const [news, setNews] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const cached = newsService.getCachedNews();
+  const [news, setNews] = useState(cached || []);
+  const [loading, setLoading] = useState(!cached);
   const [error, setError] = useState(null);
 
-  const fetchNews = async () => {
+  const fetchNews = async ({ forceRefresh = false } = {}) => {
     try {
-      setLoading(true);
+      if (!newsService.getCachedNews() || forceRefresh) {
+        setLoading(true);
+      }
       setError(null);
-      const response = await newsService.getAllNews();
+      const response = await newsService.getAllNews({ forceRefresh });
       setNews(response);
     } catch (err) {
       setError("Failed to fetch news");
@@ -20,8 +23,10 @@ export const useNewsData = () => {
   };
 
   useEffect(() => {
-    fetchNews();
+    if (!cached) {
+      fetchNews();
+    }
   }, []);
 
-  return { news, loading, error, refetch: fetchNews };
+  return { news, loading, error, refetch: () => fetchNews({ forceRefresh: true }) };
 };

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
 import PropTypes from "prop-types";
 
 const CardPeople = ({ member }) => {
@@ -36,9 +37,13 @@ const CardPeople = ({ member }) => {
     >
       <div className="w-full text-center mt-2">
         <div className="rounded-full inline-block p-1 border-2 border-transparent hover:border-[#E63946] transition-colors duration-300">
-          <img
+          <Image
             src={member.image}
             alt={member.name}
+            width={128}
+            height={128}
+            sizes="128px"
+            loading="lazy"
             className="w-32 h-32 object-cover rounded-full"
           />
         </div>

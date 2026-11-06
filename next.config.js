@@ -3,6 +3,7 @@ const nextConfig = {
   trailingSlash: true,
   output: "standalone",
   images: {
+    maximumResponseBody: 100000000,
     remotePatterns: [
       {
         protocol: "https",

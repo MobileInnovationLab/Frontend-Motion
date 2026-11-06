@@ -20,6 +20,8 @@ export default function AboutSection({ innerRef }) {
           className="object-contain w-full relative my-6 lg:mt-20 rounded"
           width={1168}
           height={500}
+          sizes="(max-width: 1200px) 100vw, 1168px"
+          loading="lazy"
           src="/images/member/motion-member/motion.jpg"
           alt="About Image"
         />
