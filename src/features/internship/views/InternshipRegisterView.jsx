@@ -14,9 +14,129 @@ import { useState } from 'react';
 import Modal from './InternshipRegisterGuideModal';
 import useStaticOption from "../hooks/useStaticOption";
 
+const InternshipRegisterSkeleton = () => {
+  return (
+    <div data-testid="static-option-skeleton" className="w-full animate-pulse">
+      <section className="bg-[url('/images/recruitment/sub-header.png')] bg-cover bg-no-repeat bg-[center_bottom_0rem] w-full">
+        <div className="flex justify-center py-40">
+          <div className="h-10 lg:h-14 w-72 lg:w-[480px] bg-white/30 dark:bg-white/20 rounded-2xl"></div>
+        </div>
+      </section>
+
+      <section className="container mx-auto">
+        <div className="hidden lg:flex justify-center py-10">
+          <div className="w-1/3 h-52 bg-slate-200 dark:bg-slate-800 rounded-2xl"></div>
+        </div>
+      </section>
+
+      <section className="container mx-auto my-10">
+        <div className="bg-white dark:bg-[#111827] border border-transparent dark:border-[#1E293B] rounded-2xl px-10 py-14 lg:mx-[10rem] transition-colors duration-200 flex flex-col gap-y-7">
+          <div className="h-12 w-48 bg-[#C2271A]/30 dark:bg-red-950/40 rounded-full"></div>
+
+          <div className="flex flex-col gap-y-2">
+            <div className="h-4 w-28 bg-slate-200 dark:bg-slate-700 rounded"></div>
+            <div className="h-12 w-full bg-slate-100 dark:bg-[#1E293B] rounded-xl border border-slate-200 dark:border-slate-700/60"></div>
+          </div>
+
+          <div className="flex flex-col gap-y-2">
+            <div className="h-4 w-28 bg-slate-200 dark:bg-slate-700 rounded"></div>
+            <div className="h-12 w-full bg-slate-100 dark:bg-[#1E293B] rounded-xl border border-slate-200 dark:border-slate-700/60"></div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-7">
+            <div className="flex flex-col gap-y-2">
+              <div className="h-4 w-20 bg-slate-200 dark:bg-slate-700 rounded"></div>
+              <div className="h-12 w-full bg-slate-100 dark:bg-[#1E293B] rounded-xl border border-slate-200 dark:border-slate-700/60"></div>
+            </div>
+            <div className="flex flex-col gap-y-2">
+              <div className="h-4 w-24 bg-slate-200 dark:bg-slate-700 rounded"></div>
+              <div className="h-12 w-full bg-slate-100 dark:bg-[#1E293B] rounded-xl border border-slate-200 dark:border-slate-700/60"></div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-7">
+            <div className="flex flex-col gap-y-2">
+              <div className="h-4 w-20 bg-slate-200 dark:bg-slate-700 rounded"></div>
+              <div className="h-12 w-full bg-slate-100 dark:bg-[#1E293B] rounded-xl border border-slate-200 dark:border-slate-700/60"></div>
+            </div>
+            <div className="flex flex-col gap-y-2">
+              <div className="h-4 w-28 bg-slate-200 dark:bg-slate-700 rounded"></div>
+              <div className="h-12 w-full bg-slate-100 dark:bg-[#1E293B] rounded-xl border border-slate-200 dark:border-slate-700/60"></div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-7">
+            <div className="flex flex-col gap-y-2">
+              <div className="h-4 w-24 bg-slate-200 dark:bg-slate-700 rounded"></div>
+              <div className="h-12 w-full bg-slate-100 dark:bg-[#1E293B] rounded-xl border border-slate-200 dark:border-slate-700/60"></div>
+            </div>
+            <div className="flex flex-col gap-y-2">
+              <div className="h-4 w-36 bg-slate-200 dark:bg-slate-700 rounded"></div>
+              <div className="h-12 w-full bg-slate-100 dark:bg-[#1E293B] rounded-xl border border-slate-200 dark:border-slate-700/60"></div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-7">
+            <div className="flex flex-col gap-y-2">
+              <div className="h-4 w-24 bg-slate-200 dark:bg-slate-700 rounded"></div>
+              <div className="h-12 w-full bg-slate-100 dark:bg-[#1E293B] rounded-xl border border-slate-200 dark:border-slate-700/60"></div>
+            </div>
+            <div className="flex flex-col gap-y-2">
+              <div className="h-4 w-20 bg-slate-200 dark:bg-slate-700 rounded"></div>
+              <div className="h-12 w-full bg-slate-100 dark:bg-[#1E293B] rounded-xl border border-slate-200 dark:border-slate-700/60"></div>
+            </div>
+          </div>
+
+          <div className="h-[1px] bg-slate-200 dark:bg-slate-800 my-2"></div>
+
+          <div className="flex flex-col gap-y-2">
+            <div className="h-4 w-32 bg-slate-200 dark:bg-slate-700 rounded"></div>
+            <div className="h-12 w-full bg-slate-100 dark:bg-[#1E293B] rounded-xl border border-slate-200 dark:border-slate-700/60"></div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-7">
+            <div className="flex flex-col gap-y-2">
+              <div className="h-4 w-36 bg-slate-200 dark:bg-slate-700 rounded"></div>
+              <div className="h-12 w-full bg-slate-100 dark:bg-[#1E293B] rounded-xl border border-slate-200 dark:border-slate-700/60"></div>
+            </div>
+            <div className="flex flex-col gap-y-2">
+              <div className="h-4 w-44 bg-slate-200 dark:bg-slate-700 rounded"></div>
+              <div className="h-12 w-full bg-slate-100 dark:bg-[#1E293B] rounded-xl border border-slate-200 dark:border-slate-700/60"></div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-7">
+            <div className="flex flex-col gap-y-2">
+              <div className="h-4 w-40 bg-slate-200 dark:bg-slate-700 rounded"></div>
+              <div className="h-12 w-full bg-slate-100 dark:bg-[#1E293B] rounded-xl border border-slate-200 dark:border-slate-700/60"></div>
+            </div>
+            <div className="flex flex-col gap-y-2">
+              <div className="h-4 w-40 bg-slate-200 dark:bg-slate-700 rounded"></div>
+              <div className="h-12 w-full bg-slate-100 dark:bg-[#1E293B] rounded-xl border border-slate-200 dark:border-slate-700/60"></div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-7">
+            <div className="flex flex-col gap-y-2">
+              <div className="h-4 w-40 bg-slate-200 dark:bg-slate-700 rounded"></div>
+              <div className="h-12 w-full bg-slate-100 dark:bg-[#1E293B] rounded-xl border border-slate-200 dark:border-slate-700/60"></div>
+            </div>
+            <div className="flex flex-col gap-y-2">
+              <div className="h-4 w-36 bg-slate-200 dark:bg-slate-700 rounded"></div>
+              <div className="h-12 w-full bg-slate-100 dark:bg-[#1E293B] rounded-xl border border-slate-200 dark:border-slate-700/60"></div>
+            </div>
+          </div>
+
+          <div className="h-14 w-full bg-[#C2271A]/40 dark:bg-red-950/50 rounded-full mt-6"></div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
 const InternshipRegisterView = () => {
   const { formik } = useRecruitmentRegisterViewModel();
-  const { value: isRecruitmentOpen } = useStaticOption("is_recruitment_open", "1");
+  const { value: isRecruitmentOpen, loading } = useStaticOption("is_recruitment_open", "1");
   const isClosed = isRecruitmentOpen === "0" || isRecruitmentOpen === "false" || isRecruitmentOpen === false;
 
   const [selectedDivision, setSelectedDivision] = useState('');
@@ -76,6 +196,10 @@ const InternshipRegisterView = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  if (loading) {
+    return <InternshipRegisterSkeleton />;
+  }
 
   return (
     <>
