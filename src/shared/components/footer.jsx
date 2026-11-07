@@ -133,22 +133,6 @@ export default function Footer() {
           </a>
           <a
             rel="noreferrer"
-            href="https://www.facebook.com/motionlab.telu"
-            target="_blank"
-            className={`${styles["footer-item"]} ${styles["link"]}`}
-          >
-            <div className={styles["footer-item-img"]}>
-              <Image
-                src="/images/footer/footer-facebook.svg"
-                alt="Facebook Link"
-                fill
-                className="footer-item-img object-cover"
-              />
-            </div>
-            Facebook
-          </a>
-          <a
-            rel="noreferrer"
             href="https://www.youtube.com/@MotionLabTelkomUniversity"
             target="_blank"
             className={`${styles["footer-item"]} ${styles["link"]}`}
