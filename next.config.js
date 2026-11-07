@@ -3,10 +3,23 @@ const nextConfig = {
   trailingSlash: true,
   output: "standalone",
   images: {
+    maximumResponseBody: 100000000,
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**",
+        hostname: "admin.motionlaboratory.com",
+      },
+      {
+        protocol: "http", 
+        hostname: "admin.motionlaboratory.com",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
       },
     ],
   },
