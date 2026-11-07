@@ -85,19 +85,19 @@ export default function Footer() {
 
           <a
             rel="noreferrer"
-            href="https://liff.line.me/1645278921-kWRPP32q?accountId=biy7493e#mst_challenge=B1ZDBAp9rbyTWPF3iAJ2k1b65qumuPvzH1IvhbvmgZM"
+            href="https://www.tiktok.com/@motionlab_0624"
             target="_blank"
             className={`${styles["footer-item"]} ${styles["link"]}`}
           >
             <div className={styles["footer-item-img"]}>
               <Image
-                src="/images/footer/footer-line.png"
-                alt="Line Link"
+                src="/images/footer/footer-tiktok.svg"
+                alt="TikTok Link"
                 fill
                 className="footer-item-img object-cover"
               />
             </div>
-            Line
+            TikTok
           </a>
           <a
             rel="noreferrer"
@@ -107,7 +107,7 @@ export default function Footer() {
           >
             <div className={styles["footer-item-img"]}>
               <Image
-                src="/images/footer/footer-linkedin.png"
+                src="/images/footer/footer-linkedin.svg"
                 alt="Linkedin Link"
                 fill
                 className="footer-item-img object-cover"
@@ -123,7 +123,7 @@ export default function Footer() {
           >
             <div className={styles["footer-item-img"]}>
               <Image
-                src="/images/footer/footer-instagram.png"
+                src="/images/footer/footer-instagram.svg"
                 alt="Instagram Link"
                 fill
                 className="footer-item-img object-cover"
@@ -133,29 +133,13 @@ export default function Footer() {
           </a>
           <a
             rel="noreferrer"
-            href="https://www.facebook.com/motionlab.telu"
-            target="_blank"
-            className={`${styles["footer-item"]} ${styles["link"]}`}
-          >
-            <div className={styles["footer-item-img"]}>
-              <Image
-                src="/images/footer/footer-facebook.png"
-                alt="Facebook Link"
-                fill
-                className="footer-item-img object-cover"
-              />
-            </div>
-            Facebook
-          </a>
-          <a
-            rel="noreferrer"
             href="https://www.youtube.com/@MotionLabTelkomUniversity"
             target="_blank"
             className={`${styles["footer-item"]} ${styles["link"]}`}
           >
             <div className={styles["footer-item-img"]}>
               <Image
-                src="/images/footer/footer-youtube.png"
+                src="/images/footer/footer-youtube.svg"
                 alt="Youtube Link"
                 fill
                 className="footer-item-img object-cover"
