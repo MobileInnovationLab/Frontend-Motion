@@ -58,7 +58,7 @@ const NavbarClientWrapper = () => {
           { id: "benefit", label: "Benefits" },
           { id: "curriculum", label: "Curriculum" },
         ],
-        ctaLabel: "Join Us!",
+        ctaLabel: "Register Now!",
         ctaHref: "/register",
         isHome: false,
       }
@@ -71,8 +71,8 @@ const NavbarClientWrapper = () => {
           { id: "news", label: "News" },
           { id: "contact", label: "Contact Us" },
         ],
-        ctaLabel: "Internship",
-        ctaHref: "/internship/register",
+        ctaLabel: "Join Us",
+        ctaHref: "/internship",
         isHome: true,
       };
 
