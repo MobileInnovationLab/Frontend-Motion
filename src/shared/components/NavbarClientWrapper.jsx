@@ -3,11 +3,13 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Navbar from "./navbar";
+import AnnouncementBar from "./AnnouncementBar";
 
 const NavbarClientWrapper = () => {
   const pathname = usePathname();
   const isInternshipRoute = Boolean(pathname?.startsWith("/internship"));
   const [isInternship, setIsInternship] = useState(isInternshipRoute);
+  const [announcementHeight, setAnnouncementHeight] = useState(0);
 
   // Daftar awalan route yang dianggap sebagai auth route (yang tadinya berada di grup (auth))
   const isAuthRoute = ['/reset-password', '/login', '/register', '/forgot-password'].some(route => pathname?.startsWith(route));
@@ -76,7 +78,25 @@ const NavbarClientWrapper = () => {
         isHome: true,
       };
 
-  return <Navbar {...navProps} />;
+  const activeTopOffset = !isInternship ? announcementHeight : 0;
+
+  return (
+    <>
+      {!isInternship && (
+        <AnnouncementBar
+          ctaHref="/internship"
+          onHeightChange={setAnnouncementHeight}
+        />
+      )}
+      {activeTopOffset > 0 && (
+        <div
+          aria-hidden="true"
+          style={{ height: `${activeTopOffset}px` }}
+        />
+      )}
+      <Navbar {...navProps} topOffset={activeTopOffset} />
+    </>
+  );
 };
 
 export default NavbarClientWrapper;

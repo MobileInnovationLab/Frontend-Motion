@@ -7,11 +7,22 @@ import { staticOptionService } from "../services/staticOptionService";
  * Custom hook to fetch a static option by key with fallback default value,
  * alternate keys support, and AbortController to prevent race conditions.
  */
-export const useStaticOption = (key, defaultValue = "", alternateKeys = []) => {
+export const useStaticOption = (
+  key,
+  defaultValue = "",
+  alternateKeys = [],
+  options = {}
+) => {
+  const enabled = options?.enabled ?? true;
   const [value, setValue] = useState(defaultValue);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(Boolean(enabled));
 
   useEffect(() => {
+    if (!enabled) {
+      setLoading(false);
+      return;
+    }
+
     const controller = new AbortController();
     setLoading(true);
 
@@ -47,7 +58,7 @@ export const useStaticOption = (key, defaultValue = "", alternateKeys = []) => {
     return () => {
       controller.abort();
     };
-  }, [key]);
+  }, [key, enabled]);
 
   return {
     value,
