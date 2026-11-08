@@ -49,9 +49,17 @@ export default function useRecruitmentAnnouncementViewModel() {
 
           let targetPath = response.data.is_accepted == 2 ? "/accepted" : "/declined";
           if (typeof window !== "undefined") {
-            const isSubdomain = window.location.host.includes("internship");
-            if (!isSubdomain && window.location.pathname.startsWith("/internship")) {
-              targetPath = `/internship${targetPath}`;
+            const isSubdomain =
+              window.location.host.includes("member") ||
+              window.location.host.includes("internship");
+            if (
+              !isSubdomain &&
+              (window.location.pathname.startsWith("/internship") ||
+                window.location.pathname.startsWith("/member"))
+            ) {
+              targetPath = window.location.pathname.startsWith("/member")
+                ? `/member${targetPath}`
+                : `/internship${targetPath}`;
             }
           }
 

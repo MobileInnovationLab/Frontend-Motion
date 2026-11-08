@@ -6,7 +6,9 @@ import Navbar from "./navbar";
 
 const NavbarClientWrapper = () => {
   const pathname = usePathname();
-  const isInternshipRoute = Boolean(pathname?.startsWith("/internship"));
+  const isInternshipRoute = Boolean(
+    pathname?.startsWith("/internship") || pathname?.startsWith("/member")
+  );
   const [isInternship, setIsInternship] = useState(isInternshipRoute);
 
   // Daftar awalan route yang dianggap sebagai auth route (yang tadinya berada di grup (auth))
@@ -15,7 +17,12 @@ const NavbarClientWrapper = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const hostname = window.location.hostname;
-      setIsInternship(hostname.includes("internship") || window.location.pathname.startsWith("/internship"));
+      setIsInternship(
+        hostname.includes("member") ||
+        hostname.includes("internship") ||
+        window.location.pathname.startsWith("/internship") ||
+        window.location.pathname.startsWith("/member")
+      );
     }
   }, [pathname]);
 
