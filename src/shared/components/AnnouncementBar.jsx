@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import useStaticOption from "@/shared/hooks/useStaticOption";
 
-export const DEFAULT_ANNOUNCEMENT_BAR_ACTIVE = true;
+export const DEFAULT_ANNOUNCEMENT_BAR_ACTIVE = false;
 export const DEFAULT_ANNOUNCEMENT_BAR_TEXT =
   "Open recruitment member 2026 dibuka. Daftar sebelum 20 November";
 
