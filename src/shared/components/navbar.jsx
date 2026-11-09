@@ -67,7 +67,10 @@ const Navbar = ({
   function getNavClassName() {
     const isHomePath = pathname === "/";
     const isInternshipPath =
-      pathname === "/internship" || pathname.startsWith("/internship/");
+      pathname === "/internship" ||
+      pathname.startsWith("/internship/") ||
+      pathname === "/member" ||
+      pathname.startsWith("/member/");
 
     let className = `transition duration-300 ${
       isFixed ? "fixed" : ""
