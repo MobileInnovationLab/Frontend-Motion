@@ -98,30 +98,26 @@ export const CURRICULUMS = [
 export const REQUIREMENTS = [
   {
     number: "01",
-    text: "Active Telkom University undergraduate student batch 2023-2025 from all major",
+    text: "Active Telkom University undergraduate student batch 2024-2026 from all major",
   },
   {
-    number: "05",
-    text: "Portofolio",
+    number: "04",
+    text: "KSM for current semester",
   },
   {
     number: "02",
     text: "Wiling to commit for the whole program and membership duration of 1,5 year",
   },
   {
-    number: "06",
-    text: "Motivation Video",
+    number: "05",
+    text: "Portofolio",
   },
   {
     number: "03",
     text: "Curriculum vitae with relevant experience",
   },
   {
-    number: "07",
+    number: "06",
     text: "Repost our open recruitment post on Instagram Story + Upload Twibbon",
-  },
-  {
-    number: "04",
-    text: "KSM for current semester",
   },
 ];
