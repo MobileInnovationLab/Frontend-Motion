@@ -81,7 +81,7 @@ const NavbarClientWrapper = () => {
           { id: "contact", label: "Contact Us" },
         ],
         ctaLabel: "Join Us",
-        ctaHref: "/internship",
+        ctaHref: "/member",
         isHome: true,
       };
 
@@ -91,7 +91,7 @@ const NavbarClientWrapper = () => {
     <>
       {!isInternship && (
         <AnnouncementBar
-          ctaHref="/internship"
+          ctaHref="/member"
           onHeightChange={setAnnouncementHeight}
         />
       )}
