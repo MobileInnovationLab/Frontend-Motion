@@ -1,5 +1,6 @@
 import HomeView from "@/features/home/views/HomePageView";
 import { mapProjectData } from "@/features/project/services/projectService";
+import { isOptionActive } from "@/shared/utils/isOptionActive";
 
 const getLatestThree = (items = []) =>
   [...items]
@@ -14,13 +15,17 @@ async function fetchInitialHomeData() {
 
   const normalizedBaseUrl = baseUrl.replace(/\/+$/, "");
 
-  const [projectsRes, newsRes] = await Promise.allSettled([
+  const [projectsRes, newsRes, optionsRes] = await Promise.allSettled([
     fetch(`${normalizedBaseUrl}/project-showcases`, {
       next: { revalidate: 60 },
       signal: AbortSignal.timeout(2500),
     }),
     fetch(`${normalizedBaseUrl}/news`, {
       next: { revalidate: 60 },
+      signal: AbortSignal.timeout(2500),
+    }),
+    fetch(`${normalizedBaseUrl}/static-options`, {
+      next: { revalidate: 30 },
       signal: AbortSignal.timeout(2500),
     }),
   ]);
@@ -43,15 +48,27 @@ async function fetchInitialHomeData() {
     } catch (_) {}
   }
 
-  return { initialProjects, initialNews };
+  let initialRecruitmentPeriod;
+  if (optionsRes.status === "fulfilled" && optionsRes.value.ok) {
+    try {
+      const options = await optionsRes.value.json();
+      initialRecruitmentPeriod = isOptionActive(
+        options?.is_recruitment_period ?? options?.is_recruitment_open
+      );
+    } catch (_) {}
+  }
+
+  return { initialProjects, initialNews, initialRecruitmentPeriod };
 }
 
 const Page = async () => {
-  const { initialProjects, initialNews } = await fetchInitialHomeData();
+  const { initialProjects, initialNews, initialRecruitmentPeriod } =
+    await fetchInitialHomeData();
   return (
     <HomeView
       initialProjects={initialProjects}
       initialNews={initialNews}
+      initialRecruitmentPeriod={initialRecruitmentPeriod}
     />
   );
 };
