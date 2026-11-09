@@ -14,6 +14,7 @@ const Navbar = ({
   onNavigation,
   isFixed = true,
   isHome = false,
+  topOffset = 0,
 }) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -88,7 +89,7 @@ const Navbar = ({
       }
     }
 
-    className += isNavbarOpened ? " opacity-0" : " opacity-1";
+    className += isNavbarOpened ? " opacity-0 pointer-events-none" : " opacity-1";
 
     return className;
   }
@@ -157,6 +158,7 @@ const Navbar = ({
     <div>
       <motion.nav
         className={getNavClassName()}
+        style={isFixed ? { top: `${topOffset}px` } : undefined}
         initial="hidden"
         animate="visible"
         variants={navVariants}
@@ -227,6 +229,7 @@ const Navbar = ({
           <div className="flex items-center gap-3 md:gap-4">
             {/* CTA */}
             <motion.div
+              className="hidden lg:block"
               initial={{ opacity: 0, scale: 0.8, y: -20 }}
               animate={{
                 opacity: isNavbarScroll ? 1 : 0,
@@ -238,7 +241,7 @@ const Navbar = ({
             >
               <Link
                 href={ctaHref}
-                className="hidden lg:block bg-[#332C2B] dark:bg-[#1E293B] hover:bg-black dark:hover:bg-[#334155] border border-transparent dark:border-[#334155] text-white text-[inter] text-[15px] rounded-full px-7 py-2.5 transition duration-300"
+                className="block bg-[#332C2B] dark:bg-[#1E293B] hover:bg-black dark:hover:bg-[#334155] border border-transparent dark:border-[#334155] text-white text-[inter] text-[15px] rounded-full px-7 py-2.5 transition duration-300"
               >
                 {ctaLabel}
               </Link>
@@ -287,7 +290,7 @@ const Navbar = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="z-10 bg-black fixed top-0 left-0 right-0 bg-opacity-80 bottom-0"
+            className="z-50 bg-black fixed top-0 left-0 right-0 bg-opacity-80 bottom-0"
           >
             <motion.nav
               initial="closed"

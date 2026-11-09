@@ -2,16 +2,35 @@ import api from "@/shared/api/api";
 
 const BASE_URL = "/static-options";
 
+const toOptionString = (val) => {
+  if (typeof val === "string") return val;
+  if (typeof val === "number" || typeof val === "boolean") return String(val);
+  return null;
+};
+
 export const extractStaticOptionValue = (data, key) => {
   if (data === null || data === undefined) return null;
-  if (typeof data === "string") return data;
-  if (typeof data === "number") return String(data);
+  const direct = toOptionString(data);
+  if (direct !== null) return direct;
+
+  if (Array.isArray(data)) {
+    if (!key) return null;
+    const found = data.find((item) => item && (item.key === key || item.name === key));
+    return found ? toOptionString(found.value) : null;
+  }
+
   if (typeof data === "object") {
-    if (key && typeof data[key] === "string") return data[key];
-    if (typeof data.value === "string") return data.value;
-    if (typeof data.data === "string") return data.data;
-    if (data.data && typeof data.data.value === "string") return data.data.value;
-    if (key && data.data && typeof data.data[key] === "string") return data.data[key];
+    if (key && toOptionString(data[key]) !== null) return toOptionString(data[key]);
+    if (toOptionString(data.value) !== null) return toOptionString(data.value);
+    if (toOptionString(data.data) !== null) return toOptionString(data.data);
+    if (Array.isArray(data.data) && key) {
+      const found = data.data.find((item) => item && (item.key === key || item.name === key));
+      if (found && toOptionString(found.value) !== null) return toOptionString(found.value);
+    }
+    if (data.data && typeof data.data === "object") {
+      if (toOptionString(data.data.value) !== null) return toOptionString(data.data.value);
+      if (key && toOptionString(data.data[key]) !== null) return toOptionString(data.data[key]);
+    }
   }
   return null;
 };
