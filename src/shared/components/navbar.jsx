@@ -231,12 +231,7 @@ const Navbar = ({
             <motion.div
               className="hidden lg:block"
               initial={{ opacity: 0, scale: 0.8, y: -20 }}
-              animate={{
-                opacity: isNavbarScroll ? 1 : 0,
-                scale: isNavbarScroll ? 1 : 0.8,
-                y: isNavbarScroll ? 0 : -20,
-                display: isNavbarScroll ? "block" : "none",
-              }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
               <Link

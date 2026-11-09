@@ -7,8 +7,59 @@ import ScaleIn from "../components/animations/ScaleIn";
 import RevealText from "../components/animations/RevealText";
 import IndexIllustration from "@/shared/components/illustration/indexIllustration";
 import JoinUsButton from "../components/ui/JoinUsButton";
+import useStaticOption from "@/features/internship/hooks/useStaticOption";
+
+const RECRUITMENT_POSTER = "/videos/oprec-poster.webp";
+const RECRUITMENT_MEDIA_CLASS =
+  "w-[calc(100%-2rem)] mx-4 rounded-2xl shadow-2xl aspect-video object-cover lg:w-full lg:mx-0 lg:rounded-none lg:shadow-none";
+
+function RecruitmentHero({ innerRef, playing }) {
+  return (
+    <section
+      id="home"
+      ref={innerRef}
+      className="relative w-full bg-[url('/images/main-index/bg-main.webp')] bg-cover bg-no-repeat bg-[center_bottom_0rem] pt-24 pb-28 mb-8 lg:bg-none lg:bg-black lg:pt-0 lg:pb-0 lg:mb-0"
+    >
+      {playing ? (
+        <video
+          className={RECRUITMENT_MEDIA_CLASS}
+          src="/videos/Oprec_MOTION_11_v3_35s.mp4"
+          poster={RECRUITMENT_POSTER}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        />
+      ) : (
+        <img
+          className={RECRUITMENT_MEDIA_CLASS}
+          src={RECRUITMENT_POSTER}
+          alt=""
+        />
+      )}
+      <div className="pointer-events-none absolute inset-x-0 top-0 hidden lg:block h-32 bg-gradient-to-b from-black/70 to-transparent" />
+    </section>
+  );
+}
 
 export default function HeroSection({ innerRef }) {
+  const { value, loading } = useStaticOption("is_recruitment_open", "0");
+  const isRecruitmentOpen = !(
+    value === "0" ||
+    value === "false" ||
+    value === false ||
+    value === 0
+  );
+
+  if (loading) {
+    return <RecruitmentHero innerRef={innerRef} playing={false} />;
+  }
+
+  if (isRecruitmentOpen) {
+    return <RecruitmentHero innerRef={innerRef} playing />;
+  }
+
   return (
     <section
       id="home"
