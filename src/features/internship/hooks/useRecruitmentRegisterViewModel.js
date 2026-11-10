@@ -310,7 +310,6 @@ export default function useRecruitmentRegisterViewModel() {
       name: "",
       email: "",
       nim: "",
-      motivaton_letter: "",
       cv: "",
       ksm: "",
       portfolio: "",
@@ -349,12 +348,6 @@ export default function useRecruitmentRegisterViewModel() {
           /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
           "Please provide a valid URL."
         ),
-      motivation_letter: Yup.string()
-        .required("The motivation letter link field is required")
-        .matches(
-          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
-          "Please provide a valid URL."
-        ),
       share_poster: Yup.string()
         .required("The share poster link field is required")
         .matches(
@@ -386,7 +379,7 @@ export default function useRecruitmentRegisterViewModel() {
           "Please provide a valid URL."
         ),
       line_evidence: Yup.string()
-        .required("The screenshot follow line field is required")
+        .required("The screenshot follow tiktok field is required")
         .matches(
           /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
           "Please provide a valid URL."

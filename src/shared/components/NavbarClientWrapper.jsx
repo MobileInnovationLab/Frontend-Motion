@@ -3,11 +3,15 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Navbar from "./navbar";
+import AnnouncementBar from "./AnnouncementBar";
 
 const NavbarClientWrapper = () => {
   const pathname = usePathname();
-  const isInternshipRoute = Boolean(pathname?.startsWith("/internship"));
+  const isInternshipRoute = Boolean(
+    pathname?.startsWith("/internship") || pathname?.startsWith("/member")
+  );
   const [isInternship, setIsInternship] = useState(isInternshipRoute);
+  const [announcementHeight, setAnnouncementHeight] = useState(0);
 
   // Daftar awalan route yang dianggap sebagai auth route (yang tadinya berada di grup (auth))
   const isAuthRoute = ['/reset-password', '/login', '/register', '/forgot-password'].some(route => pathname?.startsWith(route));
@@ -15,7 +19,12 @@ const NavbarClientWrapper = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const hostname = window.location.hostname;
-      setIsInternship(hostname.includes("internship") || window.location.pathname.startsWith("/internship"));
+      setIsInternship(
+        hostname.includes("member") ||
+        hostname.includes("internship") ||
+        window.location.pathname.startsWith("/internship") ||
+        window.location.pathname.startsWith("/member")
+      );
     }
   }, [pathname]);
 
@@ -58,7 +67,7 @@ const NavbarClientWrapper = () => {
           { id: "benefit", label: "Benefits" },
           { id: "curriculum", label: "Curriculum" },
         ],
-        ctaLabel: "Join Us!",
+        ctaLabel: "Register Now!",
         ctaHref: "/register",
         isHome: false,
       }
@@ -71,12 +80,30 @@ const NavbarClientWrapper = () => {
           { id: "news", label: "News" },
           { id: "contact", label: "Contact Us" },
         ],
-        ctaLabel: "Internship",
-        ctaHref: "/internship/register",
+        ctaLabel: "Join Us",
+        ctaHref: "/member",
         isHome: true,
       };
 
-  return <Navbar {...navProps} />;
+  const activeTopOffset = !isInternship ? announcementHeight : 0;
+
+  return (
+    <>
+      {!isInternship && (
+        <AnnouncementBar
+          ctaHref="/member"
+          onHeightChange={setAnnouncementHeight}
+        />
+      )}
+      {activeTopOffset > 0 && (
+        <div
+          aria-hidden="true"
+          style={{ height: `${activeTopOffset}px` }}
+        />
+      )}
+      <Navbar {...navProps} topOffset={activeTopOffset} />
+    </>
+  );
 };
 
 export default NavbarClientWrapper;
