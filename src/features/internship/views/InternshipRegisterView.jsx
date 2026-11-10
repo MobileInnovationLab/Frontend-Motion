@@ -372,38 +372,26 @@ const InternshipRegisterView = () => {
 
                 <hr />
 
-                  <RecruitmentTextInputField
-                    label="Upload Twibbon"
-                    link="https://bit.ly/TwibbonMotion2025"
-                    name="twibbon_evidence"
-                    placeholder="Link Instagram Post"
-                    onChange={formik.handleChange}
-                    error={formik.errors.twibbon_evidence}
-                    required
-                    suffix={<img src="/svg/link.svg" alt="link" />}
-                  />
+                <RecruitmentTextInputField
+                  label="Upload Twibbon"
+                  link="https://bit.ly/TwibbonMotion2025"
+                  name="twibbon_evidence"
+                  placeholder="Link Instagram Post"
+                  onChange={formik.handleChange}
+                  error={formik.errors.twibbon_evidence}
+                  required
+                  suffix={<img src="/svg/link.svg" alt="link" />}
+                />
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
-                  <RecruitmentTextInputField
-                    label="Motivational Video"
-                    name="motivation_letter"
-                    placeholder="Link Motivational Video"
-                    onChange={formik.handleChange}
-                    error={formik.errors.motivation_letter}
-                    required
-                    suffix={<img src="/svg/link.svg" alt="link" />}
-                  />
-                  <RecruitmentTextInputField
-                    containerClass="mt-5 lg:mt-0"
-                    label="Upload OpRec Instagram posts to your IG story"
-                    name="share_poster"
-                    placeholder="Link Screenshot Post Instagram"
-                    onChange={formik.handleChange}
-                    error={formik.errors.share_poster}
-                    required
-                    suffix={<img src="/svg/link.svg" alt="link" />}
-                  />
-                </div>
+                <RecruitmentTextInputField
+                  label="Upload OpRec Instagram posts to your IG story"
+                  name="share_poster"
+                  placeholder="Link Screenshot Post Instagram"
+                  onChange={formik.handleChange}
+                  error={formik.errors.share_poster}
+                  required
+                  suffix={<img src="/svg/link.svg" alt="link" />}
+                />
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
                   <RecruitmentTextInputField
@@ -442,10 +430,10 @@ const InternshipRegisterView = () => {
                     suffix={<img src="/svg/link.svg" alt="link" />}
                   />
                   <RecruitmentTextInputField
-                    label="Screenshot Follow Line"
-                    link="https://lin.ee/sJGLG47"
+                    label="Screenshot Follow TikTok"
+                    link="https://www.tiktok.com/@motionlab_0624"
                     name="line_evidence"
-                    placeholder="Link Screenshot follow line"
+                    placeholder="Link Screenshot Follow TikTok"
                     onChange={formik.handleChange}
                     error={formik.errors.line_evidence}
                     required

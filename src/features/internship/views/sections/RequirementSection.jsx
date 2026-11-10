@@ -8,13 +8,13 @@ import useStaticOption from "../../hooks/useStaticOption";
 
 const RequirementSection = ({ requirementRef }) => {
   const [isMobile, setIsMobile] = useState(false);
-  const { value: yearText } = useStaticOption("year_text", "2023-2025");
+  const { value: yearText } = useStaticOption("year_text", "2024-2026");
 
   const displayRequirements = REQUIREMENTS.map((item) => {
     if (item.number === "01") {
       return {
         ...item,
-        text: item.text.replace(/2023-2025/g, yearText || "2023-2025"),
+        text: item.text.replace(/2024-2026/g, yearText || "2024-2026"),
       };
     }
     return item;
@@ -65,7 +65,7 @@ const RequirementSection = ({ requirementRef }) => {
                 {item.text}
               </p>
             </div>
-            {(isMobile ? index < displayRequirements.length - 1 : index < 5) && (
+            {(isMobile ? index < displayRequirements.length - 1 : index < displayRequirements.length - 2) && (
               <div className="h-[50px] px-10 my-2">
                 <img
                   src="/images/recruitment/requirement-line.png"

@@ -27,6 +27,7 @@ const SECOND_ROW = LABORATORY_ASSISTANTS.slice(MID_INDEX);
 export default function HomeView({
   initialProjects = [],
   initialNews = [],
+  initialRecruitmentPeriod,
 } = {}) {
   const {
     projects,
@@ -43,7 +44,10 @@ export default function HomeView({
   return (
     <div className="bg-[#FCF6F6] dark:bg-[#090D16] text-slate-900 dark:text-[#F8FAFC] min-h-screen transition-colors duration-300">
       <GeneralSeo />
-      <HeroSection innerRef={refs.homeRef} />
+      <HeroSection
+        innerRef={refs.homeRef}
+        initialRecruitmentPeriod={initialRecruitmentPeriod}
+      />
       <AboutSection innerRef={refs.aboutRef} />
       <div className="my-16 lg:my-40"></div>
       <DivisionSection innerRef={refs.divisionRef} />
