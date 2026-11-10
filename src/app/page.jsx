@@ -13,21 +13,25 @@ async function fetchInitialHomeData() {
     return { initialProjects: [], initialNews: [] };
   }
 
+  if (
+    process.env.NODE_ENV !== "production" ||
+    baseUrl.includes(".test") ||
+    baseUrl.includes("localhost")
+  ) {
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+  }
+
   const normalizedBaseUrl = baseUrl.replace(/\/+$/, "");
+  const isDev = process.env.NODE_ENV !== "production";
+  const getFetchConfig = (revalidateSec = 60) => ({
+    ...(isDev ? { cache: "no-store" } : { next: { revalidate: revalidateSec } }),
+    signal: AbortSignal.timeout(2500),
+  });
 
   const [projectsRes, newsRes, optionsRes] = await Promise.allSettled([
-    fetch(`${normalizedBaseUrl}/project-showcases`, {
-      next: { revalidate: 60 },
-      signal: AbortSignal.timeout(2500),
-    }),
-    fetch(`${normalizedBaseUrl}/news`, {
-      next: { revalidate: 60 },
-      signal: AbortSignal.timeout(2500),
-    }),
-    fetch(`${normalizedBaseUrl}/static-options`, {
-      next: { revalidate: 30 },
-      signal: AbortSignal.timeout(2500),
-    }),
+    fetch(`${normalizedBaseUrl}/project-showcases`, getFetchConfig(60)),
+    fetch(`${normalizedBaseUrl}/news`, getFetchConfig(60)),
+    fetch(`${normalizedBaseUrl}/static-options`, getFetchConfig(30)),
   ]);
 
   let initialProjects = [];
@@ -52,9 +56,13 @@ async function fetchInitialHomeData() {
   if (optionsRes.status === "fulfilled" && optionsRes.value.ok) {
     try {
       const options = await optionsRes.value.json();
-      initialRecruitmentPeriod = isOptionActive(
-        options?.is_recruitment_period ?? options?.is_recruitment_open
-      );
+      const rawValue =
+        options?.is_recruitment_period !== undefined &&
+        options?.is_recruitment_period !== null &&
+        options?.is_recruitment_period !== ""
+          ? options.is_recruitment_period
+          : options?.is_recruitment_open;
+      initialRecruitmentPeriod = isOptionActive(rawValue);
     } catch (_) {}
   }
 
