@@ -27,7 +27,7 @@ const HeroSection = ({ homeRef }) => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ type: "spring", duration: 1.5, bounce: 0.3 }}
         >
-          Internship <br /> in Mobile Innovation Laboratory
+          Member <br /> in Mobile Innovation Laboratory
         </motion.div>
         <motion.div
           className="font-normal font-[inter] text-[12px] lg:text-[25px] text-white text-left mb-5 lg:mb-8"
