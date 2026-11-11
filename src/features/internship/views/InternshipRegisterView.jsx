@@ -369,7 +369,6 @@ const InternshipRegisterView = () => {
                     suffix={<img src="/svg/link.svg" alt="link" />}
                   />
                   <RecruitmentTextInputField
-                    className="mb-8 lg:mb-0"
                     label="KSM"
                     name="ksm"
                     placeholder="Link KSM"
@@ -379,6 +378,16 @@ const InternshipRegisterView = () => {
                     suffix={<img src="/svg/link.svg" alt="link" />}
                   />
                 </div>
+
+                <RecruitmentTextInputField
+                  label="Case Study"
+                  name="study_case_link"
+                  placeholder="Link Case Study"
+                  onChange={formik.handleChange}
+                  error={formik.errors.study_case_link}
+                  required
+                  suffix={<img src="/svg/link.svg" alt="link" />}
+                />
 
                 <hr />
 
@@ -403,8 +412,21 @@ const InternshipRegisterView = () => {
                   suffix={<img src="/svg/link.svg" alt="link" />}
                 />
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
+                <RecruitmentTextInputField
+                  label="Upload Proof of Flyer Share Screenshot"
+                  description="Send it to at least 1 group outside the Motion group. Make sure the group name is clearly visible in the screenshot."
+                  name="proof_of_flyer_share"
+                  placeholder="Link Screenshot Share Flyer"
+                  onChange={formik.handleChange}
+                  error={formik.errors.proof_of_flyer_share}
+                  required
+                  suffix={<img src="/svg/link.svg" alt="link" />}
+                />
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-[auto_auto] m-0 p-0 gap-x-10">
                   <RecruitmentTextInputField
+                    containerClass="lg:row-span-2 lg:grid lg:grid-rows-subgrid"
+                    className="mb-7 lg:mb-0"
                     label="Screenshot Follow Instagram"
                     link="https://www.instagram.com/motionlab_"
                     name="instagram_evidence"
@@ -415,7 +437,7 @@ const InternshipRegisterView = () => {
                     suffix={<img src="/svg/link.svg" alt="link" />}
                   />
                   <RecruitmentTextInputField
-                    className="mb-8 lg:mb-0"
+                    containerClass="lg:row-span-2 lg:grid lg:grid-rows-subgrid"
                     label="Screenshot Subscribe Youtube"
                     name="yt_evidence"
                     link="https://www.youtube.com/@MotionLabTelkomUniversity"
@@ -427,9 +449,10 @@ const InternshipRegisterView = () => {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-[auto_auto] m-0 p-0 gap-x-10">
                   <RecruitmentTextInputField
-                    className="mb-8 lg:mb-0"
+                    containerClass="lg:row-span-2 lg:grid lg:grid-rows-subgrid"
+                    className="mb-7 lg:mb-0"
                     label="Screenshot Follow Linkedin"
                     name="linkedin_evidence"
                     link="https://www.linkedin.com/company/motion-laboratory"
@@ -440,6 +463,7 @@ const InternshipRegisterView = () => {
                     suffix={<img src="/svg/link.svg" alt="link" />}
                   />
                   <RecruitmentTextInputField
+                    containerClass="lg:row-span-2 lg:grid lg:grid-rows-subgrid"
                     label="Screenshot Follow TikTok"
                     link="https://www.tiktok.com/@motionlab_0624"
                     name="line_evidence"

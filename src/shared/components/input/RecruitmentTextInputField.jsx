@@ -4,6 +4,7 @@ const RecruitmentTextInputField = ({
   label,
   name,
   link,
+  description,
   className,
   containerClass,
   placeholder,
@@ -22,9 +23,17 @@ const RecruitmentTextInputField = ({
         {link && (
           <>
             <br />
-            <a className="text-[#F82F1E] underline" target="blank" href={link}>
+            <a className="text-[#F82F1E] underline break-all" target="blank" href={link}>
               {link}{" "}
             </a>
+          </>
+        )}
+        {description && (
+          <>
+            <br />
+            <span className="text-[12px] text-[#8A8A8A] dark:text-[#94A3B8]">
+              {description}
+            </span>
           </>
         )}
       </label>
