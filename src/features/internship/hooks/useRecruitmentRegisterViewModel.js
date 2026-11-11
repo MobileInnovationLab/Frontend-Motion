@@ -6,9 +6,9 @@ import * as Yup from "yup";
 import api from "@/shared/api/api";
 
 export const generationOptions = [
+  { label: 2026, value: 2026 },
   { label: 2025, value: 2025 },
   { label: 2024, value: 2024 },
-  { label: 2023, value: 2023 },
 ];
 
 export const majorOptions = [
@@ -323,6 +323,8 @@ export default function useRecruitmentRegisterViewModel() {
       twibbon_evidence: "",
       line_evidence: "",
       instagram_evidence: "",
+      study_case_link: "",
+      proof_of_flyer_share: "",
     },
     validationSchema: Yup.object().shape({
       name: Yup.string().required("The name field is required"),
@@ -380,6 +382,18 @@ export default function useRecruitmentRegisterViewModel() {
         ),
       line_evidence: Yup.string()
         .required("The screenshot follow tiktok field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
+      study_case_link: Yup.string()
+        .required("The case study link field is required")
+        .matches(
+          /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
+          "Please provide a valid URL."
+        ),
+      proof_of_flyer_share: Yup.string()
+        .required("The screenshot share flyer field is required")
         .matches(
           /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/,
           "Please provide a valid URL."

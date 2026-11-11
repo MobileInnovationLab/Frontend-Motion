@@ -134,13 +134,26 @@ const InternshipRegisterSkeleton = () => {
   );
 };
 
+const DEFAULT_RECRUITMENT_MEMBER_TEXT = "Recruitment Member 11.0";
+
 const InternshipRegisterView = () => {
   const { formik } = useRecruitmentRegisterViewModel();
   const { value: isRecruitmentOpen, loading } = useStaticOption("is_recruitment_open", "1");
+  const {
+    value: recruitmentMemberText,
+    loading: loadingRecruitmentMemberText,
+  } = useStaticOption(
+    "recruitment_member_text",
+    DEFAULT_RECRUITMENT_MEMBER_TEXT,
+    ["recruitment_title_text", "internship_register_text"]
+  );
   const isClosed = isRecruitmentOpen === "0" || isRecruitmentOpen === "false" || isRecruitmentOpen === false;
-
+  
   const [selectedDivision, setSelectedDivision] = useState('');
-
+  const { value: bookletLink = "https://motionlaboratory.com", loading: bookletLinkLoading } = useStaticOption("recruitment_booklet_link");
+  const handleBooklet = () => {
+    if(bookletLink) window.open(bookletLink, "_blank");
+  }
   const handleDivisionChange = (e) => {
     setSelectedDivision(e.target.value);
     formik.handleChange(e);
@@ -159,36 +172,15 @@ const InternshipRegisterView = () => {
   };
 
   const getPortfolioLabel = () => {
-    if(selectedDivision == "Digital Business"){
-      const link = getOrGenerateLink();
       return { 
         portfolioLabel: 
         (
           <>
-            BMC{' '} <span className="text-[#F82F1E]">*</span> (Required for DB){' '}
-            <span class="rounded-full bg-red-500 ms-1 px-2 py-1 text-xs font-bold mr-3">
-              <a href={link} target="_blank" rel="noopener noreferrer" className="text-white">Soal DB</a>
-            </span>
+            Portofolio{' '} <span className="text-[#F82F1E]">*</span>
           </>
         ),
-        portfolioPlaceholder: 'Link Folder BMC'
+        portfolioPlaceholder: 'Link Portofolio'
       };
-    } else if(selectedDivision == "Mobile Programming"){
-      return { 
-        portfolioLabel: 
-        (
-          <>
-            Portofolio{' '} <span className="text-[#F82F1E]">*</span> (Include github link in the portfolio){' '}
-          </>
-        ),
-        portfolioPlaceholder: 'Link Portfolio'
-      };
-    } else {
-      return {
-        portfolioLabel: <>Portofolio <span className="text-[#F82F1E]">*</span></>,
-        portfolioPlaceholder: 'Link Portfolio'
-      };
-    }
   };
 
   const { portfolioLabel, portfolioPlaceholder } = getPortfolioLabel();
@@ -197,7 +189,7 @@ const InternshipRegisterView = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  if (loading) {
+  if (loading || (!isClosed && loadingRecruitmentMemberText) || bookletLinkLoading) {
     return <InternshipRegisterSkeleton />;
   }
 
@@ -219,7 +211,7 @@ const InternshipRegisterView = () => {
         <>
           <section className="bg-[url('/images/recruitment/sub-header.png')] bg-cover bg-no-repeat bg-[center_bottom_0rem] w-full">
             <h1 className="text-[28px] lg:text-[48px] font-bold font-[rubik] text-center text-white flex justify-center py-40">
-              Recruitment Member 10.0
+              {recruitmentMemberText || DEFAULT_RECRUITMENT_MEMBER_TEXT}
             </h1>
           </section>
 
@@ -241,11 +233,11 @@ const InternshipRegisterView = () => {
                 <button
                   className=" lg:w-1/3 w-auto bg-[#C2271A] text-white text-[inter] text-[16px] rounded-full px-8 py-4 hover:opacity-90 transition duration-800 items-center"
                   type="button"
-                  onClick={openModal}
+                  onClick={handleBooklet}
                 >
                   Panduan Pengerjaan
                 </button>
-                <Modal isOpen={isModalOpen} onClose={closeModal} />
+                {/* <Modal isOpen={isModalOpen} onClose={closeModal} /> */}
 
                 <RecruitmentTextInputField
                   label="Full Name"
@@ -359,7 +351,6 @@ const InternshipRegisterView = () => {
                     suffix={<img src="/svg/link.svg" alt="link" />}
                   />
                   <RecruitmentTextInputField
-                    className="mb-8 lg:mb-0"
                     label="KSM"
                     name="ksm"
                     placeholder="Link KSM"
@@ -370,11 +361,22 @@ const InternshipRegisterView = () => {
                   />
                 </div>
 
+                <RecruitmentTextInputField
+                  label="Case Study"
+                  name="study_case_link"
+                  placeholder="Link Case Study"
+                  onChange={formik.handleChange}
+                  error={formik.errors.study_case_link}
+                  required
+                  suffix={<img src="/svg/link.svg" alt="link" />}
+                />
+
                 <hr />
 
                 <RecruitmentTextInputField
                   label="Upload Twibbon"
-                  link="https://bit.ly/TwibbonMotion2025"
+                  shortLink={true}
+                  link="https://drive.google.com/drive/folders/1b8vySQ-0spIvRp04qKIXlIVUSUiuuT3A?usp=sharing"
                   name="twibbon_evidence"
                   placeholder="Link Instagram Post"
                   onChange={formik.handleChange}
@@ -393,8 +395,21 @@ const InternshipRegisterView = () => {
                   suffix={<img src="/svg/link.svg" alt="link" />}
                 />
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
+                <RecruitmentTextInputField
+                  label="Upload Proof of Flyer Share Screenshot"
+                  description="Send it to at least 1 group outside the Motion group. Make sure the group name is clearly visible in the screenshot."
+                  name="proof_of_flyer_share"
+                  placeholder="Link Screenshot Share Flyer"
+                  onChange={formik.handleChange}
+                  error={formik.errors.proof_of_flyer_share}
+                  required
+                  suffix={<img src="/svg/link.svg" alt="link" />}
+                />
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-[auto_auto] m-0 p-0 gap-x-10">
                   <RecruitmentTextInputField
+                    containerClass="lg:row-span-2 lg:grid lg:grid-rows-subgrid"
+                    className="mb-7 lg:mb-0"
                     label="Screenshot Follow Instagram"
                     link="https://www.instagram.com/motionlab_"
                     name="instagram_evidence"
@@ -405,7 +420,7 @@ const InternshipRegisterView = () => {
                     suffix={<img src="/svg/link.svg" alt="link" />}
                   />
                   <RecruitmentTextInputField
-                    className="mb-8 lg:mb-0"
+                    containerClass="lg:row-span-2 lg:grid lg:grid-rows-subgrid"
                     label="Screenshot Subscribe Youtube"
                     name="yt_evidence"
                     link="https://www.youtube.com/@MotionLabTelkomUniversity"
@@ -417,9 +432,10 @@ const InternshipRegisterView = () => {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 m-0 p-0 gap-x-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-[auto_auto] m-0 p-0 gap-x-10">
                   <RecruitmentTextInputField
-                    className="mb-8 lg:mb-0"
+                    containerClass="lg:row-span-2 lg:grid lg:grid-rows-subgrid"
+                    className="mb-7 lg:mb-0"
                     label="Screenshot Follow Linkedin"
                     name="linkedin_evidence"
                     link="https://www.linkedin.com/company/motion-laboratory"
@@ -430,6 +446,7 @@ const InternshipRegisterView = () => {
                     suffix={<img src="/svg/link.svg" alt="link" />}
                   />
                   <RecruitmentTextInputField
+                    containerClass="lg:row-span-2 lg:grid lg:grid-rows-subgrid"
                     label="Screenshot Follow TikTok"
                     link="https://www.tiktok.com/@motionlab_0624"
                     name="line_evidence"
