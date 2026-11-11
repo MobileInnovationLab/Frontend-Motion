@@ -148,9 +148,12 @@ const InternshipRegisterView = () => {
     ["recruitment_title_text", "internship_register_text"]
   );
   const isClosed = isRecruitmentOpen === "0" || isRecruitmentOpen === "false" || isRecruitmentOpen === false;
-
+  
   const [selectedDivision, setSelectedDivision] = useState('');
-
+  const { value: bookletLink = "https://motionlaboratory.com", loading: bookletLinkLoading } = useStaticOption("recruitment_booklet_link");
+  const handleBooklet = () => {
+    if(bookletLink) window.open(bookletLink, "_blank");
+  }
   const handleDivisionChange = (e) => {
     setSelectedDivision(e.target.value);
     formik.handleChange(e);
@@ -207,7 +210,7 @@ const InternshipRegisterView = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  if (loading || (!isClosed && loadingRecruitmentMemberText)) {
+  if (loading || (!isClosed && loadingRecruitmentMemberText) || bookletLinkLoading) {
     return <InternshipRegisterSkeleton />;
   }
 
@@ -251,11 +254,11 @@ const InternshipRegisterView = () => {
                 <button
                   className=" lg:w-1/3 w-auto bg-[#C2271A] text-white text-[inter] text-[16px] rounded-full px-8 py-4 hover:opacity-90 transition duration-800 items-center"
                   type="button"
-                  onClick={openModal}
+                  onClick={handleBooklet}
                 >
                   Panduan Pengerjaan
                 </button>
-                <Modal isOpen={isModalOpen} onClose={closeModal} />
+                {/* <Modal isOpen={isModalOpen} onClose={closeModal} /> */}
 
                 <RecruitmentTextInputField
                   label="Full Name"
