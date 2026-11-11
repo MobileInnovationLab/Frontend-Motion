@@ -172,36 +172,15 @@ const InternshipRegisterView = () => {
   };
 
   const getPortfolioLabel = () => {
-    if(selectedDivision == "Digital Business"){
-      const link = getOrGenerateLink();
       return { 
         portfolioLabel: 
         (
           <>
-            BMC{' '} <span className="text-[#F82F1E]">*</span> (Required for DB){' '}
-            <span className="rounded-full bg-red-500 ms-1 px-2 py-1 text-xs font-bold mr-3">
-              <a href={link} target="_blank" rel="noopener noreferrer" className="text-white">Soal DB</a>
-            </span>
+            Portofolio{' '} <span className="text-[#F82F1E]">*</span>
           </>
         ),
-        portfolioPlaceholder: 'Link Folder BMC'
+        portfolioPlaceholder: 'Link Portofolio'
       };
-    } else if(selectedDivision == "Mobile Programming"){
-      return { 
-        portfolioLabel: 
-        (
-          <>
-            Portofolio{' '} <span className="text-[#F82F1E]">*</span> (Include github link in the portfolio){' '}
-          </>
-        ),
-        portfolioPlaceholder: 'Link Portfolio'
-      };
-    } else {
-      return {
-        portfolioLabel: <>Portofolio <span className="text-[#F82F1E]">*</span></>,
-        portfolioPlaceholder: 'Link Portfolio'
-      };
-    }
   };
 
   const { portfolioLabel, portfolioPlaceholder } = getPortfolioLabel();
