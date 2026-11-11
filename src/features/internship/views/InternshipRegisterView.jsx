@@ -134,9 +134,19 @@ const InternshipRegisterSkeleton = () => {
   );
 };
 
+const DEFAULT_RECRUITMENT_MEMBER_TEXT = "Recruitment Member 11.0";
+
 const InternshipRegisterView = () => {
   const { formik } = useRecruitmentRegisterViewModel();
   const { value: isRecruitmentOpen, loading } = useStaticOption("is_recruitment_open", "1");
+  const {
+    value: recruitmentMemberText,
+    loading: loadingRecruitmentMemberText,
+  } = useStaticOption(
+    "recruitment_member_text",
+    DEFAULT_RECRUITMENT_MEMBER_TEXT,
+    ["recruitment_title_text", "internship_register_text"]
+  );
   const isClosed = isRecruitmentOpen === "0" || isRecruitmentOpen === "false" || isRecruitmentOpen === false;
 
   const [selectedDivision, setSelectedDivision] = useState('');
@@ -197,7 +207,7 @@ const InternshipRegisterView = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  if (loading) {
+  if (loading || (!isClosed && loadingRecruitmentMemberText)) {
     return <InternshipRegisterSkeleton />;
   }
 
@@ -219,7 +229,7 @@ const InternshipRegisterView = () => {
         <>
           <section className="bg-[url('/images/recruitment/sub-header.png')] bg-cover bg-no-repeat bg-[center_bottom_0rem] w-full">
             <h1 className="text-[28px] lg:text-[48px] font-bold font-[rubik] text-center text-white flex justify-center py-40">
-              Recruitment Member 10.0
+              {recruitmentMemberText || DEFAULT_RECRUITMENT_MEMBER_TEXT}
             </h1>
           </section>
 
