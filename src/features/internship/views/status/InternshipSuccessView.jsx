@@ -122,7 +122,7 @@ const InternshipSuccessView = () => {
           className="text-gray-600 dark:text-[#CBD5E1] mb-6 leading-relaxed"
           variants={textVariants}
         >
-          Thank you for applying to our internship program. We will review your
+          Thank you for applying to our new member program. We will review your
           application and get back to you soon.
         </motion.p>
 
