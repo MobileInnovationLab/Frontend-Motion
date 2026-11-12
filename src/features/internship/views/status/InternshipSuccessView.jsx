@@ -9,7 +9,7 @@ const InternshipSuccessView = () => {
 
   const { value: rawWhatsAppLink } = useStaticOption(
     "whatsapp_group_link",
-    "https://chat.whatsapp.com/KVidot3iVaVKynuE69W7Pt?mode=gi_t",
+    "https://chat.whatsapp.com/GCZL4eUh0uLAWKF1tY0GEx?mode=gi_t",
     ["recruitment_whatsapp_link", "whatsapp_link"]
   );
 
