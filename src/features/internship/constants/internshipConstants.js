@@ -58,13 +58,13 @@ export const BENEFITS = [
     icon: "/svg/certificate.svg",
     title: "Certificate & TAK",
     description:
-      "Internship participants who successfully complete the Motion Internship have the opportunity to become members of Motion Lab and potentially serve as lab assistants.",
+      "Member participants who successfully complete the Motion Study Group have the opportunity to become members of Motion Lab and potentially serve as lab assistants.",
   },
   {
     icon: "/svg/motionlab.svg",
     title: "Member Motion Lab",
     description:
-      "Internship participants who successfully complete the Motion Internship have the opportunity to join Motion Lab and potentially serve as lab assistants.",
+      "Member participants who successfully complete the Motion Study Group have the opportunity to join Motion Lab and potentially serve as lab assistants.",
   },
 ];
 
