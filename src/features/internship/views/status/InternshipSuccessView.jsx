@@ -18,7 +18,7 @@ const InternshipSuccessView = () => {
       ? rawWhatsAppLink
       : rawWhatsAppLink
       ? `https://wa.me/${rawWhatsAppLink.replace(/[^0-9]/g, "")}`
-      : "https://chat.whatsapp.com/KVidot3iVaVKynuE69W7Pt?mode=gi_t";
+      : "https://chat.whatsapp.com/GCZL4eUh0uLAWKF1tY0GEx?mode=gi_t";
 
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.8 },
