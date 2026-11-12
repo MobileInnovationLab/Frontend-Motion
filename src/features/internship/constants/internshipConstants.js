@@ -3,29 +3,104 @@ export const ROUTE_STEPS = [
     icon: "/svg/route-map-oprec.svg",
     step: "Step 1",
     title: "Open Recruitment",
-    image: "/images/recruitment/route-map-stepone.png",
+    image: "/images/recruitment/routemap-step-1.webp",
+    cardImage: "/images/recruitment/routemap-step-1.webp",
+    timelineImage: "/images/recruitment/routemap-step-1.webp",
     section: "section1",
+    detailTitle: "Step 1: Open Recruitment",
+    items: [
+      {
+        title: "1. Document Screening",
+        description:
+          "Candidates undergo an initial document screening, where applications are assessed based on qualifications.",
+      },
+      {
+        title: "2. Interview",
+        description:
+          "Shortlisted candidates who pass the document screening process proceed to the interview stage, where their skills, passion, and fit for the program are evaluated by the interviewees.",
+      },
+      {
+        title: "3. Internship announcement",
+        description:
+          "Successful candidates are announced by searching your NIM.",
+      },
+      {
+        title: "4. On Boarding",
+        description:
+          "Interns participate in an onboarding session, introducing them to Motion Lab's culture, expectations, and goals.",
+      },
+    ],
   },
   {
     icon: "/svg/route-map-intern.svg",
     step: "Step 2",
-    title: "Internship",
-    image: "/images/recruitment/route-map-steptwo.png",
+    title: "Study Group",
+    image: "/images/recruitment/routemap-step-2.webp",
+    cardImage: "/images/recruitment/routemap-step-2.webp",
+    timelineImage: "/images/recruitment/routemap-step-2.webp",
     section: "section2",
+    detailTitle: "Step 2: New Member",
+    items: [
+      {
+        title: "1. STUDY GROUP",
+        description:
+          "Interns attend a total of 7 study group sessions, designed to enhance their skills and collaboration for preparing final projects. These sessions foster a collaborative environment where interns can share ideas, discuss challenges, and receive constructive feedback from peers and mentors.",
+      },
+      {
+        title: "2. FINAL PROJECT",
+        description:
+          "Before the main event, MotionHack, each division works on a major project that sets the foundation for later collaboration.",
+      },
+      {
+        title: "3. MOTIONHACK",
+        description:
+          "Interns are divided into interdisciplinary teams, including members from the Digital Business Division, UI/UX, and Mobile Programming. Teams are tasked with developing an application based on a specific theme within a given timeframe.",
+      },
+    ],
   },
   {
     icon: "/svg/route-map-member.svg",
     step: "Step 3",
     title: "Motion Lab Member",
-    image: "/images/recruitment/route-map-stepthree.png",
+    image: "/images/recruitment/routemap-step-3.webp",
+    cardImage: "/images/recruitment/routemap-step-3.webp",
+    timelineImage: "/images/recruitment/routemap-step-3.webp",
     section: "section3",
+    detailTitle: "Step 3: Motion Lab Member",
+    items: [
+      {
+        title: "1. Official Member Induction",
+        description:
+          "Interns who demonstrate exceptional dedication and commitment throughout the program will be invited to join Motion Lab 11.0 as official members.",
+      },
+      {
+        title: "2. Lab Operations & Mentoring",
+        description:
+          "Official members contribute directly to laboratory operations, organize knowledge-sharing sessions, and guide prospective interns.",
+      },
+    ],
   },
   {
     icon: "/svg/route-map-research.svg",
     step: "Step 4",
     title: "Research Group",
-    image: "/images/recruitment/route-map-stepfour.png",
+    image: "/images/recruitment/routemap-step-4.webp",
+    cardImage: "/images/recruitment/routemap-step-4.webp",
+    timelineImage: "/images/recruitment/routemap-step-4.webp",
     section: "section4",
+    detailTitle: "Step 4: Research Group",
+    items: [
+      {
+        title: "1. Research & Development",
+        description:
+          "After becoming a member, you can join research groups that are open for volunteers, allowing you to contribute to exciting projects while learning from experienced mentors.",
+      },
+      {
+        title: "2. Innovation & External Showcases",
+        description:
+          "Collaborate on cutting-edge research, represent Motion Lab in competitions, and develop scalable digital products.",
+      },
+    ],
   },
 ];
 
@@ -58,13 +133,13 @@ export const BENEFITS = [
     icon: "/svg/certificate.svg",
     title: "Certificate & TAK",
     description:
-      "Internship participants who successfully complete the Motion Internship have the opportunity to become members of Motion Lab and potentially serve as lab assistants.",
+      "Member participants who successfully complete the Motion Study Group have the opportunity to become members of Motion Lab and potentially serve as lab assistants.",
   },
   {
     icon: "/svg/motionlab.svg",
     title: "Member Motion Lab",
     description:
-      "Internship participants who successfully complete the Motion Internship have the opportunity to join Motion Lab and potentially serve as lab assistants.",
+      "Member participants who successfully complete the Motion Study Group have the opportunity to join Motion Lab and potentially serve as lab assistants.",
   },
 ];
 
@@ -106,7 +181,7 @@ export const REQUIREMENTS = [
   },
   {
     number: "02",
-    text: "Wiling to commit for the whole program and membership duration of 1,5 year",
+    text: "Wiling to commit for the whole program and membership duration of 1 year",
   },
   {
     number: "05",
