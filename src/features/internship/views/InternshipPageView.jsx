@@ -19,19 +19,13 @@ const InternshipView = () => {
   const routeMapRef = useRef(null);
   const benefitRef = useRef(null);
   const curriculumRef = useRef(null);
-  const defaultRouteImage = "/images/recruitment/route-map-default.png";
+  const defaultRouteImage = "/images/recruitment/routemap-step-2.webp";
   const [activeImage, setActiveImage] = useState(defaultRouteImage);
-  const [activeSection, setActiveSection] = useState(null);
-  // const [isSlided, setIsSlided] = useState(true);
+  const [activeSection, setActiveSection] = useState("section2");
 
   const handleClick = (imageSrc, section) => {
-    if (activeImage === imageSrc) {
-      setActiveImage(defaultRouteImage);
-      setActiveSection(null);
-    } else {
-      setActiveImage(imageSrc);
-      setActiveSection(section);
-    }
+    setActiveImage(imageSrc);
+    setActiveSection(section);
   };
 
   return (
