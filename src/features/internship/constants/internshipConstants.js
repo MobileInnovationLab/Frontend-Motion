@@ -9,7 +9,7 @@ export const ROUTE_STEPS = [
   {
     icon: "/svg/route-map-intern.svg",
     step: "Step 2",
-    title: "Internship",
+    title: "Study Group",
     image: "/images/recruitment/route-map-steptwo.png",
     section: "section2",
   },
@@ -106,7 +106,7 @@ export const REQUIREMENTS = [
   },
   {
     number: "02",
-    text: "Wiling to commit for the whole program and membership duration of 1,5 year",
+    text: "Wiling to commit for the whole program and membership duration of 1 year",
   },
   {
     number: "05",
