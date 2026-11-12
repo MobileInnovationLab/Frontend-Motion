@@ -368,11 +368,11 @@ const InternshipRegisterView = () => {
                 </div>
 
                 <RecruitmentTextInputField
-                  label="Study Case"
+                  label="Business Plan/Study Case"
                   shortLink={true}
                   link={studyCaseLink}
                   name="study_case_link"
-                  placeholder="Link Study Case"
+                  placeholder="Link Business Plan/Study Case"
                   onChange={formik.handleChange}
                   error={formik.errors.study_case_link}
                   required
