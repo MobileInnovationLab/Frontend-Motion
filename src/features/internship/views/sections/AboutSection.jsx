@@ -27,12 +27,12 @@ const AboutSection = ({ aboutRef }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          Internship Activities
+          Member Activities
         </motion.h1>
         <h6 className="text-center font-[rubik] text-[#6A6A6A] dark:text-[#CBD5E1] lg:text-[18px] leading-10 px-10 lg:px-40">
-          Motion Internship by Motion Lab provides Telkom University students
+          Motion Member by Motion Lab provides Telkom University students
           with experience in Digital Business, UI/UX Design, and Mobile
-          Programming over 8 sessions.
+          Programming over 7 sessions.
         </h6>
         <div className="flex flex-col lg:flex-row align-items-center mt-14 container justify-content-center m-auto">
           <div className="w-full overflow-hidden lg:h-[507px] bg-black rounded-lg me-10">
@@ -57,22 +57,22 @@ const AboutSection = ({ aboutRef }) => {
               <img
                 src="/images/internship/activity-internship-1.png"
                 className="object-cover w-full lg:h-full  rounded-lg scale-110"
-                alt="Internship Activities"
+                alt="Member Activities"
               />
               <img
                 src="/images/internship/activity-internship-2.png"
                 className="object-cover w-full lg:h-full rounded-lg scale-110"
-                alt="Internship Activities"
+                alt="Member Activities"
               />
               <img
                 src="/images/internship/activity-internship-3.png"
                 className="object-cover w-full lg:h-full rounded-lg scale-110"
-                alt="Internship Activities"
+                alt="Member Activities"
               />
               <img
                 src="/images/internship/activity-internship-4.png"
                 className="object-cover w-full lg:h-full rounded-lg scale-110"
-                alt="Internship Activities"
+                alt="Member Activities"
               />
             </Carousel>
           </div>
@@ -82,9 +82,9 @@ const AboutSection = ({ aboutRef }) => {
                 What activities are planned?
               </h2>
               <p className="text-[18px] font-[inter] font-light text-[#ACACAC] dark:text-[#94A3B8] leading-10">
-                During the internship at Motion Lab, prospective members will
+                During the Member at Motion Lab, prospective members will
                 deepen their knowledge related to the chosen division. The main
-                activities in Motion Internship include:
+                activities in Motion Member Activities include:
               </p>
               <ul className="text-[18px] font-[inter] font-light text-[#ACACAC] dark:text-[#94A3B8] leading-10">
                 <li>1. Choosing a division</li>

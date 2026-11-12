@@ -135,6 +135,7 @@ const InternshipRegisterSkeleton = () => {
 };
 
 const DEFAULT_RECRUITMENT_MEMBER_TEXT = "Recruitment Member 11.0";
+const DEFAULT_OPREC_IG_POST_LINK = "https://www.instagram.com/motionlab_/";
 
 const InternshipRegisterView = () => {
   const { formik } = useRecruitmentRegisterViewModel();
@@ -151,6 +152,11 @@ const InternshipRegisterView = () => {
   
   const [selectedDivision, setSelectedDivision] = useState('');
   const { value: bookletLink = "https://motionlaboratory.com", loading: bookletLinkLoading } = useStaticOption("recruitment_booklet_link");
+  const { value: oprecIgPostLink = DEFAULT_OPREC_IG_POST_LINK } = useStaticOption(
+    "recruitment_poster_link",
+    DEFAULT_OPREC_IG_POST_LINK,
+    ["oprec_ig_post_link", "share_poster_link", "recruitment_ig_link"]
+  );
   const handleBooklet = () => {
     if(bookletLink) window.open(bookletLink, "_blank");
   }
@@ -159,16 +165,15 @@ const InternshipRegisterView = () => {
     formik.handleChange(e);
   };
 
-  const getOrGenerateLink = () => {
-    const storedLink = localStorage.getItem('randomizedLink');
-  
-    if (storedLink) {
-      return storedLink;
-    } else {
-      const newRandomizedLink = linkSoal[Math.floor(Math.random() * linkSoal.length)];
-      localStorage.setItem('randomizedLink', newRandomizedLink);
-      return newRandomizedLink;
+  const getStudyCaseLink = () => {
+    if (selectedDivision === "UI/UX Design") {
+      return "https://drive.google.com/drive/folders/18B2utsoyj0nvoywWPcG6jAqFf39WW_9k?usp=sharing";
+    } else if (selectedDivision === "Digital Business") {
+      return "https://docs.google.com/document/d/10r7rsziTv2qq5VkhkpPhSMq81MQaq1kJ-jWn1eZB520/edit?usp=sharing";
+    } else if (selectedDivision === "Mobile Programming") {
+      return "https://docs.google.com/document/d/1NG32QNooE3rrJZqXtU04BGv-P8tPz7i6U0VbF3z2KFo/edit?usp=sharing";
     }
+    return "";
   };
 
   const getPortfolioLabel = () => {
@@ -184,6 +189,7 @@ const InternshipRegisterView = () => {
   };
 
   const { portfolioLabel, portfolioPlaceholder } = getPortfolioLabel();
+  const studyCaseLink = getStudyCaseLink();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
@@ -362,9 +368,11 @@ const InternshipRegisterView = () => {
                 </div>
 
                 <RecruitmentTextInputField
-                  label="Case Study"
+                  label="Business Plan/Study Case"
+                  shortLink={true}
+                  link={studyCaseLink}
                   name="study_case_link"
-                  placeholder="Link Case Study"
+                  placeholder="Link Business Plan/Study Case"
                   onChange={formik.handleChange}
                   error={formik.errors.study_case_link}
                   required
@@ -387,6 +395,8 @@ const InternshipRegisterView = () => {
 
                 <RecruitmentTextInputField
                   label="Upload OpRec Instagram posts to your IG story"
+                  shortLink={true}
+                  link={oprecIgPostLink || DEFAULT_OPREC_IG_POST_LINK}
                   name="share_poster"
                   placeholder="Link Screenshot Post Instagram"
                   onChange={formik.handleChange}
@@ -397,6 +407,8 @@ const InternshipRegisterView = () => {
 
                 <RecruitmentTextInputField
                   label="Upload Proof of Flyer Share Screenshot"
+                  shortLink={true}
+                  link="https://drive.google.com/drive/folders/1TxNY_Dv3WLmTHhIFUo3zEZZpwMzRYwlL?usp=sharing"
                   description="Send it to at least 1 group outside the Motion group. Make sure the group name is clearly visible in the screenshot."
                   name="proof_of_flyer_share"
                   placeholder="Link Screenshot Share Flyer"
