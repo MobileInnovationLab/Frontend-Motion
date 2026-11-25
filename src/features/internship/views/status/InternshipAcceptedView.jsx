@@ -12,6 +12,9 @@ import { renderTemplateWithRegex } from "../../utils/templateUtils";
 const DEFAULT_ACCEPTED_TEXT =
   "Hello {name} ({nim})! Congratulations on successfully passing the selection process and officially becoming a Laboratory Assistant (Aslab) of Mobile Innovation Laboratory Gen 11.0, accepted in the {division} division! Welcome to the team, we’re excited to have you with us!";
 
+const DEFAULT_ACCEPTED_WHATSAPP_LINK =
+  "https://chat.whatsapp.com/KVidot3iVaVKynuE69W7Pt?mode=gi_t";
+
 const InternshipAcceptedView = () => {
   const { height, width } = useWindowDimensions();
   const searchParams = useSearchParams();
@@ -24,6 +27,10 @@ const InternshipAcceptedView = () => {
   const { value: acceptedText, loading } = useStaticOption(
     "internship_accepted_text",
     DEFAULT_ACCEPTED_TEXT
+  );
+  const { value: acceptedWhatsappLink } = useStaticOption(
+    "internship_accepted_whatsapp_link",
+    DEFAULT_ACCEPTED_WHATSAPP_LINK
   );
 
   useEffect(() => {
@@ -58,7 +65,9 @@ const InternshipAcceptedView = () => {
 
         <div className="my-3 lg:my-6"></div>
         <Link
-          href="https://chat.whatsapp.com/KVidot3iVaVKynuE69W7Pt?mode=gi_t"
+          href={acceptedWhatsappLink || DEFAULT_ACCEPTED_WHATSAPP_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
           className="bg-[#F82F1E] text-white text-[inter] text-[14px] lg:text-[16px] rounded-full px-10 py-[1rem] hover:opacity-90 transition duration-800"
         >
           Join Group
