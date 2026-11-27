@@ -2,20 +2,18 @@
 
 import Image from "next/image";
 
-import Navbar from "@/core/components/navbar";
-import BigTitle from "@/core/components/bigTitle";
-import DivisionBox from "@/core/components/divisionBox";
-import Footer from "@/core/components/footer";
-import TopButton from "@/core/components/topButton";
-import MemberResponsive from "@/core/components/memberResponsive";
-import MemberContainer from "@/core/components/memberContainer";
+import BigTitle from "@/shared/components/bigTitle";
+import DivisionBox from "@/shared/components/divisionBox";
+import Footer from "@/shared/components/footer";
+import TopButton from "@/shared/components/topButton";
+import MemberContainer from "@/shared/components/memberContainer";
 
 import Slider from "react-slick";
 
-import styles from "@/core/styles/pages/about.module.scss";
+import styles from "@/styles/pages/about.module.scss";
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
-import GeneralSeo from "@/core/components/seo/generalSeo";
+import GeneralSeo from "@/shared/components/seo/generalSeo";
 
 export default function Page() {
   let dosen = {
@@ -254,7 +252,6 @@ export default function Page() {
   return (
     <div className={styles["main-body"]}>
       <GeneralSeo title="About" />
-      <Navbar />
 
       <BigTitle>About Us</BigTitle>
 
